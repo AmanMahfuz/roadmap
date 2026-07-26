@@ -22,7 +22,8 @@ import {
   Globe,
   Heart,
   Star,
-  ArrowLeft
+  ArrowLeft,
+  LogOut
 } from 'lucide-react';
 import CertificateModal from './CertificateModal';
 import { BADGES_LIST, getXpProgressForLevel } from '../services/gamificationEngine';
@@ -31,7 +32,8 @@ export default function ProfileStatsView({
   userState = {}, 
   currentUser = null,
   onBackToDashboard, 
-  onResetProgress 
+  onResetProgress,
+  onSignOut
 }) {
   const [selectedCertSkill, setSelectedCertSkill] = useState(null);
   const [copiedShare, setCopiedShare] = useState(false);
@@ -113,7 +115,7 @@ export default function ProfileStatsView({
             </div>
           </div>
 
-          <div className="flex items-center space-x-3">
+          <div className="flex flex-wrap items-center gap-3">
             <button
               onClick={handleShareProfile}
               className="px-4 py-2.5 bg-slate-900 hover:bg-slate-800 text-white font-extrabold text-xs rounded-xl flex items-center space-x-2 shadow-md transition-transform hover:scale-105"
@@ -121,6 +123,17 @@ export default function ProfileStatsView({
               {copiedShare ? <Check className="w-4 h-4 text-emerald-400" /> : <Share2 className="w-4 h-4" />}
               <span>{copiedShare ? 'Profile Link Copied!' : 'Share Profile'}</span>
             </button>
+
+            {onSignOut && (
+              <button
+                onClick={onSignOut}
+                className="px-4 py-2.5 bg-rose-50 hover:bg-rose-100 border border-rose-200 text-rose-700 font-bold text-xs rounded-xl flex items-center space-x-1.5 transition-colors"
+                title="Sign Out of Account"
+              >
+                <LogOut className="w-4 h-4" />
+                <span>Log Out</span>
+              </button>
+            )}
 
             {onBackToDashboard && (
               <button
@@ -287,24 +300,36 @@ export default function ProfileStatsView({
         </div>
       </div>
 
-      {/* Reset Progress Danger Zone */}
-      <div className="bg-white border border-slate-200 rounded-3xl p-6 shadow-xs flex items-center justify-between">
+      {/* Account Settings Danger Zone */}
+      <div className="bg-white border border-slate-200 rounded-3xl p-6 shadow-xs flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div>
           <h4 className="font-bold text-sm text-slate-900">Developer Account Settings</h4>
           <p className="text-xs text-slate-500 mt-0.5">Resetting progress clears local storage data & resets completed lessons.</p>
         </div>
 
-        <button
-          onClick={() => {
-            if (window.confirm('Are you sure you want to reset all your progress data? This cannot be undone.')) {
-              onResetProgress();
-            }
-          }}
-          className="px-4 py-2 text-rose-600 hover:bg-rose-50 border border-rose-200 rounded-xl text-xs font-bold transition-colors flex items-center space-x-1.5"
-        >
-          <RotateCcw className="w-3.5 h-3.5" />
-          <span>Reset All Progress</span>
-        </button>
+        <div className="flex items-center space-x-3 w-full sm:w-auto">
+          {onSignOut && (
+            <button
+              onClick={onSignOut}
+              className="flex-1 sm:flex-initial px-4 py-2 bg-rose-600 hover:bg-rose-700 text-white font-extrabold text-xs rounded-xl flex items-center justify-center space-x-1.5 shadow-sm"
+            >
+              <LogOut className="w-4 h-4" />
+              <span>Log Out Account</span>
+            </button>
+          )}
+
+          <button
+            onClick={() => {
+              if (window.confirm('Are you sure you want to reset all your progress data? This cannot be undone.')) {
+                onResetProgress();
+              }
+            }}
+            className="flex-1 sm:flex-initial px-4 py-2 text-rose-700 hover:bg-rose-50 border border-rose-200 rounded-xl text-xs font-bold transition-colors flex items-center justify-center space-x-1.5"
+          >
+            <RotateCcw className="w-3.5 h-3.5" />
+            <span>Reset Data</span>
+          </button>
+        </div>
       </div>
 
       {/* Certificate Viewer Modal */}

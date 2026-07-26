@@ -318,7 +318,6 @@ export default function App() {
         onSignOut={handleSignOut}
       />
 
-      {/* Main Mobile-First Single-Page Application Layout Container */}
       <main className="app-main-content flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 pt-4 pb-24 md:pb-8">
         {currentPage === 'languages' && (
           <LanguageSelector
@@ -371,6 +370,7 @@ export default function App() {
             currentUser={currentUser}
             onBackToDashboard={() => setCurrentPage('languages')}
             onResetProgress={handleResetProgress}
+            onSignOut={handleSignOut}
           />
         )}
       </main>

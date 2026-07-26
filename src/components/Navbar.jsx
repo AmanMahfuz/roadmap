@@ -37,7 +37,7 @@ export default function Navbar({
 
   return (
     <>
-      {/* Top Header Bar (Clean Mobile-First Header) */}
+      {/* Top Header Bar */}
       <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200 px-4 sm:px-6 py-2.5 font-sans text-slate-900 shadow-xs">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           
@@ -56,7 +56,7 @@ export default function Navbar({
             </div>
           </div>
 
-          {/* Center: Desktop Navigation Bar (Visible on md+ screens) */}
+          {/* Center: Desktop Navigation Bar */}
           <nav className="hidden md:flex items-center space-x-1.5 bg-slate-100/90 p-1 rounded-xl border border-slate-200">
             
             <button 
@@ -156,7 +156,7 @@ export default function Navbar({
 
           </nav>
 
-          {/* Right: Mobile App Header Actions (Streak + AI Mentor + Profile) */}
+          {/* Right Header Actions */}
           <div className="flex items-center space-x-2">
             
             <button
@@ -178,22 +178,34 @@ export default function Navbar({
               <span className="text-amber-600 font-normal text-[11px]">({userState?.xp || 0} XP)</span>
             </div>
 
-            <button 
-              onClick={onOpenProfile}
-              className="p-1 bg-slate-900 hover:bg-slate-800 text-white rounded-xl transition-all border border-slate-800 shadow-xs"
-              title="Profile"
-            >
-              <div className="w-6 h-6 rounded-lg bg-gradient-to-tr from-orange-500 to-amber-400 text-white flex items-center justify-center font-extrabold text-[11px]">
-                {currentUser?.user_metadata?.full_name?.charAt(0) || currentUser?.email?.charAt(0) || 'D'}
-              </div>
-            </button>
+            {/* Profile + Log Out Controls */}
+            <div className="flex items-center space-x-1.5 pl-1.5 border-l border-slate-200">
+              <button 
+                onClick={onOpenProfile}
+                className="p-1 bg-slate-900 hover:bg-slate-800 text-white rounded-xl transition-all border border-slate-800 shadow-xs flex items-center space-x-1"
+                title="Open Profile"
+              >
+                <div className="w-6 h-6 rounded-lg bg-gradient-to-tr from-orange-500 to-amber-400 text-white flex items-center justify-center font-extrabold text-[11px]">
+                  {currentUser?.user_metadata?.full_name?.charAt(0) || currentUser?.email?.charAt(0) || 'D'}
+                </div>
+              </button>
+
+              <button
+                onClick={onSignOut}
+                title="Log Out of Account"
+                className="px-2.5 py-1.5 bg-rose-50 hover:bg-rose-100 text-rose-700 rounded-xl transition-colors text-xs font-bold flex items-center space-x-1 border border-rose-200"
+              >
+                <LogOut className="w-3.5 h-3.5" />
+                <span className="hidden sm:inline">Log Out</span>
+              </button>
+            </div>
 
           </div>
 
         </div>
       </header>
 
-      {/* MOBILE-FIRST FIXED BOTTOM APPLICATION NAVIGATION BAR */}
+      {/* MOBILE-FIRST FIXED BOTTOM NAVIGATION BAR */}
       <div className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-lg border-t border-slate-200 px-2 py-2 flex items-center justify-around shadow-2xl">
         
         <button
@@ -238,9 +250,11 @@ export default function Navbar({
 
         <button
           onClick={onOpenProfile}
-          className="flex flex-col items-center justify-center py-1 px-3 rounded-2xl text-slate-700 font-semibold transition-all hover:scale-105"
+          className={`flex flex-col items-center justify-center py-1 px-3 rounded-2xl transition-all ${
+            activeView === 'profile' ? 'text-slate-900 font-extrabold scale-105' : 'text-slate-500 font-semibold'
+          }`}
         >
-          <User className="w-5 h-5 mb-0.5 text-slate-800" />
+          <User className="w-5 h-5 mb-0.5" />
           <span className="text-[10px]">Profile</span>
         </button>
 
