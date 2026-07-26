@@ -1,0 +1,210 @@
+[
+  {
+    "id": "html-day-1",
+    "day": 1,
+    "week": 1,
+    "title": "Day 1 – HTML Basics",
+    "duration": "32 min",
+    "difficulty": "Beginner",
+    "xp": 100,
+    "goal": "Learn HTML structure, VS Code setup, boilerplate, headings, paragraphs, and comments.",
+    "videos": [
+      {
+        "type": "Primary Master Course (Chapter 1)",
+        "channel": "FreeCodeCamp & Techie Malayalam",
+        "title": "HTML Introduction & Environment Setup",
+        "videoId": "HGTJBPNC-Gw",
+        "startSeconds": 0,
+        "startTime": "00:00:00",
+        "endTime": "00:32:15"
+      },
+      {
+        "type": "Malayalam Deep Dive",
+        "channel": "Techie Malayalam",
+        "title": "HTML Basics in Malayalam",
+        "videoId": "s97BsqG_YvE",
+        "startSeconds": 0,
+        "startTime": "00:00:00",
+        "endTime": "00:25:00"
+      }
+    ],
+    "notes": "### 📌 Key Topics\n- What is HTML\n- VS Code Setup\n- HTML Boilerplate\n- Headings & Paragraphs\n- Comments\n\n🌐 Malayalam Summary: HTML-ന്റെ ആദ്യപാഠം എഡിറ്ററിൽ കോഡ് ചെയ്തു കാണുക.",
+    "tasks": [
+      "Watch today's section (00:00:00 ➔ 00:32:15)",
+      "Install VS Code",
+      "Create index.html",
+      "Write headings and paragraphs",
+      "Complete the quiz"
+    ],
+    "miniChallenge": "My First Webpage",
+    "quiz": [
+      {
+        "question": "Which HTML tag defines the highest level heading?",
+        "options": ["<head>", "<h1>", "<header>", "<p>"],
+        "correct": 1,
+        "explanation": "<h1> represents top level heading."
+      }
+    ],
+    "codingTask": {
+      "prompt": "Create a webpage skeleton with an <h1> heading 'My First Webpage' and a <p> paragraph.",
+      "starterCode": "<!DOCTYPE html>\n<html>\n<head>\n  <title>My First Webpage</title>\n</head>\n<body>\n  <h1>My First Webpage</h1>\n  <p>Welcome to web development!</p>\n</body>\n</html>",
+      "expectedKeywords": ["<h1>", "</h1>", "<p>", "</p>"]
+    }
+  },
+  {
+    "id": "html-day-2",
+    "day": 2,
+    "week": 1,
+    "title": "Day 2 – Headings, Paragraphs & Lists",
+    "duration": "33 min",
+    "difficulty": "Beginner",
+    "xp": 120,
+    "goal": "Master text formatting (bold, italic, underline) and lists (ul, ol, dl).",
+    "videos": [
+      {
+        "type": "Primary Master Course (Chapter 2)",
+        "channel": "FreeCodeCamp & Techie Malayalam",
+        "title": "Headings, Paragraphs & Lists Masterclass",
+        "videoId": "HGTJBPNC-Gw",
+        "startSeconds": 1936,
+        "startTime": "00:32:16",
+        "endTime": "01:05:20"
+      }
+    ],
+    "notes": "### 📌 Text & Lists\n- <strong> (Bold), <em> (Italic), <u> (Underline)\n- <ul> and <li> for Unordered Lists\n- <ol> and <li> for Ordered Lists\n\n🌐 Malayalam Summary: ലിസ്റ്റുകളും ടെക്സ്റ്റ് ഫോർമാറ്റിംഗും അഭ്യസിക്കുക.",
+    "tasks": ["Watch today's section (00:32:16 ➔ 01:05:20)", "Practice text formatting", "Create shopping list (ul)", "Create favourite movies list (ol)", "Complete quiz"],
+    "miniChallenge": "Restaurant Menu Page",
+    "quiz": [{ "question": "Which tag creates a bulleted list?", "options": ["<ul>", "<ol>"], "correct": 0, "explanation": "<ul> creates unordered lists." }],
+    "codingTask": { "prompt": "Build a Restaurant Menu using <h2> and <ul>.", "starterCode": "<h2>Menu</h2>\n<ul><li>Soup - $5</li></ul>", "expectedKeywords": ["<h2>", "<ul>"] }
+  },
+  {
+    "id": "html-day-3",
+    "day": 3,
+    "week": 1,
+    "title": "Day 3 – Links & Images",
+    "duration": "35 min",
+    "difficulty": "Beginner",
+    "xp": 130,
+    "goal": "Learn how to use images and hyperlinks correctly.",
+    "videos": [
+      {
+        "type": "Primary Master Course (Chapter 3)",
+        "channel": "FreeCodeCamp & Techie Malayalam",
+        "title": "Images, Anchors & Relative Paths",
+        "videoId": "HGTJBPNC-Gw",
+        "startSeconds": 3920,
+        "startTime": "01:05:21",
+        "endTime": "01:40:20"
+      }
+    ],
+    "notes": "### 📌 Links & Images\n- <img>: src, alt\n- <a>: href, target\n\n🌐 Malayalam Summary: ഇമേജുകളും ആങ്കർ ലിങ്കുകളും കൃത്യമായി വഴി നിർണ്ണയിക്കുക.",
+    "tasks": ["Watch today's section (01:05:21 ➔ 01:40:20)", "Add 5 images with alt text", "Create navigation menu with links", "Complete quiz"],
+    "miniChallenge": "Travel Blog Page",
+    "quiz": [{ "question": "Which attribute specifies image path?", "options": ["src", "alt"], "correct": 0, "explanation": "src specifies image URL." }],
+    "codingTask": { "prompt": "Add an <a> link and <img> tag.", "starterCode": "<a href=\"#\">Explore</a>\n<img src=\"beach.jpg\" alt=\"Beach\" />", "expectedKeywords": ["<a", "<img"] }
+  },
+  {
+    "id": "html-day-4",
+    "day": 4,
+    "week": 1,
+    "title": "Day 4 – Tables",
+    "duration": "35 min",
+    "difficulty": "Beginner",
+    "xp": 140,
+    "goal": "Structure tabular data using table, tr, td, th, rowspan, and colspan.",
+    "videos": [
+      {
+        "type": "Primary Master Course (Chapter 4)",
+        "channel": "FreeCodeCamp & Techie Malayalam",
+        "title": "HTML Tables & Data Structure",
+        "videoId": "HGTJBPNC-Gw",
+        "startSeconds": 6021,
+        "startTime": "01:40:21",
+        "endTime": "02:15:20"
+      }
+    ],
+    "notes": "### 📌 Tables\n- <table>, <tr>, <th>, <td>",
+    "tasks": ["Watch today's section (01:40:21 ➔ 02:15:20)", "Student marks table", "College timetable", "Complete quiz"],
+    "miniChallenge": "College Timetable",
+    "quiz": [{ "question": "Header cell tag?", "options": ["<th>", "<td>"], "correct": 0, "explanation": "<th> specifies header." }],
+    "codingTask": { "prompt": "Build 2x2 Table.", "starterCode": "<table><tr><th>Day</th></tr></table>", "expectedKeywords": ["<table>", "<tr>"] }
+  },
+  {
+    "id": "html-day-5",
+    "day": 5,
+    "week": 1,
+    "title": "Day 5 – Forms",
+    "duration": "40 min",
+    "difficulty": "Intermediate",
+    "xp": 150,
+    "goal": "Capture user input using forms, inputs, labels, selects, and submit buttons.",
+    "videos": [
+      {
+        "type": "Primary Master Course (Chapter 5)",
+        "channel": "FreeCodeCamp & Techie Malayalam",
+        "title": "HTML Forms & User Input Controls",
+        "videoId": "HGTJBPNC-Gw",
+        "startSeconds": 8121,
+        "startTime": "02:15:21",
+        "endTime": "02:55:20"
+      }
+    ],
+    "notes": "### 📌 Forms\n- <form>, <input>, <label>, <button>",
+    "tasks": ["Watch today's section (02:15:21 ➔ 02:55:20)", "Registration form", "Login form", "Complete quiz"],
+    "miniChallenge": "Admission Form",
+    "quiz": [{ "question": "Single choice input type?", "options": ["radio", "checkbox"], "correct": 0, "explanation": "radio input." }],
+    "codingTask": { "prompt": "Create form with submit button.", "starterCode": "<form><input type=\"email\" /><button type=\"submit\">Submit</button></form>", "expectedKeywords": ["<form", "<button"] }
+  },
+  {
+    "id": "html-day-6",
+    "day": 6,
+    "week": 1,
+    "title": "Day 6 – Semantic HTML",
+    "duration": "35 min",
+    "difficulty": "Intermediate",
+    "xp": 170,
+    "goal": "Structure clean accessible web documents with header, nav, main, section, and footer.",
+    "videos": [
+      {
+        "type": "Primary Master Course (Chapter 6)",
+        "channel": "FreeCodeCamp & Techie Malayalam",
+        "title": "Semantic HTML5 Layout Structure",
+        "videoId": "HGTJBPNC-Gw",
+        "startSeconds": 10521,
+        "startTime": "02:55:21",
+        "endTime": "03:30:20"
+      }
+    ],
+    "notes": "### 📌 Semantic HTML\n- <header>, <nav>, <main>, <section>, <footer>",
+    "tasks": ["Watch today's section (02:55:21 ➔ 03:30:20)", "Convert div page to semantic HTML", "Accessibility audit", "Complete quiz"],
+    "miniChallenge": "News Website Layout",
+    "quiz": [{ "question": "Main content tag?", "options": ["<main>", "<header>"], "correct": 0, "explanation": "<main> tag." }],
+    "codingTask": { "prompt": "Build layout with header and main.", "starterCode": "<header><h1>News</h1></header><main><section></section></main>", "expectedKeywords": ["<header>", "<main>"] }
+  },
+  {
+    "id": "html-day-7",
+    "day": 7,
+    "week": 1,
+    "title": "Day 7 – Revision + Capstone Project",
+    "duration": "60 min",
+    "difficulty": "Capstone",
+    "xp": 500,
+    "goal": "Build the Personal Portfolio Website capstone project.",
+    "videos": [
+      {
+        "type": "Primary Master Course (Chapter 7)",
+        "channel": "FreeCodeCamp & Techie Malayalam",
+        "title": "HTML Portfolio Website Project",
+        "videoId": "HGTJBPNC-Gw",
+        "startSeconds": 12621,
+        "startTime": "03:30:21",
+        "endTime": "04:30:00"
+      }
+    ],
+    "notes": "### 🏁 Capstone Project\nPersonal Portfolio Website with Hero, About, Skills, Projects Table, and Contact Form.",
+    "tasks": ["Watch today's section (03:30:21 ➔ 04:30:00)", "Review all 6 lessons", "Finish Portfolio project", "Test links & forms"],
+    "miniChallenge": "Personal Portfolio Website (Final Capstone)",
+    "quiz": [{ "question": "HTML Capstone badge?", "options": ["HTML Architect", "CSS Styler"], "correct": 0, "explanation": "HTML Architect Badge." }],
+    "codingTask": { "prompt": "Build Portfolio skeleton.", "starterCode": "<header><nav>Portfolio</nav></header><main><section>About</section></main><footer>Contact</footer>", "expectedKeywords": ["<header>", "<nav>", "<main>", "<section>", "<footer>"] }
+  }
+]

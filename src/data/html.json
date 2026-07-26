@@ -1,0 +1,300 @@
+[
+  {
+    "id": "html-day-1",
+    "day": 1,
+    "week": 1,
+    "title": "Day 1 – HTML Basics",
+    "duration": "30 min",
+    "difficulty": "Beginner",
+    "xp": 100,
+    "goal": "Learn HTML structure, VS Code setup, boilerplate, headings, paragraphs, and comments.",
+    "videos": [
+      {
+        "type": "Primary (Recommended)",
+        "channel": "Techie Malayalam",
+        "title": "HTML Basics & VS Code Setup in Malayalam",
+        "videoId": "s97BsqG_YvE"
+      },
+      {
+        "type": "Alternative Explanation",
+        "channel": "Brocamp Malayalam",
+        "title": "HTML Full Course Part 1",
+        "videoId": "bWPMSSsVdEA"
+      },
+      {
+        "type": "Deep Dive",
+        "channel": "Luminar TechnoLab",
+        "title": "Web Structure & Tags Masterclass",
+        "videoId": "mJgBOIoGihA"
+      }
+    ],
+    "notes": "### 📌 Key Topics\n- What is HTML\n- VS Code Setup & Live Server\n- HTML Boilerplate\n- Headings (h1-h6) & Paragraphs (<p>)\n- HTML Comments <!-- comment -->",
+    "tasks": [
+      "Watch the tutorial",
+      "Install VS Code",
+      "Create index.html",
+      "Write headings and paragraphs",
+      "Complete the quiz"
+    ],
+    "miniChallenge": "My First Webpage",
+    "quiz": [
+      {
+        "question": "Which tag defines the main top-level section heading?",
+        "options": ["<head>", "<h1>", "<header>", "<p>"],
+        "correct": 1,
+        "explanation": "<h1> represents the highest section level heading."
+      }
+    ],
+    "codingTask": {
+      "prompt": "Create an HTML page skeleton with an <h1> heading 'My First Webpage' and a <p> paragraph.",
+      "starterCode": "<!DOCTYPE html>\n<html>\n<head>\n  <title>My First Webpage</title>\n</head>\n<body>\n  <!-- Write code below -->\n  <h1>My First Webpage</h1>\n  <p>Welcome to web development!</p>\n</body>\n</html>",
+      "expectedKeywords": ["<h1>", "</h1>", "<p>", "</p>"]
+    }
+  },
+  {
+    "id": "html-day-2",
+    "day": 2,
+    "week": 1,
+    "title": "Day 2 – Text & Lists",
+    "duration": "35 min",
+    "difficulty": "Beginner",
+    "xp": 120,
+    "goal": "Master text formatting (bold, italic, underline) and lists (ul, ol, dl).",
+    "videos": [
+      {
+        "type": "Primary (Recommended)",
+        "channel": "Crossroads Malayalam",
+        "title": "HTML Text Formatting & Lists",
+        "videoId": "bWPMSSsVdEA"
+      },
+      {
+        "type": "Alternative Explanation",
+        "channel": "Techie Malayalam",
+        "title": "Unordered & Ordered Lists in HTML",
+        "videoId": "s97BsqG_YvE"
+      }
+    ],
+    "notes": "### 📌 Formatting & Lists\n- <strong> (Bold), <em> (Italic), <u> (Underline)\n- <ul> and <li> for Unordered Lists\n- <ol> and <li> for Ordered Lists",
+    "tasks": [
+      "Watch tutorial",
+      "Practice text formatting",
+      "Create shopping list (ul)",
+      "Create favourite movies list (ol)",
+      "Complete quiz"
+    ],
+    "miniChallenge": "Restaurant Menu Page",
+    "quiz": [
+      {
+        "question": "Which tag creates a bulleted unordered list?",
+        "options": ["<ul>", "<ol>", "<dl>", "<li>"],
+        "correct": 0,
+        "explanation": "<ul> creates an unordered bulleted list."
+      }
+    ],
+    "codingTask": {
+      "prompt": "Build a Restaurant Menu using <h2> for category and <ul> with <li> items.",
+      "starterCode": "<h2>Starters</h2>\n<ul>\n  <li><strong>Soup</strong> - $5</li>\n</ul>",
+      "expectedKeywords": ["<h2>", "<ul>", "<li>"]
+    }
+  },
+  {
+    "id": "html-day-3",
+    "day": 3,
+    "week": 1,
+    "title": "Day 3 – Links & Images",
+    "duration": "35 min",
+    "difficulty": "Beginner",
+    "xp": 130,
+    "goal": "Learn how to use images and hyperlinks correctly.",
+    "videos": [
+      {
+        "type": "Primary (Recommended)",
+        "channel": "Nikhil Kilivayil",
+        "title": "HTML Anchor Links & Image Paths",
+        "videoId": "mJgBOIoGihA"
+      },
+      {
+        "type": "Alternative Explanation",
+        "channel": "Futura Labs Malayalam",
+        "title": "Image Alt Attributes & Navigation Links",
+        "videoId": "pQ7n4b7z55g"
+      }
+    ],
+    "notes": "### 📌 Cards explaining:\n- <img>: Image tag\n- src: Source file path\n- alt: Accessible alternative text\n- <a>: Anchor link tag\n- href: Target destination URL",
+    "tasks": [
+      "Watch tutorial",
+      "Add 5 images with alt text",
+      "Create navigation menu with links",
+      "Complete quiz"
+    ],
+    "miniChallenge": "Travel Blog Page",
+    "quiz": [
+      {
+        "question": "Which attribute specifies image source path?",
+        "options": ["src", "alt", "href", "link"],
+        "correct": 0,
+        "explanation": "src specifies source image URL."
+      }
+    ],
+    "codingTask": {
+      "prompt": "Add an <a> anchor link and an <img> tag with alt attribute.",
+      "starterCode": "<a href=\"#destinations\">Explore Destinations</a>\n<img src=\"beach.jpg\" alt=\"Tropical Beach\" />",
+      "expectedKeywords": ["<a", "href", "<img", "alt"]
+    }
+  },
+  {
+    "id": "html-day-4",
+    "day": 4,
+    "week": 1,
+    "title": "Day 4 – Tables",
+    "duration": "35 min",
+    "difficulty": "Beginner",
+    "xp": 140,
+    "goal": "Structure tabular data using table, tr, td, th, rowspan, and colspan.",
+    "videos": [
+      {
+        "type": "Primary (Recommended)",
+        "channel": "Techie Malayalam",
+        "title": "HTML Tables & Colspan/Rowspan",
+        "videoId": "pQ7n4b7z55g"
+      }
+    ],
+    "notes": "### 📌 Table Tags\n- <table>, <tr>, <th>, <td>\n- colspan & rowspan for cell merging",
+    "tasks": [
+      "Watch tutorial",
+      "Build student marks table",
+      "Build college timetable",
+      "Complete quiz"
+    ],
+    "miniChallenge": "College Timetable",
+    "quiz": [
+      {
+        "question": "Which tag defines table header cell?",
+        "options": ["<th>", "<td>", "<tr>", "<table>"],
+        "correct": 0,
+        "explanation": "<th> represents table header."
+      }
+    ],
+    "codingTask": {
+      "prompt": "Build a 2x2 College Timetable using <table>, <tr>, <th>, and <td>.",
+      "starterCode": "<table>\n  <tr><th>Day</th><th>Subject</th></tr>\n  <tr><td>Mon</td><td>HTML</td></tr>\n</table>",
+      "expectedKeywords": ["<table>", "<tr>", "<th>", "<td>"]
+    }
+  },
+  {
+    "id": "html-day-5",
+    "day": 5,
+    "week": 1,
+    "title": "Day 5 – Forms",
+    "duration": "40 min",
+    "difficulty": "Intermediate",
+    "xp": 150,
+    "goal": "Capture user input using forms, inputs, labels, selects, and submit buttons.",
+    "videos": [
+      {
+        "type": "Primary (Recommended)",
+        "channel": "Brocamp Malayalam",
+        "title": "HTML Forms & Input Controls in Malayalam",
+        "videoId": "fNcJuPIZ2WE"
+      }
+    ],
+    "notes": "### 📌 Form Controls\n- <form>, <input>, <label>, <select>, <textarea>, <button>",
+    "tasks": [
+      "Watch tutorial",
+      "Build registration form",
+      "Build login form",
+      "Complete quiz"
+    ],
+    "miniChallenge": "Admission Form",
+    "quiz": [
+      {
+        "question": "Which input type allows single choice selection?",
+        "options": ["radio", "checkbox"],
+        "correct": 0,
+        "explanation": "radio input allows single selection."
+      }
+    ],
+    "codingTask": {
+      "prompt": "Create an Admission Form with email input and Get Started button.",
+      "starterCode": "<form>\n  <input type=\"email\" placeholder=\"Email\" />\n  <button type=\"submit\">Get Started</button>\n</form>",
+      "expectedKeywords": ["<form", "<input", "<button"]
+    }
+  },
+  {
+    "id": "html-day-6",
+    "day": 6,
+    "week": 1,
+    "title": "Day 6 – Semantic HTML",
+    "duration": "35 min",
+    "difficulty": "Intermediate",
+    "xp": 170,
+    "goal": "Structure clean accessible web documents with header, nav, main, section, and footer.",
+    "videos": [
+      {
+        "type": "Primary (Recommended)",
+        "channel": "Luminar TechnoLab",
+        "title": "HTML5 Semantic Elements in Malayalam",
+        "videoId": "kUMe1FH4CHE"
+      }
+    ],
+    "notes": "### 📌 Semantic Tags\n- <header>, <nav>, <main>, <section>, <article>, <footer>",
+    "tasks": [
+      "Watch tutorial",
+      "Convert div page to semantic HTML",
+      "Accessibility audit",
+      "Complete quiz"
+    ],
+    "miniChallenge": "News Website Layout",
+    "quiz": [
+      {
+        "question": "Which tag represents document main content?",
+        "options": ["<main>", "<header>"],
+        "correct": 0,
+        "explanation": "<main> represents dominant content."
+      }
+    ],
+    "codingTask": {
+      "prompt": "Build News layout using <header>, <nav>, <main>, <section>, and <footer>.",
+      "starterCode": "<header><h1>News</h1></header>\n<nav><a href=\"#\">Home</a></nav>\n<main><section>Article</section></main>\n<footer>Footer</footer>",
+      "expectedKeywords": ["<header>", "<nav>", "<main>", "<section>", "<footer>"]
+    }
+  },
+  {
+    "id": "html-day-7",
+    "day": 7,
+    "week": 1,
+    "title": "Day 7 – Revision + Capstone Project",
+    "duration": "60 min",
+    "difficulty": "Capstone",
+    "xp": 500,
+    "goal": "Build the Personal Portfolio Website capstone project.",
+    "videos": [
+      {
+        "type": "Primary (Recommended)",
+        "channel": "Entri Tech Malayalam",
+        "title": "Build HTML Portfolio Website Project",
+        "videoId": "gXbTL348fDE"
+      }
+    ],
+    "notes": "### 🏁 Capstone Project\nPersonal Portfolio Website with Hero, About, Skills, Projects Table, and Contact Form.",
+    "tasks": [
+      "Review all 6 lessons",
+      "Finish Portfolio project",
+      "Test links & forms"
+    ],
+    "miniChallenge": "Personal Portfolio Website (Final Capstone)",
+    "quiz": [
+      {
+        "question": "Which badge is awarded upon completing HTML Capstone?",
+        "options": ["HTML Architect", "CSS Styler"],
+        "correct": 0,
+        "explanation": "HTML Architect Badge."
+      }
+    ],
+    "codingTask": {
+      "prompt": "Build Portfolio skeleton.",
+      "starterCode": "<header><nav>Portfolio</nav></header><main><section>About</section></main><footer>Contact</footer>",
+      "expectedKeywords": ["<header>", "<nav>", "<main>", "<section>", "<footer>"]
+    }
+  }
+]
