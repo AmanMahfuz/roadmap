@@ -50,7 +50,7 @@ export default function Navbar({
             </div>
             <div>
               <span className="font-black text-lg tracking-tight text-slate-900">
-                SkillForge
+                DevQuik
               </span>
               <span className="text-[10px] text-slate-400 font-semibold block leading-none">Job-Ready Mobile App</span>
             </div>

@@ -56,7 +56,7 @@ export default function SignUpPage({
             </button>
             <a onClick={onBackToLanding} className="font-headline-md text-2xl font-extrabold text-primary cursor-pointer flex items-center gap-2">
               <span className="material-symbols-outlined text-primary text-2xl" style={{ fontVariationSettings: "'FILL' 1" }}>terminal</span>
-              SkillForge
+              DevQuik
             </a>
           </div>
 
@@ -127,7 +127,7 @@ export default function SignUpPage({
               <input
                 type="email"
                 required
-                placeholder="recruit@skillforge.io"
+                placeholder="recruit@devquik.io"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 className="w-full px-4 py-3 bg-surface border border-outline-variant rounded-xl text-sm font-body-md text-on-surface outline-none focus:border-primary transition-colors"
@@ -188,7 +188,7 @@ export default function SignUpPage({
       <footer className="w-full bg-surface border-t border-outline-variant py-6 px-6">
         <div className="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-on-surface-variant">
           <div className="font-bold text-primary text-sm flex items-center gap-2">
-            SkillForge Arena
+            DevQuik Arena
           </div>
           <div className="flex flex-wrap justify-center gap-6">
             <a href="#" className="hover:text-primary transition-colors font-medium">Terms of Service</a>
@@ -197,7 +197,7 @@ export default function SignUpPage({
             <a href="#" className="hover:text-primary transition-colors font-medium">System Status</a>
           </div>
           <div>
-            © 2026 SkillForge Arena. All rights reserved.
+            © 2026 DevQuik Arena. All rights reserved.
           </div>
         </div>
       </footer>

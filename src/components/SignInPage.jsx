@@ -25,7 +25,7 @@ export default function SignInPage({
         // Fallback for local session
         onAuthSuccess({
           id: 'cadet-' + Date.now(),
-          email: email || 'cadet@skillforge.arena',
+          email: email || 'cadet@devquik.arena',
           user_metadata: { full_name: email ? email.split('@')[0] : 'Cadet' }
         });
       }
@@ -40,7 +40,7 @@ export default function SignInPage({
   const handleDemoSignIn = () => {
     onAuthSuccess({
       id: 'demo-cadet-101',
-      email: 'cadet@skillforge.arena',
+      email: 'cadet@devquik.arena',
       user_metadata: { full_name: 'Cadet Learner' }
     });
   };
@@ -53,7 +53,7 @@ export default function SignInPage({
           onClick={onBackToLanding}
           className="flex items-center gap-2 text-on-surface-variant hover:text-primary font-semibold transition-colors py-2 px-3 rounded-lg hover:bg-surface-container-high"
         >
-          <ArrowLeft size={18} /> Back to SkillForge
+          <ArrowLeft size={18} /> Back to DevQuik
         </button>
 
         {/* Top Right Toast Notification */}
@@ -115,7 +115,7 @@ export default function SignInPage({
                 <input
                   type="email"
                   required
-                  placeholder="cadet@skillforge.arena"
+                  placeholder="cadet@devquik.arena"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className="w-full pl-11 pr-4 py-3.5 bg-surface border border-outline-variant rounded-xl text-sm font-body-md text-on-surface outline-none focus:border-primary transition-colors"
@@ -178,7 +178,7 @@ export default function SignInPage({
 
       {/* Footer */}
       <footer className="w-full max-w-5xl mx-auto text-center text-xs text-on-surface-variant pt-6 border-t border-outline-variant/40">
-        <p>© 2026 SkillForge Arena. All rights reserved.</p>
+        <p>© 2026 DevQuik Arena. All rights reserved.</p>
       </footer>
     </div>
   );

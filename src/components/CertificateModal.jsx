@@ -30,12 +30,12 @@ export default function CertificateModal({
         {/* Printable Certificate Frame */}
         <div className="certificate-paper-frame" id="printable-certificate">
           <div className="cert-inner-border">
-            <div className="cert-watermark">SKILLFORGE</div>
+            <div className="cert-watermark">DEVQUIK</div>
             
             <div className="cert-header">
               <div className="cert-logo-box">
                 <Sparkles size={32} color="#6366f1" />
-                <span className="cert-brand">SkillForge <span className="highlight-ml">Platform</span></span>
+                <span className="cert-brand">DevQuik <span className="highlight-ml">Platform</span></span>
               </div>
               <span className="cert-verify-tag"><ShieldCheck size={14} /> VERIFIED CERTIFICATE</span>
             </div>
@@ -69,8 +69,8 @@ export default function CertificateModal({
             </div>
 
             <div className="cert-footer">
-              <span>SkillForge Career Learning Platform</span>
-              <span>https://skillforge-platform.web.app</span>
+              <span>DevQuik Career Learning Platform</span>
+              <span>https://devquik-platform.web.app</span>
             </div>
           </div>
         </div>

@@ -104,7 +104,7 @@ export default function AdvancedPlayground({
             <span className="dot yellow"></span>
             <span className="dot green"></span>
           </div>
-          <span className="editor-title">SkillForge Interactive IDE</span>
+          <span className="editor-title">DevQuik Interactive IDE</span>
         </div>
 
         <div className="toolbar-right">

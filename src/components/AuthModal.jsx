@@ -134,7 +134,7 @@ export default function AuthModal({
                   <input
                     type="email"
                     required
-                    placeholder="cadet@skillforge.arena"
+                    placeholder="cadet@devquik.arena"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     className="w-full pl-11 pr-4 py-3 bg-surface border border-outline-variant rounded-xl text-sm font-body-md text-on-surface outline-none focus:border-primary transition-colors"
@@ -235,7 +235,7 @@ export default function AuthModal({
                 <input
                   type="email"
                   required
-                  placeholder="recruit@skillforge.io"
+                  placeholder="recruit@devquik.io"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className="w-full px-4 py-3 bg-surface border border-outline-variant rounded-xl text-sm text-on-surface outline-none focus:border-primary transition-colors"

@@ -24,8 +24,8 @@ export default function PortfolioGeneratorModal({
           {/* Portfolio Hero Showcase */}
           <div className="portfolio-hero">
             <div className="portfolio-avatar">👨‍💻</div>
-            <h2>SkillForge Learner</h2>
-            <p className="portfolio-bio">Frontend & Fullstack Web Developer | SkillForge Certified</p>
+            <h2>DevQuik Learner</h2>
+            <p className="portfolio-bio">Frontend & Fullstack Web Developer | DevQuik Certified</p>
 
             <div className="portfolio-stats-row">
               <span className="p-stat"><strong>{userState.xp}</strong> XP Earned</span>

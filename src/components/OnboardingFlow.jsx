@@ -46,7 +46,7 @@ export default function OnboardingFlow({ onCompleteOnboarding }) {
       <header className="w-full max-w-6xl mx-auto flex justify-between items-center py-2">
         <div className="flex items-center gap-2">
           <span className="material-symbols-outlined text-primary text-3xl" style={{ fontVariationSettings: "'FILL' 1" }}>terminal</span>
-          <span className="font-headline-md text-2xl font-extrabold text-primary">SkillForge</span>
+          <span className="font-headline-md text-2xl font-extrabold text-primary">DevQuik</span>
         </div>
 
         <div className="flex items-center gap-4 text-on-surface-variant">
@@ -85,7 +85,7 @@ export default function OnboardingFlow({ onCompleteOnboarding }) {
 
           <div className="space-y-3">
             <h1 className="text-4xl md:text-5xl font-extrabold font-display-lg text-on-surface tracking-tight">
-              Welcome to <span className="text-primary">SkillForge</span>
+              Welcome to <span className="text-primary">DevQuik</span>
             </h1>
             <p className="text-base md:text-lg text-on-surface-variant max-w-xl mx-auto leading-relaxed">
               We'll build your learning journey. From foundational concepts to professional mastery, your path to excellence starts here.
@@ -225,7 +225,7 @@ export default function OnboardingFlow({ onCompleteOnboarding }) {
               <Sparkles size={28} className="text-primary mb-2 animate-bounce" />
               <span className="font-mono text-xs font-bold text-primary uppercase tracking-wider mb-1">GROWTH ENGINE</span>
               <p className="text-xs text-on-surface-variant font-medium">
-                Unlock your full potential with SkillForge's adaptive curriculum.
+                Unlock your full potential with DevQuik's adaptive curriculum.
               </p>
             </div>
           </div>
@@ -438,7 +438,7 @@ export default function OnboardingFlow({ onCompleteOnboarding }) {
             />
           ))}
         </div>
-        <span className="hidden sm:block text-[10px] font-mono text-on-surface-variant/70 uppercase">POWERED BY SKILLFORGE AI ENGINE</span>
+        <span className="hidden sm:block text-[10px] font-mono text-on-surface-variant/70 uppercase">POWERED BY DEVQUIK AI ENGINE</span>
       </footer>
     </div>
   );

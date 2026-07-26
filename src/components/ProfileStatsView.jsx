@@ -82,7 +82,7 @@ export default function ProfileStatsView({
   });
 
   const handleShareProfile = () => {
-    const text = `🚀 SkillForge Developer Profile: ${currentUser?.user_metadata?.full_name || 'Developer'} | Level ${xpInfo.currentLevel} | ${userState.xp || 0} XP | ${userState.streak || 1}d Streak!`;
+    const text = `🚀 DevQuik Developer Profile: ${currentUser?.user_metadata?.full_name || 'Developer'} | Level ${xpInfo.currentLevel} | ${userState.xp || 0} XP | ${userState.streak || 1}d Streak!`;
     navigator.clipboard.writeText(text);
     setCopiedShare(true);
     setTimeout(() => setCopiedShare(false), 2000);
@@ -103,7 +103,7 @@ export default function ProfileStatsView({
             <div>
               <div className="flex items-center space-x-2.5">
                 <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
-                  {currentUser?.user_metadata?.full_name || currentUser?.email || 'SkillForge Developer'}
+                  {currentUser?.user_metadata?.full_name || currentUser?.email || 'DevQuik Developer'}
                 </h1>
                 <span className="px-3 py-0.5 bg-orange-100 text-orange-800 border border-orange-200 text-xs font-extrabold rounded-full uppercase">
                   Level {xpInfo.currentLevel} Cadet

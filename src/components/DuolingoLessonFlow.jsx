@@ -96,7 +96,7 @@ export default function DuolingoLessonFlow({
         <div className="flex items-center gap-4">
           <div className="flex items-center gap-2 cursor-pointer" onClick={onClose}>
             <span className="material-symbols-outlined text-purple-500 text-2xl" style={{ fontVariationSettings: "'FILL' 1" }}>terminal</span>
-            <span className="font-headline-md text-lg font-extrabold text-white tracking-tight">SkillForge</span>
+            <span className="font-headline-md text-lg font-extrabold text-white tracking-tight">DevQuik</span>
           </div>
 
           <span className="text-slate-700">/</span>

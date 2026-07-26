@@ -1,4 +1,4 @@
-// SkillForge: Spaced Repetition & Memory Recall System
+// DevQuik: Spaced Repetition & Memory Recall System
 
 export const SPACED_INTERVALS = [2, 7, 14]; // Days until revision is due
 

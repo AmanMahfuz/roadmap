@@ -1,4 +1,4 @@
-// SkillForge: Duolingo-Style Micro-Lesson Curriculum & Guidebooks
+// DevQuik: Duolingo-Style Micro-Lesson Curriculum & Guidebooks
 
 export const DUOLINGO_UNITS = [
   {
@@ -67,9 +67,9 @@ export const DUOLINGO_UNITS = [
           {
             type: 'micro_challenge',
             title: 'Micro Challenge: Complete the Heading Tag',
-            prompt: 'Fill in the missing <h1> heading tag around the text "Hello SkillForge".',
+            prompt: 'Fill in the missing <h1> heading tag around the text "Hello DevQuik".',
             challengeType: 'fill_blank',
-            starterCode: `<h1>Hello SkillForge</h1>`,
+            starterCode: `<h1>Hello DevQuik</h1>`,
             expectedKeyword: '<h1>',
             solutionExplanation: '<h1> is the top-level heading tag in HTML.'
           },
@@ -151,9 +151,9 @@ export const DUOLINGO_UNITS = [
           {
             type: 'micro_challenge',
             title: 'Micro Challenge: Bold Text',
-            prompt: 'Wrap the word "SkillForge" with <strong> tags.',
+            prompt: 'Wrap the word "DevQuik" with <strong> tags.',
             challengeType: 'fill_blank',
-            starterCode: `<p>Welcome to <strong>SkillForge</strong> platform.</p>`,
+            starterCode: `<p>Welcome to <strong>DevQuik</strong> platform.</p>`,
             expectedKeyword: '<strong>',
             solutionExplanation: '<strong> emphasizes text with bold weight.'
           },

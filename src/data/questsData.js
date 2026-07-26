@@ -1,4 +1,4 @@
-// SkillForge: Daily & Weekly Quests Data
+// DevQuik: Daily & Weekly Quests Data
 
 export const DAILY_QUESTS = [
   {

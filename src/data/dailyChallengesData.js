@@ -47,7 +47,7 @@ export const DAILY_CHALLENGES = [
   }
 </style>
 <nav>
-  <div class="logo">SkillForge</div>
+  <div class="logo">DevQuik</div>
   <!-- Add navigation links here -->
 </nav>`,
     expectedKeywords: ['display: flex', 'backdrop-filter']

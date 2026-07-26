@@ -27,7 +27,7 @@ import {
 
 import './App.css';
 
-const LOCAL_STORAGE_KEY = 'skillforge_six_languages_user_v2';
+const LOCAL_STORAGE_KEY = 'devquik_six_languages_user_v2';
 
 const INITIAL_USER_STATE = {
   xp: 0,
@@ -392,11 +392,11 @@ export default function App() {
       <footer className="app-footer border-t border-slate-200 py-6 px-6 text-center text-xs text-slate-500 bg-white hidden md:block">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
           <div className="flex items-center space-x-2">
-            <span className="font-semibold text-slate-700">SkillForge Developer Ecosystem</span>
+            <span className="font-semibold text-slate-700">DevQuik Developer Ecosystem</span>
             <span>•</span>
             <span>Learn • Practice • Build • Track</span>
           </div>
-          <p>© {new Date().getFullYear()} SkillForge. Built for developers mastering HTML, CSS, JavaScript, Python, TypeScript, Java, C++, and Go.</p>
+          <p>© {new Date().getFullYear()} DevQuik. Built for developers mastering HTML, CSS, JavaScript, Python, TypeScript, Java, C++, and Go.</p>
         </div>
       </footer>
     </div>

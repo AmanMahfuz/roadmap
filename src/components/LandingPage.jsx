@@ -12,7 +12,7 @@ export default function LandingPage({
       <nav className="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop max-w-[1280px] mx-auto h-20 bg-surface-container-lowest border-b border-outline-variant shadow-sm sticky top-0 z-50">
         <div className="flex items-center gap-2">
           <span className="material-symbols-outlined text-primary text-3xl" style={{ fontVariationSettings: "'FILL' 1" }}>terminal</span>
-          <a className="font-headline-md text-headline-md font-extrabold text-primary" href="#">SkillForge</a>
+          <a className="font-headline-md text-headline-md font-extrabold text-primary" href="#">DevQuik</a>
         </div>
         <div className="hidden md:flex items-center gap-8">
           <a className="text-on-surface-variant hover:text-primary transition-colors font-body-md" href="#roadmaps">Pathways</a>
@@ -274,7 +274,7 @@ export default function LandingPage({
       {/* Features Section (Bento Grid) */}
       <section className="py-20 px-margin-mobile md:px-margin-desktop bg-surface max-w-max-width mx-auto" id="features">
         <div className="text-center mb-16">
-          <h2 className="font-headline-lg text-headline-lg text-on-background mb-4">The SkillForge Arsenal</h2>
+          <h2 className="font-headline-lg text-headline-lg text-on-background mb-4">The DevQuik Arsenal</h2>
           <p className="font-body-md text-body-md text-on-surface-variant max-w-2xl mx-auto">Everything you need to level up your development skills, integrated into one seamless experience.</p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 md:grid-rows-3 gap-6 auto-rows-[200px]">
@@ -354,9 +354,9 @@ export default function LandingPage({
         <div className="flex flex-col gap-4">
           <a className="font-headline-md text-headline-md font-bold text-on-surface flex items-center gap-2" href="#">
             <span className="material-symbols-outlined text-primary text-2xl" style={{ fontVariationSettings: "'FILL' 1" }}>terminal</span>
-            SkillForge
+            DevQuik
           </a>
-          <p className="font-body-md text-body-md text-on-surface-variant">© 2026 SkillForge. Forge Your Future.</p>
+          <p className="font-body-md text-body-md text-on-surface-variant">© 2026 DevQuik. Forge Your Future.</p>
         </div>
         <div className="flex flex-col gap-3">
           <h4 className="font-label-md text-label-md text-on-background font-bold mb-2">Platform</h4>

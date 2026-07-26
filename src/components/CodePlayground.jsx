@@ -224,12 +224,12 @@ export default function CodePlayground() {
   };
 
   const handleDownloadHtml = () => {
-    const fullHtml = `<!DOCTYPE html>\n<html>\n<head>\n  <meta charset="UTF-8">\n  <title>SkillForge Export</title>\n  <style>\n${css}\n  </style>\n</head>\n<body>\n${html}\n<script>\n${js}\n</script>\n</body>\n</html>`;
+    const fullHtml = `<!DOCTYPE html>\n<html>\n<head>\n  <meta charset="UTF-8">\n  <title>DevQuik Export</title>\n  <style>\n${css}\n  </style>\n</head>\n<body>\n${html}\n<script>\n${js}\n</script>\n</body>\n</html>`;
     const blob = new Blob([fullHtml], { type: 'text/html' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = 'skillforge-project.html';
+    a.download = 'devquik-project.html';
     a.click();
     URL.revokeObjectURL(url);
   };

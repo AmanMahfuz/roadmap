@@ -1,4 +1,4 @@
--- SkillForge Supabase Production Database Schema
+-- DevQuik Supabase Production Database Schema
 -- Run this script in your Supabase SQL Editor to initialize all tables.
 
 -- 1. USER PROFILES TABLE

@@ -1,4 +1,4 @@
-// Gamification Engine for SkillForge
+// Gamification Engine for DevQuik
 // Manages XP, Levels, Streak, Hearts, Badges, and Milestone Unlocks
 
 export const XP_REWARDS = {

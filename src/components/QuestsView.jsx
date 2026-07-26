@@ -21,7 +21,7 @@ export default function QuestsView({ userState }) {
   };
 
   const COSMETIC_REWARDS = [
-    { id: 'c1', title: 'SkillForge Vibrant Light Theme', cost: '0 XP', unlocked: true, icon: '🎨' },
+    { id: 'c1', title: 'DevQuik Vibrant Light Theme', cost: '0 XP', unlocked: true, icon: '🎨' },
     { id: 'c2', title: 'Cadet Developer Avatar Frame', cost: '500 XP', unlocked: currentXp >= 500, icon: '🥷' },
     { id: 'c3', title: 'Neon Code Syntax Highlighting', cost: '1500 XP', unlocked: currentXp >= 1500, icon: '✨' },
     { id: 'c4', title: 'Golden Streak Flame Badge', cost: '2000 XP', unlocked: currentXp >= 2000, icon: '🔥' }

@@ -6,7 +6,7 @@ export default function AiMentorModal({ onClose }) {
   const [chatHistory, setChatHistory] = useState([
     {
       sender: 'ai',
-      text: "👋 Hi! I'm your SkillForge AI Mentor. Ask me anything about HTML, CSS, JavaScript, or debugging errors!"
+      text: "👋 Hi! I'm your DevQuik AI Mentor. Ask me anything about HTML, CSS, JavaScript, or debugging errors!"
     }
   ]);
   const [isThinking, setIsThinking] = useState(false);
@@ -65,7 +65,7 @@ export default function AiMentorModal({ onClose }) {
             </div>
             <div>
               <h3 className="font-extrabold text-base flex items-center">
-                <span>SkillForge AI Mentor</span>
+                <span>DevQuik AI Mentor</span>
                 <Sparkles className="w-3.5 h-3.5 ml-1.5 text-amber-400" />
               </h3>
               <span className="text-[10px] text-indigo-300 font-semibold block">Online • Instant Concept Explanations</span>

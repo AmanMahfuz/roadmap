@@ -115,7 +115,7 @@ export default function BossBattleModal({
 
               {/* Interactive Coding Arena */}
               <div className="space-y-2">
-                <h4 className="font-bold text-sm text-on-surface">💻 Boss Coding Arena (SkillForge IDE):</h4>
+                <h4 className="font-bold text-sm text-on-surface">💻 Boss Coding Arena (DevQuik IDE):</h4>
                 <AdvancedPlayground
                   starterCode={boss.starterCode}
                   expectedKeywords={boss.expectedKeywords}
