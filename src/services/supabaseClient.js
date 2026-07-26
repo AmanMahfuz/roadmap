@@ -1,7 +1,7 @@
 import { createClient } from '@supabase/supabase-js';
 
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || 'https://jzkcapuvnzuidqokemat.supabase.co';
-const supabaseKey = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY || 'sb_publishable_B6eOz695Ya5Ropw6aEIPPA_7VeeONlY';
+const supabaseKey = import.meta.env.VITE_SUPABASE_ANON_KEY || import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imp6a2NhcHV2bnp1aWRxb2tlbWF0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODQ3MTkwNDYsImV4cCI6MjEwMDI5NTA0Nn0.0Z-DPT4OQFZfV_HRsu-6lqbOjppHBJ1mZhQoNoHKlZY';
 
 export const supabase = createClient(supabaseUrl, supabaseKey);
 
@@ -52,27 +52,15 @@ export async function syncUserStateToSupabase(userData, userAuthId = null) {
       updated_at: new Date().toISOString()
     };
 
-    // Check if record exists first to perform clean update vs insert without onConflict 400 errors
-    const { data: existingRecord } = await supabase
+    // Upsert using user_id unique constraint
+    const { data, error } = await supabase
       .from('user_progress')
-      .select('id')
-      .eq('user_id', targetUserId)
-      .maybeSingle();
+      .upsert(payload, { onConflict: 'user_id' });
 
-    if (existingRecord) {
-      const { data, error } = await supabase
-        .from('user_progress')
-        .update(payload)
-        .eq('user_id', targetUserId);
-      if (error) console.warn('Supabase sync update notice:', error.message);
-      return data;
-    } else {
-      const { data, error } = await supabase
-        .from('user_progress')
-        .insert([payload]);
-      if (error) console.warn('Supabase sync insert notice:', error.message);
-      return data;
+    if (error) {
+      console.warn('Supabase sync notice:', error.message);
     }
+    return data;
   } catch (err) {
     return null;
   }
