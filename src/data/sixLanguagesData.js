@@ -674,35 +674,57 @@ export const SIX_LANGUAGES = [
             id: 1,
             title: "Challenge 1: Profile Template Literal Assertion",
             prompt: "Declare `const name = \"Aman\"` and `let age = 20`. Print `Valid User Profile Logged!` using template literals.",
-            starterCode: "const name = 'Aman';\nlet age = 20;\nconsole.log('Valid User Profile Logged!');",
+            starterCode: `// TODO: Declare const name = "Aman" and let age = 20
+const name = 'Aman';
+let age = 20;
+
+// TODO: Print "Valid User Profile Logged!" using console.log()
+`,
             expectedKeyword: "Valid User Profile Logged!"
           },
           {
             id: 2,
             title: "Challenge 2: Variable Swap Logic Assertion",
             prompt: "Perform a variable swap between `let a = 5` and `let b = 10` without hardcoding initial numbers. Print `Variable Swap Completed!`.",
-            starterCode: "let a = 5, b = 10;\n[a, b] = [b, a];\nconsole.log('Variable Swap Completed!');",
+            starterCode: `let a = 5, b = 10;
+
+// TODO: Perform a variable swap between a and b using destructuring [a, b] = [b, a]
+// TODO: Print "Variable Swap Completed!" using console.log()
+`,
             expectedKeyword: "Variable Swap Completed!"
           },
           {
             id: 3,
             title: "Challenge 3: BMI Calculation Formula",
             prompt: "Calculate the BMI for `weight = 70` and `height = 1.75`. Print `BMI Calculation Asserted!`.",
-            starterCode: "const w = 70, h = 1.75;\nconst bmi = w / (h * h);\nconsole.log('BMI Calculation Asserted!');",
+            starterCode: `const weight = 70, height = 1.75;
+
+// TODO: Calculate bmi = weight / (height * height)
+// TODO: Print "BMI Calculation Asserted!" using console.log()
+`,
             expectedKeyword: "BMI Calculation Asserted!"
           },
           {
             id: 4,
             title: "Challenge 4: Even / Odd Modulo Check",
             prompt: "Test whether `num = 27` is Even or Odd using the `%` operator. Print `Even Odd Check Passed!`.",
-            starterCode: "const num = 27;\nconst result = num % 2 === 0 ? 'Even' : 'Odd';\nconsole.log('Even Odd Check Passed!');",
+            starterCode: `const num = 27;
+
+// TODO: Test whether num is Even or Odd using % operator
+// TODO: Print "Even Odd Check Passed!" using console.log()
+`,
             expectedKeyword: "Even Odd Check Passed!"
           },
           {
             id: 5,
             title: "Challenge 5: Template Literal Formatter",
             prompt: "Format an output string using Template Literals containing name, age, and city. Print `Template Literal Formatted!`.",
-            starterCode: "const text = `Profile: Aman, 20, Kochi`;\nconsole.log('Template Literal Formatted!');",
+            starterCode: `const name = 'Aman';
+const age = 20;
+const city = 'Kochi';
+
+// TODO: Format output using template literals and console.log("Template Literal Formatted!")
+`,
             expectedKeyword: "Template Literal Formatted!"
           }
         ],
@@ -1860,5 +1882,1499 @@ export const SIX_LANGUAGES = [
         expectedKeyword: 'Total Portfolio Projects: 5'
       }
     ]
+  },
+  {
+    id: 'python',
+    name: 'Python Mastery',
+    icon: '🐍',
+    badge: 'Python 3.12',
+    color: '#3776AB',
+    bgColor: 'rgba(55, 118, 171, 0.15)',
+    textColor: '#2563eb',
+    gradient: 'linear-gradient(135deg, #3776ab 0%, #ffd43b 100%)',
+    tagline: '14-Day Gamified Python Roadmap with MCQs, Daily Tasks & Terminal Assertion Labs.',
+    description: 'Master Python fundamentals, variables, loops, data structures (lists, tuples, dicts, sets), OOP, file handling, exception handling, REST APIs, virtual environments, and 5 portfolio projects.',
+    difficulty: 'Beginner → Professional',
+    totalDays: 14,
+    days: [
+      {
+        day: 1,
+        title: 'Day 1 – Setup & Python Fundamentals',
+        unit: 'Unit 1: Environment & Basics',
+        topic: 'VS Code, Variables, Data Types (int, float, str, bool), Type Casting, print(), input()',
+        playlistUrl: 'https://youtube.com/playlist?list=PLsyeobzWjNWXcZauLub5oks68m81xFd4e',
+        videoBreakdown: '🎥 Watch Video: Python Setup, Variables, Data Types, and Type Conversion',
+        whatToLearn: {
+          summary: 'Install Python 3 & VS Code. Master variables, data types (int, float, str, bool), type casting, print() formatting, and input() user interaction.',
+          details: [
+            '🎥 Watch Video: Python Setup, Variables, Data Types, and Type Conversion',
+            'VS Code configuration with Python & Pylance extensions.',
+            'Declare variables and understand dynamic typing in Python.',
+            'Type casting between int(), float(), and str().',
+            'Take user input using input() and format output with f-strings.'
+          ],
+          codeExample: `name = "Aman"
+age = 20
+height = 1.75
+is_student = True
+
+print(f"User: {name}, Age: {age}, Height: {height}m, Student: {is_student}")
+
+# Temperature conversion
+celsius = 30
+fahrenheit = celsius * (9/5) + 32
+print(f"{celsius}°C is equal to {fahrenheit}°F")`
+        },
+        mcqQuestions: [
+          {
+            question: "Which of the following is an invalid variable name in Python?",
+            options: ["user_name", "_age", "2nd_place", "totalAmount"],
+            answerIndex: 2,
+            explanation: "Variable names in Python cannot start with a digit (e.g., `2nd_place`)."
+          },
+          {
+            question: "What does type(3 / 2) evaluate to in Python 3?",
+            options: ["<class 'int'>", "<class 'float'>", "<class 'double'>", "<class 'str'>"],
+            answerIndex: 1,
+            explanation: "In Python 3, standard division `/` always returns a float (`1.5`)."
+          },
+          {
+            question: "What is the correct way to output 'Hello' and 'World' on the same line with a space in print()?",
+            options: ["print('Hello', 'World')", "print('Hello' + 10)", "print('Hello' 'World')", "Both A and C"],
+            answerIndex: 3,
+            explanation: "Both `print('Hello', 'World')` and string literal concatenation `print('Hello' 'World')` print on the same line."
+          }
+        ],
+        terminalChallenges: [
+          {
+            id: 1,
+            title: "Challenge 1: Declare Profile & Output",
+            prompt: "Declare `name = 'Aman'` and `age = 20`. Print `Valid User Profile Logged!` using f-strings.",
+            starterCode: `# TODO: Declare name and age variables
+name = 'Aman'
+age = 20
+
+# TODO: Print message with f-strings containing "Valid User Profile Logged!"
+print(f'User: {name}, Age: {age}. Valid User Profile Logged!')`,
+            expectedKeyword: "Valid User Profile Logged!"
+          },
+          {
+            id: 2,
+            title: "Challenge 2: Tuple Unpacking Variable Swap",
+            prompt: "Perform a variable swap between `a = 5` and `b = 10` using `a, b = b, a`. Print `Variable Swap Completed!`.",
+            starterCode: `# TODO: Initialize a and b
+a = 5
+b = 10
+
+# TODO: Swap variables a and b using tuple unpacking (a, b = b, a)
+a, b = b, a
+
+print(f'a={a}, b={b}. Variable Swap Completed!')`,
+            expectedKeyword: "Variable Swap Completed!"
+          },
+          {
+            id: 3,
+            title: "Challenge 3: BMI Calculator Assertion",
+            prompt: "Calculate BMI for `weight = 70` and `height = 1.75`. Print `BMI Calculation Asserted!`.",
+            starterCode: `weight = 70
+height = 1.75
+
+# TODO: Calculate bmi = weight / (height ** 2)
+bmi = weight / (height ** 2)
+
+print(f'BMI: {bmi:.2f}. BMI Calculation Asserted!')`,
+            expectedKeyword: "BMI Calculation Asserted!"
+          },
+          {
+            id: 4,
+            title: "Challenge 4: Even / Odd Modulo Test",
+            prompt: "Test whether `num = 27` is Even or Odd using `num % 2`. Print `Even Odd Check Passed!`.",
+            starterCode: `num = 27
+
+# TODO: Check even/odd using modulo operator %
+status = 'Even' if num % 2 == 0 else 'Odd'
+
+print(f'Number {num} is {status}. Even Odd Check Passed!')`,
+            expectedKeyword: "Even Odd Check Passed!"
+          },
+          {
+            id: 5,
+            title: "Challenge 5: Profile f-string Formatting",
+            prompt: "Format a profile string containing name, age, and city. Print `f-string Formatted!`.",
+            starterCode: `name = 'Aman'
+age = 20
+city = 'Kochi'
+
+# TODO: Format and print profile using f-strings
+print(f'Profile: {name} from {city}, age {age}. f-string Formatted!')`,
+            expectedKeyword: "f-string Formatted!"
+          }
+        ],
+        tasks: [
+          { id: 'py1_t1', text: 'Log Daily GitHub Push', completed: false },
+          { id: 'py1_t2', text: '🎥 Watch Video: Python Setup, Variables, Data Types, and Type Conversion', completed: false },
+          { id: 'py1_t3', text: '✍️ Task 1: Write code to swap two variables and convert Celsius to Fahrenheit', completed: false },
+          { id: 'py1_t4', text: '✍️ Task 2: Calculate BMI (weight / height²) and rectangle area using input()', completed: false },
+          { id: 'py1_t5', text: '❓ Practice 1: Build an Age Calculator and Even/Odd Checker using %', completed: false },
+          { id: 'py1_t6', text: '❓ Practice 2: Build a simple calculator taking two numbers and printing operations', completed: false },
+          { id: 'py1_t7', text: '🚀 Mini Project: Personal Information Profile Terminal Card', completed: false }
+        ],
+        starterCode: `# Write your Python solution here
+name = 'Aman'
+age = 20
+print(f'User: {name}, Age: {age}. Valid User Profile Logged!')`,
+        expectedKeyword: "Valid User Profile Logged!"
+      },
+      {
+        day: 2,
+        title: 'Day 2 – Operators & Conditionals',
+        unit: 'Unit 2: Decision Making',
+        topic: 'Arithmetic, Comparison, Logical Operators, if, elif, else',
+        playlistUrl: 'https://youtube.com/playlist?list=PLsyeobzWjNWXcZauLub5oks68m81xFd4e',
+        videoBreakdown: '🎥 Watch Video: Comparison, Logical Operators, if, elif, else',
+        whatToLearn: {
+          summary: 'Master arithmetic (//, %), comparison (==, !=, >, <), and logical (and, or, not) operators along with conditional branching (if, elif, else).',
+          details: [
+            '🎥 Watch Video: Comparison, Logical Operators, if, elif, else',
+            'Understand comparison operators and boolean expressions.',
+            'Use logical operators: `and`, `or`, `not` for multi-condition checks.',
+            'Construct clean `if`, `elif`, and `else` decision trees.',
+            'Build real-world decision logic for grades, traffic lights, and ATM systems.'
+          ],
+          codeExample: `score = 85
+if score >= 90:
+    grade = "A"
+elif score >= 80:
+    grade = "B"
+elif score >= 70:
+    grade = "C"
+else:
+    grade = "F"
+print(f"Grade: {grade}")`
+        },
+        mcqQuestions: [
+          {
+            question: "What is the output of print(True and False or True) in Python?",
+            options: ["False", "True", "None", "SyntaxError"],
+            answerIndex: 1,
+            explanation: "`and` has higher precedence than `or`. `(True and False)` evaluates to `False`, then `False or True` evaluates to `True`."
+          },
+          {
+            question: "Which operator in Python performs floor division (integer division)?",
+            options: ["/", "%", "//", "**"],
+            answerIndex: 2,
+            explanation: "`//` performs floor division in Python, discarding remainder fractional parts."
+          },
+          {
+            question: "What keyword is used in Python for 'else if'?",
+            options: ["else if", "elseif", "elif", "case"],
+            answerIndex: 2,
+            explanation: "Python uses `elif` for conditional branching."
+          }
+        ],
+        terminalChallenges: [
+          {
+            id: 1,
+            title: "Challenge 1: Grade Calculator Assertion",
+            prompt: "Calculate grade for `marks = 85`. Print `Grade B Asserted!`.",
+            starterCode: `marks = 85
+grade = 'B' if marks >= 80 else 'C'
+print(f'Marks: {marks}, Grade: {grade}. Grade B Asserted!')`,
+            expectedKeyword: "Grade B Asserted!"
+          },
+          {
+            id: 2,
+            title: "Challenge 2: Traffic Light Decision",
+            prompt: "Branch light state for `light = 'red'`. Print `Traffic Light Red Asserted!`.",
+            starterCode: `light = 'red'
+action = 'Stop' if light == 'red' else 'Go'
+print(f'Action: {action}. Traffic Light Red Asserted!')`,
+            expectedKeyword: "Traffic Light Red Asserted!"
+          },
+          {
+            id: 3,
+            title: "Challenge 3: Voting Eligibility Check",
+            prompt: "Check eligibility for `age = 20`. Print `Voting Eligible Asserted!`.",
+            starterCode: `age = 20
+eligible = age >= 18
+print(f'Eligible: {eligible}. Voting Eligible Asserted!')`,
+            expectedKeyword: "Voting Eligible Asserted!"
+          },
+          {
+            id: 4,
+            title: "Challenge 4: ATM Deposit Simulation",
+            prompt: "Simulate depositing 500 into balance 1000. Print `ATM Deposit Asserted!`.",
+            starterCode: `balance = 1000
+deposit = 500
+balance += deposit
+print(f'New Balance: {balance}. ATM Deposit Asserted!')`,
+            expectedKeyword: "ATM Deposit Asserted!"
+          },
+          {
+            id: 5,
+            title: "Challenge 5: Floor Division & Modulo Assertion",
+            prompt: "Divide 17 by 5 using floor division and modulo. Print `Floor Division Asserted!`.",
+            starterCode: `div = 17 // 5
+mod = 17 % 5
+print(f'Div: {div}, Mod: {mod}. Floor Division Asserted!')`,
+            expectedKeyword: "Floor Division Asserted!"
+          }
+        ],
+        tasks: [
+          { id: 'py2_t1', text: 'Log Daily GitHub Push', completed: false },
+          { id: 'py2_t2', text: '🎥 Watch Video: Comparison, Logical Operators, if, elif, else', completed: false },
+          { id: 'py2_t3', text: '✍️ Task: Build a Grade Calculator (A, B, C, F) and Voting Eligibility checker', completed: false },
+          { id: 'py2_t4', text: '✍️ Task: Build a Traffic Light system using conditional branching', completed: false },
+          { id: 'py2_t5', text: '🚀 Mini Project: ATM Machine Simulation (Check balance, Deposit, Withdraw)', completed: false }
+        ],
+        starterCode: `marks = 85
+grade = 'B' if marks >= 80 else 'C'
+print(f'Marks: {marks}, Grade: {grade}. Grade B Asserted!')`,
+        expectedKeyword: "Grade B Asserted!"
+      },
+      {
+        day: 3,
+        title: 'Day 3 – Loops & Iteration',
+        unit: 'Unit 3: Repetition & Controls',
+        topic: 'for loops, while loops, range(), break, continue',
+        playlistUrl: 'https://youtube.com/playlist?list=PLsyeobzWjNWXcZauLub5oks68m81xFd4e',
+        videoBreakdown: '🎥 Watch Video: for loops, while loops, range(), break, continue',
+        whatToLearn: {
+          summary: 'Master definite iteration with for loops & range(), indefinite iteration with while loops, and control loop execution using break & continue.',
+          details: [
+            '🎥 Watch Video: for loops, while loops, range(), break, continue',
+            'Understand `range(start, stop, step)` sequence generation.',
+            'Iterate over ranges and sequences with `for` loops.',
+            'Control while loop termination conditions.',
+            'Use `break` to exit loops early and `continue` to skip iterations.'
+          ],
+          codeExample: `# Multiplication Table for 5
+for i in range(1, 6):
+    print(f"5 x {i} = {5 * i}")
+
+# While loop example
+count = 3
+while count > 0:
+    print(f"Countdown: {count}")
+    count -= 1`
+        },
+        mcqQuestions: [
+          {
+            question: "What values are generated by range(1, 5)?",
+            options: ["1, 2, 3, 4, 5", "1, 2, 3, 4", "0, 1, 2, 3, 4", "1, 3, 5"],
+            answerIndex: 1,
+            explanation: "`range(start, stop)` includes start (1) up to but excluding stop (5), generating `1, 2, 3, 4`."
+          },
+          {
+            question: "Which keyword terminates a loop immediately?",
+            options: ["pass", "continue", "break", "exit"],
+            answerIndex: 2,
+            explanation: "`break` immediately terminates the innermost enclosing loop."
+          },
+          {
+            question: "What is the output of 'for i in range(3): pass' followed by 'print(i)'?",
+            options: ["2", "3", "NameError", "0"],
+            answerIndex: 0,
+            explanation: "The loop iterates over 0, 1, 2. After completing, the loop variable `i` retains its final value `2`."
+          }
+        ],
+        terminalChallenges: [
+          {
+            id: 1,
+            title: "Challenge 1: Multiplication Table Range Loop",
+            prompt: "Print 5x table for range(1, 6). Print `Multiplication Loop Asserted!`.",
+            starterCode: `for i in range(1, 6):
+    print(f'5 x {i} = {5*i}')
+print('Multiplication Loop Asserted!')`,
+            expectedKeyword: "Multiplication Loop Asserted!"
+          },
+          {
+            id: 2,
+            title: "Challenge 2: Factorial Loop Calculation",
+            prompt: "Compute factorial of 5 (120). Print `Factorial 120 Asserted!`.",
+            starterCode: `fact = 1
+for i in range(1, 6): fact *= i
+print(f'Factorial: {fact}. Factorial 120 Asserted!')`,
+            expectedKeyword: "Factorial 120 Asserted!"
+          },
+          {
+            id: 3,
+            title: "Challenge 3: Fibonacci Series Loop",
+            prompt: "Generate first 5 Fibonacci numbers. Print `Fibonacci Series Asserted!`.",
+            starterCode: `a, b = 0, 1
+for _ in range(5): a, b = b, a + b
+print('Fibonacci Series Asserted!')`,
+            expectedKeyword: "Fibonacci Series Asserted!"
+          },
+          {
+            id: 4,
+            title: "Challenge 4: Break Loop Control Assertion",
+            prompt: "Iterate range(1, 10) and break when i == 5. Print `Loop Break Asserted!`.",
+            starterCode: `for i in range(1, 10):
+    if i == 5: break
+print(f'Stopped at {i}. Loop Break Asserted!')`,
+            expectedKeyword: "Loop Break Asserted!"
+          },
+          {
+            id: 5,
+            title: "Challenge 5: Prime Number Test Loop",
+            prompt: "Check if 7 is prime. Print `Prime Check Asserted!`.",
+            starterCode: `num = 7
+is_prime = all(num % i != 0 for i in range(2, num))
+print(f'Prime 7: {is_prime}. Prime Check Asserted!')`,
+            expectedKeyword: "Prime Check Asserted!"
+          }
+        ],
+        tasks: [
+          { id: 'py3_t1', text: 'Log Daily GitHub Push', completed: false },
+          { id: 'py3_t2', text: '🎥 Watch Video: for loops, while loops, range(), break, continue', completed: false },
+          { id: 'py3_t3', text: '✍️ Task: Write loops for Multiplication Tables and Factorial computation', completed: false },
+          { id: 'py3_t4', text: '✍️ Task: Generate Fibonacci series and Prime number checks', completed: false },
+          { id: 'py3_t5', text: '🚀 Mini Project: Number Guessing Game with random.randint()', completed: false }
+        ],
+        starterCode: `for i in range(1, 6):
+    print(f'5 x {i} = {5*i}')
+print('Multiplication Loop Asserted!')`,
+        expectedKeyword: "Multiplication Loop Asserted!"
+      },
+      {
+        day: 4,
+        title: 'Day 4 – Functions & Scope',
+        unit: 'Unit 4: Modular Code & Lambda',
+        topic: 'Parameters, Default Arguments, Return Values, Scope, Lambda Functions',
+        playlistUrl: 'https://youtube.com/playlist?list=PLsyeobzWjNWXcZauLub5oks68m81xFd4e',
+        videoBreakdown: '🎥 Watch Video: Defining Functions (def), Parameters, Return values, Lambda functions',
+        whatToLearn: {
+          summary: 'Define modular functions with `def`, pass parameters, set default arguments, return values, understand variable scope, and create one-line `lambda` expressions.',
+          details: [
+            '🎥 Watch Video: Defining Functions (def), Parameters, Return values, Lambda functions',
+            'Define functions using `def function_name(params):`.',
+            'Return multiple values as tuples.',
+            'Differentiate local scope vs global scope.',
+            'Write concise anonymous lambda functions `lambda x, y: x * y`.'
+          ],
+          codeExample: `def greet(name, role="Developer"):
+    return f"Welcome {name}, {role}!"
+
+square = lambda x: x ** 2
+print(greet("Aman"))
+print(f"Square of 4: {square(4)}")`
+        },
+        mcqQuestions: [
+          {
+            question: "How do you define a function in Python?",
+            options: ["function myFunc():", "def myFunc():", "func myFunc():", "define myFunc():"],
+            answerIndex: 1,
+            explanation: "Python functions are defined using the `def` keyword."
+          },
+          {
+            question: "What does a function return if there is no explicit return statement?",
+            options: ["0", "False", "None", "Empty String"],
+            answerIndex: 2,
+            explanation: "Functions without an explicit return statement return `None` implicitly."
+          },
+          {
+            question: "What is the result of (lambda x, y: x * y)(3, 4)?",
+            options: ["12", "7", "None", "SyntaxError"],
+            answerIndex: 0,
+            explanation: "The lambda evaluates `3 * 4`, returning `12`."
+          }
+        ],
+        terminalChallenges: [
+          {
+            id: 1,
+            title: "Challenge 1: Function Definition & Return",
+            prompt: "Define `greet(name)` returning a welcome message. Print `Function Greet Asserted!`.",
+            starterCode: `# TODO: Define function greet(name) returning a welcome string
+def greet(name):
+    pass
+
+# TODO: Call greet('Aman') and print "Function Greet Asserted!"
+`,
+            expectedKeyword: "Function Greet Asserted!"
+          },
+          {
+            id: 2,
+            title: "Challenge 2: Lambda Multiplication Assertion",
+            prompt: "Define `mult = lambda x, y: x * y`. Print `Lambda Mult Asserted!`.",
+            starterCode: `# TODO: Define mult lambda function taking x, y
+mult = lambda x, y: x * y
+
+# TODO: Call mult(3, 4) and print "Lambda Mult Asserted!"
+`,
+            expectedKeyword: "Lambda Mult Asserted!"
+          },
+          {
+            id: 3,
+            title: "Challenge 3: Default Argument Value",
+            prompt: "Define function with default parameter `role='Developer'`. Print `Default Arg Asserted!`.",
+            starterCode: `# TODO: Define role function with default parameter r='Developer'
+def get_role(r='Developer'):
+    pass
+
+# TODO: Print "Default Arg Asserted!"
+`,
+            expectedKeyword: "Default Arg Asserted!"
+          },
+          {
+            id: 4,
+            title: "Challenge 4: Palindrome Helper Function",
+            prompt: "Write `is_palindrome(s)` for 'radar'. Print `Palindrome Function Asserted!`.",
+            starterCode: `# TODO: Write is_pal(s) returning s == s[::-1]
+def is_pal(s):
+    pass
+
+# TODO: Test with 'radar' and print "Palindrome Function Asserted!"
+`,
+            expectedKeyword: "Palindrome Function Asserted!"
+          },
+          {
+            id: 5,
+            title: "Challenge 5: Modular Calculator Helper",
+            prompt: "Define modular `add(a, b)` and `sub(a, b)`. Print `Modular Calc Asserted!`.",
+            starterCode: `# TODO: Define add and sub lambdas
+add = lambda a, b: a + b
+sub = lambda a, b: a - b
+
+# TODO: Print "Modular Calc Asserted!"
+`,
+            expectedKeyword: "Modular Calc Asserted!"
+          }
+        ],
+        tasks: [
+          { id: 'py4_t1', text: 'Log Daily GitHub Push', completed: false },
+          { id: 'py4_t2', text: '🎥 Watch Video: Defining Functions (def), Parameters, Return values, Lambda functions', completed: false },
+          { id: 'py4_t3', text: '✍️ Task: Write lambda functions for math transformations', completed: false },
+          { id: 'py4_t4', text: '✍️ Task: Write Palindrome and Prime checker helper functions', completed: false },
+          { id: 'py4_t5', text: '🚀 Mini Project: Calculator using Modular Functions', completed: false }
+        ],
+        starterCode: `def greet(name): return f'Hello {name}'
+print(f'Hello {greet("Aman")}. Function Greet Asserted!')`,
+        expectedKeyword: "Function Greet Asserted!"
+      },
+      {
+        day: 5,
+        title: 'Day 5 – Strings & String Methods',
+        unit: 'Unit 5: Text Processing & Formatting',
+        topic: 'Indexing, Slicing, .upper(), .lower(), .strip(), .replace(), .split(), .join()',
+        playlistUrl: 'https://youtube.com/playlist?list=PLsyeobzWjNWXcZauLub5oks68m81xFd4e',
+        videoBreakdown: '🎥 Watch Video: String Slicing, .replace(), .split(), .join(), .upper()',
+        whatToLearn: {
+          summary: 'Master string indexing, zero-copy slicing [start:stop:step], immutability, case conversion, whitespace cleaning, search/replace, and array splitting/joining.',
+          details: [
+            '🎥 Watch Video: String Slicing, .replace(), .split(), .join(), .upper()',
+            'Access characters by zero-indexed offsets and reverse slicing `s[::-1]`.',
+            'Clean user inputs with `.strip()`, `.lower()`, and `.upper()`.',
+            'Replace substrings using `.replace(old, new)`.',
+            'Split strings into lists using `.split()` and re-join lists into strings with `" ".join()`.'
+          ],
+          codeExample: `text = "  python programming  "
+clean = text.strip().title()
+words = clean.split()
+joined = "-".join(words)
+print(f"Cleaned: '{clean}', Joined: '{joined}'")`
+        },
+        mcqQuestions: [
+          {
+            question: "What does 'python'[1:4] evaluate to?",
+            options: ["'pyt'", "'yth'", "'ytho'", "'pyth'"],
+            answerIndex: 1,
+            explanation: "Extracts indices 1, 2, 3 ('y', 't', 'h'), resulting in 'yth'."
+          },
+          {
+            question: "Are Python strings mutable?",
+            options: ["Yes", "No, modifying a string creates a new string object", "Only inside functions", "Only when declared with str()"],
+            answerIndex: 1,
+            explanation: "Strings in Python are immutable; methods return new string objects."
+          },
+          {
+            question: "What is the result of '-'.join(['a', 'b', 'c'])?",
+            options: ["'a-b-c'", "['a-b-c']", "'abc-'", "TypeError"],
+            answerIndex: 0,
+            explanation: "'-'.join(...) joins list items with a hyphen delimiter, producing 'a-b-c'."
+          }
+    ],
+    terminalChallenges: [
+      {
+        id: 1,
+        title: "Challenge 1: String Slicing Substring Assertion",
+        prompt: "Slice 'python'[1:4] to get 'yth'. Print `String Slicing Asserted!`.",
+        starterCode: `s = 'python'[1:4]
+print(f'Sliced: {s}. String Slicing Asserted!')`,
+        expectedKeyword: "String Slicing Asserted!"
+      },
+      {
+        id: 2,
+        title: "Challenge 2: Reverse String Assertion",
+        prompt: "Reverse string 'DevQuik' using `s[::-1]`. Print `String Reversal Asserted!`.",
+        starterCode: `rev = 'DevQuik'[::-1]
+print(f'Reversed: {rev}. String Reversal Asserted!')`,
+        expectedKeyword: "String Reversal Asserted!"
+      },
+      {
+        id: 3,
+        title: "Challenge 3: String Replace Assertion",
+        prompt: "Replace 'java' with 'python' in 'hello java'. Print `String Replace Asserted!`.",
+        starterCode: `res = 'hello java'.replace('java', 'python')
+print(f'Replaced: {res}. String Replace Asserted!')`,
+        expectedKeyword: "String Replace Asserted!"
+      },
+      {
+        id: 4,
+        title: "Challenge 4: Split & Join Pipeline Assertion",
+        prompt: "Split 'a b c' and join with '-'. Print `Split Join Asserted!`.",
+        starterCode: `joined = '-'.join('a b c'.split())
+print(f'Joined: {joined}. Split Join Asserted!')`,
+        expectedKeyword: "Split Join Asserted!"
+      },
+      {
+        id: 5,
+        title: "Challenge 5: Vowel Count Pipeline",
+        prompt: "Count vowels in 'python programming'. Print `Vowel Count Asserted!`.",
+        starterCode: `text = 'python programming'
+vowels = sum(1 for c in text if c in 'aeiou')
+print(f'Vowels: {vowels}. Vowel Count Asserted!')`,
+        expectedKeyword: "Vowel Count Asserted!"
+      }
+    ],
+    tasks: [
+      { id: 'py5_t1', text: 'Log Daily GitHub Push', completed: false },
+      { id: 'py5_t2', text: '🎥 Watch Video: String Slicing, .replace(), .split(), .join(), .upper()', completed: false },
+      { id: 'py5_t3', text: '✍️ Task: Create a String Reverser (s[::-1]) and Vowel Counter', completed: false },
+      { id: 'py5_t4', text: '✍️ Task: Format sentences using .split() and " ".join()', completed: false },
+      { id: 'py5_t5', text: '🚀 Mini Project: Password Strength Checker CLI', completed: false }
+    ],
+    starterCode: `s = 'python'[1:4]
+print(f'Sliced: {s}. String Slicing Asserted!')`,
+    expectedKeyword: "String Slicing Asserted!"
+  },
+  {
+    day: 6,
+    title: 'Day 6 – Lists & Tuples',
+    unit: 'Unit 6: Ordered Collections',
+    topic: 'Mutability, .append(), .pop(), .insert(), Slicing, Tuple Unpacking',
+    playlistUrl: 'https://youtube.com/playlist?list=PLsyeobzWjNWXcZauLub5oks68m81xFd4e',
+    videoBreakdown: '🎥 Watch Video: List mutability, .append(), .pop(), .insert(), Tuples',
+    whatToLearn: {
+      summary: 'Master dynamic mutable lists [], element modification (.append, .pop, .insert), slicing, immutable tuples (), and tuple unpacking.',
+      details: [
+        '🎥 Watch Video: List mutability, .append(), .pop(), .insert(), Tuples',
+        'Understand list mutability vs tuple immutability.',
+        'Modify lists using `.append(val)`, `.pop(idx)`, and `.insert(idx, val)`.',
+        'Perform min(), max(), sum(), and sorting operations.',
+        'Unpack tuple coordinates `x, y = (10, 20)`.'
+      ],
+      codeExample: `nums = [4, 1, 9, 2]
+nums.append(5)
+nums.sort()
+popped = nums.pop()
+print(f"Sorted: {nums}, Popped: {popped}, Max: {max(nums)}")`
+    },
+    mcqQuestions: [
+      {
+        question: "What is the key difference between a List and a Tuple in Python?",
+        options: ["Lists use (), Tuples use []", "Lists are mutable; Tuples are immutable", "Tuples can only store numbers", "Lists cannot be nested"],
+        answerIndex: 1,
+        explanation: "Lists are mutable (can be altered in place); Tuples are immutable."
+      },
+      {
+        question: "What does nums = [1, 2, 3] followed by nums.pop(0) return?",
+        options: ["[2, 3]", "1", "3", "None"],
+        answerIndex: 1,
+        explanation: "`.pop(0)` removes and returns the element at index 0 (`1`)."
+      },
+      {
+        question: "What is the output of len((1,))?",
+        options: ["1", "0", "TypeError", "2"],
+        answerIndex: 0,
+        explanation: "`(1,)` is a single-element tuple, so `len()` returns `1`."
+      }
+    ],
+    terminalChallenges: [
+      {
+        id: 1,
+        title: "Challenge 1: List Append & Pop Assertion",
+        prompt: "Append 5 to [1, 2, 3] and pop index 0. Print `List Append Pop Asserted!`.",
+        starterCode: `nums = [1, 2, 3]
+nums.append(5)
+val = nums.pop(0)
+print(f'Popped {val}, List: {nums}. List Append Pop Asserted!')`,
+        expectedKeyword: "List Append Pop Asserted!"
+      },
+      {
+        id: 2,
+        title: "Challenge 2: Find Max & Min in List",
+        prompt: "Find max and min of [4, 1, 9, 2]. Print `List MinMax Asserted!`.",
+        starterCode: `nums = [4, 1, 9, 2]
+print(f'Min: {min(nums)}, Max: {max(nums)}. List MinMax Asserted!')`,
+        expectedKeyword: "List MinMax Asserted!"
+      },
+      {
+        id: 3,
+        title: "Challenge 3: Remove Duplicates from List",
+        prompt: "Deduplicate [1, 2, 2, 3, 3, 4] preserving order. Print `Deduplication Asserted!`.",
+        starterCode: `raw = [1, 2, 2, 3, 3, 4]
+clean = list(dict.fromkeys(raw))
+print(f'Clean: {clean}. Deduplication Asserted!')`,
+        expectedKeyword: "Deduplication Asserted!"
+      },
+      {
+        id: 4,
+        title: "Challenge 4: Tuple Unpacking Assertion",
+        prompt: "Unpack point = (10, 20) into x, y. Print `Tuple Unpacking Asserted!`.",
+        starterCode: `point = (10, 20)
+x, y = point
+print(f'x={x}, y={y}. Tuple Unpacking Asserted!')`,
+        expectedKeyword: "Tuple Unpacking Asserted!"
+      },
+      {
+        id: 5,
+        title: "Challenge 5: Second Largest Element Assertion",
+        prompt: "Find second largest element in [10, 20, 4, 45, 99]. Print `Second Largest Asserted!`.",
+        starterCode: `nums = [10, 20, 4, 45, 99]
+second = sorted(set(nums))[-2]
+print(f'Second: {second}. Second Largest Asserted!')`,
+        expectedKeyword: "Second Largest Asserted!"
+      }
+    ],
+    tasks: [
+      { id: 'py6_t1', text: 'Log Daily GitHub Push', completed: false },
+      { id: 'py6_t2', text: '🎥 Watch Video: List mutability, .append(), .pop(), .insert(), Tuples', completed: false },
+      { id: 'py6_t3', text: '✍️ Task: Find Max, Min, and Second Largest element in a list', completed: false },
+      { id: 'py6_t4', text: '✍️ Task: Remove duplicate values from a list using loops', completed: false },
+      { id: 'py6_t5', text: '🚀 Mini Project: Student Marks Manager CLI App', completed: false }
+    ],
+    starterCode: `nums = [1, 2, 3]
+nums.append(5)
+val = nums.pop(0)
+print(f'Popped {val}, List: {nums}. List Append Pop Asserted!')`,
+    expectedKeyword: "List Append Pop Asserted!"
+  },
+  {
+    day: 7,
+    title: 'Day 7 – Dictionaries & Sets',
+    unit: 'Unit 7: Key-Value & Set Operations',
+    topic: 'Key-Value pairs, .get(), .keys(), .values(), Set operations (union, intersection)',
+    playlistUrl: 'https://youtube.com/playlist?list=PLsyeobzWjNWXcZauLub5oks68m81xFd4e',
+    videoBreakdown: '🎥 Watch Video: Key-Value structures, .get(), .items(), Sets operations',
+    whatToLearn: {
+      summary: 'Master key-value mapping with dictionaries {}, safe retrieval with .get(), iteration over items(), and unique set operations (union |, intersection &).',
+      details: [
+        '🎥 Watch Video: Key-Value structures, .get(), .items(), Sets operations',
+        'Map keys to values in Python dictionaries `{}`.',
+        'Use `.get(key, default)` to prevent KeyError crashes.',
+        'Iterate over dictionary keys, values, and `.items()`.',
+        'Perform set union `a | b` and intersection `a & b`.'
+      ],
+      codeExample: `student = {"name": "Aman", "role": "Dev", "level": 1}
+print(f"Name: {student.get('name')}, Role: {student.get('role')}")
+
+# Set intersection
+s1 = {1, 2, 3}
+s2 = {2, 3, 4}
+print(f"Intersection: {s1 & s2}")`
+    },
+    mcqQuestions: [
+      {
+        question: "What happens when accessing a non-existent key with dict.get('key')?",
+        options: ["Raises KeyError", "Returns None (or a specified default value)", "Returns 0", "Crashes the program"],
+        answerIndex: 1,
+        explanation: "`.get()` returns `None` (or the fallback value) safely without raising `KeyError`."
+      },
+      {
+        question: "Which data structure stores ONLY unique elements and is unordered?",
+        options: ["list", "tuple", "set", "dictionary"],
+        answerIndex: 2,
+        explanation: "Sets store unique, unordered collection elements."
+      },
+      {
+        question: "How do you add a new key-value pair ('a': 1) to dictionary d?",
+        options: ["d.append('a', 1)", "d['a'] = 1", "d.add('a', 1)", "d.insert('a', 1)"],
+        answerIndex: 1,
+        explanation: "Key-value pairs are added using standard indexing d['a'] = 1."
+      }
+    ],
+    terminalChallenges: [
+      {
+        id: 1,
+        title: "Challenge 1: Dictionary Safe Get Assertion",
+        prompt: "Retrieve key 'name' safely from dict student = {'name': 'Aman'}. Print `Dict Get Asserted!`.",
+        starterCode: `d = {'name': 'Aman'}
+print(f'Name: {d.get("name")}. Dict Get Asserted!')`,
+        expectedKeyword: "Dict Get Asserted!"
+      },
+      {
+        id: 2,
+        title: "Challenge 2: Set Intersection Assertion",
+        prompt: "Find intersection of {1, 2, 3} and {2, 3, 4}. Print `Set Intersection Asserted!`.",
+        starterCode: `s1, s2 = {1, 2, 3}, {2, 3, 4}
+common = s1 & s2
+print(f'Common: {common}. Set Intersection Asserted!')`,
+        expectedKeyword: "Set Intersection Asserted!"
+      },
+      {
+        id: 3,
+        title: "Challenge 3: Dict Key-Value Insertion",
+        prompt: "Add 'role': 'Dev' to empty dict d. Print `Dict Insert Asserted!`.",
+        starterCode: `d = {}
+d['role'] = 'Dev'
+print(f'Dict: {d}. Dict Insert Asserted!')`,
+        expectedKeyword: "Dict Insert Asserted!"
+      },
+      {
+        id: 4,
+        title: "Challenge 4: Deduplicate List with Set",
+        prompt: "Convert list [1, 2, 2, 3] to set. Print `Set Deduplicate Asserted!`.",
+        starterCode: `unique = set([1, 2, 2, 3])
+print(f'Unique: {unique}. Set Deduplicate Asserted!')`,
+        expectedKeyword: "Set Deduplicate Asserted!"
+      },
+      {
+        id: 5,
+        title: "Challenge 5: Expense Tracker Dict Summary",
+        prompt: "Sum values of expenses = {'food': 200, 'rent': 500}. Print `Expense Sum Asserted!`.",
+        starterCode: `exp = {'food': 200, 'rent': 500}
+total = sum(exp.values())
+print(f'Total: {total}. Expense Sum Asserted!')`,
+        expectedKeyword: "Expense Sum Asserted!"
+      }
+    ],
+    tasks: [
+      { id: 'py7_t1', text: 'Log Daily GitHub Push', completed: false },
+      { id: 'py7_t2', text: '🎥 Watch Video: Key-Value structures, .get(), .items(), Sets operations', completed: false },
+      { id: 'py7_t3', text: '✍️ Task: Store and retrieve student records in nested dictionaries', completed: false },
+      { id: 'py7_t4', text: '✍️ Task: Remove list duplicates instantly using set()', completed: false },
+      { id: 'py7_t5', text: '🚀 Mini Project: Expense Tracker CLI App', completed: false }
+    ],
+    starterCode: `d = {'name': 'Aman'}
+print(f'Name: {d.get("name")}. Dict Get Asserted!')`,
+    expectedKeyword: "Dict Get Asserted!"
+  },
+  {
+    day: 8,
+    title: 'Day 8 – List Comprehensions & Advanced Iteration',
+    unit: 'Unit 8: Concise Pythonic Functional Loops',
+    topic: 'List/Dict Comprehensions, enumerate(), zip()',
+    playlistUrl: 'https://youtube.com/playlist?list=PLsyeobzWjNWXcZauLub5oks68m81xFd4e',
+    videoBreakdown: '🎥 Watch Video: List comprehensions, Dict comprehensions, enumerate(), zip()',
+    whatToLearn: {
+      summary: 'Write Pythonic list comprehensions `[x for x in seq if cond]`, dict comprehensions, track index-item pairs with `enumerate()`, and combine sequences with `zip()`.',
+      details: [
+        '🎥 Watch Video: List comprehensions, Dict comprehensions, enumerate(), zip()',
+        'Construct single-line list comprehensions `[x**2 for x in range(5)]`.',
+        'Apply inline filtering `[x for x in nums if x % 2 == 0]`.',
+        'Pair indices and values using `enumerate(iterable)`.',
+        'Zip parallel lists into tuples using `zip(keys, values)`.'
+      ],
+      codeExample: `squares = [x**2 for x in range(5) if x % 2 == 0]
+names = ["Aman", "John"]
+roles = ["Dev", "Design"]
+for idx, (name, role) in enumerate(zip(names, roles)):
+    print(f"{idx}: {name} -> {role}")`
+    },
+    mcqQuestions: [
+      {
+        question: "What is the output of [x ** 2 for x in range(4) if x % 2 == 0]?",
+        options: ["[0, 1, 4, 9]", "[0, 4]", "[1, 9]", "[0, 2, 4]"],
+        answerIndex: 1,
+        explanation: "`range(4)` gives 0, 1, 2, 3. Even numbers are 0 and 2. Their squares are `0` and `4` -> `[0, 4]`."
+      },
+      {
+        question: "What does enumerate(['a', 'b']) yield in a loop?",
+        options: ["Pairs of (index, element) like (0, 'a')", "Only elements", "Only indices", "A single dictionary"],
+        answerIndex: 0,
+        explanation: "enumerate() yields index-element tuples (0, 'a'), (1, 'b')."
+      },
+      {
+        question: "What does zip([1, 2], ['a', 'b']) produce when converted to a list?",
+        options: ["[(1, 'a'), (2, 'b')]", "[1, 2, 'a', 'b']", "[[1, 2], ['a', 'b']]", "{'1': 'a', '2': 'b'}"],
+        answerIndex: 0,
+        explanation: "zip() pairs elements element-by-element into tuples [(1, 'a'), (2, 'b')]."
+      }
+    ],
+    terminalChallenges: [
+      {
+        id: 1,
+        title: "Challenge 1: Even Squares List Comprehension",
+        prompt: "Compute [x**2 for x in range(4) if x%2==0]. Print `List Comp Asserted!`.",
+        starterCode: `sq = [x**2 for x in range(4) if x%2==0]
+print(f'Squares: {sq}. List Comp Asserted!')`,
+        expectedKeyword: "List Comp Asserted!"
+      },
+      {
+        id: 2,
+        title: "Challenge 2: Enumerate Loop Assertion",
+        prompt: "Enumerate ['a', 'b']. Print `Enumerate Loop Asserted!`.",
+        starterCode: `for idx, val in enumerate(['a', 'b']): pass
+print('Enumerate Loop Asserted!')`,
+        expectedKeyword: "Enumerate Loop Asserted!"
+      },
+      {
+        id: 3,
+        title: "Challenge 3: Zip Two Lists into Dict",
+        prompt: "Zip keys=['a', 'b'] and vals=[1, 2] into dict. Print `Zip Dict Asserted!`.",
+        starterCode: `keys, vals = ['a', 'b'], [1, 2]
+d = dict(zip(keys, vals))
+print(f'Dict: {d}. Zip Dict Asserted!')`,
+        expectedKeyword: "Zip Dict Asserted!"
+      },
+      {
+        id: 4,
+        title: "Challenge 4: Dict Comprehension Assertion",
+        prompt: "Build dict {x: x**2 for x in range(3)}. Print `Dict Comp Asserted!`.",
+        starterCode: `d = {x: x**2 for x in range(3)}
+print(f'Dict: {d}. Dict Comp Asserted!')`,
+        expectedKeyword: "Dict Comp Asserted!"
+      },
+      {
+        id: 5,
+        title: "Challenge 5: Upper Case Names Comprehension",
+        prompt: "Convert ['aman', 'john'] to uppercase using list comp. Print `Upper Comp Asserted!`.",
+        starterCode: `names = [n.upper() for n in ['aman', 'john']]
+print(f'Upper: {names}. Upper Comp Asserted!')`,
+        expectedKeyword: "Upper Comp Asserted!"
+      }
+    ],
+    tasks: [
+      { id: 'py8_t1', text: 'Log Daily GitHub Push', completed: false },
+      { id: 'py8_t2', text: '🎥 Watch Video: List comprehensions, Dict comprehensions, enumerate(), zip()', completed: false },
+      { id: 'py8_t3', text: '✍️ Task: Convert standard for loops into concise list comprehensions', completed: false },
+      { id: 'py8_t4', text: '✍️ Task: Loop through two lists simultaneously using zip()', completed: false },
+      { id: 'py8_t5', text: '🚀 Mini Project: Inventory Manager with List Comprehensions', completed: false }
+    ],
+    starterCode: `sq = [x**2 for x in range(4) if x%2==0]
+print(f'Squares: {sq}. List Comp Asserted!')`,
+    expectedKeyword: "List Comp Asserted!"
+  },
+  {
+    day: 9,
+    title: 'Day 9 – Object-Oriented Programming (OOP)',
+    unit: 'Unit 9: Classes, Objects & Methods',
+    topic: 'Classes, Objects, Attributes, Methods, __init__ constructor',
+    playlistUrl: 'https://youtube.com/playlist?list=PLsyeobzWjNWXcZauLub5oks68m81xFd4e',
+    videoBreakdown: '🎥 Watch Video: Classes, Objects, Instance Variables, __init__ constructor',
+    whatToLearn: {
+      summary: 'Understand Object-Oriented Programming blueprints. Define classes, instance variables, methods, and the `__init__` constructor with `self`.',
+      details: [
+        '🎥 Watch Video: Classes, Objects, Instance Variables, __init__ constructor',
+        'Define blueprint classes using `class Student:`.',
+        'Initialize instance variables inside `__init__(self, name, age)`.',
+        'Pass `self` to access object instance state inside methods.',
+        'Instantiate objects `s1 = Student("Aman", 20)` and call instance methods.'
+      ],
+      codeExample: `class Student:
+    def __init__(self, name, level=1):
+        self.name = name
+        self.level = level
+    
+    def info(self):
+        return f"Student {self.name}, Level {self.level}"
+
+s = Student("Aman")
+print(s.info())`
+    },
+    mcqQuestions: [
+      {
+        question: "What is the purpose of __init__ in a Python class?",
+        options: ["To delete an object", "Constructor method executed automatically when an object is created", "To make a class private", "To inherit from another class"],
+        answerIndex: 1,
+        explanation: "`__init__` acts as the constructor method called when an object is instantiated."
+      },
+      {
+        question: "What does the self parameter represent inside class methods?",
+        options: ["The global module", "The instance of the class calling the method", "The parent class", "A reserved keyword required by the Python interpreter"],
+        answerIndex: 1,
+        explanation: "`self` represents the specific instance of the class."
+      },
+      {
+        question: "How do you instantiate a class named Car in Python?",
+        options: ["Car my_car = new Car()", "my_car = Car()", "my_car = create Car()", "my_car = Car.new()"],
+        answerIndex: 1,
+        explanation: "Python instantiates classes using function call syntax `my_car = Car()`."
+      }
+    ],
+    terminalChallenges: [
+      {
+        id: 1,
+        title: "Challenge 1: Class Definition & Instance Creation",
+        prompt: "Define class Student with name, level. Print `OOP Student Class Asserted!`.",
+        starterCode: `class Student:
+    def __init__(self, name): self.name = name
+s = Student('Aman')
+print(f'Student: {s.name}. OOP Student Class Asserted!')`,
+        expectedKeyword: "OOP Student Class Asserted!"
+      },
+      {
+        id: 2,
+        title: "Challenge 2: Instance Method Invocation",
+        prompt: "Add method greet() returning greeting message. Print `Instance Method Asserted!`.",
+        starterCode: `class User:
+    def greet(self): return 'Welcome User'
+u = User()
+print(f'{u.greet()}. Instance Method Asserted!')`,
+        expectedKeyword: "Instance Method Asserted!"
+      },
+      {
+        id: 3,
+        title: "Challenge 3: Car Class Engine Start Method",
+        prompt: "Define Car(brand) with start() method. Print `Car Engine Asserted!`.",
+        starterCode: `class Car:
+    def __init__(self, brand): self.brand = brand
+    def start(self): return f'{self.brand} Started'
+c = Car('Tesla')
+print(f'{c.start()}. Car Engine Asserted!')`,
+        expectedKeyword: "Car Engine Asserted!"
+      },
+      {
+        id: 4,
+        title: "Challenge 4: Multiple Object Instantiation",
+        prompt: "Instantiate 2 Student objects. Print `Multiple Objects Asserted!`.",
+        starterCode: `class S:
+    def __init__(self, n): self.n = n
+s1, s2 = S('Aman'), S('John')
+print(f'{s1.n}, {s2.n}. Multiple Objects Asserted!')`,
+        expectedKeyword: "Multiple Objects Asserted!"
+      },
+      {
+        id: 5,
+        title: "Challenge 5: Bank Account Deposit Method",
+        prompt: "Define Account with deposit(amt) method. Print `Account Deposit Asserted!`.",
+        starterCode: `class Acc:
+    def __init__(self, b): self.b = b
+    def dep(self, a): self.b += a; return self.b
+a = Acc(100)
+print(f'Bal: {a.dep(50)}. Account Deposit Asserted!')`,
+        expectedKeyword: "Account Deposit Asserted!"
+      }
+    ],
+    tasks: [
+      { id: 'py9_t1', text: 'Log Daily GitHub Push', completed: false },
+      { id: 'py9_t2', text: '🎥 Watch Video: Classes, Objects, Instance Variables, __init__ constructor', completed: false },
+      { id: 'py9_t3', text: '✍️ Task: Model Student, Employee, Car, and Book schemas as Python classes', completed: false },
+      { id: 'py9_t4', text: '✍️ Task: Instantiate multiple objects and call their instance methods', completed: false },
+      { id: 'py9_t5', text: '🚀 Mini Project: Student Management System OOP CLI', completed: false }
+    ],
+    starterCode: `class Student:
+    def __init__(self, name): self.name = name
+s = Student('Aman')
+print(f'Student: {s.name}. OOP Student Class Asserted!')`,
+    expectedKeyword: "OOP Student Class Asserted!"
+  },
+  {
+    day: 10,
+    title: 'Day 10 – OOP Inheritance & Encapsulation',
+    unit: 'Unit 10: Advanced OOP & Privacy',
+    topic: 'Inheritance, Method Overriding, Private attributes (_, __)',
+    playlistUrl: 'https://youtube.com/playlist?list=PLsyeobzWjNWXcZauLub5oks68m81xFd4e',
+    videoBreakdown: '🎥 Watch Video: Single/Multiple Inheritance, Method Overriding, super(), Encapsulation',
+    whatToLearn: {
+      summary: 'Master inheritance `class Child(Parent):`, call base constructors with `super()`, override parent methods, and enforce encapsulation via `_` and `__` private attributes.',
+      details: [
+        '🎥 Watch Video: Single/Multiple Inheritance, Method Overriding, super(), Encapsulation',
+        'Inherit base class properties using `class Child(Parent):`.',
+        'Invoke superclass methods using `super().__init__()`.',
+        'Override parent methods to customize child behavior.',
+        'Encapsulate sensitive attributes with double underscores `self.__balance`.'
+      ],
+      codeExample: `class Vehicle:
+    def __init__(self, brand):
+        self.brand = brand
+
+class ElectricCar(Vehicle):
+    def __init__(self, brand, battery):
+        super().__init__(brand)
+        self.__battery = battery  # Private
+    
+    def get_battery(self):
+        return self.__battery
+
+ev = ElectricCar("Tesla", 100)
+print(f"{ev.brand} Battery: {ev.get_battery()}kWh")`
+    },
+    mcqQuestions: [
+      {
+        question: "How does a child class Dog inherit from parent class Animal?",
+        options: ["class Dog extends Animal:", "class Dog(Animal):", "class Dog inherits Animal:", "class Dog -> Animal:"],
+        answerIndex: 1,
+        explanation: "Python passes parent classes in parentheses `class Dog(Animal):`."
+      },
+      {
+        question: "What function is used to call methods of a parent class inside a child class?",
+        options: ["parent()", "base()", "super()", "this()"],
+        answerIndex: 2,
+        explanation: "`super()` returns a proxy object delegating method calls to the parent class."
+      },
+      {
+        question: "In Python, how is a private attribute convention indicated in a class?",
+        options: ["private balance", "__balance or _balance", "@private balance", "{balance}"],
+        answerIndex: 1,
+        explanation: "Attributes starting with `_` or `__` signal protected/private encapsulation."
+      }
+    ],
+    terminalChallenges: [
+      {
+        id: 1,
+        title: "Challenge 1: Class Inheritance Assertion",
+        prompt: "Create Dog inheriting from Animal. Print `Inheritance Asserted!`.",
+        starterCode: `class Animal: pass
+class Dog(Animal): pass
+d = Dog()
+print('Inheritance Asserted!')`,
+        expectedKeyword: "Inheritance Asserted!"
+      },
+      {
+        id: 2,
+        title: "Challenge 2: Super Constructor Call Assertion",
+        prompt: "Call super().__init__('Vehicle') in ElectricCar. Print `Super Init Asserted!`.",
+        starterCode: `class V:
+    def __init__(self, t): self.t = t
+class E(V):
+    def __init__(self): super().__init__('EV')
+e = E()
+print(f'{e.t}. Super Init Asserted!')`,
+        expectedKeyword: "Super Init Asserted!"
+      },
+      {
+        id: 3,
+        title: "Challenge 3: Encapsulation Private Attribute",
+        prompt: "Store self.__balance = 1000 and access via getter. Print `Encapsulation Asserted!`.",
+        starterCode: `class Bank:
+    def __init__(self, b): self.__b = b
+    def get_b(self): return self.__b
+b = Bank(1000)
+print(f'Bal: {b.get_b()}. Encapsulation Asserted!')`,
+        expectedKeyword: "Encapsulation Asserted!"
+      },
+      {
+        id: 4,
+        title: "Challenge 4: Method Overriding Assertion",
+        prompt: "Override speak() method in Dog child class. Print `Method Override Asserted!`.",
+        starterCode: `class Animal:
+    def speak(self): return 'Sound'
+class Dog(Animal):
+    def speak(self): return 'Woof'
+print(f'{Dog().speak()}. Method Override Asserted!')`,
+        expectedKeyword: "Method Override Asserted!"
+      },
+      {
+        id: 5,
+        title: "Challenge 5: Polymorphism Method Call",
+        prompt: "Call speak() on list of Animal objects. Print `Polymorphism Asserted!`.",
+        starterCode: `class Cat: speak = lambda self: 'Meow'
+class Dog: speak = lambda self: 'Woof'
+print('Polymorphism Asserted!')`,
+        expectedKeyword: "Polymorphism Asserted!"
+      }
+    ],
+    tasks: [
+      { id: 'py10_t1', text: 'Log Daily GitHub Push', completed: false },
+      { id: 'py10_t2', text: '🎥 Watch Video: Single/Multiple Inheritance, Method Overriding, super(), Encapsulation', completed: false },
+      { id: 'py10_t3', text: '✍️ Task: Build a parent Vehicle class and child ElectricCar class with overridden methods', completed: false },
+      { id: 'py10_t4', text: '✍️ Task: Use super().__init__() to inherit base attributes', completed: false },
+      { id: 'py10_t5', text: '🚀 Mini Project: Bank Account System with Encapsulation (__balance)', completed: false }
+    ],
+    starterCode: `class Animal: pass
+class Dog(Animal): pass
+d = Dog()
+print('Inheritance Asserted!')`,
+    expectedKeyword: "Inheritance Asserted!"
+  },
+  {
+    day: 11,
+    title: 'Day 11 – File Handling & Modules',
+    unit: 'Unit 11: File I/O & Built-in Modules',
+    topic: 'open(), with open(), Reading/Writing files, import, math, random',
+    playlistUrl: 'https://youtube.com/playlist?list=PLsyeobzWjNWXcZauLub5oks68m81xFd4e',
+    videoBreakdown: '🎥 Watch Video: open(), Context Managers (with), Reading/Writing .txt and .csv',
+    whatToLearn: {
+      summary: 'Perform safe file I/O operations using context managers `with open("file.txt", "r") as f:`, read lines, append content, and import standard modules like `math` and `random`.',
+      details: [
+        '🎥 Watch Video: open(), Context Managers (with), Reading/Writing .txt and .csv',
+        'Use `with open()` for auto-closing resource management.',
+        'Understand modes: `"r"` (read), `"w"` (write), `"a"` (append).',
+        'Read contents using `.read()`, `.readline()`, and `.readlines()`.',
+        'Import built-in standard modules `import math, random`.'
+      ],
+      codeExample: `import math, random
+
+# Write file
+with open("demo.txt", "w") as f:
+    f.write("DevQuik Python File Handling\n")
+
+# Math & Random
+rand_val = random.randint(1, 100)
+sqrt_val = math.sqrt(16)
+print(f"Random: {rand_val}, Sqrt(16): {sqrt_val}")`
+    },
+    mcqQuestions: [
+      {
+        question: "Why is using with open('file.txt', 'r') as f: preferred over f = open('file.txt')?",
+        options: ["It runs faster", "It automatically closes the file even if exceptions occur", "It converts text to upper case automatically", "It prevents file encryption"],
+        answerIndex: 1,
+        explanation: "Context managers (`with`) automatically clean up and close file handlers."
+      },
+      {
+        question: 'Which mode opens a file for writing and appends content to the end without overwriting?',
+        options: ['r', 'w', 'a', 'x'],
+        answerIndex: 2,
+        explanation: "'a' mode appends content to the end of existing file contents."
+          },
+      {
+        options: ["f.read()", "f.readline()", "f.readlines()", "f.get_all()"],
+        answerIndex: 2,
+        explanation: "`.readlines()` returns all lines as a list of strings."
+      }
+    ],
+    terminalChallenges: [
+      {
+        id: 1,
+        title: "Challenge 1: Math Module Sqrt Assertion",
+        prompt: "Import math and calculate math.sqrt(16). Print `Math Sqrt Asserted!`.",
+        starterCode: `import math
+val = math.sqrt(16)
+print(f'Sqrt 16 = {val}. Math Sqrt Asserted!')`,
+        expectedKeyword: "Math Sqrt Asserted!"
+      },
+      {
+        id: 2,
+        title: "Challenge 2: Random Module Randint Assertion",
+        prompt: "Generate random integer between 1 and 10. Print `Random Randint Asserted!`.",
+        starterCode: `import random
+r = random.randint(1, 10)
+print(f'Random: {r}. Random Randint Asserted!')`,
+        expectedKeyword: "Random Randint Asserted!"
+      },
+      {
+        id: 3,
+        title: "Challenge 3: String IO Write & Read Simulated",
+        prompt: "Simulate file write lines reading ['line1', 'line2']. Print `File IO Asserted!`.",
+        starterCode: `lines = ['line1\n', 'line2\n']
+content = ''.join(lines)
+print(f'Content: {content.strip()}. File IO Asserted!')`,
+        expectedKeyword: "File IO Asserted!"
+      },
+      {
+        id: 4,
+        title: "Challenge 4: File Mode Append Simulation",
+        prompt: "Simulate appending data to existing text. Print `File Append Asserted!`.",
+        starterCode: `base = 'Hello'
+base += ' World'
+print(f'Appended: {base}. File Append Asserted!')`,
+        expectedKeyword: "File Append Asserted!"
+      },
+      {
+        id: 5,
+        title: "Challenge 5: Readlines Length Assertion",
+        prompt: "Check length of readlines list ['a\n', 'b\n']. Print `Readlines Asserted!`.",
+        starterCode: `lines = ['a\n', 'b\n']
+print(f'Line count: {len(lines)}. Readlines Asserted!')`,
+        expectedKeyword: "Readlines Asserted!"
+      }
+    ],
+    tasks: [
+      { id: 'py11_t1', text: 'Log Daily GitHub Push', completed: false },
+      { id: 'py11_t2', text: '🎥 Watch Video: open(), Context Managers (with), Reading/Writing .txt and .csv', completed: false },
+      { id: 'py11_t3', text: '✍️ Task: Write text to a file and read it back line-by-line using with open()', completed: false },
+      { id: 'py11_t4', text: '✍️ Task: Append data without overwriting existing contents', completed: false },
+      { id: 'py11_t5', text: '🚀 Mini Project: Persistent Contact Book CLI (Saves to file)', completed: false }
+    ],
+    starterCode: `import math
+val = math.sqrt(16)
+print(f'Sqrt 16 = {val}. Math Sqrt Asserted!')`,
+    expectedKeyword: "Math Sqrt Asserted!"
+  },
+  {
+    day: 12,
+    title: 'Day 12 – Exception Handling & API Requests',
+    unit: 'Unit 12: Errors & REST APIs',
+    topic: 'try...except...finally, requests module, Parsing JSON APIs',
+    playlistUrl: 'https://youtube.com/playlist?list=PLsyeobzWjNWXcZauLub5oks68m81xFd4e',
+    videoBreakdown: '🎥 Watch Video: try...except...finally, Raising Custom Exceptions, requests.get()',
+    whatToLearn: {
+      summary: 'Catch runtime exceptions using `try...except...finally`, raise custom exceptions, fetch REST APIs using `requests.get()`, and parse JSON responses.',
+      details: [
+        '🎥 Watch Video: try...except...finally, Raising Custom Exceptions, requests.get()',
+        'Handle specific exceptions (`ValueError`, `ZeroDivisionError`, `KeyError`).',
+        'Always execute cleanup logic inside `finally:` blocks.',
+        'Manually trigger errors with `raise ValueError("Invalid")`.',
+        'Fetch REST APIs and parse JSON dictionaries using `response.json()`.'
+      ],
+      codeExample: `try:
+    val = int("123")
+    res = 10 / 2
+except (ValueError, ZeroDivisionError) as e:
+    print(f"Error: {e}")
+finally:
+    print("Execution Finished")`
+    },
+    mcqQuestions: [
+      {
+        question: "Which block of code in try...except ALWAYS executes regardless of errors?",
+        options: ["else", "finally", "catch", "always"],
+        answerIndex: 1,
+        explanation: "The `finally` block always executes regardless of whether an exception was raised."
+      },
+      {
+        question: "How do you convert a response from requests.get(url) into a Python dictionary?",
+        options: ["response.text()", "response.json()", "dict(response)", "JSON.parse(response)"],
+        answerIndex: 1,
+        explanation: "`response.json()` parses the raw HTTP body JSON string into a native Python dictionary."
+      },
+      {
+        question: "What keyword is used to manually trigger an exception in Python?",
+        options: ["throw", "raise", "error", "emit"],
+        answerIndex: 1,
+        explanation: "Exceptions are manually raised using the `raise` keyword."
+      }
+    ],
+    terminalChallenges: [
+      {
+        id: 1,
+        title: "Challenge 1: Try Except Catch ZeroDivisionError",
+        prompt: "Handle ZeroDivisionError cleanly. Print `Exception Caught Asserted!`.",
+        starterCode: `try:
+    x = 10 / 0
+except ZeroDivisionError:
+    print('Handled 10/0. Exception Caught Asserted!')`,
+        expectedKeyword: "Exception Caught Asserted!"
+      },
+      {
+        id: 2,
+        title: "Challenge 2: Finally Block Execution Assertion",
+        prompt: "Execute finally block after try. Print `Finally Executed Asserted!`.",
+        starterCode: `try:
+    x = 1
+finally:
+    print('Cleanup. Finally Executed Asserted!')`,
+        expectedKeyword: "Finally Executed Asserted!"
+      },
+      {
+        id: 3,
+        title: "Challenge 3: Manual Raise ValueError",
+        prompt: "Raise ValueError if age < 0. Print `Raise Exception Asserted!`.",
+        starterCode: `try:
+    age = -5
+    if age < 0: raise ValueError('Invalid Age')
+except ValueError:
+    print('Caught -5. Raise Exception Asserted!')`,
+        expectedKeyword: "Raise Exception Asserted!"
+      },
+      {
+        id: 4,
+        title: "Challenge 4: JSON Parsing Simulation",
+        prompt: "Parse dict {'status': 200, 'city': 'Kochi'}. Print `JSON Parsing Asserted!`.",
+        starterCode: `data = {'status': 200, 'city': 'Kochi'}
+print(f'City: {data["city"]}. JSON Parsing Asserted!')`,
+        expectedKeyword: "JSON Parsing Asserted!"
+      },
+      {
+        id: 5,
+        title: "Challenge 5: REST API Response Simulation",
+        prompt: "Simulate API status check status_code == 200. Print `API Status 200 Asserted!`.",
+        starterCode: `status = 200
+if status == 200: print('OK. API Status 200 Asserted!')`,
+        expectedKeyword: "API Status 200 Asserted!"
+      }
+    ],
+    tasks: [
+      { id: 'py12_t1', text: 'Log Daily GitHub Push', completed: false },
+      { id: 'py12_t2', text: '🎥 Watch Video: try...except...finally, Raising Custom Exceptions, requests.get()', completed: false },
+      { id: 'py12_t3', text: '✍️ Task: Fetch live data from a public REST API (e.g., OpenWeather or JSONPlaceholder)', completed: false },
+      { id: 'py12_t4', text: '✍️ Task: Handle requests.exceptions.RequestException and ValueError safely', completed: false },
+      { id: 'py12_t5', text: '🚀 Mini Project: Weather CLI App using REST API', completed: false }
+    ],
+    starterCode: `try:
+    x = 10 / 0
+except ZeroDivisionError:
+    print('Handled 10/0. Exception Caught Asserted!')`,
+    expectedKeyword: "Exception Caught Asserted!"
+  },
+  {
+    day: 13,
+    title: 'Day 13 – Virtual Environments & pip',
+    unit: 'Unit 13: Packages & Environment Management',
+    topic: 'python -m venv, pip install, requirements.txt, Custom Modules',
+    playlistUrl: 'https://youtube.com/playlist?list=PLsyeobzWjNWXcZauLub5oks68m81xFd4e',
+    videoBreakdown: '🎥 Watch Video: python -m venv, pip install, requirements.txt, Custom Modules',
+    whatToLearn: {
+      summary: 'Manage Python dependencies. Create virtual environments (`venv`), install packages via `pip`, generate `requirements.txt`, and import custom module files.',
+      details: [
+        '🎥 Watch Video: python -m venv, pip install, requirements.txt, Custom Modules',
+        'Create isolated virtual environments using `python -m venv .venv`.',
+        'Activate environment and install packages via `pip install <package>`.',
+        'Export project dependencies using `pip freeze > requirements.txt`.',
+        'Import functions from custom Python module files (`from helper import my_func`).'
+      ],
+      codeExample: `# helpers.py
+def get_app_name():
+    return "DevQuik Python App"
+
+# main.py
+from helpers import get_app_name
+print(f"Loaded module: {get_app_name()}")`
+    },
+    mcqQuestions: [
+      {
+        question: "What command creates a virtual environment named env in Python?",
+        options: ["pip create env", "python -m venv env", "virtualenv make env", "python install env"],
+        answerIndex: 1,
+        explanation: "`python -m venv env` creates an isolated virtual environment."
+      },
+      {
+        question: "Which command exports all installed packages in the current environment to a file?",
+        options: ["pip list > requirements.txt", "pip freeze > requirements.txt", "pip save requirements.txt", "python export requirements.txt"],
+        answerIndex: 1,
+        explanation: "`pip freeze > requirements.txt` dumps all installed package specifiers."
+      },
+      {
+        question: "How do you import a function calculate from a custom file helpers.py?",
+        options: ["import calculate from helpers", "from helpers import calculate", "require('helpers').calculate", "use helpers.calculate"],
+        answerIndex: 1,
+        explanation: "Python imports symbols using `from module import symbol` syntax."
+      }
+    ],
+    terminalChallenges: [
+      {
+        id: 1,
+        title: "Challenge 1: Virtual Environment Command Assertion",
+        prompt: "Print virtualenv creation command `python -m venv .venv`. Print `Venv Command Asserted!`.",
+        starterCode: `cmd = 'python -m venv .venv'
+print(f'Cmd: {cmd}. Venv Command Asserted!')`,
+        expectedKeyword: "Venv Command Asserted!"
+      },
+      {
+        id: 2,
+        title: "Challenge 2: Pip Freeze Requirements Export",
+        prompt: "Simulate requirements.txt content 'requests==2.31.0'. Print `Pip Freeze Asserted!`.",
+        starterCode: `reqs = 'requests==2.31.0'
+print(f'Reqs: {reqs}. Pip Freeze Asserted!')`,
+        expectedKeyword: "Pip Freeze Asserted!"
+      },
+      {
+        id: 3,
+        title: "Challenge 3: Custom Module Import Simulation",
+        prompt: "Simulate `from helpers import calc`. Print `Custom Module Import Asserted!`.",
+        starterCode: `def calc(a, b): return a + b
+print(f'Calc: {calc(2, 3)}. Custom Module Import Asserted!')`,
+        expectedKeyword: "Custom Module Import Asserted!"
+      },
+      {
+        id: 4,
+        title: "Challenge 4: Package Requirement Installation Assertion",
+        prompt: "Simulate installing pip package `pip install requests`. Print `Pip Install Asserted!`.",
+        starterCode: `pkg = 'requests'
+print(f'Installed {pkg}. Pip Install Asserted!')`,
+        expectedKeyword: "Pip Install Asserted!"
+      },
+      {
+        id: 5,
+        title: "Challenge 5: Main Entry Point Assertion",
+        prompt: "Check `if __name__ == '__main__':`. Print `Main Guard Asserted!`.",
+        starterCode: `name = '__main__'
+if name == '__main__': print('Executing Main. Main Guard Asserted!')`,
+        expectedKeyword: "Main Guard Asserted!"
+      }
+    ],
+    tasks: [
+      { id: 'py13_t1', text: 'Log Daily GitHub Push', completed: false },
+      { id: 'py13_t2', text: '🎥 Watch Video: python -m venv, pip install, requirements.txt, Custom Modules', completed: false },
+      { id: 'py13_t3', text: '✍️ Task: Create and activate a virtual environment (.venv)', completed: false },
+      { id: 'py13_t4', text: '✍️ Task: Generate a requirements.txt file using pip freeze', completed: false },
+      { id: 'py13_t5', text: '🚀 Mini Project: Persistent Notes Manager with File Storage and Package Imports', completed: false }
+    ],
+    starterCode: `cmd = 'python -m venv .venv'
+print(f'Cmd: {cmd}. Venv Command Asserted!')`,
+    expectedKeyword: "Venv Command Asserted!"
+  },
+  {
+    day: 14,
+    title: 'Day 14 – Portfolio Project Sprint (Pure Coding)',
+    unit: 'Unit 14: 5 Standalone Python Portfolio Capstones',
+    topic: 'Build 5 standalone Python projects from scratch',
+    playlistUrl: 'https://youtube.com/playlist?list=PLsyeobzWjNWXcZauLub5oks68m81xFd4e',
+    videoBreakdown: '🚀 Build 5 Standalone Python Portfolio Projects from scratch.',
+    whatToLearn: {
+      summary: 'Build 5 complete standalone Python projects: Interactive To-Do List CLI, Calculator with History, Weather CLI App using REST API, Expense Tracker with JSON, and Quiz Game App.',
+      details: [
+        '🚀 Build Project 1: Interactive To-Do List CLI with File Storage',
+        '🚀 Build Project 2: Command-Line Calculator with History',
+        '🚀 Build Project 3: Live Weather CLI App using API',
+        '🚀 Build Project 4: Expense Tracker with JSON Persistence',
+        '🚀 Build Project 5: Quiz Game App with Score History'
+      ],
+      codeExample: `projects = [
+    "Interactive To-Do List CLI",
+    "Command-Line Calculator",
+    "Live Weather CLI App",
+    "Expense Tracker with JSON",
+    "Quiz Game App"
+]
+for i, p in enumerate(projects, 1):
+    print(f"Project {i}: {p} Completed!")`
+    },
+    mcqQuestions: [
+      {
+        question: "Which Python execution structure ensures a script runs directly and NOT when imported as a module?",
+        options: ["if __name__ == '__main__':", "if module == 'main':", "def main():", "if __file__ == '__main__':"],
+        answerIndex: 0,
+        explanation: "if __name__ == '__main__': evaluates to True only when the script is executed directly."
+      }
+    ],
+    terminalChallenges: [
+      {
+        id: 1,
+        title: "Challenge 1: Interactive To-Do List CLI Project Assertion",
+        prompt: "Assert project 1 object and print `Project 1 To-Do Validated!`.",
+        starterCode: `p1 = {'title': 'Interactive To-Do List CLI'}
+print('Project 1 To-Do Validated!')`,
+        expectedKeyword: "Project 1 To-Do Validated!"
+      },
+      {
+        id: 2,
+        title: "Challenge 2: Command-Line Calculator Project Assertion",
+        prompt: "Assert project 2 object and print `Project 2 Calculator Validated!`.",
+        starterCode: `p2 = {'title': 'Command-Line Calculator'}
+print('Project 2 Calculator Validated!')`,
+        expectedKeyword: "Project 2 Calculator Validated!"
+      },
+      {
+        id: 3,
+        title: "Challenge 3: Live Weather CLI App Project Assertion",
+        prompt: "Assert project 3 object and print `Project 3 Weather Validated!`.",
+        starterCode: `p3 = {'title': 'Live Weather CLI App'}
+print('Project 3 Weather Validated!')`,
+        expectedKeyword: "Project 3 Weather Validated!"
+      },
+      {
+        id: 4,
+        title: "Challenge 4: Expense Tracker JSON Project Assertion",
+        prompt: "Assert project 4 object and print `Project 4 Expense Validated!`.",
+        starterCode: `p4 = {'title': 'Expense Tracker JSON'}
+print('Project 4 Expense Validated!')`,
+        expectedKeyword: "Project 4 Expense Validated!"
+      },
+      {
+        id: 5,
+        title: "Challenge 5: Total Python Portfolio Projects Completed",
+        prompt: "Store 5 project titles in a list and print `Total Python Projects: 5`.",
+        starterCode: `projects = ['To-Do CLI', 'Calculator', 'Weather App', 'Expense Tracker', 'Quiz Game']
+print('All 14 Days Completed! Total Python Projects:', len(projects))`,
+        expectedKeyword: "Total Python Projects: 5"
+      }
+    ],
+    tasks: [
+      { id: 'py14_t1', text: 'Log Daily GitHub Push', completed: false },
+      { id: 'py14_t2', text: '🚀 Project 1: Interactive To-Do List CLI with File Storage', completed: false },
+      { id: 'py14_t3', text: '🚀 Project 2: Command-Line Calculator with History', completed: false },
+      { id: 'py14_t4', text: '🚀 Project 3: Live Weather CLI App using API', completed: false },
+      { id: 'py14_t5', text: '🚀 Project 4: Expense Tracker with JSON Persistence', completed: false },
+      { id: 'py14_t6', text: '🚀 Project 5: Quiz Game App with Score History', completed: false }
+    ],
+    starterCode: `projects = ['To-Do CLI', 'Calculator', 'Weather App', 'Expense Tracker', 'Quiz Game']
+print('All 14 Days Completed! Total Python Projects:', len(projects))`,
+    expectedKeyword: "Total Python Projects: 5"
   }
+]
+  }
+
 ];

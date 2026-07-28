@@ -142,7 +142,60 @@ export default function FrontendProjectsHub({ userCompletedDays = {}, onBackToRo
     }
   ];
 
-  const FULLSTACK_PROJECTS = [
+    const PYTHON_PROJECTS = [
+    {
+      id: 'py_1',
+      title: 'Interactive To-Do List CLI',
+      badge: 'Python',
+      badgeColor: 'bg-blue-100 text-blue-800 border-blue-200',
+      difficulty: 'Beginner',
+      icon: '🐍',
+      description: 'Command-line task manager featuring task creation, status updates, list view, and file storage persistence using open().',
+      skills: ['Python Lists & Dicts', 'File Handling with open()', 'Functions & Arguments', 'CLI User Input']
+    },
+    {
+      id: 'py_2',
+      title: 'Command-Line Calculator with History',
+      badge: 'Python',
+      badgeColor: 'bg-blue-100 text-blue-800 border-blue-200',
+      difficulty: 'Beginner',
+      icon: '🧮',
+      description: 'Modular arithmetic calculator supporting operation logs, history tracking, and error handling for division by zero.',
+      skills: ['Modular Functions', 'Try / Except Exception Handling', 'Control Flow Branching', 'Loops']
+    },
+    {
+      id: 'py_3',
+      title: 'Live Weather CLI App (REST API)',
+      badge: 'Python',
+      badgeColor: 'bg-blue-100 text-blue-800 border-blue-200',
+      difficulty: 'Intermediate',
+      icon: '🌤️',
+      description: 'Fetches real-time weather forecasts from public APIs using requests.get(), parses JSON responses, and formats terminal output.',
+      skills: ['requests HTTP Library', 'JSON Parsing', 'API Status Code Verification', 'Custom Exception Handling']
+    },
+    {
+      id: 'py_4',
+      title: 'Expense Tracker with JSON Persistence',
+      badge: 'Python',
+      badgeColor: 'bg-blue-100 text-blue-800 border-blue-200',
+      difficulty: 'Intermediate',
+      icon: '💳',
+      description: 'Personal expense tracking script calculating net totals, category totals, and saving records to persistent JSON files.',
+      skills: ['json Module', 'Dictionary Aggregation', 'List Comprehensions', 'File I/O Context Managers']
+    },
+    {
+      id: 'py_5',
+      title: 'Quiz Game App with Score History',
+      badge: 'Python',
+      badgeColor: 'bg-blue-100 text-blue-800 border-blue-200',
+      difficulty: 'Intermediate',
+      icon: '❓',
+      description: 'Interactive multiple-choice quiz engine with dynamic question arrays, automated scoring math, and score leaderboard storage.',
+      skills: ['OOP Class Architecture', 'Random Module Shuffler', 'Score Aggregation Math', 'Terminal Formatting']
+    }
+  ];
+
+const FULLSTACK_PROJECTS = [
     {
       id: 'fs_1',
       title: 'Live Weather App (Fetch REST API)',
@@ -216,7 +269,7 @@ export default function FrontendProjectsHub({ userCompletedDays = {}, onBackToRo
                 selectedCategory === 'all' ? 'bg-white text-slate-950 shadow-md' : 'bg-slate-800 text-slate-300 hover:text-white border border-slate-700'
               }`}
             >
-              All Projects (11)
+              All Projects (16)
             </button>
             <button
               onClick={() => setSelectedCategory('html_css')}
@@ -236,7 +289,16 @@ export default function FrontendProjectsHub({ userCompletedDays = {}, onBackToRo
               <Zap className="w-3.5 h-3.5 mr-1.5 text-amber-400" />
               JavaScript (4)
             </button>
-            <button
+                        <button
+              onClick={() => setSelectedCategory('python')}
+              className={`px-4 py-2 rounded-xl text-xs font-extrabold transition-all flex items-center ${
+                selectedCategory === 'python' ? 'bg-blue-600 text-white shadow-md' : 'bg-slate-800 text-blue-300 hover:text-white border border-slate-700'
+              }`}
+            >
+              <Terminal className="w-3.5 h-3.5 mr-1.5 text-blue-400" />
+              Python (5)
+            </button>
+<button
               onClick={() => setSelectedCategory('fullstack')}
               className={`px-4 py-2 rounded-xl text-xs font-extrabold transition-all flex items-center ${
                 selectedCategory === 'fullstack' ? 'bg-cyan-600 text-white shadow-md' : 'bg-slate-800 text-cyan-300 hover:text-white border border-slate-700'

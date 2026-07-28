@@ -34,7 +34,7 @@ const INITIAL_USER_STATE = {
   level: 1,
   streak: 1,
   hearts: 5,
-  enrolledTracks: ['html_css', 'javascript'],
+  enrolledTracks: ['html_css', 'javascript', 'python'],
   completedDays: {},
   lastActiveDate: new Date().toISOString().split('T')[0],
   unlockedBadges: ['badge_first_step']
@@ -152,9 +152,8 @@ export default function App() {
 
   const handleEnrollTrack = (trackId) => {
     setUserState(prev => {
-      const current = prev.enrolledTracks || ['html_css', 'javascript'];
+      const current = prev.enrolledTracks || ['html_css', 'javascript', 'python'];
       if (current.includes(trackId)) return prev;
-      if (current.length >= 2) return prev;
       return {
         ...prev,
         enrolledTracks: [...current, trackId]
