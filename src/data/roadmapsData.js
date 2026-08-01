@@ -130,144 +130,128 @@ export const ROADMAP_DATA = {
   ],
 
   // ========================================================
-  // ⚡ JAVASCRIPT ROADMAP (21 DAYS / 3 WEEKS)
+  // ⚡ JAVASCRIPT ROADMAP (14 DAYS)
+  // Wezlon Malayalam Playlists:
+  // Beginner (22 videos): PLPvjxHx5Kob2xn4eANiHRPSJmfqj3DMeo
+  // Advanced (25 videos): PLPvjxHx5Kob0lAdShlswHSHjfzL2UI-E1
   // ========================================================
   js: [
-    // WEEK 1: JS FUNDAMENTALS
+    // DAY 1 – Fundamentals Part 1 (Beginner Videos 1–4)
     {
       id: 'js-day-1',
       dayNumber: 1,
-      title: 'Day 1 – JavaScript Introduction',
-      summary: 'What is JS, how JS works, variables (let, const), and console.log().',
+      title: 'Day 1 – Setup, Variables & Template Literals',
+      summary: 'Setup VS Code, understand variables (var, let, const), primitive data types, arithmetic operators, and template literals.',
       xp: 100,
-      youtubeId: 'W6NZfCO5SIk',
-      youtubeTitle: 'JavaScript Basics - Variables & Console',
-      youtubeChannel: 'Programming with Mosh',
+      youtubeId: 'PLPvjxHx5Kob2xn4eANiHRPSJmfqj3DMeo',
+      youtubeTitle: 'JS Introduction, Variables & Template Literals – Videos 1–4',
+      youtubeChannel: 'Wezlon',
       miniChallengeName: 'Welcome Message Generator',
-      notes: `### 📌 Week 1 Day 1 Topics\n- What is JS?\n- Variables: let vs const\n- console.log()\n\n\`\`\`javascript\nlet name = "Cadet";\nconst age = 20;\nconsole.log(\`Welcome \${name}, Age: \${age}\`);\n\`\`\``,
-      tasks: ['Watch tutorial', 'Link JS to HTML', 'Create variables (let/const)', 'Print welcome message', 'Complete quiz'],
-      quiz: [{ question: 'Which keyword defines a constant variable that cannot be reassigned?', options: ['var', 'let', 'const', 'set'], correct: 2, explanation: 'const declares block-scoped constants.' }],
-      codingTask: { prompt: 'Declare a const variable named name and log it using console.log().', starterCode: 'const name = "Cadet";\nconsole.log(name);', expectedKeywords: ['const', 'console.log'] }
+      notes: `### 📌 Day 1 Topics (Beginner Playlist Videos 1–4)\n- **Video 1:** Introduction to JavaScript & VS Code Setup\n- **Video 2:** Variables (\`var\`, \`let\`, \`const\`) & Primitive Data Types\n- **Video 3:** Arithmetic & Assignment Operators\n- **Video 4:** Template Literals & String Interpolation\n\n\`\`\`javascript\nconst name = "Cadet";\nconst age = 20;\nconsole.log(\`Hello \${name}! You are \${age} years old.\`);\n\`\`\``,
+      tasks: ['Watch Videos 1–4 from the Beginner Playlist', 'Set up VS Code & run first JS file', 'Create variables using let and const', 'Use template literals in a greeting', 'Complete quiz'],
+      quiz: [{ question: 'Which keyword defines a variable that cannot be reassigned?', options: ['var', 'let', 'const', 'set'], correct: 2, explanation: 'const declares block-scoped constants that cannot be reassigned.' }],
+      codingTask: { prompt: 'Declare a const name variable and log a greeting using a template literal.', starterCode: 'const name = "Cadet";\nconst age = 20;\nconsole.log(`Hello ${name}! You are ${age} years old.`);', expectedKeywords: ['const', 'console.log', '`'] }
     },
+    // DAY 2 – Fundamentals Part 2 (Beginner Videos 5–8)
     {
       id: 'js-day-2',
       dayNumber: 2,
-      title: 'Day 2 – Data Types & Operators',
-      summary: 'String, Number, Boolean, Arithmetic & Comparison operators.',
+      title: 'Day 2 – Conditions & Logical Operators',
+      summary: 'Control program flow using if/else if/else, logical operators (&&, ||, !), switch case, and the ternary operator.',
       xp: 120,
-      youtubeId: 'hdI2bqOjy3c',
-      youtubeTitle: 'JavaScript Data Types & Operators',
-      youtubeChannel: 'FreeCodeCamp',
-      miniChallengeName: 'Age Calculator',
-      notes: `### 📌 Day 2 Topics\n- Data types: String, Number, Boolean\n- Arithmetic: +, -, *, /, %\n- Comparison: ===, !==, >, <`,
-      tasks: ['Watch tutorial', 'Build calculator using operators', 'Compare two numbers', 'Complete quiz'],
-      quiz: [{ question: 'Which operator checks strict equality of value and type?', options: ['==', '===', '=', '!='], correct: 1, explanation: '=== checks strict equality.' }],
-      codingTask: { prompt: 'Calculate birth year from age using arithmetic operator.', starterCode: 'const age = 25;\nconst currentYear = 2026;\nconst birthYear = currentYear - age;\nconsole.log(birthYear);', expectedKeywords: ['const', '-'] }
+      youtubeId: 'PLPvjxHx5Kob2xn4eANiHRPSJmfqj3DMeo',
+      youtubeTitle: 'Conditions, Switch & Ternary – Videos 5–8',
+      youtubeChannel: 'Wezlon',
+      miniChallengeName: 'Movie Ticket Eligibility Checker',
+      notes: `### 📌 Day 2 Topics (Beginner Playlist Videos 5–8)\n- **Video 5:** Conditional Statements (\`if\`, \`else if\`, \`else\`)\n- **Video 6:** Logical Operators (\`&&\`, \`||\`, \`!\`) & Truthy/Falsy values\n- **Video 7:** Switch Case Statements\n- **Video 8:** Ternary Operator & Control Flow Practice\n\n\`\`\`javascript\nconst age = 20;\nconst status = age >= 18 ? "Adult" : "Minor";\nconsole.log(status);\n\`\`\``,
+      tasks: ['Watch Videos 5–8 from the Beginner Playlist', 'Build a grade checker (A/B/C/F)', 'Voting eligibility with if/else', 'Use switch for day names', 'Complete quiz'],
+      quiz: [{ question: 'Which statement handles multiple cases based on a single expression value?', options: ['if', 'while', 'switch', 'for'], correct: 2, explanation: 'switch tests a value against multiple case clauses.' }],
+      codingTask: { prompt: 'Write an if/else to check if age >= 18 for voting eligibility.', starterCode: 'const age = 20;\nif (age >= 18) {\n  console.log("Eligible to vote");\n} else {\n  console.log("Not eligible");\n}', expectedKeywords: ['if', 'else', 'console.log'] }
     },
+    // DAY 3 – Fundamentals Part 3 (Beginner Videos 9–12)
     {
       id: 'js-day-3',
       dayNumber: 3,
-      title: 'Day 3 – Input & Output',
-      summary: 'User interactions with prompt(), alert(), and confirm().',
+      title: 'Day 3 – Loops (for, while, do while)',
+      summary: 'Iterate over data using for, while, and do-while loops with break and continue control.',
       xp: 130,
-      youtubeId: 'Ukg_U36yBUu',
-      youtubeTitle: 'JavaScript Prompt & Alert Masterclass',
-      youtubeChannel: 'Traversy Media',
-      miniChallengeName: 'Simple Greeting App',
-      notes: `### 📌 Day 3 Topics\n- prompt("Enter name")\n- alert("Hello!")\n- confirm("Are you sure?")`,
-      tasks: ['Watch tutorial', 'User greeting script', 'BMI calculator logic', 'Complete quiz'],
-      quiz: [{ question: 'Which function opens an interactive input box for user input?', options: ['alert()', 'prompt()', 'confirm()', 'print()'], correct: 1, explanation: 'prompt() opens an input dialog.' }],
-      codingTask: { prompt: 'Store user input from prompt() and display it with alert().', starterCode: 'const userName = prompt("Enter your name:");\nalert("Welcome " + userName);', expectedKeywords: ['prompt', 'alert'] }
+      youtubeId: 'PLPvjxHx5Kob2xn4eANiHRPSJmfqj3DMeo',
+      youtubeTitle: 'For, While & Loop Control – Videos 9–12',
+      youtubeChannel: 'Wezlon',
+      miniChallengeName: 'Multiplication Table Generator',
+      notes: `### 📌 Day 3 Topics (Beginner Playlist Videos 9–12)\n- **Video 9:** The \`for\` Loop Essentials\n- **Video 10:** \`while\` and \`do-while\` Loops\n- **Video 11:** Loop Control: \`break\` and \`continue\`\n- **Video 12:** Nested Loops & Iteration Exercises\n\n\`\`\`javascript\nfor (let i = 1; i <= 10; i++) {\n  console.log(i);\n}\n\`\`\``,
+      tasks: ['Watch Videos 9–12 from the Beginner Playlist', 'Print numbers 1–10 with for loop', 'Build multiplication table', 'Sum all numbers 1 to 100', 'Complete quiz'],
+      quiz: [{ question: 'Which loop runs at least once before checking the condition?', options: ['for', 'while', 'do...while', 'forEach'], correct: 2, explanation: 'do...while executes the code block first before evaluating the condition.' }],
+      codingTask: { prompt: 'Write a for loop that logs numbers 1 to 5.', starterCode: 'for (let i = 1; i <= 5; i++) {\n  console.log(i);\n}', expectedKeywords: ['for', 'let', 'i++'] }
     },
+    // DAY 4 – Functions (Beginner Videos 13–16)
     {
       id: 'js-day-4',
       dayNumber: 4,
-      title: 'Day 4 – Conditions (if, else, switch)',
-      summary: 'Control flow using if, else if, else, and switch statements.',
+      title: 'Day 4 – Functions & Arrow Functions',
+      summary: 'Build reusable logic with function declarations, parameters, return values, ES6 arrow functions, and scope.',
       xp: 140,
-      youtubeId: 'IsG4Xd6Lgvk',
-      youtubeTitle: 'JavaScript Conditional Statements',
-      youtubeChannel: 'Web Dev Simplified',
-      miniChallengeName: 'Movie Ticket Checker',
-      notes: `### 📌 Day 4 Topics\n- if (condition) { ... } else { ... }\n- switch (val) { case x: break; }`,
-      tasks: ['Watch tutorial', 'Grade checker logic', 'Voting eligibility script', 'Complete quiz'],
-      quiz: [{ question: 'Which statement handles multiple cases based on a single expression value?', options: ['if', 'while', 'switch', 'for'], correct: 2, explanation: 'switch tests values against multiple case clauses.' }],
-      codingTask: { prompt: 'Write an if/else condition checking if age >= 18 for voting.', starterCode: 'const age = 20;\nif (age >= 18) {\n  console.log("Eligible");\n} else {\n  console.log("Not Eligible");\n}', expectedKeywords: ['if', 'else'] }
+      youtubeId: 'PLPvjxHx5Kob2xn4eANiHRPSJmfqj3DMeo',
+      youtubeTitle: 'Functions, Arrow Functions & Scope – Videos 13–16',
+      youtubeChannel: 'Wezlon',
+      miniChallengeName: 'Area Calculator Functions',
+      notes: `### 📌 Day 4 Topics (Beginner Playlist Videos 13–16)\n- **Video 13:** Function Declarations & Invocation\n- **Video 14:** Function Parameters & Return Values\n- **Video 15:** ES6 Arrow Functions vs Standard Functions\n- **Video 16:** Local vs Global Scope in Functions\n\n\`\`\`javascript\nconst add = (a, b) => a + b;\nconsole.log(add(5, 3)); // 8\n\`\`\``,
+      tasks: ['Watch Videos 13–16 from the Beginner Playlist', 'Create a greet() function', 'Arrow function for area calculator', 'Understand scope differences', 'Complete quiz'],
+      quiz: [{ question: 'Which keyword outputs a value from inside a function back to the caller?', options: ['output', 'return', 'yield', 'export'], correct: 1, explanation: 'return specifies the value the function sends back to its caller.' }],
+      codingTask: { prompt: 'Define an arrow function add(a, b) that returns their sum and log the result.', starterCode: 'const add = (a, b) => a + b;\nconsole.log(add(5, 3));', expectedKeywords: ['=>', 'return', 'console.log'] }
     },
+    // DAY 5 – String Methods (Beginner Videos 17–20)
     {
       id: 'js-day-5',
       dayNumber: 5,
-      title: 'Day 5 – Loops (for, while, do while)',
-      summary: 'Iterate over data using for, while, and do-while loops.',
+      title: 'Day 5 – String Methods',
+      summary: 'Manipulate text using string methods: length, toUpperCase, slice, indexOf, includes, replace, split, and join.',
       xp: 150,
-      youtubeId: 's9wWFi67wEw',
-      youtubeTitle: 'JavaScript Loops Guide',
-      youtubeChannel: 'Programming with Mosh',
-      miniChallengeName: 'Number Guess Logic',
-      notes: `### 📌 Day 5 Topics\n- for (let i=0; i<10; i++)\n- while (condition)`,
-      tasks: ['Watch tutorial', 'Multiplication table script', 'Sum numbers 1 to 100', 'Complete quiz'],
-      quiz: [{ question: 'Which loop runs at least once before checking the condition?', options: ['for', 'while', 'do...while', 'forEach'], correct: 2, explanation: 'do...while executes the code block first before evaluating condition.' }],
-      codingTask: { prompt: 'Write a for loop logging numbers 1 to 5.', starterCode: 'for (let i = 1; i <= 5; i++) {\n  console.log(i);\n}', expectedKeywords: ['for', 'let', 'i++'] }
+      youtubeId: 'PLPvjxHx5Kob2xn4eANiHRPSJmfqj3DMeo',
+      youtubeTitle: 'String Properties & Methods – Videos 17–20',
+      youtubeChannel: 'Wezlon',
+      miniChallengeName: 'Username Formatter',
+      notes: `### 📌 Day 5 Topics (Beginner Playlist Videos 17–20)\n- **Video 17:** String Properties & Methods (\`length\`, \`toUpperCase\`, \`toLowerCase\`)\n- **Video 18:** Extracting Strings (\`slice\`, \`substring\`, \`trim\`)\n- **Video 19:** Searching & Replacing (\`indexOf\`, \`includes\`, \`replace\`)\n- **Video 20:** Converting Strings: \`split()\`, \`join()\`, and String Manipulation\n\n\`\`\`javascript\nconst name = "  cadet  ";\nconsole.log(name.trim().toUpperCase()); // "CADET"\n\`\`\``,
+      tasks: ['Watch Videos 17–20 from the Beginner Playlist', 'Build a username formatter', 'Check if email includes @', 'Split CSV string into array', 'Complete quiz'],
+      quiz: [{ question: 'Which string method removes leading and trailing whitespace?', options: ['trim()', 'strip()', 'slice()', 'replace()'], correct: 0, explanation: 'trim() removes whitespace from both ends of a string.' }],
+      codingTask: { prompt: 'Trim and uppercase a username string.', starterCode: 'const name = "  cadet  ";\nconsole.log(name.trim().toUpperCase());', expectedKeywords: ['trim', 'toUpperCase'] }
     },
+    // DAY 6 – Arrays Part 1 (Beginner Videos 21–22 + Advanced Videos 1–3)
     {
       id: 'js-day-6',
       dayNumber: 6,
-      title: 'Day 6 – Functions',
-      summary: 'Function declaration, parameters, arguments, and return statements.',
+      title: 'Day 6 – Arrays (Basics, Spread & Destructuring)',
+      summary: 'Work with ordered lists: indexing, push/pop, shift/unshift, splice/slice, array destructuring, and spread/rest operators.',
       xp: 170,
-      youtubeId: 'N8ap4k_1Q6c',
-      youtubeTitle: 'JavaScript Functions Masterclass',
-      youtubeChannel: 'Fireship',
-      miniChallengeName: 'Simple Calculator Functions',
-      notes: `### 📌 Day 6 Topics\n- function add(a, b) { return a + b; }\n- Calling functions`,
-      tasks: ['Watch tutorial', 'Area calculator function', 'Greeting function', 'Complete quiz'],
-      quiz: [{ question: 'Which keyword outputs a value from inside a function back to the caller?', options: ['output', 'return', 'yield', 'export'], correct: 1, explanation: 'return specifies the value returned by the function.' }],
-      codingTask: { prompt: 'Define a function add(a, b) that returns their sum.', starterCode: 'function add(a, b) {\n  return a + b;\n}\nconsole.log(add(5, 3));', expectedKeywords: ['function', 'return'] }
+      youtubeId: 'PLPvjxHx5Kob0lAdShlswHSHjfzL2UI-E1',
+      youtubeTitle: 'Arrays, Destructuring & Spread – Beginner 21–22 + Advanced 1–3',
+      youtubeChannel: 'Wezlon',
+      miniChallengeName: 'Shopping Cart Array',
+      notes: `### 📌 Day 6 Topics\n- **Beginner Video 21:** Introduction to Arrays & Indexing\n- **Beginner Video 22:** Mutating Arrays (\`push\`, \`pop\`, \`shift\`, \`unshift\`)\n- **Advanced Video 1:** Modern Array Slicing & Splicing (\`slice\`, \`splice\`)\n- **Advanced Video 2:** ES6 Array Destructuring\n- **Advanced Video 3:** Spread (\`...\`) & Rest Operators with Arrays\n\n\`\`\`javascript\nconst fruits = ["Apple", "Banana"];\nfruits.push("Cherry");\nconst [first, ...rest] = fruits;\nconsole.log(first, rest);\n\`\`\``,
+      tasks: ['Watch Beginner Videos 21–22 & Advanced Videos 1–3', 'Build a shopping cart array', 'Use destructuring to unpack values', 'Merge two arrays with spread operator', 'Complete quiz'],
+      quiz: [{ question: 'Which array method adds an item to the end of an array?', options: ['push()', 'pop()', 'shift()', 'unshift()'], correct: 0, explanation: 'push() appends items to the end of an array.' }],
+      codingTask: { prompt: 'Create an array, push a new item, and use destructuring to get the first item.', starterCode: 'const fruits = ["Apple", "Banana"];\nfruits.push("Cherry");\nconst [first, ...rest] = fruits;\nconsole.log(first, rest);', expectedKeywords: ['push', 'const', '...'] }
     },
+    // DAY 7 – Array Higher-Order Methods (Advanced Videos 4–7)
     {
       id: 'js-day-7',
       dayNumber: 7,
-      title: 'Day 7 – Revision & Week 1 Project',
-      summary: 'Review Week 1 fundamentals & build the Interactive Calculator Capstone.',
-      xp: 700,
-      youtubeId: 'dfhmTyRT36U',
-      youtubeTitle: 'Build an Interactive Calculator JS Project',
-      youtubeChannel: 'FreeCodeCamp',
-      miniChallengeName: 'Interactive Calculator (Week 1 Project)',
-      notes: `### 🎯 Week 1 Capstone Project: Interactive Calculator\n- Features: Number buttons (+, -, ×, ÷), Clear button, Result display.\n- Reward: ⭐ 700 XP + 🏆 JavaScript Beginner Badge`,
-      tasks: ['Review Week 1 lessons', 'Solve 10 JS challenges', 'Build Interactive Calculator', 'Complete quiz'],
-      quiz: [{ question: 'What badge is unlocked upon completing JS Week 1 Capstone?', options: ['JS Beginner', 'JS Ninja'], correct: 0, explanation: 'Unlocks JavaScript Beginner Badge 🏆.' }],
-      codingTask: { prompt: 'Write a calculate function taking operation, num1, num2.', starterCode: 'function calculate(op, a, b) {\n  if (op === "+") return a + b;\n  return 0;\n}', expectedKeywords: ['function', 'if', 'return'] }
+      title: 'Day 7 – Array Methods (map, filter, reduce, sort)',
+      summary: 'Transform data with higher-order array methods: forEach, map, filter, find, reduce, some, every, and sort.',
+      xp: 200,
+      youtubeId: 'PLPvjxHx5Kob0lAdShlswHSHjfzL2UI-E1',
+      youtubeTitle: 'Higher-Order Array Methods – Advanced Videos 4–7',
+      youtubeChannel: 'Wezlon',
+      miniChallengeName: 'Product Filter App',
+      notes: `### 📌 Day 7 Topics (Advanced Playlist Videos 4–7)\n- **Video 4:** Higher-Order Methods: \`forEach()\` & \`map()\`\n- **Video 5:** Filtering Data: \`filter()\` & \`find()\`\n- **Video 6:** Data Reduction: \`reduce()\` Deep Dive\n- **Video 7:** Utility Iterators: \`some()\`, \`every()\`, and \`sort()\`\n\n\`\`\`javascript\nconst nums = [5, 12, 18, 3];\nconst big = nums.filter(n => n > 10);\nconsole.log(big); // [12, 18]\n\`\`\``,
+      tasks: ['Watch Advanced Videos 4–7', 'Use map() to double all numbers in an array', 'Use filter() to find items above price threshold', 'Use reduce() to sum cart totals', 'Complete quiz'],
+      quiz: [{ question: 'Which array method returns a NEW array of transformed items without modifying the original?', options: ['forEach()', 'map()', 'filter()', 'reduce()'], correct: 1, explanation: 'map() creates a new array with each item passed through the callback.' }],
+      codingTask: { prompt: 'Use filter() to get numbers greater than 10 from an array.', starterCode: 'const nums = [5, 12, 18, 3];\nconst big = nums.filter(n => n > 10);\nconsole.log(big);', expectedKeywords: ['filter', '=>'] }
     },
-
-    // WEEK 2: DOM MASTERY
+    // DAY 8 – Objects (Advanced Videos 8–11)
     {
       id: 'js-day-8',
       dayNumber: 8,
-      title: 'Day 8 – DOM Basics',
-      summary: 'Understand the document object, getElementById, and querySelector.',
-      xp: 100,
-      youtubeId: 'y17RuWkWdn8',
-      youtubeTitle: 'JavaScript DOM Manipulation Basics',
-      youtubeChannel: 'Traversy Media',
-      miniChallengeName: 'DOM Element Selector',
-      notes: `### 📌 Day 8 Topics\n- document.getElementById("title")\n- document.querySelector(".btn")`,
-      tasks: ['Watch tutorial', 'Select HTML elements in JS', 'Change heading text dynamically'],
-      quiz: [{ question: 'Which method selects the first element matching a CSS selector?', options: ['querySelector', 'getElementById'], correct: 0, explanation: 'querySelector selects by CSS selector string.' }],
-      codingTask: { prompt: 'Select an element by ID "heading" using document.getElementById.', starterCode: 'const el = document.getElementById("heading");', expectedKeywords: ['document.getElementById'] }
-    },
-    { id: 'js-day-9', dayNumber: 9, title: 'Day 9 – DOM Manipulation', summary: 'innerHTML, textContent, style, and classList manipulation.', xp: 120, youtubeId: '5fb2aPlgoys', youtubeTitle: 'DOM Manipulation Techniques', youtubeChannel: 'Web Dev Simplified', miniChallengeName: 'Dynamic Style Switcher', notes: `innerHTML & textContent`, tasks: ['Change colors dynamically', 'Create dynamic headings'], quiz: [{ question: 'Which property sets raw text without HTML parsing?', options: ['textContent', 'innerHTML'], correct: 0, explanation: 'textContent updates plain text safely.' }], codingTask: { prompt: 'Change textContent of element.', starterCode: 'el.textContent = "Updated Text";', expectedKeywords: ['textContent'] } },
-    { id: 'js-day-10', dayNumber: 10, title: 'Day 10 – Events (click, input, submit)', summary: 'addEventListener for click events, text input listeners, and form submissions.', xp: 130, youtubeId: 'XF1g3NxvVVA', youtubeTitle: 'JavaScript Event Listeners', youtubeChannel: 'Dev Ed', miniChallengeName: 'Live Typing Counter', notes: `addEventListener`, tasks: ['Handle button clicks', 'Live typing preview'], quiz: [{ question: 'Which method registers an event handler on a DOM element?', options: ['addEventListener', 'attachEvent'], correct: 0, explanation: 'addEventListener attaches event listeners.' }], codingTask: { prompt: 'Add click event listener to a button.', starterCode: 'btn.addEventListener("click", () => alert("Clicked!"));', expectedKeywords: ['addEventListener', 'click'] } },
-    { id: 'js-day-11', dayNumber: 11, title: 'Day 11 – Arrays', summary: 'Creating arrays, push(), pop(), shift(), unshift(), and length property.', xp: 140, youtubeId: 'oigfaZ5A4ac', youtubeTitle: 'JavaScript Arrays Masterclass', youtubeChannel: 'Programming with Mosh', miniChallengeName: 'Shopping Cart Array', notes: `Arrays & Methods`, tasks: ['Manage student list', 'Add items to shopping cart array'], quiz: [{ question: 'Which array method adds an item to the end of an array?', options: ['push()', 'pop()'], correct: 0, explanation: 'push() appends items to the end.' }], codingTask: { prompt: 'Create an array of items and push a new item.', starterCode: 'const items = ["Apple"];\nitems.push("Banana");', expectedKeywords: ['const', 'push'] } },
-    { id: 'js-day-12', dayNumber: 12, title: 'Day 12 – Objects', summary: 'JavaScript Objects, key-value pairs, nested objects, and object methods.', xp: 150, youtubeId: 'BRr5Xb7gAak', youtubeTitle: 'JavaScript Objects Tutorial', youtubeChannel: 'Fireship', miniChallengeName: 'Student Profile Object', notes: `Objects & Properties`, tasks: ['Build student object', 'Build car object with methods'], quiz: [{ question: 'How do you access the age property of student object?', options: ['student.age', 'student[age]'], correct: 0, explanation: 'Dot notation accesses object properties.' }], codingTask: { prompt: 'Define a user object with name and age properties.', starterCode: 'const user = { name: "Cadet", age: 20 };\nconsole.log(user.name);', expectedKeywords: ['const', '{', '}'] } },
-    { id: 'js-day-13', dayNumber: 13, title: 'Day 13 – Array Methods (map, filter, find, forEach)', summary: 'High-order array methods: map, filter, find, and forEach.', xp: 170, youtubeId: 'g1C40tDP0Bk', youtubeTitle: 'JavaScript Array Methods (map, filter, find)', youtubeChannel: 'Traversy Media', miniChallengeName: 'Product Filter App', notes: `map, filter & find`, tasks: ['Filter product catalog by price', 'Map student marks to grades'], quiz: [{ question: 'Which array method returns a new array with items passing a test condition?', options: ['filter()', 'map()'], correct: 0, explanation: 'filter() creates a new array passing the callback test.' }], codingTask: { prompt: 'Use filter() to get numbers greater than 10.', starterCode: 'const nums = [5, 12, 18];\nconst filtered = nums.filter(n => n > 10);', expectedKeywords: ['filter'] } },
-    { id: 'js-day-14', dayNumber: 14, title: 'Day 14 – Revision & Week 2 Project', summary: 'Review DOM & Arrays, and build the Digital To-Do App Capstone.', xp: 800, youtubeId: 'Ttf3CEsEwMQ', youtubeTitle: 'Build a Digital Todo App in Vanilla JS', youtubeChannel: 'FreeCodeCamp', miniChallengeName: 'Digital To-Do App (Week 2 Project)', notes: `### 🎯 Week 2 Capstone Project: Digital To-Do App\n- Features: Add task, Delete task, Mark complete, Task counter.\n- Reward: ⭐ 800 XP`, tasks: ['Review DOM & Array methods', 'Finish Digital Todo App', 'Complete Week 2 quiz'], quiz: [{ question: 'Which method removes an element from the DOM?', options: ['remove()', 'delete()'], correct: 0, explanation: 'remove() deletes the node from the DOM tree.' }], codingTask: { prompt: 'Create task item and append to list.', starterCode: 'const li = document.createElement("li");\nli.textContent = "New Task";', expectedKeywords: ['createElement', 'textContent'] } },
-
-    // WEEK 3: MODERN JAVASCRIPT & ASYNC
-    { id: 'js-day-15', dayNumber: 15, title: 'Day 15 – ES6 (Arrow Functions, Template Literals)', summary: 'Arrow functions, template literals, destructuring, and spread operator.', xp: 100, youtubeId: 'NCwa_xi0Uuc', youtubeTitle: 'Modern ES6 JavaScript Features', youtubeChannel: 'Web Dev Simplified', miniChallengeName: 'ES6 Code Refactor', notes: `ES6 Syntax`, tasks: ['Convert traditional functions to arrow functions', 'Use template literals'], quiz: [{ question: 'Which syntax defines an arrow function?', options: ['() => {}', 'function() {}'], correct: 0, explanation: '() => {} is arrow function syntax.' }], codingTask: { prompt: 'Convert function to arrow function.', starterCode: 'const add = (a, b) => a + b;', expectedKeywords: ['=>'] } },
-    { id: 'js-day-16', dayNumber: 16, title: 'Day 16 – Async JavaScript (Promises & Async/Await)', summary: 'Synchronous vs Asynchronous execution, Callbacks, Promises, and async/await.', xp: 120, youtubeId: 'V_Kr9OSfDeU', youtubeTitle: 'Async Await & Promises Explained', youtubeChannel: 'Fireship', miniChallengeName: 'Fake API Simulator', notes: `Promises & Async Await`, tasks: ['Simulate fake server call', 'Handle resolved promise'], quiz: [{ question: 'Which keyword pauses execution inside an async function until a Promise resolves?', options: ['await', 'pause'], correct: 0, explanation: 'await pauses until promise settles.' }], codingTask: { prompt: 'Define an async function using async and await.', starterCode: 'async font() {\n  await new Promise(r => setTimeout(r, 100));\n}', expectedKeywords: ['async', 'await'] } },
-    { id: 'js-day-17', dayNumber: 17, title: 'Day 17 – Fetch API & JSON', summary: 'Fetch data from REST APIs using fetch() and parse JSON responses.', xp: 130, youtubeId: 'cuEtnrL9-H0', youtubeTitle: 'Fetch API & JSON Tutorial', youtubeChannel: 'Traversy Media', miniChallengeName: 'User Data Fetcher', notes: `fetch() & JSON`, tasks: ['Fetch user data from API', 'Render fetched users in DOM'], quiz: [{ question: 'Which method parses a fetch Response body as a JSON object?', options: ['response.json()', 'JSON.parse()'], correct: 0, explanation: 'response.json() returns a promise parsing JSON body.' }], codingTask: { prompt: 'Fetch data using fetch() and call .json().', starterCode: 'fetch("https://jsonplaceholder.typicode.com/todos/1")\n  .then(res => res.json());', expectedKeywords: ['fetch', '.json'] } },
-    { id: 'js-day-18', dayNumber: 18, title: 'Day 18 – Local Storage', summary: 'Persist data across browser sessions with localStorage.setItem and getItem.', xp: 140, youtubeId: 'AUOzvFzdIk4', youtubeTitle: 'JavaScript Local Storage Guide', youtubeChannel: 'Dev Ed', miniChallengeName: 'Dark Mode Preference Saver', notes: `localStorage`, tasks: ['Save username to localStorage', 'Save dark mode preference'], quiz: [{ question: 'Which method saves a key-value pair in browser LocalStorage?', options: ['localStorage.setItem()', 'localStorage.save()'], correct: 0, explanation: 'setItem(key, value) saves data in LocalStorage.' }], codingTask: { prompt: 'Save theme preference to localStorage.', starterCode: 'localStorage.setItem("theme", "dark");', expectedKeywords: ['localStorage.setItem'] } },
     { id: 'js-day-19', dayNumber: 19, title: 'Day 19 – Error Handling (try, catch, finally)', summary: 'Handle runtime exceptions gracefully using try, catch, and finally blocks.', xp: 150, youtubeId: 'cFTFtuEQ-10', youtubeTitle: 'JavaScript Error Handling', youtubeChannel: 'Web Dev Simplified', miniChallengeName: 'API Error Shield', notes: `try / catch / finally`, tasks: ['Handle API fetch errors', 'Display error alert to user'], quiz: [{ question: 'Which block catches errors thrown inside a try block?', options: ['catch', 'except'], correct: 0, explanation: 'catch block handles exceptions.' }], codingTask: { prompt: 'Wrap code inside a try/catch block.', starterCode: 'try {\n  // Code\n} catch (err) {\n  console.error(err);\n}', expectedKeywords: ['try', 'catch'] } },
     { id: 'js-day-20', dayNumber: 20, title: 'Day 20 – Mini Review', summary: 'Review ES6 features, Fetch API, Local Storage, and Error Handling.', xp: 170, youtubeId: 'W6NZfCO5SIk', youtubeTitle: 'JS Master Review', youtubeChannel: 'FreeCodeCamp', miniChallengeName: 'Weather App Integration Review', notes: `Comprehensive Review`, tasks: ['Review ES6 & Async', 'Review Local Storage & Errors'], quiz: [{ question: 'Which format is standard for API data exchange?', options: ['JSON', 'XML'], correct: 0, explanation: 'JSON is standard for modern APIs.' }], codingTask: { prompt: 'Combine fetch and async/await inside try/catch.', starterCode: 'async function getData() {\n  try {\n    const res = await fetch("api");\n  } catch(e) {}\n}', expectedKeywords: ['async', 'fetch', 'try'] } },
     {
