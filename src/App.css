@@ -1217,6 +1217,257 @@ body {
   border-radius: 8px;
 }
 
+
+/* --- CERTIFICATE MODAL STYLES --- */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(11, 28, 48, 0.7);
+  backdrop-filter: blur(8px);
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.cert-modal-card {
+  width: 100%;
+  max-width: 800px;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  animation: modalSlideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cert-header-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 4px;
+}
+
+.cert-header-actions .btn-primary-sm {
+  background: #f59e0b;
+  color: #fff;
+  font-weight: 800;
+  border-radius: 12px;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.2);
+  transition: all 0.2s;
+  cursor: pointer;
+  border: none;
+}
+.cert-header-actions .btn-primary-sm:hover {
+  transform: scale(1.03);
+  background: #d97706;
+}
+
+.cert-header-actions .modal-close-btn {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.cert-header-actions .modal-close-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.05);
+}
+
+.certificate-paper-frame {
+  background: #fdfbf7;
+  border: 20px solid #ffffff;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
+  padding: 8px;
+  position: relative;
+  font-family: 'Inter', sans-serif;
+  color: #1e293b;
+}
+
+.cert-inner-border {
+  border: 2px solid #b45309;
+  border-radius: 4px;
+  padding: 40px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 460px;
+}
+
+.cert-watermark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-12deg);
+  font-size: 8rem;
+  font-weight: 900;
+  color: rgba(180, 83, 9, 0.03);
+  letter-spacing: 12px;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+}
+
+.cert-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  z-index: 10;
+}
+
+.cert-logo-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cert-logo-box .cert-brand {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 800;
+  font-size: 1.25rem;
+  color: #0f172a;
+}
+
+.cert-logo-box .highlight-ml {
+  color: #6366f1;
+}
+
+.cert-verify-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  background: #ecfdf5;
+  border: 1px solid #a7f3d0;
+  color: #047857;
+  font-size: 10px;
+  font-weight: 800;
+  border-radius: 20px;
+  margin-left: auto;
+}
+
+.cert-body {
+  text-align: center;
+  z-index: 10;
+}
+
+.cert-main-title {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: #0f172a;
+  margin: 0 0 8px 0;
+}
+
+.cert-subtitle {
+  font-size: 0.85rem;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin: 0 0 16px 0;
+}
+
+.cert-recipient-name {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 2.25rem;
+  font-weight: 900;
+  color: #1e1b4b;
+  margin: 0 0 16px 0;
+  text-decoration: underline;
+  text-decoration-color: #f59e0b;
+  text-underline-offset: 8px;
+}
+
+.cert-text {
+  font-size: 0.95rem;
+  color: #475569;
+  line-height: 1.6;
+  max-width: 520px;
+  margin: 0 auto 16px auto;
+}
+
+.cert-course-name {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #b45309;
+  margin: 0 auto 32px auto;
+}
+
+.cert-meta-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 12px;
+  border-top: 1px dashed rgba(180, 83, 9, 0.2);
+  padding-top: 24px;
+}
+
+.meta-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  flex: 1;
+}
+
+.meta-label {
+  font-size: 0.75rem;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.meta-val {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.meta-seal-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  flex: 1;
+  position: relative;
+}
+
+.seal-text {
+  font-size: 9px;
+  font-weight: 800;
+  color: #d97706;
+  letter-spacing: 0.5px;
+}
+
+.cert-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.75rem;
+  color: #94a3b8;
+  margin-top: 24px;
+  z-index: 10;
+}
+
 @media print {
   body * {
     visibility: hidden;
