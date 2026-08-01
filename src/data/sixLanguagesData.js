@@ -3,8 +3,8 @@
 
 export const YOUTUBE_PLAYLISTS = {
   htmlCssFullCourse: 'https://youtu.be/lI3iZ5xMII8?si=YooxAAxXII1ufqRX',
-  jsBeginner: 'https://youtube.com/playlist?list=PLPvjxHx5Kob2xn4eANiHRPSJmfqj3DMeo',
-  jsAdvanced: 'https://youtube.com/playlist?list=PLPvjxHx5Kob0lAdShlswHSHjfzL2UI-E1'
+  jsBeginner: 'https://www.youtube.com/playlist?list=PLPvjxHx5Kob2xn4eANiHRPSJmfqj3DMeo',
+  jsAdvanced: 'https://www.youtube.com/playlist?list=PLPvjxHx5Kob0lAdShlswHSHjfzL2UI-E1'
 };
 
 export const SIX_LANGUAGES = [
