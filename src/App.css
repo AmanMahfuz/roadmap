@@ -1216,3 +1216,32 @@ body {
   font-weight: 700;
   border-radius: 8px;
 }
+
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #printable-certificate, #printable-certificate * {
+    visibility: visible;
+  }
+  #printable-certificate {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    margin: 0;
+    padding: 20px;
+    border: none;
+    box-shadow: none;
+  }
+  .modal-backdrop, .cert-modal-card {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+}
