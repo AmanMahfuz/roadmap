@@ -125,14 +125,14 @@ export default function DayDetailModal({
 
               <div className="video-details-box">
                 <div className="yt-meta-row">
-                  <span className="yt-channel-badge">📺 {day.youtubeChannel}</span>
+                  <span className="yt-channel-badge">📺 Tutorial Video</span>
                   <a 
                     href={`https://www.youtube.com/watch?v=${day.youtubeId}`} 
                     target="_blank" 
                     rel="noreferrer" 
                     className="yt-external-link"
                   >
-                    യൂട്യൂബിൽ കാണുക <ExternalLink size={14} />
+                    Watch on YouTube <ExternalLink size={14} />
                   </a>
                 </div>
                 <h3>{day.youtubeTitle}</h3>

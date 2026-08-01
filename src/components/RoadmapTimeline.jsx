@@ -128,7 +128,7 @@ export default function RoadmapTimeline({
                 <div className="card-footer">
                   <div className="yt-channel-tag">
                     <BookOpen size={14} />
-                    <span>{day.youtubeChannel}</span>
+                    <span>Tutorial</span>
                   </div>
 
                   <div className="action-link">

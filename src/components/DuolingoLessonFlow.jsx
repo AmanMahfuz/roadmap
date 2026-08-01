@@ -252,7 +252,7 @@ export default function DuolingoLessonFlow({
                     ></iframe>
                   </div>
                   <div className="text-[11px] font-mono text-slate-400 flex flex-wrap justify-between items-center p-2 bg-slate-950 border border-slate-800 rounded-lg gap-2">
-                    <span className="text-purple-400 font-bold truncate">Channel: {activeVideo.channel}</span>
+                    <span className="text-purple-400 font-bold truncate">📺 Video Lesson</span>
                     {activeVideo.startTime && (
                       <span className="px-2 py-0.5 bg-purple-500/10 text-purple-300 border border-purple-500/30 rounded font-bold">
                         ⏱ Chapter: {activeVideo.startTime} ➔ {activeVideo.endTime}
