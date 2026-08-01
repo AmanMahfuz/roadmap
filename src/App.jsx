@@ -34,7 +34,7 @@ const INITIAL_USER_STATE = {
   level: 1,
   streak: 1,
   hearts: 5,
-  enrolledTracks: ['html_css', 'javascript', 'python'],
+  enrolledTracks: ['html_css', 'javascript'],
   completedDays: {},
   lastActiveDate: new Date().toISOString().split('T')[0],
   unlockedBadges: ['badge_first_step']
@@ -93,9 +93,11 @@ export default function App() {
           xp: loadedXp,
           level: loadedLevel,
           streak: dbData.streak || prev.streak,
-          hearts: dbData.hearts || prev.hearts || 5,
+          hearts: dbData.hearts !== undefined ? dbData.hearts : (prev.hearts || 5),
           enrolledTracks: dbData.enrolled_tracks || prev.enrolledTracks || ['html_css', 'javascript'],
-          completedDays: dbData.completed_days || prev.completedDays
+          completedDays: dbData.completed_days || prev.completedDays,
+          unlockedBadges: dbData.unlocked_badges || prev.unlockedBadges || ['badge_first_step'],
+          lastActiveDate: dbData.last_active_date || prev.lastActiveDate
         };
       });
     }
@@ -128,6 +130,10 @@ export default function App() {
       }
     }
   }, []);
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }, [currentPage, activeLanguageId, selectedDayObj]);
 
   const handleAuthSuccess = (user) => {
     setCurrentUser(user);
@@ -317,7 +323,11 @@ export default function App() {
         onSignOut={handleSignOut}
       />
 
-      <main className="app-main-content flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 pt-4 pb-24 md:pb-8">
+      <main className={`app-main-content flex-1 w-full pb-24 md:pb-8 ${
+        currentPage === 'playground' 
+          ? 'max-w-none px-0 pt-0' 
+          : 'max-w-7xl mx-auto px-4 sm:px-6 pt-4'
+      }`}>
         {currentPage === 'languages' && (
           <LanguageSelector
             activeLanguageId={activeLanguageId}

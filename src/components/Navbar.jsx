@@ -61,7 +61,7 @@ export default function Navbar({
             
             <button 
               onClick={() => onSelectView('languages')}
-              className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center space-x-1.5 ${
+              className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center space-x-1.5 whitespace-nowrap ${
                 activeView === 'languages' 
                   ? 'bg-white text-orange-600 shadow-xs border border-slate-200' 
                   : 'text-slate-600 hover:text-slate-900 hover:bg-white/60'
@@ -71,10 +71,10 @@ export default function Navbar({
               <span>Tracks</span>
             </button>
 
-            {activeLanguage && (
+            {activeLanguage && userState?.enrolledTracks?.includes(activeLanguage.id) && (
               <button 
                 onClick={() => onSelectView('roadmap')}
-                className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center space-x-1.5 ${
+                className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center space-x-1.5 whitespace-nowrap ${
                   activeView === 'roadmap' 
                     ? 'bg-white text-orange-600 shadow-xs border border-slate-200' 
                     : 'text-slate-600 hover:text-slate-900 hover:bg-white/60'
@@ -87,7 +87,7 @@ export default function Navbar({
 
             <button
               onClick={() => onSelectView('projects')}
-              className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center space-x-1.5 ${
+              className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center space-x-1.5 whitespace-nowrap ${
                 activeView === 'projects'
                   ? 'bg-indigo-600 text-white shadow-xs'
                   : 'text-slate-600 hover:text-slate-900 hover:bg-white/60'
@@ -98,22 +98,22 @@ export default function Navbar({
             </button>
 
             <button
-              onClick={() => onSelectView('analytics')}
-              className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center space-x-1.5 ${
-                activeView === 'analytics'
-                  ? 'bg-amber-500 text-white shadow-xs'
+              onClick={() => onSelectView('playground')}
+              className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center space-x-1.5 whitespace-nowrap ${
+                activeView === 'playground'
+                  ? 'bg-cyan-600 text-white shadow-xs'
                   : 'text-slate-600 hover:text-slate-900 hover:bg-white/60'
               }`}
             >
-              <BarChart3 className="w-3.5 h-3.5 text-amber-600" />
-              <span>Analytics & Heatmap</span>
+              <Terminal className="w-3.5 h-3.5 text-cyan-600" />
+              <span>Code Playground</span>
             </button>
 
             <div className="relative">
               <button
                 onClick={() => setToolsDropdownOpen(prev => !prev)}
-                className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center space-x-1 ${
-                  ['proof', 'playground', 'skilltree'].includes(activeView)
+                className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center space-x-1 whitespace-nowrap ${
+                  ['proof', 'analytics', 'skilltree'].includes(activeView)
                     ? 'bg-white text-emerald-700 shadow-xs border border-slate-200'
                     : 'text-slate-600 hover:text-slate-900 hover:bg-white/60'
                 }`}
@@ -136,11 +136,11 @@ export default function Navbar({
                   </button>
 
                   <button
-                    onClick={() => onSelectView('playground')}
+                    onClick={() => onSelectView('analytics')}
                     className="w-full px-3.5 py-2 text-left text-xs font-semibold text-slate-700 hover:bg-slate-50 flex items-center space-x-2"
                   >
-                    <Terminal className="w-4 h-4 text-cyan-600" />
-                    <span>Code Playground</span>
+                    <BarChart3 className="w-4 h-4 text-amber-500" />
+                    <span>Analytics & Heatmap</span>
                   </button>
 
                   <button

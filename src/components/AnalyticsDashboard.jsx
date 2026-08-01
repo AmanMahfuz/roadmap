@@ -29,16 +29,24 @@ export default function AnalyticsDashboard({ userState = {} }) {
   const completedKeys = Object.keys(completedDaysObj).filter(k => !!completedDaysObj[k]);
   const totalCompletedCount = completedKeys.length;
 
-  // Real Track Progress Calculations
-  const htmlCssCompletedCount = completedKeys.filter(k => k.startsWith('html_css_day_')).length;
-  const htmlCssTotal = 7;
-  const htmlCssPercent = Math.round((htmlCssCompletedCount / htmlCssTotal) * 100);
+  // Real Enrolled Tracks Calculations
+  const enrolledTrackObjects = (userState.enrolledTracks || []).map(trackId => {
+    const track = SIX_LANGUAGES.find(l => l.id === trackId);
+    if (!track) return null;
+    const totalDays = track.curriculum ? track.curriculum.length : 7;
+    const completedCount = completedKeys.filter(k => k.startsWith(trackId + '_day_')).length;
+    const percent = Math.round((completedCount / totalDays) * 100);
+    return {
+      ...track,
+      totalDays,
+      completedCount,
+      percent
+    };
+  }).filter(Boolean);
 
-  const jsCompletedCount = completedKeys.filter(k => k.startsWith('javascript_day_')).length;
-  const jsTotal = 14;
-  const jsPercent = Math.round((jsCompletedCount / jsTotal) * 100);
-
-  const overallPercent = Math.round((totalCompletedCount / (htmlCssTotal + jsTotal)) * 100);
+  const overallPercent = enrolledTrackObjects.length > 0 
+    ? Math.round(enrolledTrackObjects.reduce((acc, curr) => acc + curr.percent, 0) / enrolledTrackObjects.length)
+    : 0;
 
   // Weekly Goal Calculation based on Real Completed Days
   const weeklyGoalDays = 5;
@@ -123,25 +131,51 @@ export default function AnalyticsDashboard({ userState = {} }) {
 
       {/* 4 Real Metric Summary Cards */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-        <div className="bg-white border border-slate-200 p-5 rounded-3xl flex items-center space-x-3 shadow-xs">
-          <div className="w-11 h-11 rounded-2xl bg-orange-500 text-white flex items-center justify-center shrink-0 shadow-md shadow-orange-500/20">
-            <Globe className="w-5 h-5" />
+        {/* Dynamic Enrolled Track 1 */}
+        {enrolledTrackObjects[0] ? (
+          <div className="bg-white border border-slate-200 p-5 rounded-3xl flex items-center space-x-3 shadow-xs">
+            <div className="w-11 h-11 rounded-2xl text-white flex items-center justify-center shrink-0 shadow-md" style={{ backgroundColor: enrolledTrackObjects[0].color || '#f97316' }}>
+              <span className="text-xl">{enrolledTrackObjects[0].icon}</span>
+            </div>
+            <div>
+              <span className="text-[10px] text-slate-500 font-bold uppercase block">{enrolledTrackObjects[0].name} Path</span>
+              <span className="text-base font-extrabold text-slate-900">{enrolledTrackObjects[0].completedCount}/{enrolledTrackObjects[0].totalDays} Days ({enrolledTrackObjects[0].percent}%)</span>
+            </div>
           </div>
-          <div>
-            <span className="text-[10px] text-slate-500 font-bold uppercase block">HTML & CSS Track</span>
-            <span className="text-base font-extrabold text-slate-900">{htmlCssCompletedCount}/7 Days ({htmlCssPercent}%)</span>
+        ) : (
+          <div className="bg-slate-50 border border-dashed border-slate-200 p-5 rounded-3xl flex items-center space-x-3 shadow-xs">
+            <div className="w-11 h-11 rounded-2xl bg-slate-200 text-slate-400 flex items-center justify-center shrink-0">
+              <Globe className="w-5 h-5" />
+            </div>
+            <div>
+              <span className="text-[10px] text-slate-400 font-bold uppercase block">Slot 1 Empty</span>
+              <span className="text-xs font-semibold text-slate-400">Enroll in a path</span>
+            </div>
           </div>
-        </div>
+        )}
 
-        <div className="bg-white border border-slate-200 p-5 rounded-3xl flex items-center space-x-3 shadow-xs">
-          <div className="w-11 h-11 rounded-2xl bg-amber-500 text-white flex items-center justify-center shrink-0 shadow-md shadow-amber-500/20">
-            <Code2 className="w-5 h-5" />
+        {/* Dynamic Enrolled Track 2 */}
+        {enrolledTrackObjects[1] ? (
+          <div className="bg-white border border-slate-200 p-5 rounded-3xl flex items-center space-x-3 shadow-xs">
+            <div className="w-11 h-11 rounded-2xl text-white flex items-center justify-center shrink-0 shadow-md" style={{ backgroundColor: enrolledTrackObjects[1].color || '#3b82f6' }}>
+              <span className="text-xl">{enrolledTrackObjects[1].icon}</span>
+            </div>
+            <div>
+              <span className="text-[10px] text-slate-500 font-bold uppercase block">{enrolledTrackObjects[1].name} Path</span>
+              <span className="text-base font-extrabold text-slate-900">{enrolledTrackObjects[1].completedCount}/{enrolledTrackObjects[1].totalDays} Days ({enrolledTrackObjects[1].percent}%)</span>
+            </div>
           </div>
-          <div>
-            <span className="text-[10px] text-slate-500 font-bold uppercase block">JavaScript Track</span>
-            <span className="text-base font-extrabold text-slate-900">{jsCompletedCount}/14 Days ({jsPercent}%)</span>
+        ) : (
+          <div className="bg-slate-50 border border-dashed border-slate-200 p-5 rounded-3xl flex items-center space-x-3 shadow-xs">
+            <div className="w-11 h-11 rounded-2xl bg-slate-200 text-slate-400 flex items-center justify-center shrink-0">
+              <Code2 className="w-5 h-5" />
+            </div>
+            <div>
+              <span className="text-[10px] text-slate-400 font-bold uppercase block">Slot 2 Empty</span>
+              <span className="text-xs font-semibold text-slate-400">Enroll in a path</span>
+            </div>
           </div>
-        </div>
+        )}
 
         <div className="bg-white border border-slate-200 p-5 rounded-3xl flex items-center space-x-3 shadow-xs">
           <div className="w-11 h-11 rounded-2xl bg-rose-500 text-white flex items-center justify-center shrink-0 shadow-md shadow-rose-500/20">
@@ -275,29 +309,26 @@ export default function AnalyticsDashboard({ userState = {} }) {
         </h3>
 
         <div className="space-y-4">
-          <div>
-            <div className="flex items-center justify-between text-xs font-bold mb-1">
-              <span className="text-orange-600 flex items-center">
-                🌐 HTML & CSS Fundamentals Roadmap
-              </span>
-              <span>{htmlCssCompletedCount}/7 Days ({htmlCssPercent}%)</span>
-            </div>
-            <div className="w-full h-3.5 bg-slate-100 rounded-full overflow-hidden p-0.5">
-              <div className="h-full bg-gradient-to-r from-orange-500 to-amber-500 rounded-full transition-all duration-500" style={{ width: `${htmlCssPercent}%` }} />
-            </div>
-          </div>
-
-          <div>
-            <div className="flex items-center justify-between text-xs font-bold mb-1">
-              <span className="text-amber-600 flex items-center">
-                ⚡ 14-Day JavaScript Complete Roadmap
-              </span>
-              <span>{jsCompletedCount}/14 Days ({jsPercent}%)</span>
-            </div>
-            <div className="w-full h-3.5 bg-slate-100 rounded-full overflow-hidden p-0.5">
-              <div className="h-full bg-gradient-to-r from-amber-500 to-yellow-500 rounded-full transition-all duration-500" style={{ width: `${jsPercent}%` }} />
-            </div>
-          </div>
+          {enrolledTrackObjects.length === 0 ? (
+            <p className="text-xs text-slate-500 italic">No enrolled tracks. Go to "Tracks" and enroll to see breakdown progress.</p>
+          ) : (
+            enrolledTrackObjects.map((track) => (
+              <div key={track.id}>
+                <div className="flex items-center justify-between text-xs font-bold mb-1">
+                  <span style={{ color: track.textColor }} className="flex items-center">
+                    <span className="mr-1.5">{track.icon}</span> {track.name} Path
+                  </span>
+                  <span>{track.completedCount}/{track.totalDays} Days ({track.percent}%)</span>
+                </div>
+                <div className="w-full h-3.5 bg-slate-100 rounded-full overflow-hidden p-0.5">
+                  <div 
+                    className="h-full rounded-full transition-all duration-500" 
+                    style={{ width: `${track.percent}%`, background: track.gradient || 'var(--primary-color)' }} 
+                  />
+                </div>
+              </div>
+            ))
+          )}
         </div>
       </div>
 

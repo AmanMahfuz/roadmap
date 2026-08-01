@@ -469,6 +469,7 @@ const FULLSTACK_PROJECTS = [
         <div className="day-modal-overlay" onClick={() => setActiveProjectModal(null)}>
           <div 
             className="day-modal-container max-w-3xl p-6 sm:p-8 bg-white border border-slate-200 rounded-3xl shadow-2xl flex flex-col overflow-y-auto max-h-[88vh] font-sans text-slate-900"
+            style={{ overflowY: 'auto' }}
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-center justify-between border-b border-slate-100 pb-4 mb-4">
@@ -510,7 +511,7 @@ const FULLSTACK_PROJECTS = [
             )}
 
             {/* If Project is To-Do App, show interactive live task manager */}
-            {(activeProjectModal.id === 'js_1' || activeProjectModal.id === 'hc_1') && (
+            {activeProjectModal.id === 'js_1' && (
               <div className="bg-slate-50 border border-slate-200 rounded-2xl p-4 mb-4 space-y-3">
                 <h4 className="font-bold text-xs text-slate-800">Interactive Demo Test Sandbox:</h4>
                 <form onSubmit={addTodo} className="flex gap-2">
