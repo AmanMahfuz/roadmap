@@ -117,7 +117,7 @@ export default function DayDetailModal({
               <div className="video-player-container">
                 <iframe
                   title={day.youtubeTitle}
-                  src={`https://www.youtube.com/embed/${day.youtubeId}?autoplay=1&rel=0`}
+                  src={day.youtubeId?.startsWith('PL') ? `https://www.youtube.com/embed/videoseries?list=${day.youtubeId}&autoplay=1&rel=0` : `https://www.youtube.com/embed/${day.youtubeId}?autoplay=1&rel=0`}
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
                 />
@@ -127,7 +127,7 @@ export default function DayDetailModal({
                 <div className="yt-meta-row">
                   <span className="yt-channel-badge">📺 Tutorial Video</span>
                   <a 
-                    href={`https://www.youtube.com/watch?v=${day.youtubeId}`} 
+                    href={day.youtubeId?.startsWith('PL') ? `https://www.youtube.com/playlist?list=${day.youtubeId}` : `https://www.youtube.com/watch?v=${day.youtubeId}`} 
                     target="_blank" 
                     rel="noreferrer" 
                     className="yt-external-link"

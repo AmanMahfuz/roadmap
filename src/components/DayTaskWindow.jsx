@@ -463,7 +463,7 @@ export default function DayTaskWindow({
                       className="px-6 py-3.5 bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-700 hover:to-rose-700 text-white font-black text-xs sm:text-sm rounded-2xl shadow-lg shadow-red-600/25 flex items-center justify-center space-x-2 shrink-0 transition-transform hover:scale-105"
                     >
                       <Video className="w-5 h-5 fill-current" />
-                      <span>Bro Code (English Full Course)</span>
+                      <span>{dayObj.youtubeChannel || 'Watch Tutorial'}</span>
                       <ExternalLink className="w-4 h-4 ml-1 opacity-80" />
                     </a>
                   )}
