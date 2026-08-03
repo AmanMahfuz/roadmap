@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { SIX_LANGUAGES } from '../data/sixLanguagesData';
+import CertificateModal from './CertificateModal';
 import { 
   ArrowLeft, 
   CheckCircle2, 
@@ -7,15 +8,18 @@ import {
   Play, 
   Star, 
   CheckSquare, 
-  Trophy
+  Trophy,
+  Award
 } from 'lucide-react';
 
 export default function LanguageRoadmapView({ 
   languageId, 
   userCompletedDays = {}, 
   onSelectDay, 
-  onBackToLanguages 
+  onBackToLanguages,
+  currentUser
 }) {
+  const [showCertificate, setShowCertificate] = useState(false);
   const language = SIX_LANGUAGES.find(l => l.id === languageId) || SIX_LANGUAGES[0];
 
   // Calculate completed count
@@ -69,6 +73,15 @@ export default function LanguageRoadmapView({
               <Star className="w-4 h-4 text-amber-400 mr-1.5" />
               <span>{overallPercentage}% Complete</span>
             </div>
+            {overallPercentage === 100 && (
+              <button 
+                onClick={() => setShowCertificate(true)}
+                className="stat-pill cursor-pointer hover:scale-105 transition-transform bg-amber-400 text-amber-950 font-bold border-none"
+              >
+                <Award className="w-4 h-4 mr-1.5" />
+                <span>Claim Certificate</span>
+              </button>
+            )}
           </div>
         </div>
 
@@ -77,6 +90,14 @@ export default function LanguageRoadmapView({
           <div className="banner-progress-bar" style={{ width: `${overallPercentage}%`, background: language.gradient }} />
         </div>
       </div>
+
+      {showCertificate && (
+        <CertificateModal
+          skillId={language.id}
+          userName={currentUser?.user_metadata?.full_name || currentUser?.email || 'Dev Learner'}
+          onClose={() => setShowCertificate(false)}
+        />
+      )}
 
       {/* Duolingo Style Path */}
       <div className="path-roadmap-wrapper">

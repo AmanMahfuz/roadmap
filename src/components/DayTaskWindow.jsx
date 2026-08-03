@@ -29,6 +29,8 @@ export default function DayTaskWindow({
   languageId, 
   totalDays = 14,
   isCompleted, 
+  taskProgress = {},
+  onUpdateTaskProgress,
   onClose, 
   onCompleteDay,
   onAddXp,
@@ -41,7 +43,7 @@ export default function DayTaskWindow({
   const [taskStates, setTaskStates] = useState(() => {
     return dayObj.tasks.map(t => ({
       ...t,
-      completed: isCompleted ? true : false
+      completed: isCompleted ? true : !!taskProgress[t.id]
     }));
   });
 
@@ -96,7 +98,8 @@ export default function DayTaskWindow({
   const [submittedMcqs, setSubmittedMcqs] = useState({});
 
   useEffect(() => {
-    setTerminalUserCode(terminalChallengesList[0].starterCode);
+    const savedCode = taskProgress[`terminalCode_0`];
+    setTerminalUserCode(savedCode !== undefined ? savedCode : terminalChallengesList[0].starterCode);
     setConsoleOutput('');
     setPassedTerminalChallenges({});
     setUserAnswers({});
@@ -104,8 +107,39 @@ export default function DayTaskWindow({
     setCurrentMcqIdx(0);
     setCurrentTerminalIdx(0);
     setActiveTab('learn');
-    setTaskStates(dayObj.tasks.map(t => ({ ...t, completed: isCompleted ? true : false })));
-  }, [dayObj, isCompleted]);
+    setTaskStates(dayObj.tasks.map(t => ({ ...t, completed: isCompleted ? true : !!taskProgress[t.id] })));
+  }, [dayObj, isCompleted]); // Do not include taskProgress in dependencies to avoid infinite loops
+
+  // Debounced auto-save for terminal code
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      if (onUpdateTaskProgress) {
+        onUpdateTaskProgress(dayKey, `terminalCode_${currentTerminalIdx}`, terminalUserCode);
+      }
+    }, 1500);
+    return () => clearTimeout(handler);
+  }, [terminalUserCode, currentTerminalIdx, dayKey, onUpdateTaskProgress]);
+
+  const playSuccessChime = () => {
+    try {
+      const AudioContext = window.AudioContext || window.webkitAudioContext;
+      if (!AudioContext) return;
+      const ctx = new AudioContext();
+      const osc = ctx.createOscillator();
+      const gainNode = ctx.createGain();
+      osc.type = 'sine';
+      osc.connect(gainNode);
+      gainNode.connect(ctx.destination);
+      osc.frequency.setValueAtTime(1046.50, ctx.currentTime);
+      osc.frequency.setValueAtTime(1318.51, ctx.currentTime + 0.1);
+      gainNode.gain.setValueAtTime(0.2, ctx.currentTime);
+      gainNode.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.5);
+      osc.start();
+      osc.stop(ctx.currentTime + 0.5);
+    } catch (e) {
+      // Ignore audio errors
+    }
+  };
 
   const activeChallenge = terminalChallengesList[currentTerminalIdx] || terminalChallengesList[0];
 
@@ -115,6 +149,9 @@ export default function DayTaskWindow({
       const isNowCompleted = updated.find(t => t.id === taskId)?.completed;
       if (isNowCompleted && onAddXp) {
         onAddXp(20);
+      }
+      if (onUpdateTaskProgress) {
+        onUpdateTaskProgress(dayKey, taskId, isNowCompleted);
       }
       return updated;
     });
@@ -199,13 +236,34 @@ export default function DayTaskWindow({
         }
 
         const outputStr = logs.join('\n');
-        const isMatch = expected ? (outputStr.includes(expected) || code.includes(expected)) : true;
+        let isMatch = expected ? (outputStr.includes(expected) || code.includes(expected)) : true;
+
+        if (isMatch) {
+          if (activeChallenge.requiredKeywords) {
+            const missing = activeChallenge.requiredKeywords.find(kw => !terminalUserCode.replace(/\s+/g, '').includes(kw.replace(/\s+/g, '')));
+            if (missing) {
+              isMatch = false;
+              setConsoleOutput(outputStr + `\n\n[NOTICE] Output matches, but code is missing required logic!`);
+            }
+          } else {
+            const stripLogs = (str) => str.replace(/(print|console\.log)\s*\([^)]*\);?/g, '').replace(/(#|\/\/).*/g, '').replace(/\s+/g, '');
+            const userLogic = stripLogs(terminalUserCode);
+            const starterLogic = stripLogs(activeChallenge.starterCode || '');
+            if (starterLogic.length > 0 && userLogic === starterLogic) {
+              isMatch = false;
+              setConsoleOutput(outputStr + `\n\n[NOTICE] Output matches, but no actual logic was added to the starter code!`);
+            }
+          }
+        }
 
         if (isMatch) {
           setConsoleOutput(outputStr + `\n\n[SUCCESS] Challenge ${currentTerminalIdx + 1} Passed! (+50 Bonus XP)`);
           setPassedTerminalChallenges(prev => ({ ...prev, [currentTerminalIdx]: true }));
           if (onAddXp) onAddXp(50);
+          playSuccessChime();
           confetti({ particleCount: 60, spread: 60, origin: { y: 0.7 } });
+        } else if (expected && outputStr.includes(expected)) {
+          // Already handled by the anti-cheat notice above if isMatch was set to false
         } else {
           setConsoleOutput(outputStr + `\n\n[NOTICE] Output produced. Expected keyword "${expected}" in terminal.`);
         }
@@ -226,13 +284,61 @@ export default function DayTaskWindow({
         logs.push('[Stderr] ' + args.join(' '));
       };
 
-      const runFn = new Function(terminalUserCode);
-      runFn();
-
-      const outputStr = logs.join('\n');
+      let outputStr = '';
+      
+      if (activeChallenge.testCases && activeChallenge.testCases.length > 0) {
+        let allTestsPassed = true;
+        for (let i = 0; i < activeChallenge.testCases.length; i++) {
+          const tc = activeChallenge.testCases[i];
+          let testCode = terminalUserCode;
+          if (tc.replaceStr && tc.withStr) {
+            testCode = testCode.replace(tc.replaceStr, tc.withStr);
+          }
+          logs.length = 0; // reset for each test
+          try {
+            const runFn = new Function(testCode);
+            runFn();
+            const tcOutput = logs.join('\n');
+            if (tc.expected && !tcOutput.includes(tc.expected)) {
+              allTestsPassed = false;
+              outputStr = `[Test Case ${i + 1} Failed]\nInput: ${tc.withStr || 'Standard'}\nOutput: ${tcOutput}\nExpected: ${tc.expected}`;
+              break;
+            }
+          } catch (e) {
+            allTestsPassed = false;
+            outputStr = `[Test Case ${i + 1} Error]\n${e.message}`;
+            break;
+          }
+        }
+        if (allTestsPassed) {
+          outputStr = activeChallenge.expectedKeyword || logs.join('\n');
+        }
+      } else {
+        const runFn = new Function(terminalUserCode);
+        runFn();
+        outputStr = logs.join('\n');
+      }
       
       const expected = activeChallenge.expectedKeyword;
-      const isMatch = expected ? outputStr.includes(expected) : true;
+      let isMatch = expected ? outputStr.includes(expected) : true;
+
+      if (isMatch) {
+        if (activeChallenge.requiredKeywords) {
+          const missing = activeChallenge.requiredKeywords.find(kw => !terminalUserCode.replace(/\s+/g, '').includes(kw.replace(/\s+/g, '')));
+          if (missing) {
+            isMatch = false;
+            setConsoleOutput(outputStr + `\n\n[NOTICE] Output matches, but code is missing required logic!`);
+          }
+        } else {
+          const stripLogs = (str) => str.replace(/(print|console\.log)\s*\([^)]*\);?/g, '').replace(/(#|\/\/).*/g, '').replace(/\/\*[\s\S]*?\*\//g, '').replace(/\s+/g, '');
+          const userLogic = stripLogs(terminalUserCode);
+          const starterLogic = stripLogs(activeChallenge.starterCode || '');
+          if (starterLogic.length > 0 && userLogic === starterLogic) {
+            isMatch = false;
+            setConsoleOutput(outputStr + `\n\n[NOTICE] Output matches, but no actual logic was added to the starter code!`);
+          }
+        }
+      }
 
       if (isMatch) {
         setConsoleOutput(outputStr + `\n\n[SUCCESS] Challenge ${currentTerminalIdx + 1} Passed! (+50 Bonus XP)`);
@@ -241,11 +347,14 @@ export default function DayTaskWindow({
           onAddXp(50);
         }
         
+        playSuccessChime();
         confetti({
           particleCount: 60,
           spread: 60,
           origin: { y: 0.7 }
         });
+      } else if (expected && outputStr.includes(expected)) {
+        // Handled by the anti-cheat logic above
       } else {
         setConsoleOutput(outputStr + `\n\n[NOTICE] Output produced. Expected keyword "${expected}" in console.`);
       }
@@ -262,6 +371,7 @@ export default function DayTaskWindow({
     if (onAddXp) {
       onAddXp(50);
     }
+    playSuccessChime();
     confetti({
       particleCount: 100,
       spread: 70,
@@ -270,6 +380,7 @@ export default function DayTaskWindow({
   };
 
   const handleFinishDay = () => {
+    playSuccessChime();
     confetti({
       particleCount: 180,
       spread: 90,
@@ -744,7 +855,8 @@ export default function DayTaskWindow({
                       key={ch.id || idx}
                       onClick={() => {
                         setCurrentTerminalIdx(idx);
-                        setTerminalUserCode(ch.starterCode);
+                        const savedCode = taskProgress[`terminalCode_${idx}`];
+                        setTerminalUserCode(savedCode !== undefined ? savedCode : ch.starterCode);
                         setConsoleOutput('');
                       }}
                       className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center space-x-1 whitespace-nowrap ${

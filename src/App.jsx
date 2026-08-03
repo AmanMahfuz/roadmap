@@ -36,6 +36,7 @@ const INITIAL_USER_STATE = {
   hearts: 5,
   enrolledTracks: ['html_css', 'javascript'],
   completedDays: {},
+  taskProgress: {},
   lastActiveDate: new Date().toISOString().split('T')[0],
   unlockedBadges: ['badge_first_step']
 };
@@ -47,16 +48,9 @@ export default function App() {
   const [isAiMentorOpen, setIsAiMentorOpen] = useState(false);
   const [levelUpLevel, setLevelUpLevel] = useState(null);
   const [currentUser, setCurrentUser] = useState(null);
+  const [isDataLoading, setIsDataLoading] = useState(true);
 
-  const [userState, setUserState] = useState(() => {
-    try {
-      const saved = localStorage.getItem(LOCAL_STORAGE_KEY);
-      if (saved) return JSON.parse(saved);
-    } catch (e) {
-      console.error('Failed to load user state safely', e);
-    }
-    return INITIAL_USER_STATE;
-  });
+  const [userState, setUserState] = useState(INITIAL_USER_STATE);
 
   useEffect(() => {
     getCurrentUser().then(user => {
@@ -64,6 +58,8 @@ export default function App() {
         setCurrentUser(user);
         loadDbUserProgress(user.id);
         setCurrentPage('languages');
+      } else {
+        setIsDataLoading(false);
       }
     });
 
@@ -71,8 +67,12 @@ export default function App() {
       const user = session?.user || null;
       setCurrentUser(user);
       if (user) {
+        setIsDataLoading(true);
         loadDbUserProgress(user.id);
         setCurrentPage('languages');
+      } else {
+        setUserState(INITIAL_USER_STATE);
+        setIsDataLoading(false);
       }
     });
 
@@ -96,23 +96,24 @@ export default function App() {
           hearts: dbData.hearts !== undefined ? dbData.hearts : (prev.hearts || 5),
           enrolledTracks: dbData.enrolled_tracks || prev.enrolledTracks || ['html_css', 'javascript'],
           completedDays: dbData.completed_days || prev.completedDays,
-          unlockedBadges: dbData.unlocked_badges || prev.unlockedBadges || ['badge_first_step'],
+          taskProgress: dbData.task_progress || prev.taskProgress || {},
+          unlockedBadges: dbData.badges || prev.unlockedBadges || ['badge_first_step'],
           lastActiveDate: dbData.last_active_date || prev.lastActiveDate
         };
       });
     }
+    setIsDataLoading(false);
   };
 
   useEffect(() => {
     try {
-      localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(userState));
-      if (currentUser?.id) {
+      if (currentUser?.id && !isDataLoading) {
         syncUserStateToSupabase(userState, currentUser.id);
       }
     } catch (e) {
-      console.error('Failed to save user state safely', e);
+      console.error('Failed to sync user state safely', e);
     }
-  }, [userState, currentUser]);
+  }, [userState, currentUser, isDataLoading]);
 
   useEffect(() => {
     const today = new Date().toISOString().split('T')[0];
@@ -256,11 +257,37 @@ export default function App() {
 
   const handleResetProgress = () => {
     setUserState(INITIAL_USER_STATE);
-    localStorage.removeItem(LOCAL_STORAGE_KEY);
     setCurrentPage('languages');
   };
 
+  const handleUpdateTaskProgress = (dayKey, taskId, isCompleted) => {
+    setUserState(prev => {
+      const currentDayTasks = prev.taskProgress[dayKey] || {};
+      return {
+        ...prev,
+        taskProgress: {
+          ...prev.taskProgress,
+          [dayKey]: {
+            ...currentDayTasks,
+            [taskId]: isCompleted
+          }
+        }
+      };
+    });
+  };
+
   const activeLanguageObj = SIX_LANGUAGES.find(l => l.id === activeLanguageId) || SIX_LANGUAGES[0];
+
+  if (isDataLoading && !['landing', 'signin', 'signup'].includes(currentPage)) {
+    return (
+      <div className="min-h-screen bg-slate-50 flex items-center justify-center">
+        <div className="flex flex-col items-center space-y-4">
+          <div className="w-12 h-12 border-4 border-indigo-600 border-t-transparent rounded-full animate-spin"></div>
+          <p className="text-slate-600 font-medium">Syncing with server...</p>
+        </div>
+      </div>
+    );
+  }
 
   if (currentPage === 'landing') {
     return (
@@ -300,6 +327,8 @@ export default function App() {
         languageId={activeLanguageId}
         totalDays={activeLanguageObj.days.length}
         isCompleted={!!userState.completedDays[`${activeLanguageId}_day_${selectedDayObj.day}`]}
+        taskProgress={userState.taskProgress[`${activeLanguageId}_day_${selectedDayObj.day}`] || {}}
+        onUpdateTaskProgress={handleUpdateTaskProgress}
         onClose={() => setSelectedDayObj(null)}
         onCompleteDay={handleCompleteDay}
         onAddXp={handleAddXp}
@@ -345,6 +374,7 @@ export default function App() {
             userCompletedDays={userState.completedDays}
             onSelectDay={(dayObj) => setSelectedDayObj(dayObj)}
             onBackToLanguages={() => setCurrentPage('languages')}
+            currentUser={currentUser}
           />
         )}
 

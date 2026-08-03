@@ -51,7 +51,8 @@ export async function syncUserStateToSupabase(userData, userAuthId = null) {
       hearts: userData.hearts || 5,
       enrolled_tracks: userData.enrolledTracks || ['html_css', 'javascript'],
       completed_days: userData.completedDays || {},
-      unlocked_badges: userData.unlockedBadges || ['badge_first_step'],
+      task_progress: userData.taskProgress || {},
+      badges: userData.unlockedBadges || ['badge_first_step'],
       last_active_date: userData.lastActiveDate || new Date().toISOString().split('T')[0],
       updated_at: new Date().toISOString()
     };

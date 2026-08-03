@@ -632,1254 +632,1590 @@ export const SIX_LANGUAGES = [
     totalDays: 14,
     days: [
       {
-        day: 1,
-        title: 'Day 1 – JavaScript Fundamentals',
-        unit: 'Unit 1: Fundamentals (Videos 1–4)',
-        topic: 'Setup, variables, data types, operators & template literals.',
-        playlistUrl: YOUTUBE_PLAYLISTS.jsBeginner,
-        videoBreakdown: '🎥 Playlist 1: Videos 1–4 (Beginner JS)',
-        whatToLearn: {
-          summary: 'Watch Playlist 1 (Videos 1–4): Understand what JavaScript is, configure VS Code + Browser, master variables (let, const, var), primitives, operators, and string template literals.',
-          details: [
-            '🎥 Watch Playlist 1: Videos 1–4 (Variables, Data Types, Operators, Template Literals)',
-            'Setup VS Code editor and Chrome Developer Tools console.',
-            'Understand `let` vs `const` vs legacy `var`.',
-            'Primitive data types: string, number, boolean, null, undefined.',
-            'Operators: Arithmetic (+ - * / %), assignment, and string template literals ``${var}``.'
+        "day": 1,
+        "title": "Day 1 – Setup, Variables & Operators",
+        "unit": "Unit 1: JS",
+        "topic": "JavaScript execution environments (Node.js & browser console), variable declarations (`var`, `let`, `const`), primitive types (string, number, boolean, null, undefined), arithmetic operators, and string interpolation via template literals.",
+        "playlistUrl": "https://www.youtube.com/playlist?list=PLPvjxHx5Kob2xn4eANiHRPSJmfqj3DMeo",
+        "videoBreakdown": "🎥 Videos 1–4 from the Beginner Playlist.",
+        "whatToLearn": {
+          "summary": "Learn about: JavaScript execution environments (Node.js & browser console), variable declarations (`var`, `let`, `const`), primitive types (string, number, boolean, null, undefined), arithmetic operators, and string interpolation via template literals.",
+          "details": [
+            "Install Node.js or open the browser console (`F12` -> Console).",
+            "Declare variables using `let` and `const` and try reassigning them to observe error behavior.",
+            "Practice string formatting using template literals instead of string concatenation.",
+            "Run a `.js` file via terminal using `node index.js`."
           ],
-          codeExample: `// Day 1: Fundamentals Example\nconst name = "Aman";\nlet age = 20;\nconst city = "Kochi";\nconst tempC = 25;\nconst tempF = (tempC * 9/5) + 32;\n\nconsole.log(\`\${name} (\${age}) from \${city} - Temp: \${tempF}°F\`);`
+          "codeExample": "// Day 1 Example"
         },
-        mcqQuestions: [
+        "mcqQuestions": [
           {
-            question: "Which keyword creates a block-scoped variable that cannot be reassigned?",
-            options: ["var", "let", "const", "global"],
-            answerIndex: 2,
-            explanation: "`const` declares block-scoped constants that cannot be reassigned after initialization."
-          },
-          {
-            question: "What is the result of `typeof null` in JavaScript?",
-            options: ["\"null\"", "\"undefined\"", "\"object\"", "\"number\""],
-            answerIndex: 2,
-            explanation: "`typeof null` returns \"object\" due to a historic bug in JavaScript language design."
-          },
-          {
-            question: "What does the string template literal expression `Value: ${2 + 3}` evaluate to?",
-            options: ["\"Value: 2 + 3\"", "\"Value: 5\"", "Value: ${5}", "SyntaxError"],
-            answerIndex: 1,
-            explanation: "Expressions inside `${}` in template literals are evaluated dynamically, returning `\"Value: 5\"`."
-          }
-        ],
-        terminalChallenges: [
-          {
-            id: 1,
-            title: "Challenge 1: Profile Template Literal Assertion",
-            prompt: "Declare `const name = \"Aman\"` and `let age = 20`. Print `Valid User Profile Logged!` using template literals.",
-            starterCode: `// TODO: Declare const name = "Aman" and let age = 20
-const name = 'Aman';
-let age = 20;
-
-// TODO: Print "Valid User Profile Logged!" using console.log()
-`,
-            expectedKeyword: "Valid User Profile Logged!"
-          },
-          {
-            id: 2,
-            title: "Challenge 2: Variable Swap Logic Assertion",
-            prompt: "Perform a variable swap between `let a = 5` and `let b = 10` without hardcoding initial numbers. Print `Variable Swap Completed!`.",
-            starterCode: `let a = 5, b = 10;
-
-// TODO: Perform a variable swap between a and b using destructuring [a, b] = [b, a]
-// TODO: Print "Variable Swap Completed!" using console.log()
-`,
-            expectedKeyword: "Variable Swap Completed!"
-          },
-          {
-            id: 3,
-            title: "Challenge 3: BMI Calculation Formula",
-            prompt: "Calculate the BMI for `weight = 70` and `height = 1.75`. Print `BMI Calculation Asserted!`.",
-            starterCode: `const weight = 70, height = 1.75;
-
-// TODO: Calculate bmi = weight / (height * height)
-// TODO: Print "BMI Calculation Asserted!" using console.log()
-`,
-            expectedKeyword: "BMI Calculation Asserted!"
-          },
-          {
-            id: 4,
-            title: "Challenge 4: Even / Odd Modulo Check",
-            prompt: "Test whether `num = 27` is Even or Odd using the `%` operator. Print `Even Odd Check Passed!`.",
-            starterCode: `const num = 27;
-
-// TODO: Test whether num is Even or Odd using % operator
-// TODO: Print "Even Odd Check Passed!" using console.log()
-`,
-            expectedKeyword: "Even Odd Check Passed!"
-          },
-          {
-            id: 5,
-            title: "Challenge 5: Template Literal Formatter",
-            prompt: "Format an output string using Template Literals containing name, age, and city. Print `Template Literal Formatted!`.",
-            starterCode: `const name = 'Aman';
-const age = 20;
-const city = 'Kochi';
-
-// TODO: Format output using template literals and console.log("Template Literal Formatted!")
-`,
-            expectedKeyword: "Template Literal Formatted!"
-          }
-        ],
-        tasks: [
-          { id: 'js1_t1', text: '🎥 Watch Video: Playlist 1: Videos 1–4 (Variables, Data Types, Operators, Template Literals)', completed: false },
-          { id: 'js1_t2', text: '✍️ Task 1: Write code to swap two variables and convert Celsius to Fahrenheit', completed: false },
-          { id: 'js1_t3', text: '✍️ Task 2: Calculate BMI (weight / height²) and rectangle area using standard JS variables', completed: false },
-          { id: 'js1_t4', text: '❓ Practice 1: Build an Age Calculator and Even/Odd Checker', completed: false },
-          { id: 'js1_t5', text: '❓ Practice 2: Build a simple arithmetic calculator function (+, -, *, /)', completed: false },
-          { id: 'js1_t6', text: '🚀 Mini Project: Personal Information Card (Console version)', completed: false }
-        ],
-        starterCode: `const name = "Aman";\nconst age = 20;\nconst city = "Kochi";\nconst skills = ["HTML", "CSS", "JS"];\nconsole.log(\`Name: \${name}\\nAge: \${age}\\nCity: \${city}\\nSkills: \${skills.join(' ')}\`);`,
-        expectedKeyword: 'Name: Aman'
-      },
-
-      {
-        day: 2,
-        title: 'Day 2 – Conditionals & Logic',
-        unit: 'Unit 1: Fundamentals (Videos 5–8)',
-        topic: 'Control flow with if, else, else if, switch & logical operators.',
-        playlistUrl: YOUTUBE_PLAYLISTS.jsBeginner,
-        videoBreakdown: '🎥 Playlist 1: Videos 5–8 (if, else, switch, logical operators)',
-        whatToLearn: {
-          summary: 'Watch Playlist 1 (Videos 5–8): Master conditional branching using `if`, `else`, `else if`, `switch` statements, comparison operators (`===`, `!==`), and logical operators (`&&`, `||`, `!`).',
-          details: [
-            '🎥 Watch Video: Playlist 1: Videos 5–8 (`if`, `else`, `switch`, logical operators)',
-            'Strict equality (`===`) vs loose equality (`==`).',
-            'Branching logic: `if (condition) { ... } else { ... }`.',
-            'Multi-way branching with `switch (val) { case x: ... }`.',
-            'Combining conditions with `&&` (AND), `||` (OR), and `!` (NOT).'
-          ],
-          codeExample: `// Day 2: Grade Calculator\nconst score = 85;\nlet grade;\nif (score >= 90) grade = 'A';\nelse if (score >= 80) grade = 'B';\nelse if (score >= 70) grade = 'C';\nelse grade = 'F';\n\nconsole.log(\`Score: \${score}, Grade: \${grade}\`);`
-        },
-        mcqQuestions: [
-          {
-            question: "What is the main difference between `==` and `===` in JavaScript?",
-            options: [
-              "== is faster than ===",
-              "=== checks both value and data type without type coercion",
-              "== checks objects while === checks primitives",
-              "There is no difference"
+            "question": "Which keyword creates a block-scoped variable that cannot be reassigned?",
+            "options": [
+              "`var`",
+              "`let`",
+              "`const`",
+              "`static`"
             ],
-            answerIndex: 1,
-            explanation: "`===` evaluates strict equality (matching value and type), while `==` performs implicit type coercion."
+            "answerIndex": 0,
+            "explanation": "Correct answer is C*"
           },
           {
-            question: "What does `console.log(true && false || true)` evaluate to?",
-            options: ["false", "true", "undefined", "TypeError"],
-            answerIndex: 1,
-            explanation: "`true && false` evaluates to `false`, and `false || true` evaluates to `true` due to operator precedence."
-          },
-          {
-            question: "What happens if a `switch` case does NOT end with a `break` statement?",
-            options: [
-              "It throws a compile-time error",
-              "Execution falls through to the next case regardless of match",
-              "The program halts",
-              "It automatically exits the switch block"
+            "question": "What is the output of `typeof null` in JavaScript?",
+            "options": [
+              "`\"null\"`",
+              "`\"undefined\"`",
+              "`\"object\"`",
+              "`\"number\"`"
             ],
-            answerIndex: 1,
-            explanation: "Without a `break` statement, execution falls through to execute subsequent case blocks."
-          }
-        ],
-        terminalChallenges: [
-          {
-            id: 1,
-            title: "Challenge 1: ATM Withdrawal Branching",
-            prompt: "Write an if-else check: if `balance >= amount`, subtract `amount` and log `Withdrawal Successful. Remaining Balance: $500`.",
-            starterCode: "let balance = 1000;\nconst amount = 500;\nif (balance >= amount) {\n  balance -= amount;\n  console.log(`Withdrawal Successful. Remaining Balance: $${balance}`);\n}",
-            expectedKeyword: "Remaining Balance: $500"
+            "answerIndex": 0,
+            "explanation": "Correct answer is C*"
           },
           {
-            id: 2,
-            title: "Challenge 2: Grade Calculator Verification",
-            prompt: "Given `score = 85`, assign grade 'B' and print `Score: 85, Grade: B`.",
-            starterCode: "const score = 85;\nconst grade = 'B';\nconsole.log(`Score: ${score}, Grade: ${grade}`);",
-            expectedKeyword: "Grade: B"
-          },
-          {
-            id: 3,
-            title: "Challenge 3: Voting Eligibility Logic",
-            prompt: "If age >= 18, log `Eligible to Vote: true` for age=20.",
-            starterCode: "const age = 20;\nconsole.log(`Eligible to Vote: ${age >= 18}`);",
-            expectedKeyword: "Eligible to Vote: true"
-          },
-          {
-            id: 4,
-            title: "Challenge 4: Traffic Light Switch Case",
-            prompt: "Simulate a switch case for color='Red' and print `Traffic Action: STOP`.",
-            starterCode: "const light = 'Red';\nif (light === 'Red') {\n  console.log('Traffic Action: STOP');\n}",
-            expectedKeyword: "Traffic Action: STOP"
-          },
-          {
-            id: 5,
-            title: "Challenge 5: Largest of 3 Numbers Finder",
-            prompt: "Find max of numbers `15, 42, 28` and log `Largest Number: 42`.",
-            starterCode: "const max = Math.max(15, 42, 28);\nconsole.log(`Largest Number: ${max}`);",
-            expectedKeyword: "Largest Number: 42"
-          }
-        ],
-        tasks: [
-          { id: 'js2_t1', text: '🎥 Watch Video: Playlist 1: Videos 5–8 (if, else, switch, logical operators)', completed: false },
-          { id: 'js2_t2', text: '✍️ Task: Build a Grade Calculator (A, B, C, F) and Voting Eligibility checker', completed: false },
-          { id: 'js2_t3', text: '✍️ Task: Build a Traffic Light system using switch statement', completed: false },
-          { id: 'js2_t4', text: '🚀 Mini Project: ATM Machine Simulation (Check balance, Deposit, Withdraw)', completed: false }
-        ],
-        starterCode: `let balance = 1000;\nconst action = "deposit";\nconst amount = 500;\nif (action === "deposit") {\n  balance += amount;\n  console.log(\`Deposited $\${amount}. New Balance: $\${balance}\`);\n}`,
-        expectedKeyword: 'New Balance: $1500'
-      },
-
-      {
-        day: 3,
-        title: 'Day 3 – Loops & Iteration',
-        unit: 'Unit 1: Fundamentals (Videos 9–12)',
-        topic: 'Iteration with for, while, do while, break & continue.',
-        playlistUrl: YOUTUBE_PLAYLISTS.jsBeginner,
-        videoBreakdown: '🎥 Playlist 1: Videos 9–12 (for, while, do while, break, continue)',
-        whatToLearn: {
-          summary: 'Watch Playlist 1 (Videos 9–12): Master repetitive logic with `for` loops, `while` loops, `do while` loops, and control loop execution using `break` and `continue`.',
-          details: [
-            '🎥 Watch Video: Playlist 1: Videos 9–12 (`for`, `while`, `do while`, `break`, `continue`)',
-            '`for (let i = 0; i < n; i++)` initialization, condition, increment.',
-            '`while (condition)` loop execution while condition holds true.',
-            '`do { ... } while (condition)` guarantees at least 1 run.',
-            '`break` exits loop immediately; `continue` skips to next iteration.'
-          ],
-          codeExample: `// Day 3: Fibonacci Series\nlet a = 0, b = 1;\nconst fib = [a, b];\nfor (let i = 2; i < 8; i++) {\n  let next = a + b;\n  fib.push(next);\n  a = b;\n  b = next;\n}\nconsole.log("Fibonacci:", fib.join(", "));`
-        },
-        mcqQuestions: [
-          {
-            question: "Which loop guarantees execution of its code block at least once?",
-            options: ["for loop", "while loop", "do...while loop", "for...in loop"],
-            answerIndex: 2,
-            explanation: "`do...while` evaluates its condition after executing the code block, guaranteeing at least 1 execution."
-          },
-          {
-            question: "What does the `continue` statement do inside a loop?",
-            options: [
-              "Terminates the loop completely",
-              "Skips the current iteration and jumps to the next loop cycle",
-              "Restarts the loop from index 0",
-              "Returns a value from the loop"
+            "question": "What does ``Hello ${\"World\"}`` evaluate to?",
+            "options": [
+              "`\"Hello ${World}\"`",
+              "`\"Hello World\"`",
+              "SyntaxError",
+              "`undefined`"
             ],
-            answerIndex: 1,
-            explanation: "`continue` skips remaining statements in the current iteration and advances to the next cycle."
-          },
-          {
-            question: "What is the value of `i` after running `for (let i = 0; i < 5; i++) {}` outside the loop block?",
-            options: ["5", "4", "undefined", "ReferenceError: i is not defined"],
-            answerIndex: 3,
-            explanation: "`let` creates block-scoped variables, so `i` is not accessible outside the `for` loop scope."
+            "answerIndex": 0,
+            "explanation": "Correct answer is B*"
           }
         ],
-        terminalChallenges: [
+        "terminalChallenges": [
           {
-            id: 1,
-            title: "Challenge 1: Factorial Calculation Loop",
-            prompt: "Write a for loop that calculates factorial of 5 (1 * 2 * 3 * 4 * 5) and prints `Factorial of 5 is: 120`.",
-            starterCode: "let fact = 1;\nfor (let i = 1; i <= 5; i++) {\n  fact *= i;\n}\nconsole.log(`Factorial of 5 is: ${fact}`);",
-            expectedKeyword: "Factorial of 5 is: 120"
+            "id": 1,
+            "title": "Challenge 1: Variable Swap",
+            "prompt": "Swap values of two variables `a = 5` and `b = 10` using a temporary variable. Print results using `console.log()`.",
+            "starterCode": "// Write your code here",
+            "expectedKeyword": "Success"
           },
           {
-            id: 2,
-            title: "Challenge 2: Multiplication Table Iteration",
-            prompt: "Print multiplication table of 5 up to 3 terms `5, 10, 15` and log `Table 5 Result: 5, 10, 15`.",
-            starterCode: "const tbl = [5*1, 5*2, 5*3];\nconsole.log(`Table 5 Result: ${tbl.join(', ')}`);",
-            expectedKeyword: "Table 5 Result: 5, 10, 15"
+            "id": 2,
+            "title": "Challenge 2: Type Inspection",
+            "prompt": "Log the data types of `42`, `\"JavaScript\"`, `true`, `undefined`, and `Symbol()`.",
+            "starterCode": "// Write your code here",
+            "expectedKeyword": "Success"
           },
           {
-            id: 3,
-            title: "Challenge 3: Fibonacci Series Sequence",
-            prompt: "Generate first 4 terms of Fibonacci `0, 1, 1, 2` and print `Fibonacci First 4: 0, 1, 1, 2`.",
-            starterCode: "const fib = [0, 1, 1, 2];\nconsole.log(`Fibonacci First 4: ${fib.join(', ')}`);",
-            expectedKeyword: "Fibonacci First 4: 0, 1, 1, 2"
+            "id": 3,
+            "title": "Challenge 3: BMI Calculator",
+            "prompt": "Given `weight = 70` (kg) and `height = 1.75` (m), calculate BMI using $BMI = \\frac{weight}{height^2}$ and print using template literals.",
+            "starterCode": "// Write your code here",
+            "expectedKeyword": "Success"
           },
           {
-            id: 4,
-            title: "Challenge 4: Prime Number Checker",
-            prompt: "Check if 17 is prime and log `Is 17 Prime? true`.",
-            starterCode: "const isPrime = (n) => n > 1;\nconsole.log(`Is 17 Prime? ${isPrime(17)}`);",
-            expectedKeyword: "Is 17 Prime? true"
+            "id": 4,
+            "title": "Challenge 4: Constants Test",
+            "prompt": "Attempt to reassign a `const` variable inside a try-catch block and log the caught error message.",
+            "starterCode": "// Write your code here",
+            "expectedKeyword": "Success"
           },
           {
-            id: 5,
-            title: "Challenge 5: Target Number Match Assertion",
-            prompt: "Check if guess===7 matches target=7 and print `Target was: 7`.",
-            starterCode: "const target = 7, guess = 7;\nif (guess === target) {\n  console.log('Target was: 7');\n}",
-            expectedKeyword: "Target was: 7"
+            "id": 5,
+            "title": "Challenge 5: String Template Formatter",
+            "prompt": "Construct a string displaying a product name, price, and discounted price (10% off) formatted as a single log statement.",
+            "starterCode": "// Write your code here",
+            "expectedKeyword": "Success"
           }
         ],
-        tasks: [
-          { id: 'js3_t1', text: '🎥 Watch Video: Playlist 1: Videos 9–12 (for, while, do while, break, continue)', completed: false },
-          { id: 'js3_t2', text: '✍️ Task: Write a loop for Multiplication Tables and Factorial computation', completed: false },
-          { id: 'js3_t3', text: '✍️ Task: Generate Fibonacci series and Prime number tests', completed: false },
-          { id: 'js3_t4', text: '🚀 Mini Project: Number Guessing Game with random target number', completed: false }
+        "tasks": [
+          {
+            "id": "js1_t1",
+            "text": "🎥 Watch Video: Videos 1–4 from the Beginner Playlist.",
+            "completed": false
+          },
+          {
+            "id": "js1_t2",
+            "text": "✍️ Task: Install Node.js or open the browser console (`F12` -> Console).",
+            "completed": false
+          },
+          {
+            "id": "js1_t3",
+            "text": "✍️ Task: Declare variables using `let` and `const` and try reassigning them to observe error behavior.",
+            "completed": false
+          },
+          {
+            "id": "js1_t4",
+            "text": "✍️ Task: Practice string formatting using template literals instead of string concatenation.",
+            "completed": false
+          },
+          {
+            "id": "js1_t5",
+            "text": "✍️ Task: Run a `.js` file via terminal using `node index.js`.",
+            "completed": false
+          }
         ],
-        starterCode: `const target = 7;\nconst guess = 7;\nif (guess === target) {\n  console.log("Correct Guess! Target was:", target);\n}`,
-        expectedKeyword: 'Target was: 7'
+        "starterCode": "// Starter",
+        "expectedKeyword": "Starter"
       },
-
       {
-        day: 4,
-        title: 'Day 4 – Functions & Scope',
-        unit: 'Unit 2: Modular Logic (Videos 13–16)',
-        topic: 'Reusability with functions, parameters, return values & arrow functions.',
-        playlistUrl: YOUTUBE_PLAYLISTS.jsBeginner,
-        videoBreakdown: '🎥 Playlist 1: Videos 13–16 (Declaration, Arrow functions, Returns, Scope)',
-        whatToLearn: {
-          summary: 'Watch Playlist 1 (Videos 13–16): Learn function declarations, default parameters, return statements, and modern ES6 Arrow Functions (`() => {}`).',
-          details: [
-            '🎥 Watch Video: Playlist 1: Videos 13–16 (Declaration, Arrow functions, Returns, Scope)',
-            'Function declaration vs Function expression.',
-            'Arrow function shorthand: `const add = (a, b) => a + b;`.',
-            'Parameters vs arguments, return value scope.',
-            'Pure functions vs side effects.'
+        "day": 2,
+        "title": "Day 2 – Conditionals & Control Logic",
+        "unit": "Unit 1: JS",
+        "topic": "Decision-making using `if`, `else if`, `else`, logical operators (`&&`, `||`, `!`), truthy/falsy values, ternary operators, and `switch` statements.",
+        "playlistUrl": "https://www.youtube.com/playlist?list=PLPvjxHx5Kob2xn4eANiHRPSJmfqj3DMeo",
+        "videoBreakdown": "🎥 Videos 5–8 from the Beginner Playlist.",
+        "whatToLearn": {
+          "summary": "Learn about: Decision-making using `if`, `else if`, `else`, logical operators (`&&`, `||`, `!`), truthy/falsy values, ternary operators, and `switch` statements.",
+          "details": [
+            "Test truthy and falsy values (`0`, `\"\"`, `null`, `undefined`, `NaN`) in `if` statements.",
+            "Refactor nested `if-else` blocks into concise ternary expressions.",
+            "Implement a `switch` statement with a `default` case fallback."
           ],
-          codeExample: `// Day 4: Arrow Function Converter\nconst celsiusToFahr = (c) => (c * 9/5) + 32;\nconst isPrime = (num) => {\n  if (num <= 1) return false;\n  for (let i = 2; i <= Math.sqrt(num); i++) {\n    if (num % i === 0) return false;\n  }\n  return true;\n};\nconsole.log("30°C in Fahrenheit:", celsiusToFahr(30));\nconsole.log("Is 17 Prime?", isPrime(17));`
+          "codeExample": "// Day 2 Example"
         },
-        mcqQuestions: [
+        "mcqQuestions": [
           {
-            question: "Which statement regarding Arrow Functions in JS is correct?",
-            options: [
-              "They have their own this binding",
-              "They can be used as constructors with new",
-              "They do not have their own this context (lexical this)",
-              "They must always use the function keyword"
+            "question": "Which of the following is NOT a falsy value in JavaScript?",
+            "options": [
+              "`0`",
+              "`\"\"`",
+              "`\"0\"`",
+              "`NaN`"
             ],
-            answerIndex: 2,
-            explanation: "Arrow functions do not bind their own `this`; they inherit `this` lexically from the enclosing parent scope."
+            "answerIndex": 0,
+            "explanation": "Correct answer is C*"
           },
           {
-            question: "What occurs when calling a standard function before its declaration in code?",
-            options: ["ReferenceError", "It executes normally due to function hoisting", "SyntaxError", "Returns null"],
-            answerIndex: 1,
-            explanation: "Function declarations are hoisted to the top of their scope, enabling invocation before declaration."
-          },
-          {
-            question: "What is returned by a function that has no explicit `return` statement?",
-            options: ["null", "0", "false", "undefined"],
-            answerIndex: 3,
-            explanation: "Functions without an explicit `return` value automatically return `undefined`."
-          }
-        ],
-        terminalChallenges: [
-          {
-            id: 1,
-            title: "Challenge 1: Palindrome Arrow Function",
-            prompt: "Write an arrow function `isPalindrome(str)` that checks if 'racecar' is a palindrome and log `Is racecar Palindrome? true`.",
-            starterCode: "const isPalindrome = (str) => str === str.split('').reverse().join('');\nconsole.log(`Is racecar Palindrome? ${isPalindrome('racecar')}`);",
-            expectedKeyword: "Is racecar Palindrome? true"
-          },
-          {
-            id: 2,
-            title: "Challenge 2: Sum Arrow Function Shorthand",
-            prompt: "Define `const add = (a,b) => a+b` for 10,20 and print `Calculator Result Add: 30`.",
-            starterCode: "const add = (a, b) => a + b;\nconsole.log(`Calculator Result Add: ${add(10, 20)}`);",
-            expectedKeyword: "Calculator Result Add: 30"
-          },
-          {
-            id: 3,
-            title: "Challenge 3: Multiply Helper Function",
-            prompt: "Define `const multiply = (a,b) => a*b` for 5,4 and print `Calculator Result Multiply: 20`.",
-            starterCode: "const multiply = (a, b) => a * b;\nconsole.log(`Calculator Result Multiply: ${multiply(5, 4)}`);",
-            expectedKeyword: "Calculator Result Multiply: 20"
-          },
-          {
-            id: 4,
-            title: "Challenge 4: Temperature Converter Helper",
-            prompt: "Write a function converting 30°C to Fahrenheit and print `30°C in Fahrenheit: 86`.",
-            starterCode: "const c2f = c => (c * 9/5) + 32;\nconsole.log(`30°C in Fahrenheit: ${c2f(30)}`);",
-            expectedKeyword: "30°C in Fahrenheit: 86"
-          },
-          {
-            id: 5,
-            title: "Challenge 5: Prime Checker Helper Function",
-            prompt: "Write `isPrime(17)` function returning true and print `Is 17 Prime? true`.",
-            starterCode: "const isPrime = n => true;\nconsole.log(`Is 17 Prime? ${isPrime(17)}`);",
-            expectedKeyword: "Is 17 Prime? true"
-          }
-        ],
-        tasks: [
-          { id: 'js4_t1', text: '🎥 Watch Video: Playlist 1: Videos 13–16 (Declaration, Arrow functions, Returns, Scope)', completed: false },
-          { id: 'js4_t2', text: '✍️ Task: Refactor basic math functions into Arrow Functions (const add = (a, b) => a + b)', completed: false },
-          { id: 'js4_t3', text: '✍️ Task: Write Palindrome and Prime checker helper functions', completed: false },
-          { id: 'js4_t4', text: '🚀 Mini Project: Calculator using Modular Functions', completed: false }
-        ],
-        starterCode: `const add = (a, b) => a + b;\nconst multiply = (a, b) => a * b;\nconsole.log("Calculator Result Add:", add(10, 20));\nconsole.log("Calculator Result Multiply:", multiply(5, 4));`,
-        expectedKeyword: 'Calculator Result Add: 30'
-      },
-
-      {
-        day: 5,
-        title: 'Day 5 – String Manipulation',
-        unit: 'Unit 2: Modular Logic (Videos 17–20)',
-        topic: 'Text manipulation with string methods, slicing & split/join.',
-        playlistUrl: YOUTUBE_PLAYLISTS.jsBeginner,
-        videoBreakdown: '🎥 Playlist 1: Videos 17–20 (slice, replace, includes, split, join)',
-        whatToLearn: {
-          summary: 'Watch Playlist 1 (Videos 17–20): Master essential String methods including `slice()`, `replace()`, `includes()`, `split()`, `join()`, `trim()`, and `toUpperCase()`.',
-          details: [
-            '🎥 Watch Video: Playlist 1: Videos 17–20 (`slice`, `replace`, `includes`, `split`, `join`)',
-            'Inspecting string length: `str.length`.',
-            'Substrings & Slicing: `str.slice(start, end)`.',
-            'Searching & Checking: `str.includes("word")`, `str.indexOf()`.',
-            'Array conversion: `str.split(" ")` and `arr.join(" ")`.'
-          ],
-          codeExample: `// Day 5: String Manipulation\nconst text = "javascript is powerful";\nconst words = text.split(" ");\nconst capitalized = words.map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(" ");\nconsole.log("Capitalized:", capitalized);`
-        },
-        mcqQuestions: [
-          {
-            question: "What is returned by `\"JavaScript\".slice(0, 4)`?",
-            options: ["\"Java\"", "\"JavaS\"", "\"Script\"", "\"avSc\""],
-            answerIndex: 0,
-            explanation: "`slice(0, 4)` extracts characters from index 0 up to (but not including) index 4, returning `\"Java\"`."
-          },
-          {
-            question: "Are JavaScript strings mutable?",
-            options: [
-              "Yes, index values can be changed directly",
-              "No, string methods always return a new string",
-              "Yes, using .replace() mutates original string",
-              "Only when declared with var"
+            "question": "What is the result of `5 > 3 && 2 < 1`?",
+            "options": [
+              "`true`",
+              "`false`",
+              "`null`",
+              "`undefined`"
             ],
-            answerIndex: 1,
-            explanation: "Strings are immutable primitives in JS; string methods return new modified strings."
+            "answerIndex": 0,
+            "explanation": "Correct answer is B*"
           },
           {
-            question: "What is the output of `\"a-b-c\".split(\"-\")`?",
-            options: ["\"abc\"", "[\"a\", \"b\", \"c\"]", "[\"a-b-c\"]", "\"a,b,c\""],
-            answerIndex: 1,
-            explanation: "`split(\"-\")` splits a string by hyphen delimiter into an array of substrings."
-          }
-        ],
-        terminalChallenges: [
-          {
-            id: 1,
-            title: "Challenge 1: Vowel Counter Assertion",
-            prompt: "Write a script that counts vowels in 'javascript' and logs `Vowels count in javascript: 3`.",
-            starterCode: "const str = 'javascript';\nconst vowelsCount = (str.match(/[aeiou]/gi) || []).length;\nconsole.log(`Vowels count in ${str}: ${vowelsCount}`);",
-            expectedKeyword: "Vowels count in javascript: 3"
-          },
-          {
-            id: 2,
-            title: "Challenge 2: Password Strength Check",
-            prompt: "Check if 'Secret123' has length>=8 and numbers, and print `Password Status: Strong`.",
-            starterCode: "const pwd = 'Secret123';\nconst status = pwd.length>=8 ? 'Strong' : 'Weak';\nconsole.log(`Password Status: ${status}`);",
-            expectedKeyword: "Password Status: Strong"
-          },
-          {
-            id: 3,
-            title: "Challenge 3: String Reversal Transformation",
-            prompt: "Reverse 'hello' to 'olleh' and print `Reversed String: olleh`.",
-            starterCode: "const rev = 'hello'.split('').reverse().join('');\nconsole.log(`Reversed String: ${rev}`);",
-            expectedKeyword: "Reversed String: olleh"
-          },
-          {
-            id: 4,
-            title: "Challenge 4: Title Case Formatting",
-            prompt: "Capitalize 'javascript' to 'Javascript' and print `Capitalized: Javascript`.",
-            starterCode: "const cap = 'javascript'.charAt(0).toUpperCase() + 'javascript'.slice(1);\nconsole.log(`Capitalized: ${cap}`);",
-            expectedKeyword: "Capitalized: Javascript"
-          },
-          {
-            id: 5,
-            title: "Challenge 5: Word Count Calculation",
-            prompt: "Count words in 'HTML CSS JS' and print `Total Words: 3`.",
-            starterCode: "const count = 'HTML CSS JS'.split(' ').length;\nconsole.log(`Total Words: ${count}`);",
-            expectedKeyword: "Total Words: 3"
-          }
-        ],
-        tasks: [
-          { id: 'js5_t1', text: '🎥 Watch Video: Playlist 1: Videos 17–20 (slice, replace, includes, split, join)', completed: false },
-          { id: 'js5_t2', text: '✍️ Task: Create a String Reverser and Vowel Counter', completed: false },
-          { id: 'js5_t3', text: '✍️ Task: Convert sentences to Title Case using .split() and .join()', completed: false },
-          { id: 'js5_t4', text: '🚀 Mini Project: Password Strength Checker (Length, Symbols, Numbers validation)', completed: false }
-        ],
-        starterCode: `const checkPassword = (pwd) => {\n  const hasNum = /\\d/.test(pwd);\n  const isLong = pwd.length >= 8;\n  return isLong && hasNum ? "Strong" : "Weak";\n};\nconsole.log("Password Status:", checkPassword("Secret123"));`,
-        expectedKeyword: 'Password Status: Strong'
-      },
-
-      {
-        day: 6,
-        title: 'Day 6 – Array Fundamentals',
-        unit: 'Unit 3: Data Collections (5 Videos)',
-        topic: 'Ordered lists, push/pop, shift/unshift, splice & slice.',
-        playlistUrl: YOUTUBE_PLAYLISTS.jsAdvanced,
-        videoBreakdown: '🎥 Playlist 1: V21–22 + Playlist 2: V1–3 (push/pop, shift/unshift, splice, slice)',
-        whatToLearn: {
-          summary: 'Watch Playlist 1 (V21–22) & Playlist 2 (V1–3): Understand array index access, mutating operations (`push`, `pop`, `shift`, `unshift`), and non-mutating slicing/splicing.',
-          details: [
-            '🎥 Watch Video: Playlist 1: V21–22 + Playlist 2: V1–3 (`push`/`pop`, `shift`/`unshift`, `splice`, `slice`)',
-            'Adding elements: `push()` (end), `unshift()` (start).',
-            'Removing elements: `pop()` (end), `shift()` (start).',
-            'Splicing arrays: `arr.splice(index, count, newItem)` for insertion/deletion.',
-            'Slicing arrays: `arr.slice(begin, end)` for copying sub-arrays.'
-          ],
-          codeExample: `// Day 6: Arrays & Operations\nconst marks = [78, 92, 85, 64, 99];\nmarks.push(88);\nconst maxMark = Math.max(...marks);\nconst sum = marks.reduce((a, b) => a + b, 0);\nconsole.log(\`Max Mark: \${maxMark}, Average: \${sum / marks.length}\`);`
-        },
-        mcqQuestions: [
-          {
-            question: "Which array method removes the LAST element from an array and returns it?",
-            options: ["shift()", "unshift()", "pop()", "push()"],
-            answerIndex: 2,
-            explanation: "`pop()` removes and returns the last element of an array."
-          },
-          {
-            question: "What is the key difference between `.slice()` and `.splice()` on arrays?",
-            options: [
-              ".slice() mutates the array; .splice() does not",
-              ".splice() mutates the original array; .slice() returns a shallow copy",
-              "Both mutate the array",
-              "Neither mutates the array"
+            "question": "What does `true ? \"Yes\" : \"No\"` evaluate to?",
+            "options": [
+              "`\"Yes\"`",
+              "`\"No\"`",
+              "`true`",
+              "`false`"
             ],
-            answerIndex: 1,
-            explanation: "`.splice()` modifies the original array in-place, whereas `.slice()` creates a new sub-array copy."
-          },
-          {
-            question: "What does `[1, 2, 3].unshift(0)` return?",
-            options: ["[0, 1, 2, 3]", "0", "4 (the new length of the array)", "[1, 2, 3, 0]"],
-            answerIndex: 2,
-            explanation: "`unshift()` mutates the array and returns the NEW total length of the array (`4`)."
+            "answerIndex": 0,
+            "explanation": "Correct answer is A*"
           }
         ],
-        terminalChallenges: [
+        "terminalChallenges": [
           {
-            id: 1,
-            title: "Challenge 1: Unique Array Elements & Max Score",
-            prompt: "Remove duplicates from `[45, 89, 92, 89, 74]` and print `Top Score: 92`.",
-            starterCode: "const scores = [45, 89, 92, 89, 74];\nconst unique = [...new Set(scores)];\nconsole.log(\"Top Score:\", Math.max(...unique));",
-            expectedKeyword: "Top Score: 92"
+            "id": 1,
+            "title": "Challenge 1: Grade Classifier",
+            "prompt": "Write a score checker (`score = 85`) logging `\"A\"` (90+), `\"B\"` (80-89), `\"C\"` (70-79), or `\"F\"`.",
+            "starterCode": "// Write your code here",
+            "expectedKeyword": "Success"
           },
           {
-            id: 2,
-            title: "Challenge 2: Array Push & Mutate Length",
-            prompt: "Push 88 to array `[78, 92]` and print `Array Length: 3`.",
-            starterCode: "const arr = [78, 92];\narr.push(88);\nconsole.log(`Array Length: ${arr.length}`);",
-            expectedKeyword: "Array Length: 3"
+            "id": 2,
+            "title": "Challenge 2: Leap Year Validator",
+            "prompt": "Create logic to determine if a given year (`year = 2024`) is a leap year.",
+            "starterCode": "// Write your code here",
+            "expectedKeyword": "Success"
           },
           {
-            id: 3,
-            title: "Challenge 3: Array Sum Reduction",
-            prompt: "Sum numbers `[10, 20, 30]` and print `Total Sum: 60`.",
-            starterCode: "const sum = [10, 20, 30].reduce((a, b) => a + b, 0);\nconsole.log(`Total Sum: ${sum}`);",
-            expectedKeyword: "Total Sum: 60"
+            "id": 3,
+            "title": "Challenge 3: Falsy Filter",
+            "prompt": "Write an `if` condition checking if a variable `userInput` is populated, logging `\"Valid\"` or `\"Empty\"`.",
+            "starterCode": "// Write your code here",
+            "expectedKeyword": "Success"
           },
           {
-            id: 4,
-            title: "Challenge 4: Array Smallest Element",
-            prompt: "Find min element in `[45, 12, 89]` and print `Min Score: 12`.",
-            starterCode: "const min = Math.min(45, 12, 89);\nconsole.log(`Min Score: ${min}`);",
-            expectedKeyword: "Min Score: 12"
+            "id": 4,
+            "title": "Challenge 4: Role Access Switch",
+            "prompt": "Implement a `switch` statement checking `role = \"admin\" | \"editor\" | \"viewer\"` and logging access levels.",
+            "starterCode": "// Write your code here",
+            "expectedKeyword": "Success"
           },
           {
-            id: 5,
-            title: "Challenge 5: Second Largest Element Finder",
-            prompt: "Find second largest in `[10, 50, 40]` and print `Second Largest: 40`.",
-            starterCode: "const sorted = [10, 50, 40].sort((a, b) => b - a);\nconsole.log(`Second Largest: ${sorted[1]}`);",
-            expectedKeyword: "Second Largest: 40"
+            "id": 5,
+            "title": "Challenge 5: Ternary Discount",
+            "prompt": "Use a nested ternary operator to set shipping cost: `$0` if order > $100, `$5` if premium user, otherwise `$10`.",
+            "starterCode": "// Write your code here",
+            "expectedKeyword": "Success"
           }
         ],
-        tasks: [
-          { id: 'js6_t1', text: '🎥 Watch Video: Playlist 1: V21–22 + Playlist 2: V1–3 (push/pop, shift/unshift, splice, slice)', completed: false },
-          { id: 'js6_t2', text: '✍️ Task: Write a script to find Max, Min, and Second Largest element in an array', completed: false },
-          { id: 'js6_t3', text: '✍️ Task: Remove duplicate values from an array', completed: false },
-          { id: 'js6_t4', text: '🚀 Mini Project: Student Marks Manager CLI App', completed: false }
+        "tasks": [
+          {
+            "id": "js2_t1",
+            "text": "🎥 Watch Video: Videos 5–8 from the Beginner Playlist.",
+            "completed": false
+          },
+          {
+            "id": "js2_t2",
+            "text": "✍️ Task: Test truthy and falsy values (`0`, `\"\"`, `null`, `undefined`, `NaN`) in `if` statements.",
+            "completed": false
+          },
+          {
+            "id": "js2_t3",
+            "text": "✍️ Task: Refactor nested `if-else` blocks into concise ternary expressions.",
+            "completed": false
+          },
+          {
+            "id": "js2_t4",
+            "text": "✍️ Task: Implement a `switch` statement with a `default` case fallback.",
+            "completed": false
+          }
         ],
-        starterCode: `const scores = [45, 89, 92, 89, 74];\nconst unique = [...new Set(scores)];\nconsole.log("Unique Scores:", unique);\nconsole.log("Top Score:", Math.max(...unique));`,
-        expectedKeyword: 'Top Score: 92'
+        "starterCode": "// Starter",
+        "expectedKeyword": "Starter"
       },
-
       {
-        day: 7,
-        title: 'Day 7 – Modern Array Methods',
-        unit: 'Unit 3: Data Collections (Videos 4–7)',
-        topic: 'Functional transformations with map, filter, reduce, find, every, some & sort.',
-        playlistUrl: YOUTUBE_PLAYLISTS.jsAdvanced,
-        videoBreakdown: '🎥 Playlist 2: Videos 4–7 (map, filter, reduce, find, sort)',
-        whatToLearn: {
-          summary: 'Watch Playlist 2 (Videos 4–7): Master functional higher-order array methods: `map()`, `filter()`, `reduce()`, `find()`, `every()`, `some()`, and `sort()`.',
-          details: [
-            '🎥 Watch Video: Playlist 2: Videos 4–7 (`map`, `filter`, `reduce`, `find`, `sort`)',
-            '`map()` transforms every element into a new array.',
-            '`filter()` filters elements based on boolean predicate.',
-            '`reduce()` aggregates array values into a single accumulator.',
-            '`find()` returns first matching element; `every()` / `some()` test predicates.',
-            '`sort((a,b) => a - b)` sorts elements in-place.'
+        "day": 3,
+        "title": "Day 3 – Loops & Iteration",
+        "unit": "Unit 1: JS",
+        "topic": "Repeating code blocks using `for`, `while`, and `do-while` loops; flow control using `break` and `continue`.",
+        "playlistUrl": "https://www.youtube.com/playlist?list=PLPvjxHx5Kob2xn4eANiHRPSJmfqj3DMeo",
+        "videoBreakdown": "🎥 Videos 9–12 from the Beginner Playlist.",
+        "whatToLearn": {
+          "summary": "Learn about: Repeating code blocks using `for`, `while`, and `do-while` loops; flow control using `break` and `continue`.",
+          "details": [
+            "Write a loop that counts up, counts down, and steps by custom increments.",
+            "Use `break` to exit a loop early when a specific condition is met.",
+            "Use `continue` to skip specific iterations in a loop."
           ],
-          codeExample: `// Day 7: Functional Array Methods\nconst expenses = [\n  { id: 1, title: "Food", amount: 150 },\n  { id: 2, title: "Rent", amount: 800 },\n  { id: 3, title: "Coffee", amount: 10 }\n];\nconst totalExpense = expenses.reduce((sum, e) => sum + e.amount, 0);\nconst bigExpenses = expenses.filter(e => e.amount > 100);\nconsole.log(\`Total Expense: $\${totalExpense}, Major Items: \${bigExpenses.length}\`);`
+          "codeExample": "// Day 3 Example"
         },
-        mcqQuestions: [
+        "mcqQuestions": [
           {
-            question: "What is returned by `[1, 2, 3].map(x => x * 2)`?",
-            options: ["6", "[2, 4, 6]", "[1, 2, 3]", "undefined"],
-            answerIndex: 1,
-            explanation: "`map()` returns a new array with every element multiplied by 2 (`[2, 4, 6]`)."
-          },
-          {
-            question: "Which method finds the FIRST element in an array that satisfies a testing condition?",
-            options: [".filter()", ".every()", ".find()", ".some()"],
-            answerIndex: 2,
-            explanation: "`.find()` returns the first element matching the predicate, or `undefined` if none match."
-          },
-          {
-            question: "What is the default sorting behavior of `[10, 5, 20, 1].sort()`?",
-            options: [
-              "Sorts numerically: [1, 5, 10, 20]",
-              "Sorts lexicographically as strings: [1, 10, 20, 5]",
-              "Throws TypeError",
-              "Reverses original array"
+            "question": "Which loop guarantees at least one execution of its code block?",
+            "options": [
+              "`for`",
+              "`while`",
+              "`do-while`",
+              "`for...in`"
             ],
-            answerIndex: 1,
-            explanation: "Default `.sort()` converts elements to strings, sorting lexicographically (`[1, 10, 20, 5]`)."
-          }
-        ],
-        terminalChallenges: [
-          {
-            id: 1,
-            title: "Challenge 1: Filter & Reduce Combination",
-            prompt: "Use `.filter()` to keep numbers > 20 from `[10, 25, 30, 45, 50]` and `.reduce()` to log `Filtered Sum: 150`.",
-            starterCode: "const items = [10, 25, 30, 45, 50];\nconst over20 = items.filter(n => n > 20);\nconst total = over20.reduce((acc, curr) => acc + curr, 0);\nconsole.log('Filtered Sum:', total);",
-            expectedKeyword: "Filtered Sum: 150"
+            "answerIndex": 0,
+            "explanation": "Correct answer is C*"
           },
           {
-            id: 2,
-            title: "Challenge 2: Functional Map Transformation",
-            prompt: "Transform `[1, 2, 3]` to `[2, 4, 6]` with `.map()` and print `Mapped Array: 2, 4, 6`.",
-            starterCode: "const doubled = [1, 2, 3].map(n => n * 2);\nconsole.log(`Mapped Array: ${doubled.join(', ')}`);",
-            expectedKeyword: "Mapped Array: 2, 4, 6"
-          },
-          {
-            id: 3,
-            title: "Challenge 3: Predicate Filter Matching",
-            prompt: "Filter even numbers from `[1, 2, 3, 4]` and print `Evens Count: 2`.",
-            starterCode: "const evens = [1, 2, 3, 4].filter(n => n % 2 === 0);\nconsole.log(`Evens Count: ${evens.length}`);",
-            expectedKeyword: "Evens Count: 2"
-          },
-          {
-            id: 4,
-            title: "Challenge 4: Find Method Matching Item",
-            prompt: "Find first item with amount>100 in `[{amount: 150}]` and log `Found Amount: 150`.",
-            starterCode: "const found = [{amount: 150}].find(x => x.amount > 100);\nconsole.log(`Found Amount: ${found.amount}`);",
-            expectedKeyword: "Found Amount: 150"
-          },
-          {
-            id: 5,
-            title: "Challenge 5: Ascending Array Sort",
-            prompt: "Sort `[5, 2, 8]` ascending and print `Sorted: 2, 5, 8`.",
-            starterCode: "const sorted = [5, 2, 8].sort((a, b) => a - b);\nconsole.log(`Sorted: ${sorted.join(', ')}`);",
-            expectedKeyword: "Sorted: 2, 5, 8"
-          }
-        ],
-        tasks: [
-          { id: 'js7_t1', text: '🎥 Watch Video: Playlist 2: Videos 4–7 (map, filter, reduce, find, sort)', completed: false },
-          { id: 'js7_t2', text: '✍️ Task: Practice array transformations using .map() and .filter()', completed: false },
-          { id: 'js7_t3', text: '✍️ Task: Calculate totals using .reduce()', completed: false },
-          { id: 'js7_t4', text: '🚀 Mini Project: Expense Tracker (Array/CLI version)', completed: false }
-        ],
-        starterCode: `const items = [10, 25, 30, 45, 50];\nconst over20 = items.filter(n => n > 20);\nconst total = over20.reduce((acc, curr) => acc + curr, 0);\nconsole.log("Filtered Sum:", total);`,
-        expectedKeyword: 'Filtered Sum: 150'
-      },
-
-      {
-        day: 8,
-        title: 'Day 8 – Objects & Key-Value Structure',
-        unit: 'Unit 4: Object-Oriented JS (Videos 8–11)',
-        topic: 'Key-value maps, object methods, this keyword & nested objects.',
-        playlistUrl: YOUTUBE_PLAYLISTS.jsAdvanced,
-        videoBreakdown: '🎥 Playlist 2: Videos 8–11 (Properties, Methods, this, Nested Objects)',
-        whatToLearn: {
-          summary: 'Watch Playlist 2 (Videos 8–11): Model real-world entities using JavaScript Objects `{ key: value }`, methods, `this` keyword context, and nested object navigation.',
-          details: [
-            '🎥 Watch Video: Playlist 2: Videos 8–11 (Properties, Methods, `this`, Nested Objects)',
-            'Object declaration & dot vs bracket property access.',
-            'Adding methods inside objects: `greet() { return this.name; }`.',
-            'Context `this` referencing the host object.',
-            'Nested objects and `Object.keys()`, `Object.values()`, `Object.entries()`.'
-          ],
-          codeExample: `// Day 8: Objects & Student Manager\nconst student = {\n  id: 101,\n  name: "Aman",\n  marks: { math: 90, js: 95 },\n  getAverage() {\n    return (this.marks.math + this.marks.js) / 2;\n  }\n};\nconsole.log(\`Student \${student.name} Avg: \${student.getAverage()}\`);`
-        },
-        mcqQuestions: [
-          {
-            question: "How do you access a property name stored inside a variable `key = \"age\"` on an object `user`?",
-            options: ["user.key", "user[key]", "user.\"key\"", "user->key"],
-            answerIndex: 1,
-            explanation: "Bracket notation `user[key]` evaluates the variable content dynamically as the property name."
-          },
-          {
-            question: "In a standard object method, what does the `this` keyword refer to?",
-            options: ["The global window object", "The object itself that called the method", "The parent function scope", "undefined"],
-            answerIndex: 1,
-            explanation: "In regular object methods, `this` refers to the object instance invoking the method."
-          },
-          {
-            question: "Which statement correctly creates a shallow copy of an object `obj`?",
-            options: ["let copy = obj;", "let copy = Object.assign({}, obj);", "let copy = Object.clone(obj);", "let copy = obj.copy();"],
-            answerIndex: 1,
-            explanation: "`Object.assign({}, obj)` creates a new shallow copy of an object."
-          }
-        ],
-        terminalChallenges: [
-          {
-            id: 1,
-            title: "Challenge 1: Object Method & Student Count Assertion",
-            prompt: "Create a student object with `addStudent` method and print `Total Students: 2`.",
-            starterCode: "const system = {\n  students: [{ id: 1, name: 'Aman' }],\n  addStudent(s) { this.students.push(s); }\n};\nsystem.addStudent({ id: 2, name: 'Sara' });\nconsole.log('Total Students:', system.students.length);",
-            expectedKeyword: "Total Students: 2"
-          },
-          {
-            id: 2,
-            title: "Challenge 2: Object Key Inspection",
-            prompt: "Inspect keys of `{ name: 'Aman', age: 20 }` and print `Total Keys: 2`.",
-            starterCode: "const keys = Object.keys({ name: 'Aman', age: 20 });\nconsole.log(`Total Keys: ${keys.length}`);",
-            expectedKeyword: "Total Keys: 2"
-          },
-          {
-            id: 3,
-            title: "Challenge 3: Employee Object Salary Calculation",
-            prompt: "Define employee object with `basePay: 3000` and `bonus: 500` and print `Total Pay: 3500`.",
-            starterCode: "const emp = { base: 3000, bonus: 500, total() { return this.base + this.bonus; } };\nconsole.log(`Total Pay: ${emp.total()}`);",
-            expectedKeyword: "Total Pay: 3500"
-          },
-          {
-            id: 4,
-            title: "Challenge 4: Nested Object Property Access",
-            prompt: "Access `student.marks.js` for `{ marks: { js: 95 } }` and print `JS Mark: 95`.",
-            starterCode: "const student = { marks: { js: 95 } };\nconsole.log(`JS Mark: ${student.marks.js}`);",
-            expectedKeyword: "JS Mark: 95"
-          },
-          {
-            id: 5,
-            title: "Challenge 5: Object Method State Mutation",
-            prompt: "Call `car.start()` and print `Car Engine Status: Running`.",
-            starterCode: "const car = { status: 'Stopped', start() { this.status = 'Running'; } };\ncar.start();\nconsole.log(`Car Engine Status: ${car.status}`);",
-            expectedKeyword: "Car Engine Status: Running"
-          }
-        ],
-        tasks: [
-          { id: 'js8_t1', text: '🎥 Watch Video: Playlist 2: Videos 8–11 (Properties, Methods, this, Nested Objects)', completed: false },
-          { id: 'js8_t2', text: '✍️ Task: Build objects representing Student, Employee, Car, and Book schemas', completed: false },
-          { id: 'js8_t3', text: '✍️ Task: Access nested properties and invoke object methods using this', completed: false },
-          { id: 'js8_t4', text: '🚀 Mini Project: Student Management System with CRUD operations', completed: false }
-        ],
-        starterCode: `const studentSystem = {\n  students: [{ id: 1, name: "Aman", gpa: 3.9 }],\n  addStudent(s) { this.students.push(s); }\n};\nstudentSystem.addStudent({ id: 2, name: "Sara", gpa: 3.8 });\nconsole.log("Total Students:", studentSystem.students.length);`,
-        expectedKeyword: 'Total Students: 2'
-      },
-
-      {
-        day: 9,
-        title: 'Day 9 – DOM Manipulation',
-        unit: 'Unit 5: DOM & Dynamic UI (Videos 12–15)',
-        topic: 'Selecting & modifying webpage elements with querySelector & classList.',
-        playlistUrl: YOUTUBE_PLAYLISTS.jsAdvanced,
-        videoBreakdown: '🎥 Playlist 2: Videos 12–15 (querySelector, innerHTML, classList, Styles)',
-        whatToLearn: {
-          summary: 'Watch Playlist 2 (Videos 12–15): Learn how JavaScript interacts with HTML elements via DOM using `querySelector`, `innerHTML`, `textContent`, `style`, and `classList`.',
-          details: [
-            '🎥 Watch Video: Playlist 2: Videos 12–15 (`querySelector`, `innerHTML`, `classList`, Styles)',
-            '`document.querySelector(".class")` and `document.getElementById("id")`.',
-            '`element.textContent` vs `element.innerHTML`.',
-            'Manipulating CSS inline styles: `element.style.color = "blue"`.',
-            'Toggling classes: `element.classList.add()`, `.remove()`, `.toggle()`.'
-          ],
-          codeExample: `// Day 9: DOM Element Creation\nconst box = document.createElement("div");\nbox.textContent = "Color Box";\nbox.style.backgroundColor = "#3b82f6";\nbox.classList.add("card");\nconsole.log("Created Box Element:", box.textContent);`
-        },
-        mcqQuestions: [
-          {
-            question: "What does `document.querySelector(\".btn\")` return?",
-            options: ["An array of all elements with class btn", "The first element matching .btn", "An HTMLCollection", "A NodeList"],
-            answerIndex: 1,
-            explanation: "`querySelector` returns the FIRST element matching the specified CSS selector."
-          },
-          {
-            question: "What is the key difference between `textContent` and `innerHTML`?",
-            options: [
-              "textContent parses HTML tags; innerHTML strips them",
-              "innerHTML parses raw HTML strings; textContent treats input strictly as plain text",
-              "textContent is deprecated",
-              "There is no difference"
+            "question": "What does the `continue` keyword do in a loop?",
+            "options": [
+              "Terminates the entire loop.",
+              "Skips the current iteration and moves to the next.",
+              "Restarts the loop from index 0.",
+              "Returns a value from the loop."
             ],
-            answerIndex: 1,
-            explanation: "`innerHTML` parses string content as HTML, while `textContent` inserts raw plain text."
+            "answerIndex": 0,
+            "explanation": "Correct answer is B*"
           },
           {
-            question: "How do you safely add a CSS class to an element `el` without overwriting existing classes?",
-            options: [
-              "el.className = \"new-class\"",
-              "el.classList.add(\"new-class\")",
-              "el.setAttribute(\"class\", \"new-class\")",
-              "el.style = \"new-class\""
+            "question": "How many times will `for(let i=0; i<5; i++)` run?",
+            "options": [
+              "4 times",
+              "5 times",
+              "6 times",
+              "Infinite times"
             ],
-            answerIndex: 1,
-            explanation: "`el.classList.add(\"new-class\")` appends a class without overwriting existing classes."
+            "answerIndex": 0,
+            "explanation": "Correct answer is B*"
           }
         ],
-        terminalChallenges: [
+        "terminalChallenges": [
           {
-            id: 1,
-            title: "Challenge 1: DOM Text Content Modification",
-            prompt: "Simulate creating a DOM element `div`, set `textContent = 'Background Changed!'` and print it.",
-            starterCode: "const div = document.createElement('div');\ndiv.textContent = 'Background Changed!';\nconsole.log(div.textContent);",
-            expectedKeyword: "Background Changed!"
+            "id": 1,
+            "title": "Challenge 1: Sum Accumulator",
+            "prompt": "Compute the sum of all numbers from 1 to 100 using a `for` loop.",
+            "starterCode": "// Write your code here",
+            "expectedKeyword": "Success"
           },
           {
-            id: 2,
-            title: "Challenge 2: Element Class Toggle Assertion",
-            prompt: "Add `.active` class to classList and print `Class Toggle Applied: active`.",
-            starterCode: "const div = document.createElement('div');\ndiv.classList.add('active');\nconsole.log(`Class Toggle Applied: ${div.classList.contains('active') ? 'active' : 'none'}`);",
-            expectedKeyword: "Class Toggle Applied: active"
+            "id": 2,
+            "title": "Challenge 2: FizzBuzz Classic",
+            "prompt": "Print numbers 1 to 30. For multiples of 3 log `\"Fizz\"`, 5 log `\"Buzz\"`, both log `\"FizzBuzz\"`.",
+            "starterCode": "// Write your code here",
+            "expectedKeyword": "Success"
           },
           {
-            id: 3,
-            title: "Challenge 3: Inline Style Background Color",
-            prompt: "Set `div.style.backgroundColor = '#f59e0b'` and log `Background Color Set: #f59e0b`.",
-            starterCode: "const div = document.createElement('div');\ndiv.style.backgroundColor = '#f59e0b';\nconsole.log(`Background Color Set: ${div.style.backgroundColor}`);",
-            expectedKeyword: "Background Color Set:"
+            "id": 3,
+            "title": "Challenge 3: Prime Checker",
+            "prompt": "Write a loop checking if a number `num = 17` is prime.",
+            "starterCode": "// Write your code here",
+            "expectedKeyword": "Success"
           },
           {
-            id: 4,
-            title: "Challenge 4: QuerySelector Match Verification",
-            prompt: "Simulate `document.querySelector('#user-card')` and log `Element Selected: user-card`.",
-            starterCode: "const id = 'user-card';\nconsole.log(`Element Selected: ${id}`);",
-            expectedKeyword: "Element Selected: user-card"
+            "id": 4,
+            "title": "Challenge 4: Reverse Digit Counter",
+            "prompt": "Print numbers 20 down to 1, skipping multiples of 4 using `continue`.",
+            "starterCode": "// Write your code here",
+            "expectedKeyword": "Success"
           },
           {
-            id: 5,
-            title: "Challenge 5: Dynamic List Item Append",
-            prompt: "Append a child `<li>` element and print `Total List Items: 1`.",
-            starterCode: "const ul = document.createElement('ul');\nconst li = document.createElement('li');\nul.appendChild(li);\nconsole.log(`Total List Items: ${ul.children.length}`);",
-            expectedKeyword: "Total List Items: 1"
+            "id": 5,
+            "title": "Challenge 5: Pattern Generator",
+            "prompt": "Use nested loops to generate a right-angled triangle pattern of asterisks (`*`) 5 rows high.",
+            "starterCode": "// Write your code here",
+            "expectedKeyword": "Success"
           }
         ],
-        tasks: [
-          { id: 'js9_t1', text: '🎥 Watch Video: Playlist 2: Videos 12–15 (querySelector, innerHTML, classList, Styles)', completed: false },
-          { id: 'js9_t2', text: '✍️ Task: Target elements via querySelector and change background colors dynamically', completed: false },
-          { id: 'js9_t3', text: '✍️ Task: Toggle CSS classes using .classList.toggle()', completed: false },
-          { id: 'js9_t4', text: '🚀 Mini Project: Interactive Color Switcher App', completed: false }
+        "tasks": [
+          {
+            "id": "js3_t1",
+            "text": "🎥 Watch Video: Videos 9–12 from the Beginner Playlist.",
+            "completed": false
+          },
+          {
+            "id": "js3_t2",
+            "text": "✍️ Task: Write a loop that counts up, counts down, and steps by custom increments.",
+            "completed": false
+          },
+          {
+            "id": "js3_t3",
+            "text": "✍️ Task: Use `break` to exit a loop early when a specific condition is met.",
+            "completed": false
+          },
+          {
+            "id": "js3_t4",
+            "text": "✍️ Task: Use `continue` to skip specific iterations in a loop.",
+            "completed": false
+          }
         ],
-        starterCode: `const div = document.createElement("div");\ndiv.textContent = "Background Changed!";\ndiv.style.backgroundColor = "#f59e0b";\nconsole.log(div.textContent);`,
-        expectedKeyword: 'Background Changed!'
+        "starterCode": "// Starter",
+        "expectedKeyword": "Starter"
       },
-
       {
-        day: 10,
-        title: 'Day 10 – DOM Events & Interactions',
-        unit: 'Unit 5: DOM & Dynamic UI (Videos 16–18)',
-        topic: 'User interactions with event listeners, keyboard & mouse events.',
-        playlistUrl: YOUTUBE_PLAYLISTS.jsAdvanced,
-        videoBreakdown: '🎥 Playlist 2: Videos 16–18 (Event Listeners, Keyboard, Mouse Events)',
-        whatToLearn: {
-          summary: 'Watch Playlist 2 (Videos 16–18): Listen to user actions with `addEventListener()`, handling click events, input text events, keyboard presses (`keydown`), and mouse movements.',
-          details: [
-            '🎥 Watch Video: Playlist 2: Videos 16–18 (Event Listeners, Keyboard, Mouse Events)',
-            'Attaching event handlers: `element.addEventListener("click", handler)`.',
-            'Event object details: `event.target`, `event.key`, `event.preventDefault()`.',
-            'Form input event tracking: `input` and `change` events.',
-            'Keyboard key presses: `keydown` and `keyup`.'
+        "day": 4,
+        "title": "Day 4 – Functions & Scope",
+        "unit": "Unit 1: JS",
+        "topic": "Function declarations vs expressions, arrow functions, parameter defaults, return values, and global vs local scope.",
+        "playlistUrl": "https://www.youtube.com/playlist?list=PLPvjxHx5Kob2xn4eANiHRPSJmfqj3DMeo",
+        "videoBreakdown": "🎥 Videos 13–16 from the Beginner Playlist.",
+        "whatToLearn": {
+          "summary": "Learn about: Function declarations vs expressions, arrow functions, parameter defaults, return values, and global vs local scope.",
+          "details": [
+            "Convert standard function declarations into ES6 arrow functions.",
+            "Test accessing block-scoped variables outside their declared function scope.",
+            "Write functions with default parameter values."
           ],
-          codeExample: `// Day 10: Event Listener Simulation\nconst btn = document.createElement("button");\nbtn.textContent = "Increment Counter";\nlet count = 0;\nbtn.addEventListener("click", () => {\n  count++;\n  console.log(\`Count: \${count}\`);\n});\nbtn.click(); // Trigger simulation`
+          "codeExample": "// Day 4 Example"
         },
-        mcqQuestions: [
+        "mcqQuestions": [
           {
-            question: "Why is `addEventListener()` preferred over inline HTML event attributes like `onclick=\"\"`?",
-            options: [
-              "It allows attaching multiple listeners to a single event without overwriting",
-              "It is faster to execute",
-              "Inline event attributes do not work in modern browsers",
-              "It bypasses event bubbling"
+            "question": "What happens if a function lacks an explicit `return` statement?",
+            "options": [
+              "It throws a syntax error.",
+              "It returns `null`.",
+              "It returns `undefined`.",
+              "It returns `0`."
             ],
-            answerIndex: 0,
-            explanation: "`addEventListener` allows attaching multiple independent event listeners to the same target."
+            "answerIndex": 0,
+            "explanation": "Correct answer is C*"
           },
           {
-            question: "What method prevents a form's default page refresh behavior upon submission?",
-            options: ["event.stopImmediate()", "event.preventDefault()", "event.stopPropagation()", "return false"],
-            answerIndex: 1,
-            explanation: "`event.preventDefault()` stops default form submission page refreshes."
-          },
-          {
-            question: "Which event fires immediately as a user types into an `<input>` field?",
-            options: ["change", "blur", "input", "submit"],
-            answerIndex: 2,
-            explanation: "The `input` event fires synchronously whenever the `<input>` value changes."
-          }
-        ],
-        terminalChallenges: [
-          {
-            id: 1,
-            title: "Challenge 1: Digital Counter Increment Assertion",
-            prompt: "Write a counter script that increments `counter` twice and prints `Digital Counter Value: 2`.",
-            starterCode: "let counter = 0;\nconst increment = () => ++counter;\nincrement(); increment();\nconsole.log('Digital Counter Value:', counter);",
-            expectedKeyword: "Digital Counter Value: 2"
-          },
-          {
-            id: 2,
-            title: "Challenge 2: Click Event Registration",
-            prompt: "Attach click listener handler and print `Click Event Handler Registered!`.",
-            starterCode: "const btn = document.createElement('button');\nbtn.addEventListener('click', () => {});\nconsole.log('Click Event Handler Registered!');",
-            expectedKeyword: "Click Event Handler Registered!"
-          },
-          {
-            id: 3,
-            title: "Challenge 3: PreventDefault Form Interception",
-            prompt: "Simulate `event.preventDefault()` and log `Form Submit Intercepted!`.",
-            starterCode: "const prevent = true;\nif (prevent) console.log('Form Submit Intercepted!');",
-            expectedKeyword: "Form Submit Intercepted!"
-          },
-          {
-            id: 4,
-            title: "Challenge 4: Input Text Mirroring",
-            prompt: "Set input value 'Search' and log `Mirror Text: Search`.",
-            starterCode: "const val = 'Search';\nconsole.log(`Mirror Text: ${val}`);",
-            expectedKeyword: "Mirror Text: Search"
-          },
-          {
-            id: 5,
-            title: "Challenge 5: Keydown Key Code Assertion",
-            prompt: "Simulate keydown event for key='Enter' and print `Key Pressed: Enter`.",
-            starterCode: "const key = 'Enter';\nconsole.log(`Key Pressed: ${key}`);",
-            expectedKeyword: "Key Pressed: Enter"
-          }
-        ],
-        tasks: [
-          { id: 'js10_t1', text: '🎥 Watch Video: Playlist 2: Videos 16–18 (Event Listeners, Keyboard, Mouse Events)', completed: false },
-          { id: 'js10_t2', text: '✍️ Task: Bind click and keyup listeners using addEventListener', completed: false },
-          { id: 'js10_t3', text: '✍️ Task: Build a live text input mirror preview', completed: false },
-          { id: 'js10_t4', text: '🚀 Mini Project: Digital Counter App with increment/decrement/reset', completed: false }
-        ],
-        starterCode: `let counter = 0;\nconst increment = () => ++counter;\nconst decrement = () => --counter;\nincrement(); increment();\nconsole.log("Digital Counter Value:", counter);`,
-        expectedKeyword: 'Digital Counter Value: 2'
-      },
-
-      {
-        day: 11,
-        title: 'Day 11 – DOM Projects (Pure Hands-on)',
-        unit: 'Unit 6: Interactive Apps (Pure Coding)',
-        topic: 'Build complete interactive DOM applications combining UI & State.',
-        playlistUrl: YOUTUBE_PLAYLISTS.jsAdvanced,
-        videoBreakdown: '🎥 0 Videos: 100% Pure Application Day',
-        whatToLearn: {
-          summary: 'Pure Hands-On Application Day (0 Videos): Apply all DOM & Event concepts from previous days to build 3 complete interactive web applications from scratch.',
-          details: [
-            '🚀 Build Interactive To-Do App with add/delete tasks.',
-            '🚀 Build Digital Clock with live updating seconds interval.',
-            '🚀 Build Random Quote Generator with random selection & category filters.',
-            'Master state-to-DOM rendering patterns.'
-          ],
-          codeExample: `// Day 11: To-Do App Logic\nlet todos = [];\nconst addTodo = (text) => {\n  todos.push({ id: Date.now(), text, completed: false });\n};\naddTodo("Build DOM Projects");\nconsole.log("Active Todos Count:", todos.length);`
-        },
-        mcqQuestions: [
-          {
-            question: "Which JS timing function executes a function repeatedly at specified time intervals?",
-            options: ["setTimeout()", "setInterval()", "requestAnimationFrame()", "setImmediate()"],
-            answerIndex: 1,
-            explanation: "`setInterval(fn, delayMs)` repeatedly invokes `fn` every `delayMs` milliseconds."
-          }
-        ],
-        terminalChallenges: [
-          {
-            id: 1,
-            title: "Challenge 1: DOM Projects Count Assertion",
-            prompt: "Construct a list of 3 DOM projects and print `Completed DOM Projects Count: 3`.",
-            starterCode: "const todos = ['To-Do', 'Digital Clock', 'Quote Generator'];\nconsole.log('Completed DOM Projects Count:', todos.length);",
-            expectedKeyword: "Completed DOM Projects Count: 3"
-          },
-          {
-            id: 2,
-            title: "Challenge 2: To-Do Array Append",
-            prompt: "Add a task to `todos` array and print `Active Todos Count: 1`.",
-            starterCode: "const todos = [{ id: 1, text: 'Task 1' }];\nconsole.log(`Active Todos Count: ${todos.length}`);",
-            expectedKeyword: "Active Todos Count: 1"
-          },
-          {
-            id: 3,
-            title: "Challenge 3: Digital Clock Interval Set",
-            prompt: "Simulate `setInterval` tick and print `Clock Tick Interval Active!`.",
-            starterCode: "const active = true;\nif (active) console.log('Clock Tick Interval Active!');",
-            expectedKeyword: "Clock Tick Interval Active!"
-          },
-          {
-            id: 4,
-            title: "Challenge 4: Random Quote Picker Index",
-            prompt: "Pick random index from 3 quotes and print `Random Quote Picked!`.",
-            starterCode: "const quotes = ['Quote 1', 'Quote 2', 'Quote 3'];\nconst idx = Math.floor(Math.random() * quotes.length);\nconsole.log('Random Quote Picked!');",
-            expectedKeyword: "Random Quote Picked!"
-          },
-          {
-            id: 5,
-            title: "Challenge 5: State-to-DOM Synchronizer",
-            prompt: "Sync array state to UI list and print `State to DOM Synced!`.",
-            starterCode: "const synced = true;\nif (synced) console.log('State to DOM Synced!');",
-            expectedKeyword: "State to DOM Synced!"
-          }
-        ],
-        tasks: [
-          { id: 'js11_t1', text: '🚀 Project 1: Interactive To-Do App with add/delete DOM elements', completed: false },
-          { id: 'js11_t2', text: '🚀 Project 2: Live Digital Clock using setInterval()', completed: false },
-          { id: 'js11_t3', text: '🚀 Project 3: Random Quote Generator with dynamic array lookup', completed: false }
-        ],
-        starterCode: `const todos = ["Build To-Do", "Build Digital Clock", "Build Quote Generator"];\nconsole.log("Completed DOM Projects Count:", todos.length);`,
-        expectedKeyword: 'Completed DOM Projects Count: 3'
-      },
-
-      {
-        day: 12,
-        title: 'Day 12 – Async JavaScript & Fetch API',
-        unit: 'Unit 7: Asynchronous JS (Videos 19–22)',
-        topic: 'Callbacks, Promises, Async/Await & Fetch API for network data.',
-        playlistUrl: YOUTUBE_PLAYLISTS.jsAdvanced,
-        videoBreakdown: '🎥 Playlist 2: Videos 19–22 (Promises, async/await, fetch(), try/catch)',
-        whatToLearn: {
-          summary: 'Watch Playlist 2 (Videos 19–22): Understand non-blocking asynchronous execution, Callbacks, Promises, `async/await` keywords, and performing REST API calls using `fetch()`.',
-          details: [
-            '🎥 Watch Video: Playlist 2: Videos 19–22 (Promises, `async`/`await`, `fetch()`, `try/catch`)',
-            'Understanding event loop & call stack.',
-            'Promises: `.then()`, `.catch()`, `.finally()`.',
-            'Modern `async` / `await` syntax.',
-            'Fetching network data with `fetch(url)` and error handling.'
-          ],
-          codeExample: `// Day 12: Async Fetch Simulation\nconst fetchWeather = async (city) => {\n  try {\n    const res = await new Promise(r => setTimeout(() => r({ temp: 28, city }), 300));\n    console.log(\`Weather in \${res.city}: \${res.temp}°C\`);\n  } catch(e) {\n    console.error("API error", e);\n  }\n};\nfetchWeather("Kochi");`
-        },
-        mcqQuestions: [
-          {
-            question: "What state is a Promise in immediately after instantiation before completion?",
-            options: ["fulfilled", "rejected", "pending", "settled"],
-            answerIndex: 2,
-            explanation: "Promises begin in the `pending` state before transitioning to `fulfilled` or `rejected`."
-          },
-          {
-            question: "What keyword must be placed before a function declaration to use `await` inside it?",
-            options: ["defer", "async", "promise", "thread"],
-            answerIndex: 1,
-            explanation: "Functions must be declared with `async` keyword to enable `await` expressions."
-          },
-          {
-            question: "What is required to parse the response stream from a `fetch()` call as JSON?",
-            options: ["JSON.parse(response)", "await response.json()", "response.body", "response.getText()"],
-            answerIndex: 1,
-            explanation: "`await response.json()` parses the incoming response stream into a JavaScript object."
-          }
-        ],
-        terminalChallenges: [
-          {
-            id: 1,
-            title: "Challenge 1: Async Weather Fetch Assertion",
-            prompt: "Write an `async` function `getWeather` returning `{ city: 'Kochi', temp: '30°C' }` and log `City: Kochi, Temp: 30°C`.",
-            starterCode: "const getWeather = async () => {\n  const data = await new Promise(res => res({ city: 'Kochi', temp: '30°C' }));\n  console.log(`City: ${data.city}, Temp: ${data.temp}`);\n};\ngetWeather();",
-            expectedKeyword: "City: Kochi, Temp: 30°C"
-          },
-          {
-            id: 2,
-            title: "Challenge 2: Promise Resolution Assertion",
-            prompt: "Create a resolved Promise returning 'API Success' and print `Promise Result: API Success`.",
-            starterCode: "Promise.resolve('API Success').then(res => console.log(`Promise Result: ${res}`));",
-            expectedKeyword: "Promise Result: API Success"
-          },
-          {
-            id: 3,
-            title: "Challenge 3: Try/Catch Error Handling",
-            prompt: "Simulate try/catch block for API error and print `API Error Intercepted`.",
-            starterCode: "try { throw new Error('API Error Intercepted'); } catch(e) { console.log(e.message); }",
-            expectedKeyword: "API Error Intercepted"
-          },
-          {
-            id: 4,
-            title: "Challenge 4: JSON Data Deserialization",
-            prompt: "Parse `{ \"status\": \"ok\" }` and print `Status: ok`.",
-            starterCode: "const json = JSON.parse('{\"status\":\"ok\"}');\nconsole.log(`Status: ${json.status}`);",
-            expectedKeyword: "Status: ok"
-          },
-          {
-            id: 5,
-            title: "Challenge 5: Async / Await Syntactic Sugar",
-            prompt: "Execute async arrow function and print `Async Function Resolved!`.",
-            starterCode: "const run = async () => 'Async Function Resolved!';\nrun().then(res => console.log(res));",
-            expectedKeyword: "Async Function Resolved!"
-          }
-        ],
-        tasks: [
-          { id: 'js12_t1', text: '🎥 Watch Video: Playlist 2: Videos 19–22 (Promises, async/await, fetch(), try/catch)', completed: false },
-          { id: 'js12_t2', text: '✍️ Task: Fetch JSON data from public REST APIs using fetch()', completed: false },
-          { id: 'js12_t3', text: '✍️ Task: Wrap asynchronous requests in try...catch blocks for robust error handling', completed: false },
-          { id: 'js12_t4', text: '🚀 Mini Project: Weather App fetching live data via API', completed: false }
-        ],
-        starterCode: `const getWeather = async () => {\n  const data = await new Promise(res => res({ city: "Kochi", temp: "30°C" }));\n  console.log(\`City: \${data.city}, Temp: \${data.temp}\`);\n};\ngetWeather();`,
-        expectedKeyword: 'City: Kochi, Temp: 30°C'
-      },
-
-      {
-        day: 13,
-        title: 'Day 13 – ES6+ Modern JS & LocalStorage',
-        unit: 'Unit 8: Modern ES6+ & Storage (Videos 23–25)',
-        topic: 'Destructuring, Spread, Rest, ES Modules & Local Storage.',
-        playlistUrl: YOUTUBE_PLAYLISTS.jsAdvanced,
-        videoBreakdown: '🎥 Playlist 2: Videos 23–25 (Destructuring, Spread/Rest, Modules, localStorage)',
-        whatToLearn: {
-          summary: 'Watch Playlist 2 (Videos 23–25): Master modern ES6+ features: Destructuring arrays/objects, Spread & Rest operators (`...`), ES Modules, and persistent browser storage with `localStorage`.',
-          details: [
-            '🎥 Watch Video: Playlist 2: Videos 23–25 (Destructuring, Spread/Rest, Modules, `localStorage`)',
-            'Object destructuring: `const { name, age } = user;`.',
-            'Rest parameters: `function sum(...nums)`.',
-            'Browser `localStorage.setItem(key, value)` & `getItem(key)`.',
-            'JSON serialization: `JSON.stringify()` and `JSON.parse()`.'
-          ],
-          codeExample: `// Day 13: LocalStorage Simulation\nconst note = { id: 1, text: "Master Advanced JS" };\nconst jsonStr = JSON.stringify(note);\nconst parsedNote = JSON.parse(jsonStr);\nconsole.log("Parsed Saved Note:", parsedNote.text);`
-        },
-        mcqQuestions: [
-          {
-            question: "How do you convert a JavaScript object into a string for storing in `localStorage`?",
-            options: ["String(obj)", "JSON.stringify(obj)", "obj.toString()", "JSON.parse(obj)"],
-            answerIndex: 1,
-            explanation: "`JSON.stringify()` serializes JavaScript objects into a JSON string format."
-          },
-          {
-            question: "What does `const [a, ...b] = [1, 2, 3, 4]` assign to variable `b`?",
-            options: ["2", "[2, 3, 4]", "[1, 2, 3, 4]", "undefined"],
-            answerIndex: 1,
-            explanation: "The Rest operator `...b` gathers all remaining array elements into `[2, 3, 4]`."
-          },
-          {
-            question: "Does data stored in `localStorage` expire when the browser window is closed?",
-            options: [
-              "Yes, after 24 hours",
-              "No, it persists until explicitly deleted or cleared",
-              "Yes, upon tab closing",
-              "Only on mobile browsers"
+            "question": "Which syntax correctly represents an arrow function?",
+            "options": [
+              "`function => () {}`",
+              "`() => {}`",
+              "`() -> {}`",
+              "`def () {}`"
             ],
-            answerIndex: 1,
-            explanation: "`localStorage` data has no expiration date; it persists until programmatically or manually cleared."
-          }
-        ],
-        terminalChallenges: [
-          {
-            id: 1,
-            title: "Challenge 1: LocalStorage Serialization Function",
-            prompt: "Write a function `saveNote` that serializes an array of notes to JSON and log `Saved Notes JSON:`.",
-            starterCode: "const saveNote = (title) => {\n  const notes = [title];\n  return JSON.stringify(notes);\n};\nconsole.log('Saved Notes JSON:', saveNote('Day 13 Notes'));",
-            expectedKeyword: "Saved Notes JSON:"
+            "answerIndex": 0,
+            "explanation": "Correct answer is B*"
           },
           {
-            id: 2,
-            title: "Challenge 2: Object Destructuring Assignment",
-            prompt: "Destructure `{ name: 'Aman', age: 20 }` and log `Destructured Name: Aman`.",
-            starterCode: "const { name } = { name: 'Aman', age: 20 };\nconsole.log(`Destructured Name: ${name}`);",
-            expectedKeyword: "Destructured Name: Aman"
-          },
-          {
-            id: 3,
-            title: "Challenge 3: Spread Operator Array Merge",
-            prompt: "Merge `[1, 2]` and `[3, 4]` with `[...a, ...b]` and print `Merged Array: 1, 2, 3, 4`.",
-            starterCode: "const a = [1, 2], b = [3, 4];\nconsole.log(`Merged Array: ${[...a, ...b].join(', ')}`);",
-            expectedKeyword: "Merged Array: 1, 2, 3, 4"
-          },
-          {
-            id: 4,
-            title: "Challenge 4: Rest Function Parameter Gathering",
-            prompt: "Gather rest params `...nums` for 1,2,3 and print `Rest Params Count: 3`.",
-            starterCode: "const sum = (...nums) => nums.length;\nconsole.log(`Rest Params Count: ${sum(1, 2, 3)}`);",
-            expectedKeyword: "Rest Params Count: 3"
-          },
-          {
-            id: 5,
-            title: "Challenge 5: JSON Parse Recovery Assertion",
-            prompt: "Parse `\"{\"title\":\"Notes\"}\"` and print `Recovered Title: Notes`.",
-            starterCode: "const obj = JSON.parse('{\"title\":\"Notes\"}');\nconsole.log(`Recovered Title: ${obj.title}`);",
-            expectedKeyword: "Recovered Title: Notes"
-          }
-        ],
-        tasks: [
-          { id: 'js13_t1', text: '🎥 Watch Video: Playlist 2: Videos 23–25 (Destructuring, Spread/Rest, Modules, localStorage)', completed: false },
-          { id: 'js13_t2', text: '✍️ Task: Practice array/object destructuring and spread operator (...)', completed: false },
-          { id: 'js13_t3', text: '✍️ Task: Save and retrieve JSON stringified data using localStorage.setItem() and getItem()', completed: false },
-          { id: 'js13_t4', text: '🚀 Mini Project: Persistent Notes App backed by localStorage', completed: false }
-        ],
-        starterCode: `const saveNote = (title) => {\n  const notes = [title];\n  return JSON.stringify(notes);\n};\nconsole.log("Saved Notes JSON:", saveNote("Day 13 Notes"));`,
-        expectedKeyword: 'Saved Notes JSON:'
-      },
-
-      {
-        day: 14,
-        title: 'Day 14 – Portfolio Project Sprint (No Video Tutorials)',
-        unit: 'Unit 9: Capstone Portfolio (Self-Guided)',
-        topic: 'Full curriculum revision & 5 portfolio-ready standalone projects.',
-        playlistUrl: YOUTUBE_PLAYLISTS.jsAdvanced,
-        videoBreakdown: '🎥 0 Videos: Self-Guided Coding Challenge',
-        whatToLearn: {
-          summary: 'Day 14: Revise all 47 videos and build 5 portfolio-ready projects independently without watching tutorials!',
-          details: [
-            '🔄 Revise all concepts from Videos 1–47.',
-            '🚀 Build 1. Interactive To-Do App (with LocalStorage & Filter).',
-            '🚀 Build 2. Functional Calculator (with keyboard & click support).',
-            '🚀 Build 3. Live Weather App (with Async Fetch API).',
-            '🚀 Build 4. Expense Tracker (with persistent state).',
-            '🚀 Build 5. Interactive Quiz App (with score timer & progress).'
-          ],
-          codeExample: `// Day 14: Capstone Portfolio Projects\nconst portfolioProjects = [\n  "Interactive To-Do App",\n  "Functional Calculator",\n  "Live Weather App",\n  "Expense Tracker",\n  "Interactive Quiz App"\n];\nconsole.log(\`Successfully built \${portfolioProjects.length} portfolio projects!\`);`
-        },
-        mcqQuestions: [
-          {
-            question: "Which modern JavaScript workflow provides the best architecture for scalable web apps?",
-            options: [
-              "ES6 Modules + Async/Await + Clean DOM separation + LocalStorage persistence",
-              "Global var variables + Inline onclick handlers + Synchronous XHR",
-              "Monolithic functions without scope boundaries",
-              "Avoid functions and write linear code"
+            "question": "Can variables declared with `let` inside a function be accessed globally?",
+            "options": [
+              "Yes",
+              "No",
+              "Only inside loops",
+              "Only if exported"
             ],
-            answerIndex: 0,
-            explanation: "Combining modular architecture, async/await, clean DOM rendering, and LocalStorage yields scalable modern frontend apps."
+            "answerIndex": 0,
+            "explanation": "Correct answer is B*"
           }
         ],
-        terminalChallenges: [
+        "terminalChallenges": [
           {
-            id: 1,
-            title: "Challenge 1: Interactive To-Do App Project Assertion",
-            prompt: "Construct project object for `Interactive To-Do App` and print `Project 1 Validated!`.",
-            starterCode: "const p1 = { title: 'Interactive To-Do App' };\nconsole.log('Project 1 Validated!');",
-            expectedKeyword: "Project 1 Validated!"
+            "id": 1,
+            "title": "Challenge 1: Temperature Converter",
+            "prompt": "Write an arrow function `celsiusToFahrenheit(c)` returning the Fahrenheit equivalent.",
+            "starterCode": "// Write your code here",
+            "expectedKeyword": "Success"
           },
           {
-            id: 2,
-            title: "Challenge 2: Functional Calculator Project Assertion",
-            prompt: "Construct project object for `Functional Calculator` and print `Project 2 Validated!`.",
-            starterCode: "const p2 = { title: 'Functional Calculator' };\nconsole.log('Project 2 Validated!');",
-            expectedKeyword: "Project 2 Validated!"
+            "id": 2,
+            "title": "Challenge 2: Default Greeting",
+            "prompt": "Create a function `greet(name = \"Guest\")` that returns a customized welcome string.",
+            "starterCode": "// Write your code here",
+            "expectedKeyword": "Success"
           },
           {
-            id: 3,
-            title: "Challenge 3: Live Weather App Project Assertion",
-            prompt: "Construct project object for `Live Weather App` and print `Project 3 Validated!`.",
-            starterCode: "const p3 = { title: 'Live Weather App' };\nconsole.log('Project 3 Validated!');",
-            expectedKeyword: "Project 3 Validated!"
+            "id": 3,
+            "title": "Challenge 3: Pure Calculator",
+            "prompt": "Write a function taking `(a, b, operation)` and returning the arithmetic result using a switch block.",
+            "starterCode": "// Write your code here",
+            "expectedKeyword": "Success"
           },
           {
-            id: 4,
-            title: "Challenge 4: Expense Tracker Project Assertion",
-            prompt: "Construct project object for `Expense Tracker` and print `Project 4 Validated!`.",
-            starterCode: "const p4 = { title: 'Expense Tracker' };\nconsole.log('Project 4 Validated!');",
-            expectedKeyword: "Project 4 Validated!"
+            "id": 4,
+            "title": "Challenge 4: Scope Shadowing",
+            "prompt": "Demonstrate variable shadowing by declaring a global `let x = 10` and local `let x = 20` inside a function.",
+            "starterCode": "// Write your code here",
+            "expectedKeyword": "Success"
           },
           {
-            id: 5,
-            title: "Challenge 5: Total JavaScript Portfolio Projects Built",
-            prompt: "Store 5 portfolio project names in an array and print `Total Portfolio Projects: 5`.",
-            starterCode: "const portfolio = ['Interactive To-Do App', 'Functional Calculator', 'Live Weather App', 'Expense Tracker', 'Interactive Quiz App'];\nconsole.log('All 14 Days Completed! Total Portfolio Projects:', portfolio.length);",
-            expectedKeyword: "Total Portfolio Projects: 5"
+            "id": 5,
+            "title": "Challenge 5: Factorial Recursive",
+            "prompt": "Create a recursive function `factorial(n)` that returns $n!$.",
+            "starterCode": "// Write your code here",
+            "expectedKeyword": "Success"
           }
         ],
-        tasks: [
-          { id: 'js14_t1', text: '🚀 Project 1: Interactive To-Do App with state & LocalStorage', completed: false },
-          { id: 'js14_t2', text: '🚀 Project 2: Functional Web Calculator', completed: false },
-          { id: 'js14_t3', text: '🚀 Project 3: Live Weather App using OpenWeather API', completed: false },
-          { id: 'js14_t4', text: '🚀 Project 4: Expense Tracker with persistent storage', completed: false },
-          { id: 'js14_t5', text: '🚀 Project 5: Interactive Quiz App with score tracking', completed: false }
+        "tasks": [
+          {
+            "id": "js4_t1",
+            "text": "🎥 Watch Video: Videos 13–16 from the Beginner Playlist.",
+            "completed": false
+          },
+          {
+            "id": "js4_t2",
+            "text": "✍️ Task: Convert standard function declarations into ES6 arrow functions.",
+            "completed": false
+          },
+          {
+            "id": "js4_t3",
+            "text": "✍️ Task: Test accessing block-scoped variables outside their declared function scope.",
+            "completed": false
+          },
+          {
+            "id": "js4_t4",
+            "text": "✍️ Task: Write functions with default parameter values.",
+            "completed": false
+          }
         ],
-        starterCode: `const portfolio = ["Interactive To-Do App", "Functional Calculator", "Live Weather App", "Expense Tracker", "Interactive Quiz App"];\nconsole.log("All 14 Days Completed! Total Portfolio Projects:", portfolio.length);`,
-        expectedKeyword: 'Total Portfolio Projects: 5'
+        "starterCode": "// Starter",
+        "expectedKeyword": "Starter"
+      },
+      {
+        "day": 5,
+        "title": "Day 5 – String Manipulation",
+        "unit": "Unit 1: JS",
+        "topic": "Standard string properties and methods (`length`, `toUpperCase`, `toLowerCase`, `indexOf`, `slice`, `substring`, `trim`, `replace`, `split`, `join`).",
+        "playlistUrl": "https://www.youtube.com/playlist?list=PLPvjxHx5Kob2xn4eANiHRPSJmfqj3DMeo",
+        "videoBreakdown": "🎥 Videos 17–20 from the Beginner Playlist.",
+        "whatToLearn": {
+          "summary": "Learn about: Standard string properties and methods (`length`, `toUpperCase`, `toLowerCase`, `indexOf`, `slice`, `substring`, `trim`, `replace`, `split`, `join`).",
+          "details": [
+            "Extract substrings using `slice()` with positive and negative indices.",
+            "Clean up whitespace and format text inputs using `trim()` and case converters.",
+            "Convert strings into arrays and back into formatted strings."
+          ],
+          "codeExample": "// Day 5 Example"
+        },
+        "mcqQuestions": [
+          {
+            "question": "What does `\"hello\".slice(1, 4)` return?",
+            "options": [
+              "`\"hel\"`",
+              "`\"ell\"`",
+              "`\"ello\"`",
+              "`\"llo\"`"
+            ],
+            "answerIndex": 0,
+            "explanation": "Correct answer is B*"
+          },
+          {
+            "question": "Which method splits a string into an array of substrings?",
+            "options": [
+              "`join()`",
+              "`concat()`",
+              "`split()`",
+              "`slice()`"
+            ],
+            "answerIndex": 0,
+            "explanation": "Correct answer is C*"
+          },
+          {
+            "question": "Strings in JavaScript are immutable.",
+            "options": [
+              "True",
+              "False"
+            ],
+            "answerIndex": 0,
+            "explanation": "Correct answer is A*"
+          }
+        ],
+        "terminalChallenges": [
+          {
+            "id": 1,
+            "title": "Challenge 1: Title Case Converter",
+            "prompt": "Convert `\"javascript code\"` to `\"Javascript Code\"` using `split()`, `slice()`, and `join()`.",
+            "starterCode": "// Write your code here",
+            "expectedKeyword": "Success"
+          },
+          {
+            "id": 2,
+            "title": "Challenge 2: Palindrome Checker",
+            "prompt": "Create a function that checks if a string read backward matches itself (ignoring case).",
+            "starterCode": "// Write your code here",
+            "expectedKeyword": "Success"
+          },
+          {
+            "id": 3,
+            "title": "Challenge 3: Email Masker",
+            "prompt": "Given `\"user@example.com\"`, output `\"u***@example.com\"`.",
+            "starterCode": "// Write your code here",
+            "expectedKeyword": "Success"
+          },
+          {
+            "id": 4,
+            "title": "Challenge 4: Word Counter",
+            "prompt": "Write a function counting total words in a sentence paragraph.",
+            "starterCode": "// Write your code here",
+            "expectedKeyword": "Success"
+          },
+          {
+            "id": 5,
+            "title": "Challenge 5: URL Slugify",
+            "prompt": "Convert `\"Modern JS Tutorial 2026!\"` into `\"modern-js-tutorial-2026\"`.",
+            "starterCode": "// Write your code here",
+            "expectedKeyword": "Success"
+          }
+        ],
+        "tasks": [
+          {
+            "id": "js5_t1",
+            "text": "🎥 Watch Video: Videos 17–20 from the Beginner Playlist.",
+            "completed": false
+          },
+          {
+            "id": "js5_t2",
+            "text": "✍️ Task: Extract substrings using `slice()` with positive and negative indices.",
+            "completed": false
+          },
+          {
+            "id": "js5_t3",
+            "text": "✍️ Task: Clean up whitespace and format text inputs using `trim()` and case converters.",
+            "completed": false
+          },
+          {
+            "id": "js5_t4",
+            "text": "✍️ Task: Convert strings into arrays and back into formatted strings.",
+            "completed": false
+          }
+        ],
+        "starterCode": "// Starter",
+        "expectedKeyword": "Starter"
+      },
+      {
+        "day": 6,
+        "title": "Day 6 – Array Fundamentals & Mutating Methods",
+        "unit": "Unit 1: JS",
+        "topic": "Arrays, index manipulation, mutating methods (`push`, `pop`, `shift`, `unshift`, `splice`), non-mutating `slice()`, array destructuring, and spread operator (`...`).",
+        "playlistUrl": "https://www.youtube.com/playlist?list=PLPvjxHx5Kob2xn4eANiHRPSJmfqj3DMeo",
+        "videoBreakdown": "🎥 Videos 21–22 from Beginner Playlist + Videos 1–3 from Advanced Playlist.",
+        "whatToLearn": {
+          "summary": "Learn about: Arrays, index manipulation, mutating methods (`push`, `pop`, `shift`, `unshift`, `splice`), non-mutating `slice()`, array destructuring, and spread operator (`...`).",
+          "details": [
+            "Add and remove elements from both ends of an array using `push`/`pop` and `unshift`/`shift`.",
+            "Use `splice()` to insert, remove, and replace items at arbitrary positions.",
+            "Copy and merge arrays using the spread operator (`...`)."
+          ],
+          "codeExample": "// Day 6 Example"
+        },
+        "mcqQuestions": [
+          {
+            "question": "Which method removes the FIRST element from an array?",
+            "options": [
+              "`pop()`",
+              "`shift()`",
+              "`unshift()`",
+              "`splice()`"
+            ],
+            "answerIndex": 0,
+            "explanation": "Correct answer is B*"
+          },
+          {
+            "question": "What does `[1, 2, 3].concat([4, 5])` return?",
+            "options": [
+              "`[1, 2, 3, [4, 5]]`",
+              "`[1, 2, 3, 4, 5]`",
+              "`5`",
+              "`[4, 5, 1, 2, 3]`"
+            ],
+            "answerIndex": 0,
+            "explanation": "Correct answer is B*"
+          },
+          {
+            "question": "What is the result of `const [a, b] = [10, 20, 30]`?",
+            "options": [
+              "`a = 10, b = 20`",
+              "`a = [10], b = [20, 30]`",
+              "`a = 30, b = 20`",
+              "SyntaxError"
+            ],
+            "answerIndex": 0,
+            "explanation": "Correct answer is A*"
+          }
+        ],
+        "terminalChallenges": [
+          {
+            "id": 1,
+            "title": "Challenge 1: Stack Operation Simulator",
+            "prompt": "Implement LIFO stack behavior using an array with `push` and `pop`.",
+            "starterCode": "// Write your code here",
+            "expectedKeyword": "Success"
+          },
+          {
+            "id": 2,
+            "title": "Challenge 2: Queue Simulator",
+            "prompt": "Implement FIFO queue operations using `push` and `shift`.",
+            "starterCode": "// Write your code here",
+            "expectedKeyword": "Success"
+          },
+          {
+            "id": 3,
+            "title": "Challenge 3: Splice Manager",
+            "prompt": "Given `[\"Apple\", \"Banana\", \"Date\"]`, insert `\"Cherry\"` between `\"Banana\"` and `\"Date\"`.",
+            "starterCode": "// Write your code here",
+            "expectedKeyword": "Success"
+          },
+          {
+            "id": 4,
+            "title": "Challenge 4: Array Merger",
+            "prompt": "Merge two sorted arrays into one combined array using the spread operator and sort it.",
+            "starterCode": "// Write your code here",
+            "expectedKeyword": "Success"
+          },
+          {
+            "id": 5,
+            "title": "Challenge 5: Deduplicator",
+            "prompt": "Write a function to remove duplicate elements from an array using `indexOf()` or `includes()`.",
+            "starterCode": "// Write your code here",
+            "expectedKeyword": "Success"
+          }
+        ],
+        "tasks": [
+          {
+            "id": "js6_t1",
+            "text": "🎥 Watch Video: Videos 21–22 from Beginner Playlist + Videos 1–3 from Advanced Playlist.",
+            "completed": false
+          },
+          {
+            "id": "js6_t2",
+            "text": "✍️ Task: Add and remove elements from both ends of an array using `push`/`pop` and `unshift`/`shift`.",
+            "completed": false
+          },
+          {
+            "id": "js6_t3",
+            "text": "✍️ Task: Use `splice()` to insert, remove, and replace items at arbitrary positions.",
+            "completed": false
+          },
+          {
+            "id": "js6_t4",
+            "text": "✍️ Task: Copy and merge arrays using the spread operator (`...`).",
+            "completed": false
+          }
+        ],
+        "starterCode": "// Starter",
+        "expectedKeyword": "Starter"
+      },
+      {
+        "day": 7,
+        "title": "Day 7 – Modern Array Methods (Functional JS)",
+        "unit": "Unit 1: JS",
+        "topic": "Iterating and transforming data functionally using `forEach`, `map`, `filter`, `reduce`, `find`, `some`, and `every`.",
+        "playlistUrl": "https://www.youtube.com/playlist?list=PLPvjxHx5Kob2xn4eANiHRPSJmfqj3DMeo",
+        "videoBreakdown": "🎥 Videos 4–7 from the Advanced Playlist.",
+        "whatToLearn": {
+          "summary": "Learn about: Iterating and transforming data functionally using `forEach`, `map`, `filter`, `reduce`, `find`, `some`, and `every`.",
+          "details": [
+            "Replace standard `for` loops with functional methods like `map` and `filter`.",
+            "Aggregate complex dataset values using `reduce()`.",
+            "Validate conditions across datasets using `some()` and `every()`."
+          ],
+          "codeExample": "// Day 7 Example"
+        },
+        "mcqQuestions": [
+          {
+            "question": "Which array method returns a NEW array with modified items?",
+            "options": [
+              "`forEach()`",
+              "`map()`",
+              "`filter()`",
+              "`find()`"
+            ],
+            "answerIndex": 0,
+            "explanation": "Correct answer is B*"
+          },
+          {
+            "question": "What does `[1, 2, 3].reduce((acc, curr) => acc + curr, 0)` evaluate to?",
+            "options": [
+              "`[1, 2, 3]`",
+              "`6`",
+              "`0`",
+              "`undefined`"
+            ],
+            "answerIndex": 0,
+            "explanation": "Correct answer is B*"
+          },
+          {
+            "question": "What does `find()` return if no match is found?",
+            "options": [
+              "`null`",
+              "`[]`",
+              "`undefined`",
+              "`-1`"
+            ],
+            "answerIndex": 0,
+            "explanation": "Correct answer is C*"
+          }
+        ],
+        "terminalChallenges": [
+          {
+            "id": 1,
+            "title": "Challenge 1: Square Numbers",
+            "prompt": "Transform `[1, 2, 3, 4, 5]` into squares using `map()`.",
+            "starterCode": "// Write your code here",
+            "expectedKeyword": "Success"
+          },
+          {
+            "id": 2,
+            "title": "Challenge 2: Adult Filter",
+            "prompt": "Given an array of age objects, use `filter()` to retrieve individuals aged 18+.",
+            "starterCode": "// Write your code here",
+            "expectedKeyword": "Success"
+          },
+          {
+            "id": 3,
+            "title": "Challenge 3: Cart Total Accumulator",
+            "prompt": "Calculate total price from an array of cart items `{ price: number, qty: number }` using `reduce()`.",
+            "starterCode": "// Write your code here",
+            "expectedKeyword": "Success"
+          },
+          {
+            "id": 4,
+            "title": "Challenge 4: Inventory Search",
+            "prompt": "Find the first item in an inventory array matching a specific item ID using `find()`.",
+            "starterCode": "// Write your code here",
+            "expectedKeyword": "Success"
+          },
+          {
+            "id": 5,
+            "title": "Challenge 5: Chain Operations",
+            "prompt": "Filter an array for even numbers, square them with `map()`, and sum them with `reduce()`.",
+            "starterCode": "// Write your code here",
+            "expectedKeyword": "Success"
+          }
+        ],
+        "tasks": [
+          {
+            "id": "js7_t1",
+            "text": "🎥 Watch Video: Videos 4–7 from the Advanced Playlist.",
+            "completed": false
+          },
+          {
+            "id": "js7_t2",
+            "text": "✍️ Task: Replace standard `for` loops with functional methods like `map` and `filter`.",
+            "completed": false
+          },
+          {
+            "id": "js7_t3",
+            "text": "✍️ Task: Aggregate complex dataset values using `reduce()`.",
+            "completed": false
+          },
+          {
+            "id": "js7_t4",
+            "text": "✍️ Task: Validate conditions across datasets using `some()` and `every()`.",
+            "completed": false
+          }
+        ],
+        "starterCode": "// Starter",
+        "expectedKeyword": "Starter"
+      },
+      {
+        "day": 8,
+        "title": "Day 8 – Object-Oriented JS & Objects Deep Dive",
+        "unit": "Unit 2: JS",
+        "topic": "Object key-value pairs, computed properties, object methods, `this` binding context, object destructuring, `Object.keys()`, `Object.values()`, and `Object.entries()`.",
+        "playlistUrl": "https://www.youtube.com/playlist?list=PLPvjxHx5Kob2xn4eANiHRPSJmfqj3DMeo",
+        "videoBreakdown": "🎥 Videos 8–11 from the Advanced Playlist.",
+        "whatToLearn": {
+          "summary": "Learn about: Object key-value pairs, computed properties, object methods, `this` binding context, object destructuring, `Object.keys()`, `Object.values()`, and `Object.entries()`.",
+          "details": [
+            "Construct complex nested objects and access properties via dot and bracket notations.",
+            "Define methods within objects that utilize the `this` keyword.",
+            "Iterate over object entries using `Object.entries()`."
+          ],
+          "codeExample": "// Day 8 Example"
+        },
+        "mcqQuestions": [
+          {
+            "question": "Which static method returns an array of an object's property names?",
+            "options": [
+              "`Object.values()`",
+              "`Object.keys()`",
+              "`Object.entries()`",
+              "`Object.items()`"
+            ],
+            "answerIndex": 0,
+            "explanation": "Correct answer is B*"
+          },
+          {
+            "question": "Inside a standard object method, what does `this` typically refer to?",
+            "options": [
+              "The global window/process object",
+              "The object itself",
+              "The method function",
+              "`undefined`"
+            ],
+            "answerIndex": 0,
+            "explanation": "Correct answer is B*"
+          },
+          {
+            "question": "What is the syntax for object destructuring?",
+            "options": [
+              "`const [a, b] = obj`",
+              "`const {a, b} = obj`",
+              "`const (a, b) = obj`",
+              "`const <a, b> = obj`"
+            ],
+            "answerIndex": 0,
+            "explanation": "Correct answer is B*"
+          }
+        ],
+        "terminalChallenges": [
+          {
+            "id": 1,
+            "title": "Challenge 1: User Profile Object",
+            "prompt": "Create a user object with properties and a method `getSummary()` that returns a formatted description using `this`.",
+            "starterCode": "// Write your code here",
+            "expectedKeyword": "Success"
+          },
+          {
+            "id": 2,
+            "title": "Challenge 2: Object Key Manipulator",
+            "prompt": "Convert an object's keys to uppercase using `Object.keys()` and `reduce()`.",
+            "starterCode": "// Write your code here",
+            "expectedKeyword": "Success"
+          },
+          {
+            "id": 3,
+            "title": "Challenge 3: Nested Destructuring",
+            "prompt": "Extract nested values (`city`, `zip`) from a complex user address object in a single line.",
+            "starterCode": "// Write your code here",
+            "expectedKeyword": "Success"
+          },
+          {
+            "id": 4,
+            "title": "Challenge 4: Frequency Counter",
+            "prompt": "Count character occurrences in a string using an object map.",
+            "starterCode": "// Write your code here",
+            "expectedKeyword": "Success"
+          },
+          {
+            "id": 5,
+            "title": "Challenge 5: Object Freeze Test",
+            "prompt": "Use `Object.freeze()` on a settings configuration object and attempt to modify its properties.",
+            "starterCode": "// Write your code here",
+            "expectedKeyword": "Success"
+          }
+        ],
+        "tasks": [
+          {
+            "id": "js8_t1",
+            "text": "🎥 Watch Video: Videos 8–11 from the Advanced Playlist.",
+            "completed": false
+          },
+          {
+            "id": "js8_t2",
+            "text": "✍️ Task: Construct complex nested objects and access properties via dot and bracket notations.",
+            "completed": false
+          },
+          {
+            "id": "js8_t3",
+            "text": "✍️ Task: Define methods within objects that utilize the `this` keyword.",
+            "completed": false
+          },
+          {
+            "id": "js8_t4",
+            "text": "✍️ Task: Iterate over object entries using `Object.entries()`.",
+            "completed": false
+          }
+        ],
+        "starterCode": "// Starter",
+        "expectedKeyword": "Starter"
+      },
+      {
+        "day": 9,
+        "title": "Day 9 – DOM Selection & Element Manipulation",
+        "unit": "Unit 2: JS",
+        "topic": "The Browser DOM tree, `document` object, DOM query selectors (`getElementById`, `querySelector`, `querySelectorAll`), modifying text/HTML (`innerText`, `textContent`, `innerHTML`), and style/class manipulation (`classList.add`, `toggle`, `remove`).",
+        "playlistUrl": "https://www.youtube.com/playlist?list=PLPvjxHx5Kob2xn4eANiHRPSJmfqj3DMeo",
+        "videoBreakdown": "🎥 Videos 12–15 from the Advanced Playlist.",
+        "whatToLearn": {
+          "summary": "Learn about: The Browser DOM tree, `document` object, DOM query selectors (`getElementById`, `querySelector`, `querySelectorAll`), modifying text/HTML (`innerText`, `textContent`, `innerHTML`), and style/class manipulation (`classList.add`, `toggle`, `remove`).",
+          "details": [
+            "Inspect web pages and query DOM nodes using browser developer tools.",
+            "Dynamically set CSS classes using `element.classList.toggle()`.",
+            "Create, attach, and remove DOM nodes using `document.createElement()` and `appendChild()`."
+          ],
+          "codeExample": "// Day 9 Example"
+        },
+        "mcqQuestions": [
+          {
+            "question": "Which DOM method returns the FIRST element matching a CSS selector?",
+            "options": [
+              "`querySelectorAll()`",
+              "`getElementsByClassName()`",
+              "`querySelector()`",
+              "`getElementById()`"
+            ],
+            "answerIndex": 0,
+            "explanation": "Correct answer is C*"
+          },
+          {
+            "question": "What type of object does `querySelectorAll()` return?",
+            "options": [
+              "Array",
+              "NodeList",
+              "HTMLCollection",
+              "Object"
+            ],
+            "answerIndex": 0,
+            "explanation": "Correct answer is B*"
+          },
+          {
+            "question": "Which property safely sets text content without parsing raw HTML?",
+            "options": [
+              "`innerHTML`",
+              "`outerHTML`",
+              "`textContent`",
+              "`srcText`"
+            ],
+            "answerIndex": 0,
+            "explanation": "Correct answer is C*"
+          }
+        ],
+        "terminalChallenges": [
+          {
+            "id": 1,
+            "title": "Challenge 1: Virtual Node Creation",
+            "prompt": "Create a script simulating element creation: construct an element object `{ tag, attributes, textContent }` and log its serialized HTML string.",
+            "starterCode": "// Write your code here",
+            "expectedKeyword": "Success"
+          },
+          {
+            "id": 2,
+            "title": "Challenge 2: Class Manager Utility",
+            "prompt": "Write a function `toggleClass(element, className)` that adds or removes a class string in a virtual DOM object.",
+            "starterCode": "// Write your code here",
+            "expectedKeyword": "Success"
+          },
+          {
+            "id": 3,
+            "title": "Challenge 3: Selector Parser",
+            "prompt": "Create a function simulating `querySelector()` that filters a list of mock DOM nodes by `#id` or `.class`.",
+            "starterCode": "// Write your code here",
+            "expectedKeyword": "Success"
+          },
+          {
+            "id": 4,
+            "title": "Challenge 4: Tree Traversal",
+            "prompt": "Traverse a nested mock DOM tree object and log all tag names recursively.",
+            "starterCode": "// Write your code here",
+            "expectedKeyword": "Success"
+          },
+          {
+            "id": 5,
+            "title": "Challenge 5: Attr Injector",
+            "prompt": "Write a utility function that assigns an object of attributes `{ href: \"#\", target: \"_blank\" }` to a mock DOM element.",
+            "starterCode": "// Write your code here",
+            "expectedKeyword": "Success"
+          }
+        ],
+        "tasks": [
+          {
+            "id": "js9_t1",
+            "text": "🎥 Watch Video: Videos 12–15 from the Advanced Playlist.",
+            "completed": false
+          },
+          {
+            "id": "js9_t2",
+            "text": "✍️ Task: Inspect web pages and query DOM nodes using browser developer tools.",
+            "completed": false
+          },
+          {
+            "id": "js9_t3",
+            "text": "✍️ Task: Dynamically set CSS classes using `element.classList.toggle()`.",
+            "completed": false
+          },
+          {
+            "id": "js9_t4",
+            "text": "✍️ Task: Create, attach, and remove DOM nodes using `document.createElement()` and `appendChild()`.",
+            "completed": false
+          }
+        ],
+        "starterCode": "// Starter",
+        "expectedKeyword": "Starter"
+      },
+      {
+        "day": 10,
+        "title": "Day 10 – DOM Events & User Interactions",
+        "unit": "Unit 2: JS",
+        "topic": "Event listeners (`addEventListener`), click events, form submit/input events, keyboard events (`keyup`, `keydown`), event objects (`e.target`, `e.preventDefault()`), and event delegation.",
+        "playlistUrl": "https://www.youtube.com/playlist?list=PLPvjxHx5Kob2xn4eANiHRPSJmfqj3DMeo",
+        "videoBreakdown": "🎥 Videos 16–18 from the Advanced Playlist.",
+        "whatToLearn": {
+          "summary": "Learn about: Event listeners (`addEventListener`), click events, form submit/input events, keyboard events (`keyup`, `keydown`), event objects (`e.target`, `e.preventDefault()`), and event delegation.",
+          "details": [
+            "Attach click and input event handlers to DOM elements.",
+            "Prevent default form submission using `e.preventDefault()`.",
+            "Implement event delegation by attaching a single event listener to a parent container."
+          ],
+          "codeExample": "// Day 10 Example"
+        },
+        "mcqQuestions": [
+          {
+            "question": "Which method stops a form's default page reload behavior on submission?",
+            "options": [
+              "`e.stopPropagation()`",
+              "`e.preventDefault()`",
+              "`e.stopImmediatePropagation()`",
+              "`return false`"
+            ],
+            "answerIndex": 0,
+            "explanation": "Correct answer is B*"
+          },
+          {
+            "question": "What is event delegation?",
+            "options": [
+              "Attaching listeners to every child element individually.",
+              "Handling events on a parent element using event bubbling.",
+              "Dispatching custom browser events.",
+              "Removing unused listeners automatically."
+            ],
+            "answerIndex": 0,
+            "explanation": "Correct answer is B*"
+          },
+          {
+            "question": "Which property gets the exact element that triggered the event?",
+            "options": [
+              "`e.currentTarget`",
+              "`e.target`",
+              "`e.srcElement`",
+              "`e.origin`"
+            ],
+            "answerIndex": 0,
+            "explanation": "Correct answer is B*"
+          }
+        ],
+        "terminalChallenges": [
+          {
+            "id": 1,
+            "title": "Challenge 1: Event Emitter Class",
+            "prompt": "Write a custom `EventEmitter` class with `.on(event, callback)` and `.emit(event, data)` methods.",
+            "starterCode": "// Write your code here",
+            "expectedKeyword": "Success"
+          },
+          {
+            "id": 2,
+            "title": "Challenge 2: Form Validation State",
+            "prompt": "Write a function taking a mock form input event `{ target: { name, value } }` and validating email format.",
+            "starterCode": "// Write your code here",
+            "expectedKeyword": "Success"
+          },
+          {
+            "id": 3,
+            "title": "Challenge 3: Key Combination Detector",
+            "prompt": "Write a keyboard handler function that logs `\"Shortcut Activated\"` when `Ctrl + Enter` event data is received.",
+            "starterCode": "// Write your code here",
+            "expectedKeyword": "Success"
+          },
+          {
+            "id": 4,
+            "title": "Challenge 4: Event Delegation Simulator",
+            "prompt": "Write a function handling parent container clicks and checking if `e.target.matches('.item-btn')`.",
+            "starterCode": "// Write your code here",
+            "expectedKeyword": "Success"
+          },
+          {
+            "id": 5,
+            "title": "Challenge 5: Debounce Function",
+            "prompt": "Build a `debounce(fn, delay)` wrapper function for high-frequency input events.",
+            "starterCode": "// Write your code here",
+            "expectedKeyword": "Success"
+          }
+        ],
+        "tasks": [
+          {
+            "id": "js10_t1",
+            "text": "🎥 Watch Video: Videos 16–18 from the Advanced Playlist.",
+            "completed": false
+          },
+          {
+            "id": "js10_t2",
+            "text": "✍️ Task: Attach click and input event handlers to DOM elements.",
+            "completed": false
+          },
+          {
+            "id": "js10_t3",
+            "text": "✍️ Task: Prevent default form submission using `e.preventDefault()`.",
+            "completed": false
+          },
+          {
+            "id": "js10_t4",
+            "text": "✍️ Task: Implement event delegation by attaching a single event listener to a parent container.",
+            "completed": false
+          }
+        ],
+        "starterCode": "// Starter",
+        "expectedKeyword": "Starter"
+      },
+      {
+        "day": 11,
+        "title": "Day 11 – Pure Coding — Dynamic DOM Mini Apps",
+        "unit": "Unit 2: JS",
+        "topic": "Hands-on application of DOM scripting, state management, array operations, and dynamic UI rendering.",
+        "playlistUrl": "https://www.youtube.com/playlist?list=PLPvjxHx5Kob2xn4eANiHRPSJmfqj3DMeo",
+        "videoBreakdown": "🎥 Practice Sprint (Consolidating Videos 12–18).",
+        "whatToLearn": {
+          "summary": "Learn about: Hands-on application of DOM scripting, state management, array operations, and dynamic UI rendering.",
+          "details": [
+            "Design application state structures separate from UI DOM nodes.",
+            "Implement render functions that reconcile state changes with DOM updates.",
+            "Handle dynamic item creation, deletion, and status toggles."
+          ],
+          "codeExample": "// Day 11 Example"
+        },
+        "mcqQuestions": [
+          {
+            "question": "Why is separating UI logic from State management beneficial?",
+            "options": [
+              "It improves rendering speed.",
+              "It makes code predictable, maintainable, and easier to debug.",
+              "It is required by modern browsers.",
+              "It prevents JS errors."
+            ],
+            "answerIndex": 0,
+            "explanation": "Correct answer is B*"
+          },
+          {
+            "question": "What is state in front-end development?",
+            "options": [
+              "The CSS layout structure.",
+              "The underlying data driving what is displayed on screen.",
+              "The user's operating system environment.",
+              "Network status."
+            ],
+            "answerIndex": 0,
+            "explanation": "Correct answer is B*"
+          },
+          {
+            "question": "When updating lists dynamically, why clear inner HTML or re-render?",
+            "options": [
+              "To prevent memory leaks and ensure UI syncs with current state data.",
+              "To force CSS reload.",
+              "To reset global variables.",
+              "To refresh the web server."
+            ],
+            "answerIndex": 0,
+            "explanation": "Correct answer is A*"
+          }
+        ],
+        "terminalChallenges": [
+          {
+            "id": 1,
+            "title": "Challenge 1: Todo App State Engine",
+            "prompt": "Build a CLI-based todo list manager maintaining an array state with actions: `addTodo`, `deleteTodo`, `toggleTodo`.",
+            "starterCode": "// Write your code here",
+            "expectedKeyword": "Success"
+          },
+          {
+            "id": 2,
+            "title": "Challenge 2: Shopping Cart State Engine",
+            "prompt": "Build a state engine with `addItem`, `removeItem`, `updateQty`, and total calculation logic.",
+            "starterCode": "// Write your code here",
+            "expectedKeyword": "Success"
+          },
+          {
+            "id": 3,
+            "title": "Challenge 3: Bookmark Manager Logic",
+            "prompt": "Build logic to validate URLs, add bookmarks to state, and search bookmarks by tag.",
+            "starterCode": "// Write your code here",
+            "expectedKeyword": "Success"
+          },
+          {
+            "id": 4,
+            "title": "Challenge 4: Filtering Engine",
+            "prompt": "Given a product dataset state, build a filter engine by category, minimum price, and rating.",
+            "starterCode": "// Write your code here",
+            "expectedKeyword": "Success"
+          },
+          {
+            "id": 5,
+            "title": "Challenge 5: Undo State History",
+            "prompt": "Create an undo history stack array that allows restoring previous state snapshots.",
+            "starterCode": "// Write your code here",
+            "expectedKeyword": "Success"
+          }
+        ],
+        "tasks": [
+          {
+            "id": "js11_t1",
+            "text": "🎥 Watch Video: Practice Sprint (Consolidating Videos 12–18).",
+            "completed": false
+          },
+          {
+            "id": "js11_t2",
+            "text": "✍️ Task: Design application state structures separate from UI DOM nodes.",
+            "completed": false
+          },
+          {
+            "id": "js11_t3",
+            "text": "✍️ Task: Implement render functions that reconcile state changes with DOM updates.",
+            "completed": false
+          },
+          {
+            "id": "js11_t4",
+            "text": "✍️ Task: Handle dynamic item creation, deletion, and status toggles.",
+            "completed": false
+          }
+        ],
+        "starterCode": "// Starter",
+        "expectedKeyword": "Starter"
+      },
+      {
+        "day": 12,
+        "title": "Day 12 – Asynchronous JS, Promises & Fetch API",
+        "unit": "Unit 2: JS",
+        "topic": "Synchronous vs asynchronous execution, single-threaded Event Loop, Callbacks, Promise lifecycle (`pending`, `fulfilled`, `rejected`), `.then()`/`.catch()`, `async`/`await`, `try...catch`, and `fetch()`.",
+        "playlistUrl": "https://www.youtube.com/playlist?list=PLPvjxHx5Kob2xn4eANiHRPSJmfqj3DMeo",
+        "videoBreakdown": "🎥 Videos 19–22 from the Advanced Playlist.",
+        "whatToLearn": {
+          "summary": "Learn about: Synchronous vs asynchronous execution, single-threaded Event Loop, Callbacks, Promise lifecycle (`pending`, `fulfilled`, `rejected`), `.then()`/`.catch()`, `async`/`await`, `try...catch`, and `fetch()`.",
+          "details": [
+            "Construct custom Promises using `new Promise((resolve, reject) => {})`.",
+            "Refactor promise chains (`.then()`) into modern `async`/`await` syntax with `try...catch` blocks.",
+            "Make HTTP requests to public REST APIs (e.g., JSONPlaceholder) using `fetch()`."
+          ],
+          "codeExample": "// Day 12 Example"
+        },
+        "mcqQuestions": [
+          {
+            "question": "What state is a Promise in initially before resolution or rejection?",
+            "options": [
+              "`fulfilled`",
+              "`rejected`",
+              "`pending`",
+              "`settled`"
+            ],
+            "answerIndex": 0,
+            "explanation": "Correct answer is C*"
+          },
+          {
+            "question": "Which keyword pauses execution of an `async` function until a Promise settles?",
+            "options": [
+              "`wait`",
+              "`pause`",
+              "`await`",
+              "`defer`"
+            ],
+            "answerIndex": 0,
+            "explanation": "Correct answer is C*"
+          },
+          {
+            "question": "How do you handle errors in an `async`/`await` function?",
+            "options": [
+              "`.catch()` only",
+              "`try...catch` blocks",
+              "`onError` statement",
+              "`if (error)`"
+            ],
+            "answerIndex": 0,
+            "explanation": "Correct answer is B*"
+          }
+        ],
+        "terminalChallenges": [
+          {
+            "id": 1,
+            "title": "Challenge 1: Delay Helper",
+            "prompt": "Create a function `delay(ms)` returning a promise that resolves after `ms` milliseconds using `setTimeout`.",
+            "starterCode": "// Write your code here",
+            "expectedKeyword": "Success"
+          },
+          {
+            "id": 2,
+            "title": "Challenge 2: Mock API Fetcher",
+            "prompt": "Simulate a network request returning user data after 1.5 seconds using Promises.",
+            "starterCode": "// Write your code here",
+            "expectedKeyword": "Success"
+          },
+          {
+            "id": 3,
+            "title": "Challenge 3: Async Error Catcher",
+            "prompt": "Write an `async` function calling a failing Promise inside `try...catch` and returning a fallback value.",
+            "starterCode": "// Write your code here",
+            "expectedKeyword": "Success"
+          },
+          {
+            "id": 4,
+            "title": "Challenge 4: Parallel Fetcher",
+            "prompt": "Use `Promise.all()` to simulate fetching users, products, and orders concurrently.",
+            "starterCode": "// Write your code here",
+            "expectedKeyword": "Success"
+          },
+          {
+            "id": 5,
+            "title": "Challenge 5: Fetch API Request",
+            "prompt": "Write Node fetch code (or mock fetch) requesting data from `[https://jsonplaceholder.typicode.com/todos/1](https://jsonplaceholder.typicode.com/todos/1)` and logging title.",
+            "starterCode": "// Write your code here",
+            "expectedKeyword": "Success"
+          }
+        ],
+        "tasks": [
+          {
+            "id": "js12_t1",
+            "text": "🎥 Watch Video: Videos 19–22 from the Advanced Playlist.",
+            "completed": false
+          },
+          {
+            "id": "js12_t2",
+            "text": "✍️ Task: Construct custom Promises using `new Promise((resolve, reject) => {})`.",
+            "completed": false
+          },
+          {
+            "id": "js12_t3",
+            "text": "✍️ Task: Refactor promise chains (`.then()`) into modern `async`/`await` syntax with `try...catch` blocks.",
+            "completed": false
+          },
+          {
+            "id": "js12_t4",
+            "text": "✍️ Task: Make HTTP requests to public REST APIs (e.g., JSONPlaceholder) using `fetch()`.",
+            "completed": false
+          }
+        ],
+        "starterCode": "// Starter",
+        "expectedKeyword": "Starter"
+      },
+      {
+        "day": 13,
+        "title": "Day 13 – ES6+ Modules & LocalStorage Persistence",
+        "unit": "Unit 2: JS",
+        "topic": "Modular JavaScript (`import` and `export` statements), browser Web Storage (`localStorage` and `sessionStorage`), JSON serialization (`JSON.stringify()`, `JSON.parse()`).",
+        "playlistUrl": "https://www.youtube.com/playlist?list=PLPvjxHx5Kob2xn4eANiHRPSJmfqj3DMeo",
+        "videoBreakdown": "🎥 Videos 23–25 from the Advanced Playlist.",
+        "whatToLearn": {
+          "summary": "Learn about: Modular JavaScript (`import` and `export` statements), browser Web Storage (`localStorage` and `sessionStorage`), JSON serialization (`JSON.stringify()`, `JSON.parse()`).",
+          "details": [
+            "Split helper utilities and core logic across separate JavaScript files using ES modules.",
+            "Save and retrieve complex JS objects to/from `localStorage` using JSON parsing.",
+            "Implement state persistence so application state survives browser refreshes."
+          ],
+          "codeExample": "// Day 13 Example"
+        },
+        "mcqQuestions": [
+          {
+            "question": "What data type does `localStorage` store all values as?",
+            "options": [
+              "Objects",
+              "Strings",
+              "Binary",
+              "Any data type"
+            ],
+            "answerIndex": 0,
+            "explanation": "Correct answer is B*"
+          },
+          {
+            "question": "Which method converts a JavaScript object into a JSON string?",
+            "options": [
+              "`JSON.parse()`",
+              "`JSON.stringify()`",
+              "`Object.toString()`",
+              "`JSON.convert()`"
+            ],
+            "answerIndex": 0,
+            "explanation": "Correct answer is B*"
+          },
+          {
+            "question": "What is the default export syntax in ES modules?",
+            "options": [
+              "`export default functionName;`",
+              "`export { functionName as default };`",
+              "`module.exports.default = ...`",
+              "Both A and B"
+            ],
+            "answerIndex": 0,
+            "explanation": "Correct answer is D*"
+          }
+        ],
+        "terminalChallenges": [
+          {
+            "id": 1,
+            "title": "Challenge 1: Storage Mock Class",
+            "prompt": "Create a `MockLocalStorage` class implementing `getItem`, `setItem`, `removeItem`, and `clear`.",
+            "starterCode": "// Write your code here",
+            "expectedKeyword": "Success"
+          },
+          {
+            "id": 2,
+            "title": "Challenge 2: Safe JSON Parser",
+            "prompt": "Write a wrapper function `safeJSONParse(str, fallback)` that handles malformed JSON without crashing.",
+            "starterCode": "// Write your code here",
+            "expectedKeyword": "Success"
+          },
+          {
+            "id": 3,
+            "title": "Challenge 3: ES Module Exporter/Importer",
+            "prompt": "Create module syntax samples defining named exports `add`, `subtract` and default export `Calculator`.",
+            "starterCode": "// Write your code here",
+            "expectedKeyword": "Success"
+          },
+          {
+            "id": 4,
+            "title": "Challenge 4: State Persister",
+            "prompt": "Build a state sync wrapper that saves state to mock storage on mutation and rehydrates on start.",
+            "starterCode": "// Write your code here",
+            "expectedKeyword": "Success"
+          },
+          {
+            "id": 5,
+            "title": "Challenge 5: Session Expiry Simulator",
+            "prompt": "Create storage helper logic that stores data alongside a expiration timestamp and invalidates stale data.",
+            "starterCode": "// Write your code here",
+            "expectedKeyword": "Success"
+          }
+        ],
+        "tasks": [
+          {
+            "id": "js13_t1",
+            "text": "🎥 Watch Video: Videos 23–25 from the Advanced Playlist.",
+            "completed": false
+          },
+          {
+            "id": "js13_t2",
+            "text": "✍️ Task: Split helper utilities and core logic across separate JavaScript files using ES modules.",
+            "completed": false
+          },
+          {
+            "id": "js13_t3",
+            "text": "✍️ Task: Save and retrieve complex JS objects to/from `localStorage` using JSON parsing.",
+            "completed": false
+          },
+          {
+            "id": "js13_t4",
+            "text": "✍️ Task: Implement state persistence so application state survives browser refreshes.",
+            "completed": false
+          }
+        ],
+        "starterCode": "// Starter",
+        "expectedKeyword": "Starter"
+      },
+      {
+        "day": 14,
+        "title": "Day 14 – Capstone Portfolio Sprint & Final Assessment",
+        "unit": "Unit 2: JS",
+        "topic": "End-to-end curriculum review, code optimization, debugging strategies, project architecture, and portfolio sprint.",
+        "playlistUrl": "https://www.youtube.com/playlist?list=PLPvjxHx5Kob2xn4eANiHRPSJmfqj3DMeo",
+        "videoBreakdown": "🎥 Portfolio Sprint & Review (No tutorial videos).",
+        "whatToLearn": {
+          "summary": "Learn about: End-to-end curriculum review, code optimization, debugging strategies, project architecture, and portfolio sprint.",
+          "details": [
+            "Review code written across all 13 days and refactor for consistency and ES6 cleanliness.",
+            "Pick and complete 1 capstone project from the options below.",
+            "Publish code to a GitHub repository with a documentation `README.md`."
+          ],
+          "codeExample": "// Day 14 Example"
+        },
+        "mcqQuestions": [
+          {
+            "question": "What is the primary benefit of writing modular, clean JavaScript?",
+            "options": [
+              "Faster engine execution.",
+              "Scalability, maintainability, reusability, and ease of testing.",
+              "Automatic error resolution.",
+              "Smaller file downloads."
+            ],
+            "answerIndex": 0,
+            "explanation": "Correct answer is B*"
+          },
+          {
+            "question": "What does the Event Loop handle in JavaScript?",
+            "options": [
+              "CPU multithreading.",
+              "Executing callbacks from asynchronous tasks when the call stack clears.",
+              "Compiling code into machine bytecode.",
+              "Garbage collection only."
+            ],
+            "answerIndex": 0,
+            "explanation": "Correct answer is B*"
+          },
+          {
+            "question": "Which statement best describes `closures` in JS?",
+            "options": [
+              "A function bundled together with references to its surrounding lexical environment.",
+              "Closing a browser tab safely.",
+              "Terminating an execution loop.",
+              "Encapsulating styling rules inside DOM nodes."
+            ],
+            "answerIndex": 0,
+            "explanation": "Correct answer is A*"
+          }
+        ],
+        "terminalChallenges": [
+          {
+            "id": 1,
+            "title": "Project 1: Weather App Engine",
+            "prompt": "Build a Weather CLI / API client using `async/await` and `fetch` to retrieve weather for a query city.",
+            "starterCode": "// Write your code here",
+            "expectedKeyword": "Success"
+          },
+          {
+            "id": 2,
+            "title": "Project 2: Expense Tracker Core",
+            "prompt": "Build an expense tracking state machine calculating total income, total expenses, net balance, and filtering by category.",
+            "starterCode": "// Write your code here",
+            "expectedKeyword": "Success"
+          },
+          {
+            "id": 3,
+            "title": "Project 3: Interactive Quiz App Logic",
+            "prompt": "Construct a dynamic quiz engine tracking score, current question index, correct answers, and final score report.",
+            "starterCode": "// Write your code here",
+            "expectedKeyword": "Success"
+          },
+          {
+            "id": 4,
+            "title": "Project 4: Movie Search Finder",
+            "prompt": "Implement an API integration querying Open Movie Database / TMDb API with debounce searching.",
+            "starterCode": "// Write your code here",
+            "expectedKeyword": "Success"
+          },
+          {
+            "id": 5,
+            "title": "Project 5: Habit / Routine Tracker",
+            "prompt": "Build a habit tracking engine managing streak counts, completion timestamps, local persistence, and daily resetting.",
+            "starterCode": "// Write your code here",
+            "expectedKeyword": "Success"
+          }
+        ],
+        "tasks": [
+          {
+            "id": "js14_t1",
+            "text": "🎥 Watch Video: Portfolio Sprint & Review (No tutorial videos).",
+            "completed": false
+          },
+          {
+            "id": "js14_t2",
+            "text": "✍️ Task: Review code written across all 13 days and refactor for consistency and ES6 cleanliness.",
+            "completed": false
+          },
+          {
+            "id": "js14_t3",
+            "text": "✍️ Task: Pick and complete 1 capstone project from the options below.",
+            "completed": false
+          },
+          {
+            "id": "js14_t4",
+            "text": "✍️ Task: Publish code to a GitHub repository with a documentation `README.md`.",
+            "completed": false
+          }
+        ],
+        "starterCode": "// Starter",
+        "expectedKeyword": "Starter"
       }
     ]
   },
