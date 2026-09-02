@@ -1,3 +1,5 @@
+import { VIBE_CODING_ROADMAP } from './vibeCodingData';
+
 // Core Curriculum Data for the Main Programming Languages & Web Development Tracks
 // Combines Duolingo-style conceptual lessons + Todo-style daily task tracking + MCQs & 5 Terminal Labs per day + YouTube Playlists
 
@@ -4245,4 +4247,6 @@ export const SIX_LANGUAGES = [
     }
   ]
 }
+,
+  VIBE_CODING_ROADMAP
 ];

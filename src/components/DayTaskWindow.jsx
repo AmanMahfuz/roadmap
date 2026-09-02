@@ -402,7 +402,6 @@ export default function DayTaskWindow({
 
   const handleNextDayClick = () => {
     if (isNextDayLocked) {
-      alert(`🔒 Day ${dayObj.day + 1} is Locked!\n\nPlease complete Day ${dayObj.day} tasks or click "Complete (+200 XP) & Next" to unlock Day ${dayObj.day + 1}.`);
       return;
     }
     if (onNextDay) {

@@ -12,8 +12,13 @@ import FrontendProjectsHub from './components/FrontendProjectsHub';
 import AnalyticsDashboard from './components/AnalyticsDashboard';
 import CodePlayground from './components/CodePlayground';
 import SkillTreeView from './components/SkillTreeView';
+import MainDashboard from './components/MainDashboard';
+import LeaderboardPage from './components/LeaderboardPage';
+import AchievementsPage from './components/AchievementsPage';
+import GoalsPage from './components/GoalsPage';
 import AiMentorModal from './components/AiMentorModal';
 import PortfolioProofSystem from './components/PortfolioProofSystem';
+import RoadmapDetail from './components/RoadmapDetail';
 import { SIX_LANGUAGES } from './data/sixLanguagesData';
 import { getLevelFromXp, evaluateBadges } from './services/gamificationEngine';
 
@@ -44,6 +49,7 @@ const INITIAL_USER_STATE = {
 export default function App() {
   const [currentPage, setCurrentPage] = useState('landing');
   const [activeLanguageId, setActiveLanguageId] = useState('html_css');
+  const [activeRoadmapSlug, setActiveRoadmapSlug] = useState(null);
   const [selectedDayObj, setSelectedDayObj] = useState(null);
   const [isAiMentorOpen, setIsAiMentorOpen] = useState(false);
   const [levelUpLevel, setLevelUpLevel] = useState(null);
@@ -57,7 +63,7 @@ export default function App() {
       if (user) {
         setCurrentUser(user);
         loadDbUserProgress(user.id);
-        setCurrentPage('languages');
+        setCurrentPage('dashboard');
       } else {
         setIsDataLoading(false);
       }
@@ -69,7 +75,7 @@ export default function App() {
       if (user) {
         setIsDataLoading(true);
         loadDbUserProgress(user.id);
-        setCurrentPage('languages');
+        setCurrentPage('dashboard');
       } else {
         setUserState(INITIAL_USER_STATE);
         setIsDataLoading(false);
@@ -139,7 +145,7 @@ export default function App() {
   const handleAuthSuccess = (user) => {
     setCurrentUser(user);
     loadDbUserProgress(user.id);
-    setCurrentPage('languages');
+    setCurrentPage('dashboard');
   };
 
   const handleSignOut = async () => {
@@ -157,16 +163,20 @@ export default function App() {
     setCurrentPage('roadmap');
   };
 
-  const handleEnrollTrack = (trackId) => {
+  const handleEnrollTrack = (trackId, type = 'language') => {
     setUserState(prev => {
       const current = prev.enrolledTracks || ['html_css', 'javascript', 'python'];
-      if (current.includes(trackId)) return prev;
       return {
         ...prev,
-        enrolledTracks: [...current, trackId]
+        // Prepend so it becomes the primary active track on the dashboard
+        enrolledTracks: [trackId, ...current.filter(id => id !== trackId)]
       };
     });
-    handleSelectLanguage(trackId);
+    
+    // Only navigate if it's a language, since we might already be on the detail page for a career roadmap
+    if (type === 'language') {
+      handleSelectLanguage(trackId);
+    }
   };
 
   const handleUnenrollTrack = (trackId) => {
@@ -292,10 +302,10 @@ export default function App() {
   if (currentPage === 'landing') {
     return (
       <LandingPage
-        onStartLearning={() => setCurrentPage('languages')}
+        onStartLearning={() => setCurrentPage('roadmaps')}
         onOpenSignIn={() => setCurrentPage('signin')}
         onOpenSignUp={() => setCurrentPage('signup')}
-        onExploreRoadmaps={() => setCurrentPage('languages')}
+        onExploreRoadmaps={() => setCurrentPage('roadmaps')}
       />
     );
   }
@@ -357,6 +367,47 @@ export default function App() {
           ? 'max-w-none px-0 pt-0' 
           : 'max-w-7xl mx-auto px-4 sm:px-6 pt-4'
       }`}>
+        {currentPage === 'dashboard' && (
+          <MainDashboard 
+            userState={userState}
+            onNavigate={(page) => setCurrentPage(page)}
+            onResumeTrack={(trackId, isCareer) => {
+              if (isCareer) {
+                setActiveRoadmapSlug(trackId);
+                setCurrentPage('roadmap_detail');
+              } else {
+                setActiveLanguageId(trackId);
+                setCurrentPage('roadmap');
+              }
+            }}
+          />
+        )}
+
+        {currentPage === 'roadmaps' && (
+          <RoadmapHub 
+            onSelectRoadmap={(slug) => {
+              setActiveRoadmapSlug(slug);
+              setCurrentPage('roadmap_detail');
+            }}
+          />
+        )}
+
+        {currentPage === 'roadmap_detail' && activeRoadmapSlug && (
+          <RoadmapDetail 
+            slug={activeRoadmapSlug}
+            onBack={() => setCurrentPage('roadmaps')}
+            onSelectDay={(dayObj, langId) => {
+              setActiveLanguageId(langId);
+              setSelectedDayObj(dayObj);
+            }}
+            userCompletedDays={userState.completedDays}
+            currentUser={currentUser}
+            userState={userState}
+            onEnrollTrack={handleEnrollTrack}
+            onUnenrollTrack={handleUnenrollTrack}
+          />
+        )}
+
         {currentPage === 'languages' && (
           <LanguageSelector
             activeLanguageId={activeLanguageId}
@@ -365,6 +416,14 @@ export default function App() {
             userCompletedDays={userState.completedDays}
             onEnrollTrack={handleEnrollTrack}
             onUnenrollTrack={handleUnenrollTrack}
+            onResumeTrack={(trackId, isCareer) => {
+              if (isCareer) {
+                setActiveRoadmapSlug(trackId);
+                setCurrentPage('roadmap_detail');
+              } else {
+                handleSelectLanguage(trackId);
+              }
+            }}
           />
         )}
 
@@ -401,6 +460,18 @@ export default function App() {
 
         {currentPage === 'proof' && (
           <PortfolioProofSystem />
+        )}
+
+        {currentPage === 'leaderboard' && (
+          <LeaderboardPage userState={userState} />
+        )}
+
+        {currentPage === 'achievements' && (
+          <AchievementsPage userState={userState} />
+        )}
+
+        {currentPage === 'goals' && (
+          <GoalsPage userState={userState} />
         )}
 
         {currentPage === 'profile' && (
