@@ -37,7 +37,7 @@ export async function getCurrentUser() {
   return user;
 }
 
-// 2. USER PROGRESS SYNC
+// 2. USER PROGRESS SYNC (STRICTLY ISOLATED BY user_id)
 export async function syncUserStateToSupabase(userData, userAuthId = null) {
   try {
     const targetUserId = userAuthId || (await getCurrentUser())?.id;
@@ -45,14 +45,13 @@ export async function syncUserStateToSupabase(userData, userAuthId = null) {
 
     const payload = {
       user_id: targetUserId,
-      xp: userData.xp || 0,
-      level: userData.level || 1,
-      streak: userData.streak || 1,
-      hearts: userData.hearts || 5,
-      enrolled_tracks: userData.enrolledTracks || ['html_css', 'javascript'],
+      xp: userData.xp ?? 0,
+      level: userData.level ?? 1,
+      streak: userData.streak ?? 1,
+      hearts: userData.hearts ?? 5,
+      enrolled_tracks: userData.enrolledTracks || ['python'],
       completed_days: userData.completedDays || {},
-      task_progress: userData.taskProgress || {},
-      badges: userData.unlockedBadges || ['badge_first_step'],
+      unlocked_badges: userData.unlockedBadges || ['badge_first_step'],
       last_active_date: userData.lastActiveDate || new Date().toISOString().split('T')[0],
       updated_at: new Date().toISOString()
     };
@@ -67,6 +66,7 @@ export async function syncUserStateToSupabase(userData, userAuthId = null) {
     }
     return data;
   } catch (err) {
+    console.warn('Supabase sync error:', err);
     return null;
   }
 }
@@ -80,7 +80,10 @@ export async function fetchUserProgressFromSupabase(userAuthId) {
       .eq('user_id', userAuthId)
       .maybeSingle();
 
-    if (error) return null;
+    if (error) {
+      console.warn('Supabase fetch notice:', error.message);
+      return null;
+    }
     return data;
   } catch (e) {
     return null;

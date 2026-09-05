@@ -1,312 +1,152 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { 
   Flame, 
   Trophy, 
-  Star, 
+  Zap, 
   LogOut, 
-  Code, 
-  Sparkles, 
   LogIn, 
-  Heart, 
-  Rocket, 
-  Lock, 
-  BarChart3, 
-  Bot, 
-  Layers, 
-  Terminal,
-  ChevronDown,
-  ShieldCheck,
-  User,
-  Compass,
-  Target,
-  Award
+  Sparkles, 
+  Code2, 
+  Compass, 
+  Calendar,
+  User
 } from 'lucide-react';
 import { getXpProgressForLevel } from '../services/gamificationEngine';
 
 export default function Navbar({ 
-  activeView = 'languages', 
-  activeLanguage = null,
+  activeView = 'dashboard', 
   onSelectView, 
   userState, 
   currentUser = null,
   onOpenAuth,
   onOpenProfile,
-  onOpenAiMentor,
   onSignOut
 }) {
   const xpProgress = getXpProgressForLevel(userState?.xp || 0);
-  const [toolsDropdownOpen, setToolsDropdownOpen] = useState(false);
 
   return (
-    <>
-      {/* Top Header Bar */}
-      <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200 px-4 sm:px-6 py-2.5 font-sans text-slate-900 shadow-xs">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
-          
-          {/* Left: Brand Logo */}
-          <div className="flex items-center space-x-2.5 cursor-pointer group" onClick={() => onSelectView('languages')}>
-            <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-orange-500 to-amber-500 p-0.5 shadow-md shadow-orange-500/20 group-hover:scale-105 transition-transform">
-              <div className="w-full h-full bg-white rounded-[10px] flex items-center justify-center">
-                <Code className="w-4 h-4 text-orange-600" />
-              </div>
+    <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200 px-4 sm:px-6 py-2.5 font-sans text-slate-900 shadow-xs">
+      <div className="max-w-7xl mx-auto flex items-center justify-between">
+        
+        {/* Left: Brand Logo */}
+        <div 
+          className="flex items-center space-x-2.5 cursor-pointer group" 
+          onClick={() => onSelectView('dashboard')}
+        >
+          <div className="w-9 h-9 rounded-2xl bg-gradient-to-tr from-blue-600 to-yellow-500 p-0.5 shadow-md shadow-blue-500/20 group-hover:scale-105 transition-transform flex-shrink-0">
+            <div className="w-full h-full bg-slate-900 rounded-[14px] flex items-center justify-center text-lg">
+              🐍
             </div>
-            <div>
+          </div>
+          <div>
+            <div className="flex items-center space-x-1.5">
               <span className="font-black text-lg tracking-tight text-slate-900">
                 DevQuik
               </span>
-              <span className="text-[10px] text-slate-400 font-semibold block leading-none">Job-Ready Mobile App</span>
+              <span className="text-[10px] font-bold px-1.5 py-0.2 bg-yellow-400 text-slate-950 rounded-sm">
+                Python
+              </span>
             </div>
+            <span className="text-[10px] text-slate-400 font-semibold block leading-none">15-Day AI Fast-Track</span>
+          </div>
+        </div>
+
+        {/* Center: Desktop Navigation Bar */}
+        <nav className="hidden md:flex items-center space-x-1 bg-slate-100/90 p-1 rounded-2xl border border-slate-200">
+          
+          <button 
+            onClick={() => onSelectView('dashboard')}
+            className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center space-x-1.5 whitespace-nowrap cursor-pointer ${
+              activeView === 'dashboard' 
+                ? 'bg-white text-indigo-600 shadow-xs border border-slate-200' 
+                : 'text-slate-600 hover:text-slate-900 hover:bg-white/60'
+            }`}
+          >
+            <Compass className="w-3.5 h-3.5" />
+            <span>Dashboard</span>
+          </button>
+
+          <button 
+            onClick={() => onSelectView('roadmap')}
+            className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center space-x-1.5 whitespace-nowrap cursor-pointer ${
+              activeView === 'roadmap' 
+                ? 'bg-white text-blue-600 shadow-xs border border-slate-200' 
+                : 'text-slate-600 hover:text-slate-900 hover:bg-white/60'
+            }`}
+          >
+            <Sparkles className="w-3.5 h-3.5 text-yellow-500" />
+            <span>15-Day Roadmap</span>
+          </button>
+
+          <button
+            onClick={() => onSelectView('playground')}
+            className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center space-x-1.5 whitespace-nowrap cursor-pointer ${
+              activeView === 'playground'
+                ? 'bg-white text-emerald-600 shadow-xs border border-slate-200'
+                : 'text-slate-600 hover:text-slate-900 hover:bg-white/60'
+            }`}
+          >
+            <Code2 className="w-3.5 h-3.5" />
+            <span>Code Sandbox</span>
+          </button>
+
+          <button
+            onClick={() => onSelectView('profile')}
+            className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center space-x-1.5 whitespace-nowrap cursor-pointer ${
+              activeView === 'profile'
+                ? 'bg-white text-slate-900 shadow-xs border border-slate-200'
+                : 'text-slate-600 hover:text-slate-900 hover:bg-white/60'
+            }`}
+          >
+            <Calendar className="w-3.5 h-3.5" />
+            <span>GitHub Activity</span>
+          </button>
+
+        </nav>
+
+        {/* Right: Gamification Badges & Auth */}
+        <div className="flex items-center space-x-2 sm:space-x-3">
+          
+          {/* Streak Flame */}
+          <div className="flex items-center space-x-1 px-2.5 py-1 bg-orange-50 border border-orange-200/80 rounded-xl text-orange-600 text-xs font-black shadow-2xs">
+            <Flame className="w-3.5 h-3.5 fill-orange-500 text-orange-500" />
+            <span>{userState?.streak || 1}d</span>
           </div>
 
-          {/* Center: Desktop Navigation Bar */}
-          <nav className="hidden md:flex items-center space-x-1.5 bg-slate-100/90 p-1 rounded-xl border border-slate-200">
-            
-            <button 
-              onClick={() => onSelectView('dashboard')}
-              className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center space-x-1.5 whitespace-nowrap ${
-                activeView === 'dashboard' 
-                  ? 'bg-white text-indigo-600 shadow-xs border border-slate-200' 
-                  : 'text-slate-600 hover:text-slate-900 hover:bg-white/60'
-              }`}
-            >
-              <Compass className="w-3.5 h-3.5" />
-              <span>Dashboard</span>
-            </button>
-
-            <button 
-              onClick={() => onSelectView('languages')}
-              className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center space-x-1.5 whitespace-nowrap ${
-                activeView === 'languages' 
-                  ? 'bg-white text-orange-600 shadow-xs border border-slate-200' 
-                  : 'text-slate-600 hover:text-slate-900 hover:bg-white/60'
-              }`}
-            >
-              <Sparkles className="w-3.5 h-3.5" />
-              <span>Roadmaps</span>
-            </button>
-
-            {activeLanguage && userState?.enrolledTracks?.includes(activeLanguage.id) && (
-              <button 
-                onClick={() => onSelectView('roadmap')}
-                className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center space-x-1.5 whitespace-nowrap ${
-                  activeView === 'roadmap' 
-                    ? 'bg-white text-orange-600 shadow-xs border border-slate-200' 
-                    : 'text-slate-600 hover:text-slate-900 hover:bg-white/60'
-                }`}
-              >
-                <span>{activeLanguage.icon}</span>
-                <span>{activeLanguage.name} Path</span>
-              </button>
-            )}
-
-            <button
-              onClick={() => onSelectView('projects')}
-              className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center space-x-1.5 whitespace-nowrap ${
-                activeView === 'projects'
-                  ? 'bg-indigo-600 text-white shadow-xs'
-                  : 'text-slate-600 hover:text-slate-900 hover:bg-white/60'
-              }`}
-            >
-              <Rocket className="w-3.5 h-3.5" />
-              <span>Projects</span>
-            </button>
-
-            <button
-              onClick={() => onSelectView('playground')}
-              className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center space-x-1.5 whitespace-nowrap ${
-                activeView === 'playground'
-                  ? 'bg-cyan-600 text-white shadow-xs'
-                  : 'text-slate-600 hover:text-slate-900 hover:bg-white/60'
-              }`}
-            >
-              <Terminal className="w-3.5 h-3.5 text-cyan-600" />
-              <span>Code Playground</span>
-            </button>
-
-            <div className="relative">
-              <button
-                onClick={() => setToolsDropdownOpen(prev => !prev)}
-                className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center space-x-1 whitespace-nowrap ${
-                  ['proof', 'analytics', 'skilltree', 'leaderboard', 'achievements', 'goals'].includes(activeView)
-                    ? 'bg-white text-emerald-700 shadow-xs border border-slate-200'
-                    : 'text-slate-600 hover:text-slate-900 hover:bg-white/60'
-                }`}
-              >
-                <span>More Tools</span>
-                <ChevronDown className="w-3.5 h-3.5 ml-0.5 opacity-70" />
-              </button>
-
-              {toolsDropdownOpen && (
-                <div 
-                  className="absolute left-0 mt-2 w-52 bg-white border border-slate-200 rounded-2xl shadow-xl py-1.5 z-50 animate-in fade-in slide-in-from-top-2 duration-150"
-                  onClick={() => setToolsDropdownOpen(false)}
-                >
-                  <button
-                    onClick={() => onSelectView('proof')}
-                    className="w-full px-3.5 py-2 text-left text-xs font-semibold text-slate-700 hover:bg-slate-50 flex items-center space-x-2"
-                  >
-                    <ShieldCheck className="w-4 h-4 text-emerald-600" />
-                    <span>Proof-of-Skill Artifacts</span>
-                  </button>
-
-                  <button
-                    onClick={() => onSelectView('analytics')}
-                    className="w-full px-3.5 py-2 text-left text-xs font-semibold text-slate-700 hover:bg-slate-50 flex items-center space-x-2"
-                  >
-                    <BarChart3 className="w-4 h-4 text-amber-500" />
-                    <span>Analytics & Heatmap</span>
-                  </button>
-
-                  <button
-                    onClick={() => onSelectView('skilltree')}
-                    className="w-full px-3.5 py-2 text-left text-xs font-semibold text-slate-700 hover:bg-slate-50 flex items-center space-x-2"
-                  >
-                    <Layers className="w-4 h-4 text-emerald-600" />
-                    <span>Skill Tree Matrix</span>
-                  </button>
-
-                  <button
-                    onClick={() => onSelectView('leaderboard')}
-                    className="w-full px-3.5 py-2 text-left text-xs font-semibold text-slate-700 hover:bg-slate-50 flex items-center space-x-2"
-                  >
-                    <Trophy className="w-4 h-4 text-amber-500" />
-                    <span>Leaderboard</span>
-                  </button>
-
-                  <button
-                    onClick={() => onSelectView('achievements')}
-                    className="w-full px-3.5 py-2 text-left text-xs font-semibold text-slate-700 hover:bg-slate-50 flex items-center space-x-2"
-                  >
-                    <Award className="w-4 h-4 text-orange-500" />
-                    <span>Achievements</span>
-                  </button>
-
-                  <button
-                    onClick={() => onSelectView('goals')}
-                    className="w-full px-3.5 py-2 text-left text-xs font-semibold text-slate-700 hover:bg-slate-50 flex items-center space-x-2"
-                  >
-                    <Target className="w-4 h-4 text-indigo-500" />
-                    <span>Goals</span>
-                  </button>
-                </div>
-              )}
-            </div>
-
-          </nav>
-
-          {/* Right Header Actions */}
-          <div className="flex items-center space-x-2">
-            
-            <button
-              onClick={onOpenAiMentor}
-              className="flex items-center space-x-1 px-2.5 py-1.5 bg-indigo-50 hover:bg-indigo-100 border border-indigo-200 rounded-xl text-xs font-extrabold text-indigo-700 transition-all"
-            >
-              <Bot className="w-4 h-4 text-indigo-600" />
-              <span className="hidden sm:inline">AI Mentor</span>
-            </button>
-
-            <div className="flex items-center space-x-1 px-2.5 py-1.5 bg-orange-50 border border-orange-200 rounded-xl text-xs font-mono font-bold text-orange-700">
-              <Flame className="w-3.5 h-3.5 text-orange-500 fill-orange-500 animate-pulse" />
-              <span>{userState?.streak ?? 1}d</span>
-            </div>
-
-            <div className="hidden sm:flex items-center space-x-1.5 bg-slate-50 border border-slate-200 px-2.5 py-1.5 rounded-xl text-xs font-mono font-bold text-slate-700">
-              <Trophy className="w-3.5 h-3.5 text-amber-500" />
-              <span>Lvl {xpProgress.currentLevel}</span>
-              <span className="text-amber-600 font-normal text-[11px]">({userState?.xp || 0} XP)</span>
-            </div>
-
-            {/* Profile + Log Out Controls */}
-            <div className="flex items-center space-x-1.5 pl-1.5 border-l border-slate-200">
-              <button 
-                onClick={onOpenProfile}
-                className="p-1 bg-slate-900 hover:bg-slate-800 text-white rounded-xl transition-all border border-slate-800 shadow-xs flex items-center space-x-1"
-                title="Open Profile"
-              >
-                <div className="w-6 h-6 rounded-lg bg-gradient-to-tr from-orange-500 to-amber-400 text-white flex items-center justify-center font-extrabold text-[11px]">
-                  {currentUser?.user_metadata?.full_name?.charAt(0) || currentUser?.email?.charAt(0) || 'D'}
-                </div>
-              </button>
-
-              <button
-                onClick={onSignOut}
-                title="Log Out of Account"
-                className="px-2.5 py-1.5 bg-rose-50 hover:bg-rose-100 text-rose-700 rounded-xl transition-colors text-xs font-bold flex items-center space-x-1 border border-rose-200"
-              >
-                <LogOut className="w-3.5 h-3.5" />
-                <span className="hidden sm:inline">Log Out</span>
-              </button>
-            </div>
-
+          {/* XP Badge */}
+          <div className="flex items-center space-x-1 px-2.5 py-1 bg-yellow-50 border border-yellow-200/80 rounded-xl text-yellow-600 text-xs font-black shadow-2xs">
+            <Zap className="w-3.5 h-3.5 fill-yellow-500 text-yellow-500" />
+            <span>{userState?.xp || 0} XP</span>
           </div>
+
+          {/* Level Badge */}
+          <div className="hidden sm:flex items-center space-x-1 px-2.5 py-1 bg-indigo-50 border border-indigo-200/80 rounded-xl text-indigo-600 text-xs font-black shadow-2xs">
+            <Trophy className="w-3.5 h-3.5 text-indigo-600" />
+            <span>Lvl {xpProgress.currentLevel}</span>
+          </div>
+
+          {/* Auth Button / Profile Avatar */}
+          {currentUser ? (
+            <button
+              onClick={() => onSelectView('profile')}
+              className="w-8 h-8 rounded-xl bg-slate-900 text-white flex items-center justify-center font-bold text-xs hover:bg-slate-800 transition-colors shadow-xs cursor-pointer"
+              title="View Profile & Settings"
+            >
+              <User className="w-4 h-4" />
+            </button>
+          ) : (
+            <button
+              onClick={onOpenAuth}
+              className="px-3.5 py-1.5 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold rounded-xl shadow-xs flex items-center space-x-1.5 transition-all cursor-pointer"
+            >
+              <LogIn className="w-3.5 h-3.5" />
+              <span>Sign In</span>
+            </button>
+          )}
 
         </div>
-      </header>
-
-      {/* MOBILE-FIRST FIXED BOTTOM NAVIGATION BAR */}
-      <div className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-lg border-t border-slate-200 px-2 py-2 flex items-center justify-around shadow-2xl">
-        
-        <button
-          onClick={() => onSelectView('dashboard')}
-          className={`flex flex-col items-center justify-center py-1 px-3 rounded-2xl transition-all ${
-            activeView === 'dashboard' ? 'text-indigo-600 font-extrabold scale-105' : 'text-slate-500 font-semibold'
-          }`}
-        >
-          <Compass className="w-5 h-5 mb-0.5" />
-          <span className="text-[10px]">Dashboard</span>
-        </button>
-
-        <button
-          onClick={() => onSelectView('languages')}
-          className={`flex flex-col items-center justify-center py-1 px-3 rounded-2xl transition-all ${
-            activeView === 'languages' ? 'text-orange-600 font-extrabold scale-105' : 'text-slate-500 font-semibold'
-          }`}
-        >
-          <Sparkles className="w-5 h-5 mb-0.5" />
-          <span className="text-[10px]">Roadmaps</span>
-        </button>
-
-        <button
-          onClick={() => onSelectView('roadmap')}
-          className={`hidden sm:flex flex-col items-center justify-center py-1 px-3 rounded-2xl transition-all ${
-            activeView === 'roadmap' ? 'text-orange-600 font-extrabold scale-105' : 'text-slate-500 font-semibold'
-          }`}
-        >
-          <Compass className="w-5 h-5 mb-0.5" />
-          <span className="text-[10px]">Roadmap</span>
-        </button>
-
-        <button
-          onClick={() => onSelectView('projects')}
-          className={`flex flex-col items-center justify-center py-1 px-3 rounded-2xl transition-all ${
-            activeView === 'projects' ? 'text-indigo-600 font-extrabold scale-105' : 'text-slate-500 font-semibold'
-          }`}
-        >
-          <Rocket className="w-5 h-5 mb-0.5" />
-          <span className="text-[10px]">Projects</span>
-        </button>
-
-        <button
-          onClick={() => onSelectView('analytics')}
-          className={`flex flex-col items-center justify-center py-1 px-3 rounded-2xl transition-all ${
-            activeView === 'analytics' ? 'text-amber-500 font-extrabold scale-105' : 'text-slate-500 font-semibold'
-          }`}
-        >
-          <BarChart3 className="w-5 h-5 mb-0.5" />
-          <span className="text-[10px]">Analytics</span>
-        </button>
-
-        <button
-          onClick={onOpenProfile}
-          className={`flex flex-col items-center justify-center py-1 px-3 rounded-2xl transition-all ${
-            activeView === 'profile' ? 'text-slate-900 font-extrabold scale-105' : 'text-slate-500 font-semibold'
-          }`}
-        >
-          <User className="w-5 h-5 mb-0.5" />
-          <span className="text-[10px]">Profile</span>
-        </button>
 
       </div>
-    </>
+    </header>
   );
 }

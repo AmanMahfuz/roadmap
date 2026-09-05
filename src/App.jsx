@@ -3,23 +3,13 @@ import LandingPage from './components/LandingPage';
 import SignInPage from './components/SignInPage';
 import SignUpPage from './components/SignUpPage';
 import Navbar from './components/Navbar';
-import LanguageSelector from './components/LanguageSelector';
-import LanguageRoadmapView from './components/LanguageRoadmapView';
+import MainDashboard from './components/MainDashboard';
+import PythonRoadmapView from './components/PythonRoadmapView';
 import DayTaskWindow from './components/DayTaskWindow';
+import CodePlayground from './components/CodePlayground';
 import ProfileStatsView from './components/ProfileStatsView';
 import LevelUpModal from './components/LevelUpModal';
-import FrontendProjectsHub from './components/FrontendProjectsHub';
-import AnalyticsDashboard from './components/AnalyticsDashboard';
-import CodePlayground from './components/CodePlayground';
-import SkillTreeView from './components/SkillTreeView';
-import MainDashboard from './components/MainDashboard';
-import LeaderboardPage from './components/LeaderboardPage';
-import AchievementsPage from './components/AchievementsPage';
-import GoalsPage from './components/GoalsPage';
-import AiMentorModal from './components/AiMentorModal';
-import PortfolioProofSystem from './components/PortfolioProofSystem';
-import RoadmapDetail from './components/RoadmapDetail';
-import { SIX_LANGUAGES } from './data/sixLanguagesData';
+import { PYTHON_DAYS, PYTHON_COURSE_METADATA } from './data/pythonCurriculum';
 import { getLevelFromXp, evaluateBadges } from './services/gamificationEngine';
 
 import { 
@@ -32,14 +22,15 @@ import {
 
 import './App.css';
 
-const LOCAL_STORAGE_KEY = 'devquik_six_languages_user_v2';
+const getStorageKey = (userId) => {
+  return userId ? `devquik_python_user_${userId}` : 'devquik_python_guest_v1';
+};
 
 const INITIAL_USER_STATE = {
   xp: 0,
   level: 1,
   streak: 1,
-  hearts: 5,
-  enrolledTracks: ['html_css', 'javascript'],
+  enrolledTracks: ['python'],
   completedDays: {},
   taskProgress: {},
   lastActiveDate: new Date().toISOString().split('T')[0],
@@ -48,16 +39,35 @@ const INITIAL_USER_STATE = {
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState('landing');
-  const [activeLanguageId, setActiveLanguageId] = useState('html_css');
-  const [activeRoadmapSlug, setActiveRoadmapSlug] = useState(null);
   const [selectedDayObj, setSelectedDayObj] = useState(null);
-  const [isAiMentorOpen, setIsAiMentorOpen] = useState(false);
   const [levelUpLevel, setLevelUpLevel] = useState(null);
   const [currentUser, setCurrentUser] = useState(null);
   const [isDataLoading, setIsDataLoading] = useState(true);
 
-  const [userState, setUserState] = useState(INITIAL_USER_STATE);
+  // Initialize state from scoped localStorage
+  const [userState, setUserState] = useState(() => {
+    try {
+      const cached = localStorage.getItem(getStorageKey(null));
+      if (cached) {
+        return JSON.parse(cached);
+      }
+    } catch (e) {
+      console.warn('Local storage error', e);
+    }
+    return INITIAL_USER_STATE;
+  });
 
+  // Save to user-scoped localStorage whenever userState or currentUser updates
+  useEffect(() => {
+    try {
+      const key = getStorageKey(currentUser?.id);
+      localStorage.setItem(key, JSON.stringify(userState));
+    } catch (e) {
+      console.warn('Failed to save to local storage', e);
+    }
+  }, [userState, currentUser]);
+
+  // Auth & Supabase Progress Listener
   useEffect(() => {
     getCurrentUser().then(user => {
       if (user) {
@@ -71,14 +81,17 @@ export default function App() {
 
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
       const user = session?.user || null;
-      setCurrentUser(user);
-      if (user) {
-        setIsDataLoading(true);
-        loadDbUserProgress(user.id);
-        setCurrentPage('dashboard');
-      } else {
-        setUserState(INITIAL_USER_STATE);
-        setIsDataLoading(false);
+      if (user?.id !== currentUser?.id) {
+        setCurrentUser(user);
+        if (user) {
+          setIsDataLoading(true);
+          loadDbUserProgress(user.id);
+          setCurrentPage('dashboard');
+        } else {
+          // If logged out
+          setUserState(INITIAL_USER_STATE);
+          setIsDataLoading(false);
+        }
       }
     });
 
@@ -89,28 +102,47 @@ export default function App() {
 
   const loadDbUserProgress = async (userId) => {
     if (!userId) return;
-    const dbData = await fetchUserProgressFromSupabase(userId);
-    if (dbData) {
-      setUserState(prev => {
-        const loadedXp = dbData.xp || prev.xp;
+    try {
+      // First try to load from user-specific local storage cache
+      const cached = localStorage.getItem(getStorageKey(userId));
+      let initialBase = INITIAL_USER_STATE;
+      if (cached) {
+        try {
+          initialBase = JSON.parse(cached);
+        } catch (err) {
+          console.warn('Error reading user cache', err);
+        }
+      }
+
+      const dbData = await fetchUserProgressFromSupabase(userId);
+      if (dbData) {
+        const loadedXp = dbData.xp ?? initialBase.xp ?? 0;
         const loadedLevel = getLevelFromXp(loadedXp);
-        return {
-          ...prev,
+        setUserState({
           xp: loadedXp,
           level: loadedLevel,
-          streak: dbData.streak || prev.streak,
-          hearts: dbData.hearts !== undefined ? dbData.hearts : (prev.hearts || 5),
-          enrolledTracks: dbData.enrolled_tracks || prev.enrolledTracks || ['html_css', 'javascript'],
-          completedDays: dbData.completed_days || prev.completedDays,
-          taskProgress: dbData.task_progress || prev.taskProgress || {},
-          unlockedBadges: dbData.badges || prev.unlockedBadges || ['badge_first_step'],
-          lastActiveDate: dbData.last_active_date || prev.lastActiveDate
-        };
-      });
+          streak: dbData.streak ?? initialBase.streak ?? 1,
+          enrolledTracks: ['python'],
+          completedDays: dbData.completed_days ?? initialBase.completedDays ?? {},
+          taskProgress: dbData.task_progress ?? initialBase.taskProgress ?? {},
+          unlockedBadges: dbData.unlocked_badges ?? dbData.badges ?? initialBase.unlockedBadges ?? ['badge_first_step'],
+          lastActiveDate: dbData.last_active_date ?? initialBase.lastActiveDate ?? new Date().toISOString().split('T')[0]
+        });
+      } else {
+        // Brand new user in database: start completely clean
+        setUserState({
+          ...initialBase,
+          lastActiveDate: new Date().toISOString().split('T')[0]
+        });
+      }
+    } catch (err) {
+      console.error('Error fetching user progress', err);
+    } finally {
+      setIsDataLoading(false);
     }
-    setIsDataLoading(false);
   };
 
+  // Sync to Supabase strictly scoped to authenticated user ID
   useEffect(() => {
     try {
       if (currentUser?.id && !isDataLoading) {
@@ -121,6 +153,7 @@ export default function App() {
     }
   }, [userState, currentUser, isDataLoading]);
 
+  // Streak calculations on daily login
   useEffect(() => {
     const today = new Date().toISOString().split('T')[0];
     const lastActive = userState.lastActiveDate;
@@ -140,7 +173,7 @@ export default function App() {
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'instant' });
-  }, [currentPage, activeLanguageId, selectedDayObj]);
+  }, [currentPage, selectedDayObj]);
 
   const handleAuthSuccess = (user) => {
     setCurrentUser(user);
@@ -155,38 +188,9 @@ export default function App() {
       console.error('Sign out error', e);
     }
     setCurrentUser(null);
+    setUserState(INITIAL_USER_STATE);
+    setSelectedDayObj(null);
     setCurrentPage('landing');
-  };
-
-  const handleSelectLanguage = (langId) => {
-    setActiveLanguageId(langId);
-    setCurrentPage('roadmap');
-  };
-
-  const handleEnrollTrack = (trackId, type = 'language') => {
-    setUserState(prev => {
-      const current = prev.enrolledTracks || ['html_css', 'javascript', 'python'];
-      return {
-        ...prev,
-        // Prepend so it becomes the primary active track on the dashboard
-        enrolledTracks: [trackId, ...current.filter(id => id !== trackId)]
-      };
-    });
-    
-    // Only navigate if it's a language, since we might already be on the detail page for a career roadmap
-    if (type === 'language') {
-      handleSelectLanguage(trackId);
-    }
-  };
-
-  const handleUnenrollTrack = (trackId) => {
-    setUserState(prev => {
-      const current = prev.enrolledTracks || ['html_css', 'javascript'];
-      return {
-        ...prev,
-        enrolledTracks: current.filter(id => id !== trackId)
-      };
-    });
   };
 
   const handleAddXp = (amount) => {
@@ -215,7 +219,7 @@ export default function App() {
     });
   };
 
-  const handleCompleteDay = (dayKey, xpReward = 200) => {
+  const handleCompleteDay = (dayKey, xpReward = 150) => {
     setUserState(prev => {
       const todayIso = new Date().toISOString();
       const newCompletedDays = { 
@@ -249,8 +253,7 @@ export default function App() {
 
   const handleNextDay = () => {
     if (!selectedDayObj) return;
-    const currentLang = SIX_LANGUAGES.find(l => l.id === activeLanguageId) || SIX_LANGUAGES[0];
-    const nextDayObj = currentLang.days.find(d => d.day === selectedDayObj.day + 1);
+    const nextDayObj = PYTHON_DAYS.find(d => d.day === selectedDayObj.day + 1);
     if (nextDayObj) {
       setSelectedDayObj(nextDayObj);
     }
@@ -258,16 +261,20 @@ export default function App() {
 
   const handlePrevDay = () => {
     if (!selectedDayObj) return;
-    const currentLang = SIX_LANGUAGES.find(l => l.id === activeLanguageId) || SIX_LANGUAGES[0];
-    const prevDayObj = currentLang.days.find(d => d.day === selectedDayObj.day - 1);
+    const prevDayObj = PYTHON_DAYS.find(d => d.day === selectedDayObj.day - 1);
     if (prevDayObj) {
       setSelectedDayObj(prevDayObj);
     }
   };
 
   const handleResetProgress = () => {
+    const key = getStorageKey(currentUser?.id);
+    localStorage.removeItem(key);
     setUserState(INITIAL_USER_STATE);
-    setCurrentPage('languages');
+    if (currentUser?.id) {
+      syncUserStateToSupabase(INITIAL_USER_STATE, currentUser.id);
+    }
+    setCurrentPage('dashboard');
   };
 
   const handleUpdateTaskProgress = (dayKey, taskId, isCompleted) => {
@@ -286,14 +293,12 @@ export default function App() {
     });
   };
 
-  const activeLanguageObj = SIX_LANGUAGES.find(l => l.id === activeLanguageId) || SIX_LANGUAGES[0];
-
   if (isDataLoading && !['landing', 'signin', 'signup'].includes(currentPage)) {
     return (
-      <div className="min-h-screen bg-slate-50 flex items-center justify-center">
+      <div className="min-h-screen bg-slate-50 flex items-center justify-center font-sans">
         <div className="flex flex-col items-center space-y-4">
-          <div className="w-12 h-12 border-4 border-indigo-600 border-t-transparent rounded-full animate-spin"></div>
-          <p className="text-slate-600 font-medium">Syncing with server...</p>
+          <div className="w-12 h-12 border-4 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
+          <p className="text-slate-600 font-bold text-sm">Loading DevQuik Python...</p>
         </div>
       </div>
     );
@@ -302,10 +307,17 @@ export default function App() {
   if (currentPage === 'landing') {
     return (
       <LandingPage
-        onStartLearning={() => setCurrentPage('roadmaps')}
+        currentUser={currentUser}
+        onStartLearning={() => {
+          if (currentUser) {
+            setCurrentPage('dashboard');
+          } else {
+            setCurrentPage('signup');
+          }
+        }}
         onOpenSignIn={() => setCurrentPage('signin')}
         onOpenSignUp={() => setCurrentPage('signup')}
-        onExploreRoadmaps={() => setCurrentPage('roadmaps')}
+        onExploreGuest={() => setCurrentPage('roadmap')}
       />
     );
   }
@@ -330,123 +342,67 @@ export default function App() {
     );
   }
 
-  if (selectedDayObj) {
-    return (
-      <DayTaskWindow
-        dayObj={selectedDayObj}
-        languageId={activeLanguageId}
-        totalDays={activeLanguageObj.days.length}
-        isCompleted={!!userState.completedDays[`${activeLanguageId}_day_${selectedDayObj.day}`]}
-        taskProgress={userState.taskProgress[`${activeLanguageId}_day_${selectedDayObj.day}`] || {}}
-        onUpdateTaskProgress={handleUpdateTaskProgress}
-        onClose={() => setSelectedDayObj(null)}
-        onCompleteDay={handleCompleteDay}
-        onAddXp={handleAddXp}
-        onNextDay={handleNextDay}
-        onPrevDay={handlePrevDay}
-      />
-    );
-  }
+  const handleOpenDay = (dayObj) => {
+    setSelectedDayObj(dayObj);
+    setCurrentPage('day-task');
+  };
+
+  const handleCloseDay = () => {
+    setSelectedDayObj(null);
+    setCurrentPage('roadmap');
+  };
+
+  const handleSelectNavView = (view) => {
+    setSelectedDayObj(null);
+    setCurrentPage(view);
+  };
 
   return (
     <div className="app-layout min-h-screen bg-[#f8f9ff] text-slate-900 flex flex-col font-sans">
       <Navbar
-        activeView={currentPage}
-        activeLanguage={activeLanguageObj}
-        onSelectView={(view) => setCurrentPage(view)}
+        activeView={currentPage === 'day-task' ? 'roadmap' : currentPage}
+        onSelectView={handleSelectNavView}
         userState={userState}
         currentUser={currentUser}
         onOpenAuth={() => setCurrentPage('signin')}
-        onOpenProfile={() => setCurrentPage('profile')}
-        onOpenAiMentor={() => setIsAiMentorOpen(true)}
+        onOpenProfile={() => {
+          setSelectedDayObj(null);
+          setCurrentPage('profile');
+        }}
         onSignOut={handleSignOut}
       />
 
-      <main className={`app-main-content flex-1 w-full pb-24 md:pb-8 ${
-        currentPage === 'playground' 
-          ? 'max-w-none px-0 pt-0' 
-          : 'max-w-7xl mx-auto px-4 sm:px-6 pt-4'
-      }`}>
+      <main className="app-main-content flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 pt-6 pb-24">
+        {currentPage === 'day-task' && selectedDayObj && (
+          <DayTaskWindow
+            dayObj={selectedDayObj}
+            languageId="python"
+            totalDays={PYTHON_DAYS.length}
+            isCompleted={!!userState.completedDays[`python_day_${selectedDayObj.day}`]}
+            taskProgress={userState.taskProgress[`python_day_${selectedDayObj.day}`] || {}}
+            onUpdateTaskProgress={handleUpdateTaskProgress}
+            onClose={handleCloseDay}
+            onCompleteDay={handleCompleteDay}
+            onAddXp={handleAddXp}
+            onNextDay={handleNextDay}
+            onPrevDay={handlePrevDay}
+          />
+        )}
+
         {currentPage === 'dashboard' && (
           <MainDashboard 
             userState={userState}
             onNavigate={(page) => setCurrentPage(page)}
-            onResumeTrack={(trackId, isCareer) => {
-              if (isCareer) {
-                setActiveRoadmapSlug(trackId);
-                setCurrentPage('roadmap_detail');
-              } else {
-                setActiveLanguageId(trackId);
-                setCurrentPage('roadmap');
-              }
-            }}
-          />
-        )}
-
-        {currentPage === 'roadmaps' && (
-          <RoadmapHub 
-            onSelectRoadmap={(slug) => {
-              setActiveRoadmapSlug(slug);
-              setCurrentPage('roadmap_detail');
-            }}
-          />
-        )}
-
-        {currentPage === 'roadmap_detail' && activeRoadmapSlug && (
-          <RoadmapDetail 
-            slug={activeRoadmapSlug}
-            onBack={() => setCurrentPage('roadmaps')}
-            onSelectDay={(dayObj, langId) => {
-              setActiveLanguageId(langId);
-              setSelectedDayObj(dayObj);
-            }}
-            userCompletedDays={userState.completedDays}
-            currentUser={currentUser}
-            userState={userState}
-            onEnrollTrack={handleEnrollTrack}
-            onUnenrollTrack={handleUnenrollTrack}
-          />
-        )}
-
-        {currentPage === 'languages' && (
-          <LanguageSelector
-            activeLanguageId={activeLanguageId}
-            onSelectLanguage={handleSelectLanguage}
-            userState={userState}
-            userCompletedDays={userState.completedDays}
-            onEnrollTrack={handleEnrollTrack}
-            onUnenrollTrack={handleUnenrollTrack}
-            onResumeTrack={(trackId, isCareer) => {
-              if (isCareer) {
-                setActiveRoadmapSlug(trackId);
-                setCurrentPage('roadmap_detail');
-              } else {
-                handleSelectLanguage(trackId);
-              }
-            }}
+            onStartLesson={handleOpenDay}
           />
         )}
 
         {currentPage === 'roadmap' && (
-          <LanguageRoadmapView
-            languageId={activeLanguageId}
+          <PythonRoadmapView 
             userCompletedDays={userState.completedDays}
-            onSelectDay={(dayObj) => setSelectedDayObj(dayObj)}
-            onBackToLanguages={() => setCurrentPage('languages')}
+            onSelectDay={handleOpenDay}
+            onBackToDashboard={() => setCurrentPage('dashboard')}
             currentUser={currentUser}
-          />
-        )}
-
-        {currentPage === 'projects' && (
-          <FrontendProjectsHub
-            userCompletedDays={userState.completedDays}
-            onBackToRoadmap={() => setCurrentPage('languages')}
-          />
-        )}
-
-        {currentPage === 'analytics' && (
-          <AnalyticsDashboard
-            userState={userState}
           />
         )}
 
@@ -454,43 +410,18 @@ export default function App() {
           <CodePlayground />
         )}
 
-        {currentPage === 'skilltree' && (
-          <SkillTreeView userState={userState} />
-        )}
-
-        {currentPage === 'proof' && (
-          <PortfolioProofSystem />
-        )}
-
-        {currentPage === 'leaderboard' && (
-          <LeaderboardPage userState={userState} />
-        )}
-
-        {currentPage === 'achievements' && (
-          <AchievementsPage userState={userState} />
-        )}
-
-        {currentPage === 'goals' && (
-          <GoalsPage userState={userState} />
-        )}
-
         {currentPage === 'profile' && (
           <ProfileStatsView
             userState={userState}
             currentUser={currentUser}
-            onBackToDashboard={() => setCurrentPage('languages')}
+            onBackToDashboard={() => setCurrentPage('dashboard')}
             onResetProgress={handleResetProgress}
             onSignOut={handleSignOut}
           />
         )}
       </main>
 
-      {isAiMentorOpen && (
-        <AiMentorModal
-          onClose={() => setIsAiMentorOpen(false)}
-        />
-      )}
-
+      {/* Level Up Celebration Modal */}
       {levelUpLevel && (
         <LevelUpModal
           level={levelUpLevel}
@@ -499,14 +430,15 @@ export default function App() {
         />
       )}
 
-      <footer className="app-footer border-t border-slate-200 py-6 px-6 text-center text-xs text-slate-500 bg-white hidden md:block">
+      {/* Simplified Modern Footer */}
+      <footer className="border-t border-slate-200 py-6 px-6 text-center text-xs text-slate-500 bg-white">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
           <div className="flex items-center space-x-2">
-            <span className="font-semibold text-slate-700">DevQuik Developer Ecosystem</span>
+            <span className="font-bold text-slate-800">DevQuik Python to AI Fast-Track</span>
             <span>•</span>
-            <span>Learn • Practice • Build • Track</span>
+            <span>15-Day Interactive Mastery</span>
           </div>
-          <p>© {new Date().getFullYear()} DevQuik. Built for developers mastering HTML, CSS, JavaScript, Python, TypeScript, Java, C++, and Go.</p>
+          <p>© {new Date().getFullYear()} DevQuik. Built for daily consistent learning.</p>
         </div>
       </footer>
     </div>

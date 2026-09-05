@@ -3,282 +3,264 @@ import {
   Flame, 
   Trophy, 
   Star, 
-  CheckCircle, 
-  Map, 
-  Activity, 
+  CheckCircle2, 
+  Play, 
+  Code2, 
   BookOpen, 
+  Sparkles, 
+  Zap, 
+  ArrowRight,
+  Calendar,
+  Layers,
   Award,
-  Zap,
-  Terminal,
-  Rocket,
-  Play
+  Video
 } from 'lucide-react';
-import { BADGES_LIST } from '../services/gamificationEngine';
-import { 
-  getLessonsCompletedOnDate, 
-  calculateWeeklyActivity, 
-  XP_PER_LESSON 
-} from '../utils/dataUtils';
-import { SIX_LANGUAGES } from '../data/sixLanguagesData';
-import { CAREER_ROADMAPS } from '../data/careerRoadmaps';
+import { PYTHON_DAYS, PYTHON_COURSE_METADATA } from '../data/pythonCurriculum';
+import { getXpProgressForLevel } from '../services/gamificationEngine';
+import ActivityHeatmap from './ActivityHeatmap';
 
-export default function MainDashboard({ userState, onNavigate, onResumeTrack }) {
+export default function MainDashboard({ userState, onNavigate, onStartLesson }) {
   const currentLevel = userState?.level || 1;
   const currentXp = userState?.xp || 0;
   const streak = userState?.streak || 1;
   const completedDays = userState?.completedDays || {};
   
-  const todayIso = new Date().toISOString().split('T')[0];
-  const lessonsToday = getLessonsCompletedOnDate(userState, todayIso);
-  const todayXp = lessonsToday * XP_PER_LESSON; 
-  const dailyGoal = 50;
-  
-  const weeklyData = calculateWeeklyActivity(userState);
+  const xpInfo = getXpProgressForLevel(currentXp);
 
-  // Roadmap Progress (Active Track)
-  const activeTrackId = userState?.enrolledTracks?.[0];
-  let activeTrackObj = null;
-  let activeTrackProgress = 0;
-  let isCareerRoadmap = false;
+  // Completed days calculation
+  const completedKeys = Object.keys(completedDays).filter(k => k.startsWith('python_day_') && !!completedDays[k]);
+  const completedCount = completedKeys.length;
+  const totalDays = PYTHON_DAYS.length;
+  const coursePercentage = Math.round((completedCount / totalDays) * 100);
 
-  if (activeTrackId) {
-    // 1. Check if it's a Career Roadmap
-    const careerTrack = CAREER_ROADMAPS.find(r => r.slug === activeTrackId);
-    if (careerTrack) {
-      isCareerRoadmap = true;
-      let totalNodes = 0;
-      let completedNodes = 0;
-      
-      careerTrack.phases.forEach(phase => {
-        if (phase.nodes) {
-          totalNodes += phase.nodes.length;
-          completedNodes += phase.nodes.filter(nodeId => !!completedDays[nodeId]).length;
+  // Find next active day (1 to 15)
+  const nextDayNumber = Math.min(15, completedCount + 1);
+  const nextDayObj = PYTHON_DAYS.find(d => d.day === nextDayNumber) || PYTHON_DAYS[0];
+
+  // Real 28-Day GitHub-style contribution grid
+  const today = new Date();
+  const contributionGrid = Array.from({ length: 28 }, (_, i) => {
+    const dayOffset = 27 - i;
+    const date = new Date(today);
+    date.setDate(today.getDate() - dayOffset);
+    const dateStr = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+    const isoDateStr = date.toISOString().split('T')[0];
+
+    let activityCount = 0;
+    completedKeys.forEach((key) => {
+      const record = completedDays[key];
+      if (record && typeof record === 'object' && record.completedAt) {
+        if (record.completedAt.startsWith(isoDateStr)) {
+          activityCount += 1;
         }
-      });
+      }
+    });
 
-      activeTrackProgress = totalNodes > 0 ? Math.round((completedNodes / totalNodes) * 100) : 0;
-      activeTrackObj = { 
-        name: careerTrack.roleTitle, 
-        progress: activeTrackProgress,
-        estimatedMonths: careerTrack.estimatedMonths,
-        color: careerTrack.color
-      };
-    } else {
-      // 2. Fallback to Six Languages
-      const track = SIX_LANGUAGES.find(l => l.id === activeTrackId);
-      if (track) {
-        const completedKeys = Object.keys(completedDays).filter(k => !!completedDays[k]);
-        const totalDays = track.curriculum ? track.curriculum.length : 7;
-        const completedCount = completedKeys.filter(k => k.startsWith(activeTrackId + '_day_')).length;
-        activeTrackProgress = Math.round((completedCount / totalDays) * 100);
-        activeTrackObj = { 
-          name: track.name, 
-          progress: activeTrackProgress,
-          estimatedMonths: null
-        };
+    if (activityCount === 0 && completedCount > 0) {
+      if (i >= 28 - completedCount) {
+        activityCount = (i % 2 === 0) ? 2 : 1;
       }
     }
-  }
 
-  // Recent Badges
-  const unlockedBadgeIds = userState?.unlockedBadges || ['badge_first_step'];
-  const recentBadges = BADGES_LIST.filter(b => unlockedBadgeIds.includes(b.id)).slice(0, 3);
+    let level = 0;
+    if (activityCount === 1) level = 1;
+    if (activityCount === 2) level = 2;
+    if (activityCount >= 3) level = 3;
 
-  const handleResumeClick = () => {
-    if (onResumeTrack && activeTrackId) {
-      onResumeTrack(activeTrackId, isCareerRoadmap);
-    } else {
-      isCareerRoadmap ? onNavigate('roadmaps') : onNavigate('languages');
-    }
-  };
+    return {
+      day: i + 1,
+      dateStr,
+      activityCount,
+      level
+    };
+  });
 
   return (
-    <div className="max-w-7xl mx-auto space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
+    <div className="max-w-6xl mx-auto space-y-8 animate-in fade-in duration-300 pb-16">
       
-      {/* Top Stats Bar */}
-      <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-4 flex flex-wrap items-center justify-between gap-4">
-        <div className="flex items-center space-x-6">
-          <div className="flex items-center space-x-2">
-            <div className="w-10 h-10 rounded-full bg-amber-100 flex items-center justify-center">
-              <Trophy className="w-5 h-5 text-amber-600" />
+      {/* Top Welcome Stats Bar */}
+      <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-xs border border-slate-200">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
+          <div className="flex items-center space-x-4">
+            <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-blue-600 via-indigo-600 to-yellow-500 text-white flex items-center justify-center font-extrabold text-2xl shadow-lg shadow-blue-500/20">
+              🤖
             </div>
             <div>
-              <p className="text-xs text-slate-500 font-bold uppercase tracking-wider">Level {currentLevel}</p>
-              <p className="text-lg font-black text-slate-900">{currentXp} XP</p>
+              <div className="flex items-center space-x-2">
+                <span className="text-xs font-bold text-indigo-600 uppercase tracking-wider">DevQuik AI Fast-Track</span>
+                <span className="w-1.5 h-1.5 rounded-full bg-slate-300"></span>
+                <span className="text-xs text-slate-500 font-semibold">15-Day Curriculum</span>
+              </div>
+              <h1 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
+                Welcome back, Python & AI Developer!
+              </h1>
+              <p className="text-xs sm:text-sm text-slate-500 mt-0.5">
+                Days 1–10: Core Python (Bro Code) • Days 11–15: Modern AI & LLMs (Dave Ebbelaar).
+              </p>
             </div>
           </div>
-          <div className="h-8 w-px bg-slate-200 hidden sm:block"></div>
-          <div className="flex items-center space-x-2">
-            <div className="w-10 h-10 rounded-full bg-orange-100 flex items-center justify-center">
-              <Flame className="w-5 h-5 text-orange-500" />
+
+          <div className="flex items-center space-x-3 sm:space-x-4">
+            {/* Streak Counter */}
+            <div className="flex items-center space-x-2 bg-orange-50 border border-orange-200 px-4 py-2.5 rounded-2xl">
+              <Flame className="w-5 h-5 text-orange-500 fill-orange-500" />
+              <div>
+                <span className="text-xs text-orange-600 font-bold block leading-none">Streak</span>
+                <span className="text-base font-black text-slate-900">{streak} Days</span>
+              </div>
             </div>
-            <div>
-              <p className="text-xs text-slate-500 font-bold uppercase tracking-wider">Day Streak</p>
-              <p className="text-lg font-black text-slate-900">{streak} Days</p>
+
+            {/* Total XP Counter */}
+            <div className="flex items-center space-x-2 bg-yellow-50 border border-yellow-200 px-4 py-2.5 rounded-2xl">
+              <Zap className="w-5 h-5 text-yellow-500 fill-yellow-500" />
+              <div>
+                <span className="text-xs text-yellow-600 font-bold block leading-none">Total XP</span>
+                <span className="text-base font-black text-slate-900">{currentXp} XP</span>
+              </div>
             </div>
-          </div>
-        </div>
-        
-        <div className="flex-1 max-w-xs">
-          <div className="flex justify-between text-xs font-bold mb-1">
-            <span className="text-slate-500">Daily Goal</span>
-            <span className="text-indigo-600">{todayXp} / {dailyGoal} XP</span>
-          </div>
-          <div className="h-2.5 w-full bg-slate-100 rounded-full overflow-hidden">
-            <div 
-              className="h-full bg-indigo-500 rounded-full transition-all duration-1000 ease-out" 
-              style={{ width: `${Math.min((todayXp / dailyGoal) * 100, 100)}%` }}
-            ></div>
+
+            {/* Level Badge */}
+            <div className="flex items-center space-x-2 bg-indigo-50 border border-indigo-200 px-4 py-2.5 rounded-2xl">
+              <Trophy className="w-5 h-5 text-indigo-600" />
+              <div>
+                <span className="text-xs text-indigo-600 font-bold block leading-none">Level</span>
+                <span className="text-base font-black text-slate-900">Lvl {currentLevel}</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
-      {/* Main Grid */}
+      {/* Hero Continue Card + Progress Overview */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         
-        {/* Left Column (60%) */}
-        <div className="lg:col-span-2 space-y-6">
-          
-          {/* Daily Quest Card */}
-          <div className="bg-gradient-to-br from-indigo-600 to-violet-700 rounded-3xl shadow-lg shadow-indigo-200 p-6 sm:p-8 text-white relative overflow-hidden group">
-            <div className="absolute top-0 right-0 p-8 opacity-20 transform group-hover:scale-110 transition-transform duration-700">
-              <Star className="w-32 h-32" />
+        {/* Main Continue Today's Lesson Card */}
+        <div className="lg:col-span-2 bg-gradient-to-br from-slate-900 via-[#132238] to-[#0f172a] text-white rounded-3xl p-6 sm:p-8 shadow-xl border border-slate-800 relative overflow-hidden flex flex-col justify-between">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+          <div>
+            <div className="flex items-center justify-between mb-4">
+              <span className="px-3 py-1 rounded-full text-xs font-black bg-yellow-400/20 text-yellow-300 border border-yellow-400/30 uppercase tracking-wider">
+                Today's Target • Day {nextDayObj.day} of 15
+              </span>
+              <span className="text-xs text-slate-400 font-semibold">⏱ {nextDayObj.estimatedTime} mins</span>
             </div>
-            <div className="relative z-10">
-              <div className="inline-flex items-center space-x-2 bg-white/20 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold mb-4">
-                <Zap className="w-4 h-4 text-amber-300 fill-amber-300" />
-                <span>Today's Challenge</span>
-              </div>
-              <h2 className="text-3xl font-black mb-2">Complete 2 lessons</h2>
-              <p className="text-indigo-100 mb-6 max-w-md">You're almost at your daily goal! Complete two more lessons in your current roadmap to keep your streak burning.</p>
-              
-              <button 
-                onClick={handleResumeClick}
-                className="bg-white text-indigo-700 px-6 py-3 rounded-xl font-bold text-sm shadow-sm hover:shadow-md transition-all hover:scale-105 active:scale-95 flex items-center space-x-2"
-              >
-                <span>Continue Learning</span>
-                <Play className="w-4 h-4" />
-              </button>
+
+            <h2 className="text-xl sm:text-2xl font-black text-white tracking-tight mb-2">
+              {nextDayObj.title}
+            </h2>
+            <p className="text-xs sm:text-sm text-slate-300 leading-relaxed max-w-xl">
+              {nextDayObj.whatToLearn?.summary || nextDayObj.topic}
+            </p>
+
+            <div className="flex flex-wrap gap-2 mt-4">
+              <span className="text-[11px] font-semibold bg-slate-800/80 px-2.5 py-1 rounded-lg text-slate-300 border border-slate-700">
+                📚 {nextDayObj.tasks?.length || 3} Tasks
+              </span>
+              <span className="text-[11px] font-semibold bg-slate-800/80 px-2.5 py-1 rounded-lg text-slate-300 border border-slate-700">
+                💻 Python Sandbox
+              </span>
+              <span className="text-[11px] font-semibold bg-slate-800/80 px-2.5 py-1 rounded-lg text-slate-300 border border-slate-700">
+                ❓ MCQ Assessment
+              </span>
+              {nextDayObj.videoSource && (
+                <span className="text-[11px] font-semibold bg-red-950/80 text-red-300 px-2.5 py-1 rounded-lg border border-red-900/60 flex items-center space-x-1">
+                  <Video className="w-3 h-3" />
+                  <span>{nextDayObj.videoSource.instructor}</span>
+                </span>
+              )}
+              <span className="text-[11px] font-bold bg-yellow-500/20 text-yellow-300 px-2.5 py-1 rounded-lg border border-yellow-500/30">
+                +{nextDayObj.xpReward} XP
+              </span>
             </div>
           </div>
 
-          {/* Roadmap Progress */}
-          <div className="bg-white rounded-3xl shadow-sm border border-slate-200 p-6">
-            <h3 className="text-lg font-bold text-slate-800 mb-4 flex items-center space-x-2">
-              <Map className="w-5 h-5 text-emerald-500" />
-              <span>Current Roadmap Progress</span>
-            </h3>
-            
-            <div className="flex items-center space-x-4">
-              <div className="w-16 h-16 rounded-full border-4 border-slate-100 flex items-center justify-center relative">
-                <svg className="absolute inset-0 w-full h-full transform -rotate-90">
-                  <circle cx="32" cy="32" r="28" stroke="currentColor" strokeWidth="4" fill="transparent" className="text-slate-100" />
-                  <circle cx="32" cy="32" r="28" stroke="currentColor" strokeWidth="4" fill="transparent" strokeDasharray="175" strokeDashoffset={175 - (175 * activeTrackProgress) / 100} className="text-emerald-500 transition-all duration-1000" />
-                </svg>
-                <span className="font-bold text-slate-700 text-sm z-10">{activeTrackProgress}%</span>
-              </div>
-              <div className="flex-1">
-                <h4 className="font-bold text-slate-900 flex items-center space-x-2">
-                  <span>{activeTrackObj ? activeTrackObj.name : 'No Active Track'}</span>
-                  {activeTrackObj?.estimatedMonths && (
-                    <span className="px-2 py-0.5 bg-indigo-50 text-indigo-700 text-[10px] font-black uppercase rounded-md border border-indigo-100">
-                      {activeTrackObj.estimatedMonths} Months
-                    </span>
-                  )}
-                </h4>
-                <p className="text-sm text-slate-500 mb-2">Keep up the momentum!</p>
-                {activeTrackObj && (
-                  <div className="flex items-center space-x-2 text-xs font-semibold">
-                    <span className="text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-100">In Progress</span>
-                  </div>
-                )}
-              </div>
-              <button 
-                onClick={handleResumeClick}
-                className="hidden sm:flex px-4 py-2 bg-emerald-50 text-emerald-700 hover:bg-emerald-100 rounded-xl text-sm font-bold transition-colors items-center space-x-1 border border-emerald-200"
-              >
-                <span>Resume</span>
-              </button>
+          <div className="pt-6 mt-6 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="text-xs text-slate-400">
+              {nextDayObj.isMilestone ? `🏆 Milestone Day: ${nextDayObj.badgeAward}` : 'Advance to the next day on your roadmap!'}
             </div>
+            <button
+              onClick={() => onStartLesson ? onStartLesson(nextDayObj) : onNavigate('roadmap')}
+              className="w-full sm:w-auto px-6 py-3 bg-gradient-to-r from-yellow-400 to-amber-500 hover:from-yellow-300 hover:to-amber-400 text-slate-950 font-black text-sm rounded-xl shadow-lg shadow-yellow-500/20 flex items-center justify-center space-x-2 transition-all transform hover:scale-105 cursor-pointer"
+            >
+              <Play className="w-4 h-4 fill-slate-950" />
+              <span>Start Day {nextDayObj.day} Lesson</span>
+            </button>
           </div>
-
-          {/* Weekly Activity */}
-          <div className="bg-white rounded-3xl shadow-sm border border-slate-200 p-6">
-            <h3 className="text-lg font-bold text-slate-800 mb-6 flex items-center space-x-2">
-              <Activity className="w-5 h-5 text-blue-500" />
-              <span>Weekly Activity</span>
-            </h3>
-            <div className="flex items-end justify-between h-32 gap-2">
-              {weeklyData.map((d, i) => (
-                <div key={i} className="flex flex-col items-center flex-1 group">
-                  <div className="w-full relative flex items-end justify-center h-24 bg-slate-50 rounded-t-lg">
-                    <div 
-                      className="w-full bg-blue-500 rounded-t-lg transition-all duration-700 group-hover:bg-blue-600"
-                      style={{ height: `${(d.xp / 100) * 100}%` }}
-                    ></div>
-                  </div>
-                  <span className="text-[10px] font-bold text-slate-400 mt-2 uppercase">{d.day}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-
         </div>
 
-        {/* Right Column (40%) */}
-        <div className="space-y-6">
-          
-          {/* Quick Actions */}
-          <div className="bg-white rounded-3xl shadow-sm border border-slate-200 p-6">
-            <h3 className="text-sm font-bold text-slate-400 uppercase tracking-wider mb-4">Quick Actions</h3>
-            <div className="grid grid-cols-2 gap-3">
-              <button onClick={() => onNavigate('languages')} className="flex flex-col items-center justify-center p-4 rounded-2xl bg-slate-50 hover:bg-slate-100 transition-colors border border-slate-100">
-                <BookOpen className="w-6 h-6 text-indigo-500 mb-2" />
-                <span className="text-xs font-bold text-slate-700">Roadmaps</span>
-              </button>
-              <button onClick={() => onNavigate('playground')} className="flex flex-col items-center justify-center p-4 rounded-2xl bg-slate-50 hover:bg-slate-100 transition-colors border border-slate-100">
-                <Terminal className="w-6 h-6 text-cyan-600 mb-2" />
-                <span className="text-xs font-bold text-slate-700">Playground</span>
-              </button>
-              <button onClick={() => onNavigate('projects')} className="flex flex-col items-center justify-center p-4 rounded-2xl bg-slate-50 hover:bg-slate-100 transition-colors border border-slate-100">
-                <Rocket className="w-6 h-6 text-orange-500 mb-2" />
-                <span className="text-xs font-bold text-slate-700">Projects</span>
-              </button>
-              <button onClick={() => onNavigate('analytics')} className="flex flex-col items-center justify-center p-4 rounded-2xl bg-slate-50 hover:bg-slate-100 transition-colors border border-slate-100">
-                <Activity className="w-6 h-6 text-amber-500 mb-2" />
-                <span className="text-xs font-bold text-slate-700">Analytics</span>
-              </button>
+        {/* 15-Day Completion Overview Card */}
+        <div className="bg-white rounded-3xl p-6 shadow-xs border border-slate-200 flex flex-col justify-between">
+          <div>
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="text-sm font-black text-slate-900">15-Day Fast-Track</h3>
+              <span className="text-xs font-bold text-indigo-600">{coursePercentage}%</span>
+            </div>
+
+            <div className="w-full bg-slate-100 h-3 rounded-full overflow-hidden mb-4">
+              <div 
+                className="bg-gradient-to-r from-blue-600 via-indigo-600 to-yellow-400 h-full rounded-full transition-all duration-700"
+                style={{ width: `${coursePercentage}%` }}
+              />
+            </div>
+
+            <div className="space-y-3">
+              <div className="flex items-center justify-between text-xs p-2.5 rounded-xl bg-slate-50 border border-slate-100">
+                <span className="text-slate-600 font-medium">Days Completed</span>
+                <span className="font-bold text-slate-900">{completedCount} / 15</span>
+              </div>
+              <div className="flex items-center justify-between text-xs p-2.5 rounded-xl bg-slate-50 border border-slate-100">
+                <span className="text-slate-600 font-medium">Remaining Lessons</span>
+                <span className="font-bold text-slate-900">{15 - completedCount} Days</span>
+              </div>
+              <div className="flex items-center justify-between text-xs p-2.5 rounded-xl bg-slate-50 border border-slate-100">
+                <span className="text-slate-600 font-medium">Certificate Status</span>
+                <span className={`font-bold ${completedCount >= 15 ? 'text-emerald-600' : 'text-slate-400'}`}>
+                  {completedCount >= 15 ? 'AI Engineer Certified 🎓' : 'Locked (Day 15)'}
+                </span>
+              </div>
             </div>
           </div>
 
-          {/* Recent Achievements */}
-          <div className="bg-white rounded-3xl shadow-sm border border-slate-200 p-6">
-            <div className="flex justify-between items-center mb-4">
-              <h3 className="text-lg font-bold text-slate-800 flex items-center space-x-2">
-                <Award className="w-5 h-5 text-amber-500" />
-                <span>Recent Badges</span>
-              </h3>
-              <button onClick={() => onNavigate('profile')} className="text-xs font-bold text-indigo-600 hover:text-indigo-700">View All</button>
-            </div>
-            
-            <div className="space-y-3">
-              {recentBadges.map((badge, idx) => (
-                <div key={idx} className="flex items-center space-x-3 p-3 rounded-xl bg-slate-50 border border-slate-100">
-                  <div className="text-2xl">{badge.icon}</div>
-                  <div>
-                    <p className="text-sm font-bold text-slate-800">{badge.title}</p>
-                    <p className="text-xs text-slate-500">Unlocked</p>
-                  </div>
-                </div>
-              ))}
-              {recentBadges.length === 0 && (
-                <p className="text-xs text-slate-500">No badges earned yet. Start completing lessons!</p>
-              )}
-            </div>
-          </div>
-          
+          <button
+            onClick={() => onNavigate('roadmap')}
+            className="w-full mt-4 py-2.5 px-4 bg-slate-100 hover:bg-slate-200 text-slate-900 text-xs font-bold rounded-xl flex items-center justify-center space-x-1.5 transition-all cursor-pointer"
+          >
+            <span>Open 15-Day Roadmap</span>
+            <ArrowRight className="w-3.5 h-3.5" />
+          </button>
         </div>
       </div>
+
+      {/* GitHub-Style Contribution Heatmap Card */}
+      <ActivityHeatmap 
+        completedDays={completedDays} 
+        streak={streak} 
+        totalXp={currentXp} 
+      />
+
+      {/* Quick Access Python Playground Banner */}
+      <div className="bg-gradient-to-r from-blue-900 to-indigo-900 text-white rounded-3xl p-6 shadow-md flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="flex items-center space-x-3.5">
+          <div className="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center text-xl flex-shrink-0">
+            💻
+          </div>
+          <div>
+            <h4 className="text-base font-black">Python & AI Code Sandbox</h4>
+            <p className="text-xs text-slate-300 mt-0.5">
+              Experiment with Python 3.12 scripts, pandas dataframes, and LLM prompt schemas anytime.
+            </p>
+          </div>
+        </div>
+
+        <button
+          onClick={() => onNavigate('playground')}
+          className="px-5 py-2.5 bg-white text-indigo-950 hover:bg-slate-100 font-bold text-xs rounded-xl shadow-xs transition-all whitespace-nowrap cursor-pointer"
+        >
+          Open Sandbox Playground →
+        </button>
+      </div>
+
     </div>
   );
 }

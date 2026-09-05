@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mail, Lock, Zap, Award, ArrowLeft, UserCheck } from 'lucide-react';
+import { Mail, Lock, Zap, ArrowLeft, UserCheck, Sparkles } from 'lucide-react';
 import { signInUser } from '../services/supabaseClient';
 
 export default function SignInPage({ 
@@ -22,11 +22,10 @@ export default function SignInPage({
       if (res && res.user) {
         onAuthSuccess(res.user);
       } else {
-        // Fallback for local session
         onAuthSuccess({
           id: 'cadet-' + Date.now(),
-          email: email || 'cadet@devquik.arena',
-          user_metadata: { full_name: email ? email.split('@')[0] : 'Cadet' }
+          email: email || 'learner@devquik.io',
+          user_metadata: { full_name: email ? email.split('@')[0] : 'Learner' }
         });
       }
     } catch (err) {
@@ -39,104 +38,117 @@ export default function SignInPage({
 
   const handleDemoSignIn = () => {
     onAuthSuccess({
-      id: 'demo-cadet-101',
-      email: 'cadet@devquik.arena',
-      user_metadata: { full_name: 'Cadet Learner' }
+      id: 'demo-learner-101',
+      email: 'demo@devquik.io',
+      user_metadata: { full_name: 'Python Learner' }
     });
   };
 
   return (
-    <div className="min-h-screen bg-background text-on-surface flex flex-col justify-between p-4 md:p-8 font-body-md relative selection:bg-primary/20 selection:text-primary">
-      {/* Top Header Row with Back Button */}
-      <div className="w-full max-w-5xl mx-auto flex justify-between items-center z-10">
-        <button 
-          onClick={onBackToLanding}
-          className="flex items-center gap-2 text-on-surface-variant hover:text-primary font-semibold transition-colors py-2 px-3 rounded-lg hover:bg-surface-container-high"
-        >
-          <ArrowLeft size={18} /> Back to DevQuik
-        </button>
-
-        {/* Top Right Toast Notification */}
-        <div className="hidden sm:flex bg-surface border border-outline-variant rounded-xl p-3 shadow-lg items-center gap-3">
-          <div className="w-8 h-8 rounded-lg bg-primary-fixed flex items-center justify-center text-primary">
-            <Award size={18} />
+    <div className="min-h-screen bg-[#f8f9ff] text-slate-900 flex flex-col justify-between font-sans selection:bg-blue-100">
+      
+      {/* Top Navbar */}
+      <nav className="w-full bg-white border-b border-slate-200 px-6 py-4">
+        <div className="max-w-6xl mx-auto flex justify-between items-center">
+          <div className="flex items-center gap-3">
+            <button 
+              onClick={onBackToLanding}
+              className="text-slate-500 hover:text-slate-900 p-2 rounded-xl hover:bg-slate-100 transition-colors flex items-center gap-1.5 text-xs font-bold cursor-pointer"
+              title="Back to Landing Page"
+            >
+              <ArrowLeft size={16} />
+              <span>Back to Home</span>
+            </button>
           </div>
-          <div className="text-left">
-            <span className="block text-[11px] font-mono font-bold text-primary tracking-wider uppercase">SYSTEM UPDATED</span>
-            <span className="block text-xs text-on-surface-variant font-medium">Secure protocol V2.4 initialized.</span>
+
+          <div className="flex items-center gap-2.5">
+            <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-blue-600 to-yellow-500 p-0.5 shadow-xs flex items-center justify-center text-sm">
+              🐍
+            </div>
+            <span className="font-black text-lg tracking-tight text-slate-900">DevQuik</span>
+          </div>
+
+          <div>
+            <button 
+              onClick={onNavigateToSignUp}
+              className="text-xs font-bold text-slate-600 hover:text-slate-900 hover:bg-slate-100 px-3 py-2 rounded-xl transition-colors cursor-pointer"
+            >
+              Sign Up
+            </button>
           </div>
         </div>
-      </div>
+      </nav>
 
-      {/* Center Form Card (Exact Image 1 Design) */}
-      <main className="w-full max-w-md mx-auto my-auto py-8">
-        <div className="bg-surface border border-outline-variant rounded-2xl shadow-2xl p-8 space-y-6 text-on-surface">
-          {/* Card Header Tag */}
-          <div className="flex justify-end">
-            <span className="text-[10px] font-mono font-semibold px-2 py-0.5 bg-surface-container-high text-on-surface-variant rounded border border-outline-variant">
-              LVL. 01 AUTH NODE
-            </span>
-          </div>
-
+      {/* Main Center Form */}
+      <main className="w-full max-w-md mx-auto py-8 px-4 my-auto">
+        <div className="bg-white border border-slate-200 rounded-3xl shadow-xl p-8 space-y-6 text-left text-slate-900">
+          
           <div className="text-center space-y-2">
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-surface-container-high text-primary font-mono text-[11px] font-bold rounded-full uppercase tracking-wider">
-              <span className="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
-              MISSION STATUS: READY
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-blue-50 border border-blue-200 text-blue-700 text-[11px] font-black rounded-full uppercase tracking-wider">
+              <Sparkles className="w-3.5 h-3.5 text-yellow-500 fill-yellow-500" />
+              <span>Welcome Back</span>
             </div>
-            <h1 className="text-3xl font-extrabold font-display-lg text-on-surface tracking-tight">
-              Welcome back, Cadet!
+            <h1 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
+              Sign In to DevQuik
             </h1>
-            <p className="text-sm text-on-surface-variant">
-              Re-authenticate to resume your current skill mission.
+            <p className="text-xs sm:text-sm text-slate-500">
+              Resume your 15-day Python to AI learning mission.
             </p>
           </div>
 
           {errorMsg && (
-            <div className="p-4 bg-red-500/10 border border-red-500/30 text-red-600 rounded-xl text-xs font-medium space-y-2 text-left">
+            <div className="p-3.5 bg-red-50 border border-red-200 text-red-700 rounded-2xl text-xs font-medium space-y-2">
               <div>⚠️ {errorMsg}</div>
               <button 
                 type="button" 
                 onClick={handleDemoSignIn}
-                className="w-full py-2 bg-primary text-white font-bold rounded-lg text-xs flex items-center justify-center gap-1.5 shadow-sm mt-1"
+                className="w-full py-2 bg-slate-900 text-white font-bold rounded-xl text-xs flex items-center justify-center gap-1.5 shadow-xs"
               >
-                <UserCheck size={14} /> Continue as Guest Cadet ➔
+                <UserCheck size={14} /> Continue with Demo Session ➔
               </button>
             </div>
           )}
 
-          <form onSubmit={handleSubmit} className="space-y-4 text-left">
+          <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <div className="flex justify-between text-xs font-mono font-semibold text-on-surface mb-1">
-                <span>EMAIL ADDRESS</span>
-                <span className="text-on-surface-variant text-[10px]">REQ_AUTH_01</span>
-              </div>
+              <label className="block text-xs font-bold text-slate-700 mb-1.5 uppercase tracking-wider">
+                Email Address
+              </label>
               <div className="relative">
-                <Mail size={18} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-on-surface-variant" />
+                <Mail size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
                 <input
                   type="email"
                   required
-                  placeholder="cadet@devquik.arena"
+                  placeholder="learner@devquik.io"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full pl-11 pr-4 py-3.5 bg-surface border border-outline-variant rounded-xl text-sm font-body-md text-on-surface outline-none focus:border-primary transition-colors"
+                  className="w-full pl-10 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-2xl text-xs sm:text-sm text-slate-900 outline-none focus:border-blue-600 focus:bg-white transition-colors"
                 />
               </div>
             </div>
 
             <div>
-              <div className="flex justify-between text-xs font-mono font-semibold text-on-surface mb-1">
-                <span>SECURITY CIPHER</span>
-                <a href="#" onClick={(e) => { e.preventDefault(); alert('Reset password link sent to email.'); }} className="text-xs text-primary font-bold hover:underline">Forgot password?</a>
+              <div className="flex justify-between items-center mb-1.5">
+                <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider">
+                  Password
+                </label>
+                <a 
+                  href="#" 
+                  onClick={(e) => { e.preventDefault(); alert('Password reset email sent if account exists.'); }}
+                  className="text-[11px] text-blue-600 font-semibold hover:underline"
+                >
+                  Forgot password?
+                </a>
               </div>
               <div className="relative">
-                <Lock size={18} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-on-surface-variant" />
+                <Lock size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
                 <input
                   type="password"
                   required
                   placeholder="••••••••••••"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="w-full pl-11 pr-4 py-3.5 bg-surface border border-outline-variant rounded-xl text-sm font-body-md text-on-surface outline-none focus:border-primary transition-colors"
+                  className="w-full pl-10 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-2xl text-xs sm:text-sm text-slate-900 outline-none focus:border-blue-600 focus:bg-white transition-colors"
                 />
               </div>
             </div>
@@ -144,42 +156,44 @@ export default function SignInPage({
             <button
               type="submit"
               disabled={loading}
-              className="tactile-button-primary w-full py-4 bg-primary text-white font-bold text-base rounded-xl flex items-center justify-center gap-2 shadow-md mt-2"
+              className="w-full py-3.5 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-black text-xs sm:text-sm rounded-2xl flex items-center justify-center gap-2 shadow-lg shadow-blue-600/20 mt-3 cursor-pointer transition-all hover:scale-102"
             >
               {loading ? (
-                <span>Authenticating...</span>
+                <span>Signing In...</span>
               ) : (
                 <>
-                  <Zap size={18} /> Start Session
+                  <Zap size={16} className="fill-white" />
+                  <span>Resume Mission</span>
                 </>
               )}
             </button>
           </form>
 
-          <div className="flex items-center justify-between pt-2 text-xs text-on-surface-variant border-t border-outline-variant">
+          <div className="flex items-center justify-between pt-3 text-xs text-slate-500 border-t border-slate-100">
             <div>
               <span>Don't have an account? </span>
               <button
                 onClick={onNavigateToSignUp}
-                className="text-primary font-bold hover:underline"
+                className="text-blue-600 font-bold hover:underline cursor-pointer"
               >
                 Sign up
               </button>
             </div>
             <button
               onClick={handleDemoSignIn}
-              className="text-xs font-mono font-bold text-on-surface-variant hover:text-primary underline"
+              className="font-bold text-slate-500 hover:text-slate-900 underline cursor-pointer"
             >
-              Guest Login
+              Guest Demo
             </button>
           </div>
         </div>
       </main>
 
       {/* Footer */}
-      <footer className="w-full max-w-5xl mx-auto text-center text-xs text-on-surface-variant pt-6 border-t border-outline-variant/40">
-        <p>© 2026 DevQuik Arena. All rights reserved.</p>
+      <footer className="w-full border-t border-slate-200 py-4 px-6 text-center text-xs text-slate-400 bg-white">
+        <p>© {new Date().getFullYear()} DevQuik. Built for daily consistent learning.</p>
       </footer>
+
     </div>
   );
 }
